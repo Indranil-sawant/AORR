@@ -17,3 +17,12 @@ AORR focuses on six primary categories for import and export. The company connec
 • Inventory: Scrap metal, coils, aluminum, and various metal alloys.
 6. Woods
 • Inventory: Timber logs and processed wood.
+
+| Category | Key Inventory Items |
+| :--- | :--- |
+| **Agro-Commodities** | Nuts (Cashew, Macadamia, Almonds), Spices (Vanilla, Cocoa), Sesame Seeds, ICUMSA 45 Sugar |
+| **FMCG** | Packaged consumer goods, daily essentials |
+| **General Trading** | Fans (Ceiling/Table), Sewing machines, Bicycles, Exercise equipment |
+| **Machinery & Vehicles** | Tractors, Harvesters, Trailers |
+| **Metal & Alloys** | Scrap metal, Coils, Aluminum, Alloys |
+| **Woods** | Timber logs, Processed wood |

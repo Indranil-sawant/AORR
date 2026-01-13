@@ -239,4 +239,147 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset();
         });
     }
+
+    // Performance Chart Initialization
+    function initPerformanceChart() {
+        const canvas = document.getElementById('performanceChart');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+
+        // Chart data
+        const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        // Before AORR data (higher delivery times)
+        const beforeData = [18, 19, 20, 21, 22, 23, 22, 21, 20, 19, 18, 17];
+
+        // After AORR data (reduced delivery times by 45%)
+        const afterData = [18, 19, 20, 21, 18, 15, 12, 11, 10, 11, 12, 10];
+
+        // Create gradient for the filled area
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, 'rgba(65, 105, 225, 0.4)');
+        gradient.addColorStop(1, 'rgba(65, 105, 225, 0.02)');
+
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Before AORR',
+                        data: beforeData,
+                        borderColor: 'rgba(220, 53, 69, 0.8)',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        fill: false,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        tension: 0.4,
+                        hidden: false
+                    },
+                    {
+                        label: 'With AORR',
+                        data: afterData,
+                        borderColor: '#4169E1',
+                        borderWidth: 3,
+                        backgroundColor: gradient,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: '#4169E1',
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        padding: 12,
+                        titleFont: {
+                            size: 13,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 12
+                        },
+                        callbacks: {
+                            label: function (context) {
+                                return context.dataset.label + ': ' + context.parsed.y + ' days';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 25,
+                        ticks: {
+                            callback: function (value) {
+                                return value + ' days';
+                            },
+                            font: {
+                                size: 11
+                            },
+                            color: '#666'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)',
+                            drawBorder: false
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 11
+                            },
+                            color: '#666'
+                        },
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeInOutQuart'
+                }
+            }
+        });
+
+        // Toggle functionality
+        const toggle = document.getElementById('performanceToggle');
+        if (toggle) {
+            toggle.addEventListener('change', function () {
+                if (this.checked) {
+                    // Show AORR improvements
+                    chart.data.datasets[0].hidden = false;
+                    chart.data.datasets[1].hidden = false;
+                } else {
+                    // Show only before state
+                    chart.data.datasets[0].hidden = false;
+                    chart.data.datasets[1].hidden = true;
+                }
+                chart.update('active');
+            });
+        }
+    }
+
+    // Initialize chart when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPerformanceChart);
+    } else {
+        initPerformanceChart();
+    }
 });
