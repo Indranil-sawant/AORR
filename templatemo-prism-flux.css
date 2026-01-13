@@ -2474,6 +2474,179 @@ img {
 	}
 }
 
+/* Planning & Execution Process Cards */
+.process-cards-section {
+	padding: 120px 20px;
+	background: white;
+}
+
+.process-cards-container {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.section-header-about {
+	text-align: center;
+	margin-bottom: 70px;
+}
+
+.cards-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 40px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.flip-card {
+	position: relative;
+	width: 100%;
+	height: 320px;
+	background: linear-gradient(-45deg, var(--accent-gold) 0%, var(--primary-navy) 100%);
+	border-radius: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+	cursor: pointer;
+}
+
+.flip-card svg {
+	width: 64px;
+	height: 64px;
+	fill: white;
+	transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.flip-card:hover {
+	transform: rotate(-5deg) scale(1.05);
+	box-shadow: 0 20px 40px rgba(0, 33, 71, 0.25);
+}
+
+.flip-card__content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	width: 100%;
+	height: 100%;
+	padding: 30px;
+	box-sizing: border-box;
+	background-color: #fff;
+	opacity: 0;
+	transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.flip-card:hover .flip-card__content {
+	transform: translate(-50%, -50%) rotate(0deg);
+	opacity: 1;
+}
+
+.flip-card__title {
+	margin: 0 0 15px 0;
+	font-size: 1.5rem;
+	color: var(--primary-navy);
+	font-weight: 700;
+	font-family: var(--font-main);
+}
+
+.flip-card__description {
+	margin: 0;
+	font-size: 0.95rem;
+	color: #555;
+	line-height: 1.6;
+}
+
+.flip-card:hover svg {
+	scale: 0;
+	transform: rotate(-45deg);
+}
+
+/* Gradient variations with background images for each card */
+.cards-grid .flip-card:nth-child(1) {
+	background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(65, 105, 225, 0.7)),
+		url('../images/ChatGPT Image Jan 13, 2026, 05_14_11 PM.png') center/cover;
+}
+
+.cards-grid .flip-card:nth-child(2) {
+	background: linear-gradient(rgba(197, 160, 101, 0.7), rgba(139, 105, 20, 0.7)),
+		url('../images/global1.png') center/cover;
+}
+
+.cards-grid .flip-card:nth-child(3) {
+	background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(91, 143, 185, 0.7)),
+		url('../images/global2.png') center/cover;
+}
+
+.cards-grid .flip-card:nth-child(4) {
+	background: linear-gradient(rgba(197, 160, 101, 0.7), rgba(0, 33, 71, 0.7)),
+		url('../images/global3.png') center/cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+	.cards-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 30px;
+	}
+}
+
+@media (max-width: 768px) {
+	.process-cards-section {
+		padding: 80px 20px;
+	}
+
+	.cards-grid {
+		grid-template-columns: 1fr;
+		gap: 25px;
+	}
+
+	.flip-card {
+		height: 280px;
+	}
+
+	.flip-card svg {
+		width: 52px;
+		height: 52px;
+	}
+
+	.flip-card__content {
+		padding: 25px;
+	}
+
+	.flip-card__title {
+		font-size: 1.3rem;
+	}
+
+	.flip-card__description {
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.flip-card {
+		height: 260px;
+	}
+
+	.flip-card__content {
+		padding: 20px;
+	}
+
+	.flip-card__title {
+		font-size: 1.2rem;
+		margin-bottom: 12px;
+	}
+
+	.flip-card__description {
+		font-size: 0.85rem;
+	}
+}
+
 /* Footer */
 /* Vooma-Style Footer */
 .footer {
