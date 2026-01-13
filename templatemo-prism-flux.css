@@ -2477,30 +2477,91 @@ img {
 /* Planning & Execution Process Cards */
 .process-cards-section {
 	padding: 120px 20px;
-	background: white;
+	background:
+		linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)),
+		url('../images/AORR (3).jpg') center/cover fixed;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Subtle overlay for depth */
+.process-cards-section::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.2);
+	pointer-events: none;
+	z-index: 0;
 }
 
 .process-cards-container {
 	max-width: 1400px;
 	margin: 0 auto;
+	position: relative;
+	z-index: 1;
 }
 
 .section-header-about {
 	text-align: center;
 	margin-bottom: 70px;
+	position: relative;
+	z-index: 1;
+}
+
+.section-header-about h2 {
+	color: var(--primary-navy);
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-header-about p {
+	color: #333;
+}
+
+.section-header-about .section-tag-about {
+	background: rgba(197, 160, 101, 0.2);
+	border: 1px solid var(--accent-gold);
 }
 
 .cards-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	gap: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 80px;
 	max-width: 1200px;
-	margin: 0 auto;
+	margin: 60px auto 0;
+	position: relative;
+	padding: 40px 0;
 }
 
+/* Central vertical line */
+.cards-grid::before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	width: 3px;
+	background: linear-gradient(180deg,
+			transparent 0%,
+			rgba(197, 160, 101, 0.8) 10%,
+			var(--accent-gold) 50%,
+			rgba(197, 160, 101, 0.8) 90%,
+			transparent 100%);
+	box-shadow: 0 0 20px rgba(197, 160, 101, 0.5);
+	transform: translateX(-50%);
+	z-index: 1;
+}
+
+/* Timeline container for each card */
 .flip-card {
 	position: relative;
-	width: 100%;
+	width: 45%;
 	height: 320px;
 	background: linear-gradient(-45deg, var(--accent-gold) 0%, var(--primary-navy) 100%);
 	border-radius: 16px;
@@ -2510,6 +2571,68 @@ img {
 	overflow: hidden;
 	transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 	cursor: pointer;
+	z-index: 1;
+}
+
+/* Alternate positioning */
+.flip-card:nth-child(odd) {
+	align-self: flex-start;
+	margin-left: 0;
+}
+
+.flip-card:nth-child(even) {
+	align-self: flex-end;
+	margin-right: 0;
+}
+
+/* Timeline dot connectors */
+.flip-card::before {
+	content: '';
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: var(--accent-gold);
+	border: 4px solid var(--primary-navy);
+	border-radius: 50%;
+	z-index: 10;
+	box-shadow: 0 0 0 4px rgba(197, 160, 101, 0.2);
+}
+
+/* Dot position for left cards */
+.flip-card:nth-child(odd)::before {
+	right: -60px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/* Dot position for right cards */
+.flip-card:nth-child(even)::before {
+	left: -60px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/* Connecting line from card to dot */
+.flip-card::after {
+	content: '';
+	position: absolute;
+	height: 2px;
+	background: var(--accent-gold);
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 5;
+}
+
+/* Line width for left cards */
+.flip-card:nth-child(odd)::after {
+	right: 0;
+	width: 60px;
+}
+
+/* Line width for right cards */
+.flip-card:nth-child(even)::after {
+	left: 0;
+	width: 60px;
 }
 
 .flip-card svg {
@@ -2586,6 +2709,59 @@ img {
 .cards-grid .flip-card:nth-child(4) {
 	background: linear-gradient(rgba(197, 160, 101, 0.7), rgba(0, 33, 71, 0.7)),
 		url('../images/global3.png') center/cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+	.flip-card {
+		width: 48%;
+	}
+}
+
+@media (max-width: 768px) {
+	.process-cards-section {
+		padding: 80px 20px;
+	}
+
+	/* Remove timeline for mobile - stack cards */
+	.cards-grid {
+		gap: 30px;
+		padding: 20px 0;
+	}
+
+	.cards-grid::before {
+		display: none;
+	}
+
+	.flip-card {
+		width: 100%;
+		align-self: center !important;
+	}
+
+	/* Remove dots and connectors on mobile */
+	.flip-card::before,
+	.flip-card::after {
+		display: none;
+	}
+}
+
+@media (max-width: 480px) {
+	.flip-card {
+		height: 260px;
+	}
+
+	.flip-card__content {
+		padding: 20px;
+	}
+
+	.flip-card__title {
+		font-size: 1.2rem;
+		margin-bottom: 12px;
+	}
+
+	.flip-card__description {
+		font-size: 0.85rem;
+	}
 }
 
 /* Responsive Design */
