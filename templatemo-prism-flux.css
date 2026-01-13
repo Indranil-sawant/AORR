@@ -3530,9 +3530,9 @@ html {
 	color: white;
 	padding: 120px 20px;
 	position: relative;
-	overflow: hidden;
 	/* Optimize Repaints */
 	transform: translateZ(0);
+	overflow: visible;
 }
 
 .impact-container {
@@ -3544,6 +3544,7 @@ html {
 	align-items: center;
 	position: relative;
 	z-index: 2;
+	overflow: visible;
 }
 
 .impact-headline {
@@ -3566,6 +3567,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
+	overflow: visible;
 }
 
 .impact-stat-item strong {
@@ -3588,24 +3590,43 @@ html {
 }
 
 .impact-visual-globe {
-	width: 120%;
-	/* Larger to fill space */
-	height: 700px;
+	width: 100%;
+	max-width: 500px;
+	height: 500px;
 	/* SIMPLIFIED: Using simple radial/linear gradients instead of 'repeating' which can be heavy. */
 	background:
 		radial-gradient(circle at 50% 50%, rgba(75, 200, 255, 0.05) 0%, transparent 70%),
 		repeating-linear-gradient(90deg, transparent 0, transparent 49px, rgba(75, 200, 255, 0.05) 50px);
 	border-radius: 50%;
 	position: relative;
-	right: -10%;
-	/* Shift right to offset */
-	box-shadow: inset 0 0 100px #000;
+	margin: 0 auto;
 	/* Reduced shadow complexity */
-	transform: rotate(-15deg) translateZ(0);
+	box-shadow: inset 0 0 100px #000;
 	/* Hardware Acceleration */
+	transform: rotate(-15deg) translateZ(0);
 	border: 1px solid rgba(255, 255, 255, 0.05);
-	will-change: transform;
 	/* Hint to browser */
+	will-change: transform;
+	overflow: hidden;
+}
+
+/* Hide scrollbars for all elements in global impact section */
+.global-impact-section,
+.global-impact-section *,
+.impact-container,
+.impact-stats-list {
+	scrollbar-width: none;
+	/* Firefox */
+	-ms-overflow-style: none;
+	/* IE and Edge */
+}
+
+.global-impact-section::-webkit-scrollbar,
+.global-impact-section *::-webkit-scrollbar,
+.impact-container::-webkit-scrollbar,
+.impact-stats-list::-webkit-scrollbar {
+	display: none;
+	/* Chrome, Safari, Opera */
 }
 
 /* Background decorative glow */
@@ -3726,11 +3747,24 @@ html {
 
 	.impact-container {
 		grid-template-columns: 1fr;
+		gap: 40px;
+		padding: 0 15px;
 	}
 
 	.impact-visual-globe {
 		height: 300px;
-		margin-top: 40px;
+		width: 100%;
+		max-width: 300px;
+		margin: 40px auto 0;
+		right: 0;
+	}
+
+	.global-impact-section {
+		padding: 80px 15px;
+	}
+
+	.impact-stats-list {
+		gap: 30px;
 	}
 
 	.features-top-grid {
