@@ -2479,7 +2479,7 @@ img {
 	padding: 120px 20px;
 	background:
 		linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)),
-		url('../images/AORR (3).jpg') center/cover fixed;
+		url('./images/AORR%20%283%29.jpg') center/cover fixed;
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -2693,22 +2693,22 @@ img {
 /* Gradient variations with background images for each card */
 .cards-grid .flip-card:nth-child(1) {
 	background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(65, 105, 225, 0.7)),
-		url('../images/ChatGPT Image Jan 13, 2026, 05_14_11 PM.png') center/cover;
+		url('./images/ChatGPT%20Image%20Jan%2013%2C%202026%2C%2005_14_11%20PM.png') center/cover;
 }
 
 .cards-grid .flip-card:nth-child(2) {
 	background: linear-gradient(rgba(197, 160, 101, 0.7), rgba(139, 105, 20, 0.7)),
-		url('../images/global1.png') center/cover;
+		url('./images/global1.png') center/cover;
 }
 
 .cards-grid .flip-card:nth-child(3) {
 	background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(91, 143, 185, 0.7)),
-		url('../images/global2.png') center/cover;
+		url('./images/global2.png') center/cover;
 }
 
 .cards-grid .flip-card:nth-child(4) {
 	background: linear-gradient(rgba(197, 160, 101, 0.7), rgba(0, 33, 71, 0.7)),
-		url('../images/global3.png') center/cover;
+		url('./images/global3.png') center/cover;
 }
 
 /* Responsive Design */
