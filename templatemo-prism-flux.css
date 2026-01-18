@@ -5113,4 +5113,63 @@ html {
     .h-scroll-grid {
         gap: 20px;
     }
+}/* =========================================
+   MOBILE SCROLL GRID FIXES (iPhone/iOS)
+   ========================================= */
+
+.h-scroll-grid {
+    /* Ensure flex behavior is robust */
+    display: flex;
+    flex-wrap: nowrap;
+
+    /* Better Snapping Alignment */
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 20px;
+    /* Align snap to padding */
+    scroll-padding-right: 20px;
+    /* Align snap to padding */
+
+    /* Prevent shadow clipping */
+    padding-top: 20px;
+    padding-bottom: 40px;
+    /* Increased for shadow clearance */
+
+    /* Bleed Correction logic */
+    /* Wrapper has 20px padding. grid has -20px margin. */
+    /* This pulls grid to screen edge. */
+    margin-left: -20px;
+    margin-right: -20px;
+    width: calc(100% + 40px);
+
+    /* Inner padding ensures content starts at visual edge */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Ensure cards don't shrink */
+.h-card {
+    flex: 0 0 auto;
+    /* Don't shrink */
+    width: 280px;
+    /* Explicit width */
+    max-width: 80vw;
+    /* Prevent overflow on very tiny screens */
+    scroll-snap-align: start;
+    /* Snap to start (left edge) */
+    position: relative;
+    /* Context */
+    margin-right: 0;
+    /* Gaps handled by gap property */
+}
+
+/* Hide Scrollbar for cleaner UI on mobile */
+.h-scroll-grid {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.h-scroll-grid::-webkit-scrollbar {
+    display: none;
 }
