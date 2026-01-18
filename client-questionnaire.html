@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AORR - Client Onboarding Questionnaire</title>
+    <link rel="stylesheet" href="templatemo-prism-flux.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- html2pdf.js for creating PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        .questionnaire-container {
+            max-width: 850px;
+            /* A4 width approx */
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--primary-navy);
+        }
+
+        .q-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .q-logo {
+            color: var(--primary-navy);
+            font-family: var(--font-main);
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .q-logo-icon {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--accent-gold);
+            transform: rotate(45deg);
+        }
+
+        .q-title {
+            text-align: right;
+        }
+
+        .q-title h1 {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 5px;
+        }
+
+        .q-title p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .section-header {
+            background: var(--bg-light);
+            padding: 10px 15px;
+            border-left: 4px solid var(--accent-gold);
+            margin: 30px 0 20px;
+            color: var(--primary-navy);
+            font-family: var(--font-main);
+            font-weight: 600;
+            page-break-after: avoid;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            page-break-inside: avoid;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-navy);
+            outline: none;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .actions-panel {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-action {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-print {
+            background: var(--primary-navy);
+            color: white;
+        }
+
+        .btn-home {
+            background: white;
+            color: var(--primary-navy);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Print Specifics */
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .questionnaire-container {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                max-width: 100%;
+                border-top: none;
+                padding: 20px;
+            }
+
+            .actions-panel {
+                display: none;
+            }
+
+            .form-control {
+                border: 1px solid #ccc;
+                background: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="questionnaire-container" id="questionnaire">
+        <!-- Header -->
+        <div class="q-header">
+            <div class="q-logo">
+                <div class="q-logo-icon"></div>
+                AORR
+            </div>
+            <div class="q-title">
+                <h1>New Client Questionnaire</h1>
+                <p>Import / Export & Logistics Profile</p>
+            </div>
+        </div>
+
+        <p style="margin-bottom: 30px; color: #555; font-size: 0.9rem; line-height: 1.6;">
+            Thank you for your interest in partnering with AORR Global Trading.
+            To better understand your requirements and provide a tailored solution, please complete the following
+            details.
+        </p>
+
+        <!-- 1. Company Information -->
+        <div class="section-header">1. Company Information</div>
+        <div class="form-grid">
+            <div class="form-group full">
+                <label>Registered Company Name</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Registration Number / Tax ID</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Country of Incorporation</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group full">
+                <label>Registered Address</label>
+                <textarea class="form-control" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Contact Person Name</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Designation</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Phone Number (with Country Code)</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+        <!-- 2. Business Profile -->
+        <div class="section-header">2. Business Profile</div>
+        <div class="form-grid">
+            <div class="form-group full">
+                <label>Primary Business Activity (Check all that apply)</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox"> Manufacturer</label>
+                    <label class="checkbox-item"><input type="checkbox"> Exporter</label>
+                    <label class="checkbox-item"><input type="checkbox"> Importer</label>
+                    <label class="checkbox-item"><input type="checkbox"> Distributor/Wholesaler</label>
+                    <label class="checkbox-item"><input type="checkbox"> Retail Chain</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Industry Sector</label>
+                <select class="form-control">
+                    <option>Agro-Commodities</option>
+                    <option>FMCG</option>
+                    <option>Industrial Goods / Machinery</option>
+                    <option>Textiles</option>
+                    <option>Chemicals</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Years in Operation</label>
+                <input type="number" class="form-control">
+            </div>
+        </div>
+
+        <!-- 3. Trade Requirements -->
+        <div class="section-header">3. Logistics & Trade Requirements</div>
+        <div class="form-grid">
+            <div class="form-group full">
+                <label>Services Required</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox"> Product Sourcing</label>
+                    <label class="checkbox-item"><input type="checkbox"> Freight Forwarding (Logistics)</label>
+                    <label class="checkbox-item"><input type="checkbox"> Customs Clearance</label>
+                    <label class="checkbox-item"><input type="checkbox"> Warehousing</label>
+                    <label class="checkbox-item"><input type="checkbox"> Quality Inspection</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Primary Origin Country (Import from / Export to)</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Primary Destination Country</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Preferred Incoterms</label>
+                <select class="form-control">
+                    <option>Ex Works (EXW)</option>
+                    <option>Free On Board (FOB)</option>
+                    <option>Cost, Insurance & Freight (CIF)</option>
+                    <option>Delivered Duty Paid (DDP)</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Estimated Monthly Volume</label>
+                <input type="text" class="form-control" placeholder="e.g., 2 Containers / 50 Tons">
+            </div>
+            <div class="form-group full">
+                <label>Preferred Mode of Transport</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="radio" name="transport"> Sea Freight</label>
+                    <label class="checkbox-item"><input type="radio" name="transport"> Air Freight</label>
+                    <label class="checkbox-item"><input type="radio" name="transport"> Land Transport</label>
+                    <label class="checkbox-item"><input type="radio" name="transport"> Multi-modal</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Specific Product Needs -->
+        <div class="section-header">4. Product Specifications (If Sourcing)</div>
+        <div class="form-grid">
+            <div class="form-group full">
+                <label>Product Name & Description</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Quality Grade / Specifications</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Target Price (USD/EUR) - Optional</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+        <!-- 5. Compliance & Certification -->
+        <div class="section-header">5. Compliance & Certifications</div>
+        <div class="form-grid">
+            <div class="form-group full">
+                <label>Required Certifications (e.g., ISO, Halal, Phytosanitary)</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group full">
+                <label>Special Handling Requirements (e.g., Cold Chain, Hazmat)</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+        <!-- Declaration -->
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Completed By (Name)</label>
+                    <input type="text" class="form-control" style="border: none; border-bottom: 1px solid #333;">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" class="form-control" style="border: none; border-bottom: 1px solid #333;">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Floating Actions -->
+    <div class="actions-panel">
+        <a href="index.html" class="btn-action btn-home">
+            <span>Home</span>
+        </a>
+        <button onclick="generatePDF()" class="btn-action btn-print">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9V2h12v7"></path>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <path d="M6 14h12v8H6z"></path>
+            </svg>
+            <span>Download PDF</span>
+        </button>
+    </div>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('questionnaire');
+            const opt = {
+                margin: 0,
+                filename: 'AORR_Client_Questionnaire.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // New Promise-based usage:
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+
+</html>
