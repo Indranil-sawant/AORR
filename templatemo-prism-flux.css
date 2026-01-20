@@ -2479,7 +2479,7 @@ img {
 	padding: 120px 20px;
 	background:
 		linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)),
-		url('./images/AORR%20%283%29.jpg') center/cover fixed;
+		url('../images/AORR (3).jpg') center/cover fixed;
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -2693,22 +2693,22 @@ img {
 /* Gradient variations with background images for each card */
 .cards-grid .flip-card:nth-child(1) {
 	background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(65, 105, 225, 0.7)),
-		url('./images/ChatGPT%20Image%20Jan%2013%2C%202026%2C%2005_14_11%20PM.png') center/cover;
+		url('../images/ChatGPT Image Jan 13, 2026, 05_14_11 PM.png') center/cover;
 }
 
 .cards-grid .flip-card:nth-child(2) {
 	background: linear-gradient(rgba(197, 160, 101, 0.7), rgba(139, 105, 20, 0.7)),
-		url('./images/global1.png') center/cover;
+		url('../images/global1.png') center/cover;
 }
 
 .cards-grid .flip-card:nth-child(3) {
 	background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(91, 143, 185, 0.7)),
-		url('./images/global2.png') center/cover;
+		url('../images/global2.png') center/cover;
 }
 
 .cards-grid .flip-card:nth-child(4) {
 	background: linear-gradient(rgba(197, 160, 101, 0.7), rgba(0, 33, 71, 0.7)),
-		url('./images/global3.png') center/cover;
+		url('../images/global3.png') center/cover;
 }
 
 /* Responsive Design */
@@ -5113,65 +5113,6 @@ html {
     .h-scroll-grid {
         gap: 20px;
     }
-}/* =========================================
-   MOBILE SCROLL GRID FIXES (iPhone/iOS)
-   ========================================= */
-
-.h-scroll-grid {
-    /* Ensure flex behavior is robust */
-    display: flex;
-    flex-wrap: nowrap;
-
-    /* Better Snapping Alignment */
-    scroll-snap-type: x mandatory;
-    scroll-padding-left: 20px;
-    /* Align snap to padding */
-    scroll-padding-right: 20px;
-    /* Align snap to padding */
-
-    /* Prevent shadow clipping */
-    padding-top: 20px;
-    padding-bottom: 40px;
-    /* Increased for shadow clearance */
-
-    /* Bleed Correction logic */
-    /* Wrapper has 20px padding. grid has -20px margin. */
-    /* This pulls grid to screen edge. */
-    margin-left: -20px;
-    margin-right: -20px;
-    width: calc(100% + 40px);
-
-    /* Inner padding ensures content starts at visual edge */
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-/* Ensure cards don't shrink */
-.h-card {
-    flex: 0 0 auto;
-    /* Don't shrink */
-    width: 280px;
-    /* Explicit width */
-    max-width: 80vw;
-    /* Prevent overflow on very tiny screens */
-    scroll-snap-align: start;
-    /* Snap to start (left edge) */
-    position: relative;
-    /* Context */
-    margin-right: 0;
-    /* Gaps handled by gap property */
-}
-
-/* Hide Scrollbar for cleaner UI on mobile */
-.h-scroll-grid {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-}
-
-.h-scroll-grid::-webkit-scrollbar {
-    display: none;
 }
 /* =========================================
    SIDEBAR & CATALOG LAYOUT STYLES
@@ -5387,29 +5328,236 @@ html {
     transform: translateY(-2px);
 }
 
-/* Responsive */
+/* =========================================
+   RESPONSIVE OPTIMIZATIONS - MOBILE FIRST
+   ========================================= */
+
+/* Tablet View (992px - 768px) */
 @media (max-width: 991px) {
     .catalog-layout {
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
     }
+    
     .catalog-sidebar {
         width: 100%;
         position: relative;
         top: 0;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        gap: 15px;
+        padding-right: 0;
     }
+    
+    .sidebar-widget {
+        margin-bottom: 0;
+        padding-bottom: 20px;
+    }
+    
     .help-widget {
         grid-column: 1 / -1;
     }
-}
-@media (max-width: 768px) {
+    
     .catalog-grid {
-        grid-template-columns: repeat(1, 1fr) !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px;
     }
+}
+
+/* Mobile View (≤768px) - Enhanced for Touch */
+@media (max-width: 768px) {
+    .catalog-section {
+        padding: 60px 15px;
+    }
+    
+    .catalog-layout {
+        gap: 25px;
+    }
+    
     .catalog-sidebar {
         grid-template-columns: 1fr;
+        gap: 0;
+        background: white;
+        border-radius: 8px;
+        padding: 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Collapsible Widget Style for Mobile */
+    .sidebar-widget {
+        margin-bottom: 0;
+        padding: 20px 15px;
+        border-bottom: 1px solid #f0f0f0;
+        border-radius: 0;
+    }
+    
+    .sidebar-widget:first-child {
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .sidebar-widget:last-child {
+        border-bottom: none;
+        border-radius: 0 0 8px 8px;
+    }
+    
+    /* Larger Touch Targets */
+    .widget-title {
+        font-size: 1rem;
+        padding: 5px 0;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+    }
+    
+    /* Mobile: Make widgets collapsible with toggle icon */
+    .widget-title::after {
+        content: '▼';
+        position: absolute;
+        right: 0;
+        font-size: 0.7rem;
+        color: var(--accent-gold);
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar-widget.collapsed .widget-title::after {
+        transform: rotate(-90deg);
+    }
+    
+    /* Search box - Full width, larger on mobile */
+    .search-box {
+        height: 48px;
+    }
+    
+    .search-box input {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 14px;
+    }
+    
+    .search-box button {
+        padding: 0 18px;
+        font-size: 1.1rem;
+    }
+    
+    /* Category links - Larger touch targets */
+    .category-list li {
+        margin-bottom: 0;
+    }
+    
+    .cat-link {
+        padding: 12px 0;
+        font-size: 0.95rem;
+        border-bottom: 1px solid #f5f5f5;
+    }
+    
+    .cat-link:last-child {
+        border-bottom: none;
+    }
+    
+    .cat-link .count {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+    
+    /* Filter checkboxes - Larger touch area */
+    .filter-check {
+        padding: 10px 0;
+        font-size: 0.95rem;
+    }
+    
+    .check-box {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+    
+    /* Help widget - More prominent on mobile */
+    .help-widget {
+        padding: 25px 20px;
+        margin: 15px;
+        border-radius: 8px;
+    }
+    
+    .help-box h4 {
+        font-size: 1.05rem;
+    }
+    
+    .help-box p {
+        font-size: 0.9rem;
+    }
+    
+    .help-btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Product Grid - Single column with better spacing */
+    .catalog-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    .catalog-item {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .catalog-image-box {
+        height: 280px;
+    }
+}
+
+/* Small Mobile (≤480px) - Extra Small Screens */
+@media (max-width: 480px) {
+    .catalog-section {
+        padding: 50px 12px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .catalog-sidebar {
+        margin: 0 -5px;
+    }
+    
+    .sidebar-widget {
+        padding: 18px 12px;
+    }
+    
+    .widget-title {
+        font-size: 0.95rem;
+    }
+    
+    .search-box input {
+        font-size: 15px;
+        padding: 12px;
+    }
+    
+    .cat-link {
+        font-size: 0.9rem;
+        padding: 10px 0;
+    }
+    
+    .filter-check {
+        font-size: 0.9rem;
+    }
+    
+    .help-widget {
+        padding: 20px 15px;
+        margin: 10px;
+    }
+    
+    .catalog-image-box {
+        height: 240px;
+    }
+    
+    .catalog-title {
+        font-size: 1rem;
+    }
+    
+    .catalog-category {
+        font-size: 0.7rem;
     }
 }

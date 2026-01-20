@@ -396,6 +396,58 @@ function initCatalogFilters() {
 
     if (!searchInput || !categoryLinks.length || !catalogItems.length) return;
 
+    // Mobile Collapsible Sidebar Widgets
+    function initMobileCollapse() {
+        if (window.innerWidth <= 768) {
+            const widgets = document.querySelectorAll('.sidebar-widget');
+            
+            widgets.forEach((widget, index) => {
+                const title = widget.querySelector('.widget-title');
+                if (!title) return;
+                
+                // Keep search widget open by default, collapse others
+                if (index !== 0 && !widget.classList.contains('help-widget')) {
+                    widget.classList.add('collapsed');
+                    const content = Array.from(widget.children).filter(el => !el.classList.contains('widget-title'));
+                    content.forEach(el => el.style.display = 'none');
+                }
+                
+                // Add click handler
+                title.addEventListener('click', () => {
+                    const isCollapsed = widget.classList.contains('collapsed');
+                    const content = Array.from(widget.children).filter(el => !el.classList.contains('widget-title'));
+                    
+                    if (isCollapsed) {
+                        widget.classList.remove('collapsed');
+                        content.forEach(el => {
+                            el.style.display = '';
+                            el.style.animation = 'slideDown 0.3s ease';
+                        });
+                    } else {
+                        widget.classList.add('collapsed');
+                        content.forEach(el => {
+                            el.style.display = 'none';
+                        });
+                    }
+                });
+            });
+        }
+    }
+    
+    // Init on load and resize
+    initMobileCollapse();
+    window.addEventListener('resize', () => {
+        // Reset on desktop
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.sidebar-widget').forEach(widget => {
+                widget.classList.remove('collapsed');
+                Array.from(widget.children).forEach(el => el.style.display = '');
+            });
+        } else {
+            initMobileCollapse();
+        }
+    });
+
     // Helper to calculate counts
     function updateCounts() {
         // Reset counts mapping
