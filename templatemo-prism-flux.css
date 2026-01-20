@@ -5173,3 +5173,243 @@ html {
 .h-scroll-grid::-webkit-scrollbar {
     display: none;
 }
+/* =========================================
+   SIDEBAR & CATALOG LAYOUT STYLES
+   ========================================= */
+
+.catalog-layout {
+    display: flex;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    /* Ensure content is side-by-side */
+    flex-wrap: nowrap; 
+}
+
+.catalog-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 100px; /* Below fixed header */
+    height: fit-content;
+    padding-right: 10px;
+}
+
+.catalog-grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important; /* Force 3 columns if space allows */
+    gap: 30px;
+}
+/* Override existing grid media queries if necessary, 
+   but since grid-template-columns is defined inside media queries in original CSS,
+   we might need to ensure this has specificity or let the original media queries handle the columns 
+   but width might change.
+*/
+@media (min-width: 1024px) {
+    .catalog-grid {
+         grid-template-columns: repeat(3, 1fr) !important; 
+    }
+}
+@media (max-width: 1200px) {
+    .catalog-grid {
+         grid-template-columns: repeat(2, 1fr) !important; 
+    }
+}
+
+/* Sidebar Widgets */
+.sidebar-widget {
+    margin-bottom: 35px;
+    padding-bottom: 35px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.sidebar-widget:last-child {
+    border-bottom: none;
+}
+
+.widget-title {
+    font-family: var(--font-main);
+    color: var(--primary-navy);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    background: #f4f6f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.search-box:focus-within {
+    border-color: var(--accent-gold);
+    background: white;
+}
+.search-box input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: 12px;
+    font-size: 0.9rem;
+    color: #333;
+    outline: none;
+}
+.search-box button {
+    background: transparent;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    transition: 0.2s;
+}
+.search-box button:hover {
+    color: var(--primary-navy);
+}
+
+/* Category List */
+.category-list {
+    list-style: none;
+}
+.category-list li {
+    margin-bottom: 12px;
+}
+.cat-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.2s;
+    font-weight: 400;
+}
+.cat-link:hover, .cat-link.active {
+    color: var(--primary-navy);
+    font-weight: 600;
+    transform: translateX(5px);
+}
+.cat-link .count {
+    font-size: 0.8rem;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 12px;
+    color: #777;
+    transition: 0.2s;
+}
+.cat-link.active .count {
+    background: var(--primary-navy);
+    color: white;
+}
+
+/* Checkbox Filters */
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.filter-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #555;
+    user-select: none;
+}
+.filter-check input {
+    display: none;
+}
+.check-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    transition: 0.2s;
+}
+.filter-check input:checked + .check-box {
+    background: var(--accent-gold);
+    border-color: var(--accent-gold);
+}
+.filter-check input:checked + .check-box::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Help Box */
+.help-widget {
+    background: var(--primary-navy);
+    padding: 25px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+}
+.help-box h4 {
+    font-family: var(--font-main);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: white;
+}
+.help-box p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+.help-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--accent-gold);
+    color: var(--primary-navy);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.help-btn:hover {
+    background: white;
+    color: var(--primary-navy);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .catalog-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .catalog-sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .help-widget {
+        grid-column: 1 / -1;
+    }
+}
+@media (max-width: 768px) {
+    .catalog-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+    .catalog-sidebar {
+        grid-template-columns: 1fr;
+    }
+}

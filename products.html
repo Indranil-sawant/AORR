@@ -115,7 +115,64 @@
             <p style="color: #666;">Live availability from our global warehouses</p>
         </div>
 
-        <div class="catalog-grid">
+        <div class="catalog-layout">
+            <!-- Sidebar Section -->
+            <aside class="catalog-sidebar">
+                <!-- Search Widget -->
+                <div class="sidebar-widget search-widget">
+                    <h3 class="widget-title">Search</h3>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search inventory...">
+                        <button type="button">🔍</button>
+                    </div>
+                </div>
+
+                <!-- Categories Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="#" class="cat-link active">All Products <span class="count">(8)</span></a></li>
+                        <li><a href="#" class="cat-link">Agro-Commodities <span class="count">(3)</span></a></li>
+                        <li><a href="#" class="cat-link">Industrial Machinery <span class="count">(2)</span></a></li>
+                        <li><a href="#" class="cat-link">Spices & Herbs <span class="count">(2)</span></a></li>
+                        <li><a href="#" class="cat-link">Raw Materials <span class="count">(1)</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Status Filter -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Availability</h3>
+                    <div class="filter-options">
+                        <label class="filter-check">
+                            <input type="checkbox" checked>
+                            <span class="check-box"></span>
+                            In Stock Ready
+                        </label>
+                        <label class="filter-check">
+                            <input type="checkbox">
+                            <span class="check-box"></span>
+                            Pre-Order Bulk
+                        </label>
+                        <label class="filter-check">
+                            <input type="checkbox">
+                            <span class="check-box"></span>
+                            Export Grade Only
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Need Help Widget -->
+                <div class="sidebar-widget help-widget">
+                    <div class="help-box">
+                        <h4>Need Bulk Pricing?</h4>
+                        <p>Contact our sales team for container-load quotes.</p>
+                        <a href="contact.html" class="help-btn">Get Quote</a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Grid -->
+            <div class="catalog-grid">
             <!-- Product 1 -->
             <div class="catalog-item">
                 <a href="#" class="catalog-image-box">
@@ -214,6 +271,7 @@
                 </div>
             </div>
 
+        </div>
         </div>
     </section>
 
