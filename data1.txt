@@ -1,0 +1,108 @@
+Day 1 – Content Audit & Structure Finalization
+Goal: Make sure everything built so far is solid and scalable.
+Tasks:
+Review Home, About, Services for:
+Consistent fonts, colors, spacing
+Section hierarchy (H1 → H2 → H3)
+Finalize sitemap:
+Home
+About
+Services
+Industries / Solutions
+Portfolio / Case Studies
+Blog / Insights
+Contact
+Decide global components:
+Header, footer, CTA buttons
+Reusable service cards
+Outcome: Clean, consistent foundation with a clear site structure.
+
+Day 2 – Services Deep-Dive Pages
+Goal: Turn Services into SEO & conversion assets.
+Tasks:
+Create individual service detail sections or pages
+Problem → Solution → Process → Benefits → CTA
+Add icons/illustrations for each service
+Include:
+“Why AORR?”
+Tech stack / tools
+Industries served
+Outcome: High-trust, high-clarity service presentation.
+
+Day 3 – Industries / Solutions Page
+Goal: Show relevance across multiple business domains.
+Tasks:
+Create an Industries We Serve page
+Example sections:
+Manufacturing
+Import–Export
+CNC & Engineering
+SMEs & Startups
+Add use-case style descriptions:
+Problem faced
+How AORR solves it
+Internal links to relevant services
+Outcome: Visitors instantly see “you understand my business”.
+
+Day 4 – Portfolio / Case Studies
+Goal: Build credibility and proof.
+Tasks:
+Add 2–4 case study cards (real or structured samples)
+Each case study:
+Client background
+Challenge
+Solution
+Results
+Add testimonials section (even short quotes)
+Outcome: Strong trust signal for potential clients.
+
+Day 5 – Blog / Insights Section
+Goal: Long-term SEO and authority building.
+Tasks:
+Create Blog/Insights page layout
+Publish 2–3 initial articles, such as:
+“How Software Improves Manufacturing Efficiency”
+“Digital Transformation for SMEs”
+Optimize:
+SEO titles
+Meta descriptions
+Internal linking
+Outcome: Website becomes discoverable and future-proof.
+
+Day 6 – Contact, Lead Capture & Conversion
+Goal: Turn visitors into enquiries.
+Tasks:
+Design Contact page
+Clean form (Name, Email, Company, Message)
+WhatsApp / Email CTA
+Add CTAs across site:
+“Get a Free Consultation”
+“Talk to an Expert”
+Form validation & success message
+Outcome: Fully functional lead-generation system.
+
+Day 7 – Performance, Mobile & SEO Optimization
+Goal: Make it fast, responsive, and search-ready.
+Tasks:
+Mobile responsiveness check (all breakpoints)
+Optimize:
+Images (lazy loading)
+CSS & JS
+SEO checklist:
+Meta titles & descriptions
+Alt text
+Sitemap & robots.txt
+Page speed testing
+Outcome: Professional, fast, and Google-friendly website.
+
+Day 8 – Final QA, Branding & Launch Prep
+Goal: Production-ready finish.
+Tasks:
+Cross-browser testing
+Fix spacing, alignment, micro-interactions
+Add:
+Favicon
+Social sharing meta tags
+Final content proofreading
+Prepare README / documentation (if on GitHub)
+Outcome: AORR is 100% launch-ready 🚀

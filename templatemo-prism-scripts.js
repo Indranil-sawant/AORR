@@ -382,4 +382,121 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         initPerformanceChart();
     }
+    
+    // Initialize Catalog Filters
+    initCatalogFilters();
 });
+
+// Catalog Filter Functionality
+function initCatalogFilters() {
+    const searchInput = document.querySelector('.search-box input');
+    const categoryLinks = document.querySelectorAll('.cat-link');
+    const catalogItems = document.querySelectorAll('.catalog-item');
+    const productCountLabels = document.querySelectorAll('.cat-link .count');
+
+    if (!searchInput || !categoryLinks.length || !catalogItems.length) return;
+
+    // Helper to calculate counts
+    function updateCounts() {
+        // Reset counts mapping
+        const counts = {
+            'All Products': 0,
+            'Agro-Commodities': 0,
+            'Industrial Machinery': 0,
+            'Spices & Herbs': 0,
+            'Raw Materials': 0
+            // Add other mapping if needed
+        };
+        
+        // Manual mapping from UPPERCASE categories in HTML to Title Case sidebar categories
+        // HTML categories: AGRO-COMMODITY, COMMODITY, INDUSTRIAL, MACHINERY, SPICES, RECYCLING
+        const categoryMap = {
+            'AGRO-COMMODITY': 'Agro-Commodities',
+            'COMMODITY': 'All Products', // General fallback or specific? Let's treat 'Refined Sugar' as part of 'All' for now unless we add a Sugar category
+            'INDUSTRIAL': 'Raw Materials', // Teak logs -> Raw Materials
+            'MACHINERY': 'Industrial Machinery',
+            'SPICES': 'Spices & Herbs',
+            'RECYCLING': 'Raw Materials' // Scrap -> Raw Materials
+        };
+        
+        // Count visible items based on their category
+        // Note: For this simple implementation, we might just filter by text match if we don't have strict data attributes
+        
+        // Let's implement Filtering First, then update counts dynamically or just execute filter
+    }
+
+    // Filter Logic
+    function filterItems(category, searchTerm) {
+        category = category.trim();
+        searchTerm = searchTerm.toLowerCase().trim();
+
+        let visibleCount = 0;
+
+        catalogItems.forEach(item => {
+            const title = item.querySelector('.catalog-title').textContent.toLowerCase();
+            const categoryTag = item.querySelector('.catalog-category').textContent.trim(); // e.g. AGRO-COMMODITY
+            
+            // Map Sidebar Category to Item Category
+            // Sidebar: 'All Products', 'Agro-Commodities', 'Industrial Machinery', 'Spices & Herbs', 'Raw Materials'
+            // Items: 'AGRO-COMMODITY', 'COMMODITY'(Sugar), 'INDUSTRIAL'(Wood), 'MACHINERY', 'SPICES', 'RECYCLING'
+            
+            let matchCategory = false;
+            
+            if (category === 'All Products') {
+                matchCategory = true;
+            } else if (category === 'Agro-Commodities') {
+                if (categoryTag === 'AGRO-COMMODITY' || title.includes('coffee') || title.includes('cashew')) matchCategory = true;
+            } else if (category === 'Industrial Machinery') {
+                if (categoryTag === 'MACHINERY' || title.includes('machine') || title.includes('tractor')) matchCategory = true;
+            } else if (category === 'Spices & Herbs') {
+                if (categoryTag === 'SPICES' || title.includes('pepper')) matchCategory = true;
+            } else if (category === 'Raw Materials') {
+                if (categoryTag === 'INDUSTRIAL' || categoryTag === 'RECYCLING' || title.includes('wood') || title.includes('scrap')) matchCategory = true;
+            }
+
+            // Check Search
+            const matchSearch = title.includes(searchTerm) || categoryTag.toLowerCase().includes(searchTerm);
+
+            if (matchCategory && matchSearch) {
+                item.style.display = 'block';
+                // Animation for appearance
+                item.style.opacity = '0';
+                setTimeout(() => item.style.opacity = '1', 50);
+                visibleCount++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        // Update "All Products" count text if needed, but for now we just filter
+    }
+
+    // Event Listeners for Categories
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Remove active class from all
+            categoryLinks.forEach(l => l.classList.remove('active'));
+            // Add to clicked
+            link.classList.add('active');
+            
+            // Get category name
+            // Text content includes count e.g. "Agro-Commodities (3)"
+            // We need just the text node or parse it
+            const fullText = link.textContent; // "Agro-Commodities (3)"
+            const categoryName = fullText.split('(')[0].trim();
+            
+            filterItems(categoryName, searchInput.value);
+        });
+    });
+
+    // Event Listener for Search
+    searchInput.addEventListener('input', (e) => {
+        const activeLink = document.querySelector('.cat-link.active');
+        const fullText = activeLink.textContent;
+        const categoryName = fullText.split('(')[0].trim();
+        
+        filterItems(categoryName, e.target.value);
+    });
+}
