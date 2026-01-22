@@ -52,428 +52,223 @@
     <!-- WHY: Establishes trust and capability ("Deploy Faster" -> "Trade Faster") -->
 
     <style>
-        /* Flip Card Styles */
+        /* Professional Flip Card Styles */
         .flip-cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .flip-card {
-            overflow: visible;
+            background-color: transparent;
             width: 100%;
-            height: 300px;
+            height: 420px; /* Increased height to fit content */
+            perspective: 1000px; 
         }
 
         .flip-card-content {
+            position: relative;
             width: 100%;
             height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
-            transition: transform 300ms;
-            box-shadow: 0px 0px 10px 1px rgba(0, 33, 71, 0.3);
-            border-radius: 5px;
-        }
-
-        .flip-card-front,
-        .flip-card-back {
-            background: transparent;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .flip-card-back {
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* All cards use gold gradient border */
-        .flip-card-back::before {
-            position: absolute;
-            content: ' ';
-            display: block;
-            width: 160px;
-            height: 160%;
-            background: linear-gradient(90deg, transparent, #C5A065, #e0c088, #C5A065, transparent);
-            animation: rotation_481 5000ms infinite linear;
-        }
-
-        .flip-card-back.sugar::before {
-            background: linear-gradient(90deg, transparent, #C5A065, #e0c088, #C5A065, transparent);
-        }
-
-        .flip-card-back.fmcg::before {
-            background: linear-gradient(90deg, transparent, #C5A065, #e0c088, #C5A065, transparent);
-        }
-
-        .flip-card-back.industrial::before {
-            background: linear-gradient(90deg, transparent, #C5A065, #e0c088, #C5A065, transparent);
-        }
-
-        .flip-card-back-content {
-            position: absolute;
-            width: 99%;
-            height: 99%;
-            background: linear-gradient(135deg, #1e3a5f 0%, #002147 100%);
-            border-radius: 5px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            padding: 30px 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
         }
 
         .flip-card:hover .flip-card-content {
             transform: rotateY(180deg);
         }
 
-        @keyframes rotation_481 {
-            0% {
-                transform: rotateZ(0deg);
-            }
-
-            100% {
-                transform: rotateZ(360deg);
-            }
-        }
-
-        .flip-card-front {
-            transform: rotateY(0deg);
-        }
-        
-        .flip-card-back {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front .flip-front-content {
+        .flip-card-front, .flip-card-back {
             position: absolute;
             width: 100%;
             height: 100%;
-            padding: 20px;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Front Styling */
+        .flip-card-front {
+            background: #ffffff;
+            border: 1px solid rgba(0, 33, 71, 0.1);
+        }
+
+        /* Abstract/Geometric Background for Front */
+        .flip-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #002147 0%, #001a38 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            z-index: 1;
+        }
+
+        .flip-front-content {
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background-color: #002147;
-            border-radius: 5px;
+            align-items: center;
         }
 
-        .flip-front-content .flip-badge {
-            background-color: #D9EAFD;
-            padding: 4px 12px;
-            border-radius: 10px;
-            backdrop-filter: blur(2px);
-            width: fit-content;
+        .flip-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 33, 71, 0.15);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            border: 2px solid #C5A065;
+            color: #002147;
+            z-index: 3;
+        }
+
+        .flip-category-badge {
+            background: rgba(197, 160, 101, 0.15);
+            color: #002147;
+            padding: 6px 16px;
+            border-radius: 20px;
             font-size: 0.75rem;
-            text-transform: uppercase;
+            font-weight: 700;
             letter-spacing: 1px;
-            color: #9AA6B2;
-            border: 1px solid #BCCCDC;
-        }
-
-        .flip-description {
-            box-shadow: 0px 0px 15px 2px rgba(188, 204, 220, 0.3);
-            width: 100%;
-            padding: 15px;
-            background-color: #F8FAFC;
-            backdrop-filter: blur(5px);
-            border-radius: 5px;
-            border: 1px solid #BCCCDC;
+            text-transform: uppercase;
+            margin-bottom: 15px;
         }
 
         .flip-title {
-            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: #002147;
             margin-bottom: 10px;
-            font-weight: 600;
-            color: #9AA6B2;
-        }
-
-        .flip-card-footer {
-            color: #9AA6B2;
-            margin-top: 8px;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .flip-card-front .flip-img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .flip-circle {
-            border-radius: 50%;
-            position: absolute;
-            filter: blur(15px);
-            animation: floating 2600ms infinite linear;
-        }
-
-        /* Default (Agro) - Gold tones */
-        .flip-circle.one {
-            width: 90px;
-            height: 90px;
-            background-color: rgba(197, 160, 101, 0.4);
-        }
-
-        .flip-circle.two {
-            background-color: rgba(197, 160, 101, 0.3);
-            left: 50px;
-            top: 0px;
-            width: 150px;
-            height: 150px;
-            animation-delay: -800ms;
-        }
-
-        .flip-circle.three {
-            background-color: rgba(197, 160, 101, 0.5);
-            left: 160px;
-            top: -80px;
-            width: 30px;
-            height: 30px;
-            animation-delay: -1800ms;
-        }
-
-        /* Sugar - Lighter gold/white tones */
-        .flip-card.sugar .flip-circle.one {
-            background-color: rgba(224, 192, 136, 0.4);
-        }
-
-        .flip-card.sugar .flip-circle.two {
-            background-color: rgba(224, 192, 136, 0.3);
-        }
-
-        .flip-card.sugar .flip-circle.three {
-            background-color: rgba(197, 160, 101, 0.6);
-        }
-
-        /* FMCG - Navy/Gold mix */
-        .flip-card.fmcg .flip-circle.one {
-            background-color: rgba(0, 33, 71, 0.6);
-        }
-
-        .flip-card.fmcg .flip-circle.two {
-            background-color: rgba(197, 160, 101, 0.4);
-        }
-
-        .flip-card.fmcg .flip-circle.three {
-            background-color: rgba(0, 33, 71, 0.7);
-        }
-
-        /* Industrial - Darker gold tones */
-        .flip-card.industrial .flip-circle.one {
-            background-color: rgba(197, 160, 101, 0.5);
-        }
-
-        .flip-card.industrial .flip-circle.two {
-            background-color: rgba(224, 192, 136, 0.5);
-        }
-
-        .flip-card.industrial .flip-circle.three {
-            background-color: rgba(197, 160, 101, 0.6);
-        }
-
-        @keyframes floating {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .flip-back-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #C5A065 0%, #e0c088 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             font-weight: 700;
-            letter-spacing: 2px;
         }
 
-        /* Mobile tap support - cards flip on touch */
-        @media (hover: none) and (pointer: coarse) {
-            .flip-card.tapped .flip-card-content {
-                transform: rotateY(180deg);
-            }
+        .flip-short-desc {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 90%;
         }
 
-        /* Auto-flip animation when card enters viewport */
-        .flip-card.in-view .flip-card-content {
-            animation: autoFlip 3s ease-in-out;
+        .flip-indicator {
+            margin-top: auto;
+            color: #C5A065;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.8;
         }
 
-        @keyframes autoFlip {
-            0% {
-                transform: rotateY(0deg);
-            }
-            40% {
-                transform: rotateY(180deg);
-            }
-            60% {
-                transform: rotateY(180deg);
-            }
-            100% {
-                transform: rotateY(0deg);
-            }
+        /* Back Styling */
+        .flip-card-back {
+            background: linear-gradient(135deg, #002147 0%, #0d3b66 100%);
+            color: white;
+            transform: rotateY(180deg);
+            padding: 30px 20px; /* Reduced padding */
+            border: 2px solid #C5A065; 
+        }
+
+        .flip-back-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            justify-content: center;
+            gap: 15px; /* Reduced gap */
+            width: 100%;
         }
 
         .flip-back-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            text-align: center;
-            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            color: #C5A065; 
+            font-size: 1.3rem; /* Slightly smaller title */
+            margin-bottom: 5px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 10px;
         }
 
-        .flip-back-subtitle {
-            font-size: 0.9rem;
-            font-weight: 400;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 85%;
-            line-height: 1.6;
+        .flip-back-details {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            text-align: left;
         }
 
-        .flip-back-cta {
-            margin-top: 10px;
-            padding: 10px 24px;
-            background: linear-gradient(135deg, #C5A065 0%, #e0c088 100%);
+        .flip-back-details li {
+            padding: 10px 0; /* Reduced padding */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            font-size: 0.9rem; /* Smaller font size */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .flip-back-details li:last-child {
+            border-bottom: none;
+        }
+
+        .flip-back-details strong {
+            color: #C5A065;
+            font-weight: 600;
+        }
+
+        .flip-cta-btn {
+            margin-top: 15px; /* Reduced margin */
+            background: #C5A065;
             color: #002147;
             border: none;
-            border-radius: 5px;
+            padding: 10px 24px; /* Slightly smaller padding */
             font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 700;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-decoration: none;
         }
 
-        .flip-back-cta:hover {
+        .flip-cta-btn:hover {
+            background: #d4af7a;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(197, 160, 101, 0.4);
+            box-shadow: 0 5px 15px rgba(197, 160, 101, 0.3);
         }
 
-        /* Mobile Responsive Styles */
-        @media (max-width: 1024px) {
-            .flip-cards-container {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 30px;
-                padding: 15px;
-            }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
             .flip-cards-container {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
                 gap: 20px;
-                padding: 10px;
+                padding: 20px;
             }
-
             .flip-card {
-                height: 240px;
-            }
-
-            .flip-front-content .flip-badge {
-                font-size: 0.65rem;
-                padding: 3px 10px;
-            }
-
-            .flip-title {
-                font-size: 1rem;
-            }
-
-            .flip-card-footer {
-                font-size: 0.75rem;
-            }
-
-            .flip-back-icon {
-                font-size: 2rem;
-                margin-bottom: 10px;
-            }
-
-            .flip-back-title {
-                font-size: 1rem;
-            }
-
-            .flip-back-subtitle {
-                font-size: 0.75rem;
-                max-width: 90%;
-            }
-
-            .flip-back-cta {
-                padding: 8px 18px;
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .flip-cards-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 10px;
-            }
-
-            .flip-card {
-                height: 300px;
-                max-width: 350px;
-                margin: 0 auto;
-            }
-
-            .flip-title {
-                font-size: 1.1rem;
-            }
-
-            .flip-card-footer {
-                font-size: 0.8rem;
-            }
-
-            .flip-description {
-                padding: 12px;
-            }
-
-            .flip-back-icon {
-                font-size: 1.8rem;
-                margin-bottom: 8px;
-            }
-
-            .flip-back-title {
-                font-size: 0.95rem;
-                margin-bottom: 8px;
-            }
-
-            .flip-back-subtitle {
-                font-size: 0.7rem;
-                max-width: 92%;
-            }
-
-            .flip-back-cta {
-                padding: 8px 16px;
-                font-size: 0.7rem;
-                margin-top: 5px;
+                height: 350px;
             }
         }
     </style>
@@ -489,130 +284,122 @@
             <!-- Agro-Commodities Card -->
             <div class="flip-card">
                 <div class="flip-card-content">
-                    <div class="flip-card-back">
-                        <div class="flip-card-back-content">
-                            <div class="flip-back-icon">AGRO</div>
-                            <strong class="flip-back-title">Premium Quality</strong>
-                            <p class="flip-back-subtitle">Sourced from certified farms with strict quality controls</p>
-                            <button class="flip-back-cta">View Catalog</button>
+                    <div class="flip-card-front">
+                        <div class="flip-front-content">
+                            <span class="flip-category-badge">Agro-Commodity</span>
+                            <div class="flip-icon-wrapper">
+                                🌿
+                            </div>
+                            <h3 class="flip-title">Agro-Commodities</h3>
+                            <p class="flip-short-desc">Premium quality cashews, spices, and agricultural goods sourced directly from certified regions.</p>
+                            <div class="flip-indicator">
+                                View Details <span>→</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="flip-card-front">
-                        <div class="flip-img">
-                            <div class="flip-circle one"></div>
-                            <div class="flip-circle two"></div>
-                            <div class="flip-circle three"></div>
-                        </div>
-                        <div class="flip-front-content">
-                            <small class="flip-badge">Category</small>
-                            <div class="flip-description">
-                                <div class="flip-title">
-                                    <strong>Agro-Commodities</strong>
-                                </div>
-                                <p class="flip-card-footer">
-                                    <strong>Cashews:</strong> W-180 to W-450 grades<br>
-                                    <strong>Spices:</strong> Cardamom, Black Pepper
-                                </p>
-                            </div>
+                    <div class="flip-card-back">
+                        <div class="flip-back-content">
+                            <h3 class="flip-back-title">Agro-Commodities</h3>
+                            <ul class="flip-back-details">
+                                <li><strong>Cashews</strong> <span>W-180 to W-450</span></li>
+                                <li><strong>Spices</strong> <span>Cardamom, Pepper</span></li>
+                                <li><strong>Origin</strong> <span>Africa & Asia</span></li>
+                                <li><strong>Quality</strong> <span>Export Grade A</span></li>
+                            </ul>
+                            <a href="#agro" class="flip-cta-btn">View Catalog</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Sugar Card -->
-            <div class="flip-card sugar">
+            <div class="flip-card">
                 <div class="flip-card-content">
-                    <div class="flip-card-back sugar">
-                        <div class="flip-card-back-content">
-                            <div class="flip-back-icon">SUGAR</div>
-                            <strong class="flip-back-title">ICUMSA Certified</strong>
-                            <p class="flip-back-subtitle">High-purity refined sugar meeting international standards</p>
-                            <button class="flip-back-cta">View Catalog</button>
+                    <div class="flip-card-front">
+                        <div class="flip-front-content">
+                            <span class="flip-category-badge">Commodity</span>
+                            <div class="flip-icon-wrapper">
+                                🧂
+                            </div>
+                            <h3 class="flip-title">Refined Sugar</h3>
+                            <p class="flip-short-desc">High-purity ICUMSA 45 sugar meeting international standards for global distribution.</p>
+                            <div class="flip-indicator">
+                                View Details <span>→</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="flip-card-front">
-                        <div class="flip-img">
-                            <div class="flip-circle one"></div>
-                            <div class="flip-circle two"></div>
-                            <div class="flip-circle three"></div>
-                        </div>
-                        <div class="flip-front-content">
-                            <small class="flip-badge">Category</small>
-                            <div class="flip-description">
-                                <div class="flip-title">
-                                    <strong>Sugar</strong>
-                                </div>
-                                <p class="flip-card-footer">
-                                    <strong>ICUMSA 45:</strong> Refined white sugar<br>
-                                    <strong>Origin:</strong> Brazil & India
-                                </p>
-                            </div>
+                    <div class="flip-card-back">
+                        <div class="flip-back-content">
+                            <h3 class="flip-back-title">ICUMSA 45 Sugar</h3>
+                            <ul class="flip-back-details">
+                                <li><strong>Type</strong> <span>Refined White</span></li>
+                                <li><strong>Purity</strong> <span>99.80% Min</span></li>
+                                <li><strong>Origin</strong> <span>Brazil / India</span></li>
+                                <li><strong>Packing</strong> <span>50kg PP Bags</span></li>
+                            </ul>
+                            <a href="#sugar" class="flip-cta-btn">View Catalog</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- FMCG Card -->
-            <div class="flip-card fmcg">
+            <div class="flip-card">
                 <div class="flip-card-content">
-                    <div class="flip-card-back fmcg">
-                        <div class="flip-card-back-content">
-                            <div class="flip-back-icon">FMCG</div>
-                            <strong class="flip-back-title">Global Brands</strong>
-                            <p class="flip-back-subtitle">Trusted consumer goods distributed across continents</p>
-                            <button class="flip-back-cta">View Catalog</button>
+                    <div class="flip-card-front">
+                        <div class="flip-front-content">
+                            <span class="flip-category-badge">Consumer Goods</span>
+                            <div class="flip-icon-wrapper">
+                                📦
+                            </div>
+                            <h3 class="flip-title">FMCG Products</h3>
+                            <p class="flip-short-desc">Trusted daily consumer essentials and household brands distributed across continents.</p>
+                            <div class="flip-indicator">
+                                View Details <span>→</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="flip-card-front">
-                        <div class="flip-img">
-                            <div class="flip-circle one"></div>
-                            <div class="flip-circle two"></div>
-                            <div class="flip-circle three"></div>
-                        </div>
-                        <div class="flip-front-content">
-                            <small class="flip-badge">Category</small>
-                            <div class="flip-description">
-                                <div class="flip-title">
-                                    <strong>FMCG</strong>
-                                </div>
-                                <p class="flip-card-footer">
-                                    <strong>Goods:</strong> Daily consumer essentials<br>
-                                    <strong>Markets:</strong> Africa, Asia, Middle East
-                                </p>
-                            </div>
+                    <div class="flip-card-back">
+                        <div class="flip-back-content">
+                            <h3 class="flip-back-title">Global FMCG</h3>
+                            <ul class="flip-back-details">
+                                <li><strong>Range</strong> <span>Daily Essentials</span></li>
+                                <li><strong>Brands</strong> <span>Multi-National</span></li>
+                                <li><strong>Distribution</strong> <span>Global Network</span></li>
+                                <li><strong>Volume</strong> <span>Container Load</span></li>
+                            </ul>
+                            <a href="#fmcg" class="flip-cta-btn">View Catalog</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Industrial Card -->
-            <div class="flip-card industrial">
+            <div class="flip-card">
                 <div class="flip-card-content">
-                    <div class="flip-card-back industrial">
-                        <div class="flip-card-back-content">
-                            <div class="flip-back-icon">TECH</div>
-                            <strong class="flip-back-title">Industrial Grade</strong>
-                            <p class="flip-back-subtitle">Heavy machinery and equipment for global industries</p>
-                            <button class="flip-back-cta">View Catalog</button>
+                    <div class="flip-card-front">
+                        <div class="flip-front-content">
+                            <span class="flip-category-badge">Industrial</span>
+                            <div class="flip-icon-wrapper">
+                                ⚙️
+                            </div>
+                            <h3 class="flip-title">Industrial Machinery</h3>
+                            <p class="flip-short-desc">Heavy equipment, manufacturing units, and raw materials for industrial applications.</p>
+                            <div class="flip-indicator">
+                                View Details <span>→</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="flip-card-front">
-                        <div class="flip-img">
-                            <div class="flip-circle one"></div>
-                            <div class="flip-circle two"></div>
-                            <div class="flip-circle three"></div>
-                        </div>
-                        <div class="flip-front-content">
-                            <small class="flip-badge">Category</small>
-                            <div class="flip-description">
-                                <div class="flip-title">
-                                    <strong>Industrial</strong>
-                                </div>
-                                <p class="flip-card-footer">
-                                    <strong>Machinery:</strong> Tractors, Sewing Machines<br>
-                                    <strong>Materials:</strong> Scrap Metal
-                                </p>
-                            </div>
+                    <div class="flip-card-back">
+                        <div class="flip-back-content">
+                            <h3 class="flip-back-title">Machinery & Tech</h3>
+                            <ul class="flip-back-details">
+                                <li><strong>Machinery</strong> <span>Tractors, Sewing</span></li>
+                                <li><strong>Metals</strong> <span>HMS 1&2 Scrap</span></li>
+                                <li><strong>Wood</strong> <span>Teak Logs</span></li>
+                                <li><strong>Service</strong> <span>Logistics Support</span></li>
+                            </ul>
+                            <a href="#industrial" class="flip-cta-btn">View Catalog</a>
                         </div>
                     </div>
                 </div>
