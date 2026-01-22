@@ -11,246 +11,142 @@
         rel="stylesheet">
     
     <style>
-        /*************/
-        /* Variables */
-        /*************/
-
-        .map-container {
-            --city-radius: 2rem;
-            --city-sign-color-back: #002147;
-            --city-sign-color-font: #fff;
-            --city-pin-size-font: 1.2rem;
-        }
-
-        /**********/
-        /* Styles */
-        /**********/
-
-        /* Container */
-        .map-container {
-            border-radius: 0.5em;
-            box-shadow: 0 10px 30px rgba(0, 33, 71, 0.2);
-            line-height: 1;
-            min-width: 15rem;
+        /* Map Styles */
+        .map-container-simple {
             position: relative;
             width: 100%;
-            max-width: 900px;
-            aspect-ratio: 1;
-            margin: 0 auto;
-        }
-        
-        /* Override philosophy-container for map section */
-        .map-section-container {
-            max-width: 100%;
-            padding: 0 40px;
         }
 
-        /* Map - Background */
-        .map-background {
-            border-radius: inherit;
-            left: 0;
+        .map-city-pin {
             position: absolute;
-            top: 0;
-            width: 100%;
-        }
-
-        /* Map - Cities */
-        .map-cities {
-            width: 100%;
-        }
-        
-        .map-city {
-            border-radius: var(--city-radius);
-            left: calc(var(--x) * 1% - var(--city-radius));
-            padding: var(--city-radius);
-            position: absolute;
-            top: calc(var(--y) * 1% - var(--city-radius));
+            width: 30px;
+            height: 30px;
             cursor: pointer;
-        }
-        
-        .map-city::after,
-        .map-city::before {
-            font-size: var(--city-pin-size-font);
-        }
-        
-        .map-city::before {
-            content: "•";
-            left: calc(-50% + var(--city-radius));
-            position: absolute;
-            top: calc(-0.65em + var(--city-radius));
-            text-align: center;
-            text-shadow: 0 1px 2px rgba(197, 160, 101, 0.8);
-            width: 100%;
-            color: #C5A065;
-        }
-        
-        .map-city::after {
-            clip-path: inset(-0.5em 0 0 0);
-            content: "📍";
-            left: calc(-50% + var(--city-radius));
-            position: absolute;
-            top: calc(-1em + var(--city-radius));
-            text-align: center;
-            transition: all 300ms ease-out;
-            width: 100%;
-            z-index: var(--y);
-            font-size: 2rem;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease;
         }
 
-        /* Map - Sign */
-        .map-city__label {
-            display: none;
-            left: calc(-5em + 50%);
-            position: absolute;
-            text-align: center;
-            width: 10em;
-            z-index: 999;
-        }
-        
-        .map-city__sign {
-            align-items: center;
-            background-color: var(--city-sign-color-back);
-            border-radius: 0.3rem;
-            border: 0.15em solid #C5A065;
-            box-shadow: 0 4px 15px rgba(0, 33, 71, 0.3);
-            color: var(--city-sign-color-font);
-            column-gap: 0.3em;
-            display: flex;
-            font-weight: 700;
-            justify-content: center;
-            margin: 0 auto;
-            max-width: 100%;
-            overflow: hidden;
-            padding: 0.5em 0.8em 0.5em 0.4em;
-            text-overflow: ellipsis;
-            text-wrap: nowrap;
-            width: max-content;
-            font-size: 0.85rem;
-        }
-        
-        .map-city__sign::before {
-            content: attr(data-icon);
+        .map-city-pin:hover {
+            transform: translate(-50%, -50%) scale(1.3);
         }
 
-        /************/
-        /* Tracking */
-        /************/
-
-        /* Map - Cities */
-        .map-city:hover::after {
-            clip-path: inset(-0.5em 0 0.5em 0);
-            transform: translateY(0.5em);
-        }
-
-        /* Map - Sign */
-        .map-city:hover .map-city__label {
-            animation: fadein 300ms forwards ease-out;
+        .map-city-pin::before {
+            content: '📍';
+            font-size: 24px;
             display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .map-city:hover .map-city__sign.anim::before {
-            animation-duration: 500ms;
-            animation-fill-mode: forwards;
-        }
-        
-        .map-city:hover .map-city__sign.anim-grow::before {
-            animation-name: grow;
-            animation-timing-function: ease-in;
-        }
-        
-        .map-city:hover .map-city__sign.anim-slidein::before {
-            animation-name: slidein;
-            animation-timing-function: ease-out;
+        .map-tooltip {
+            position: absolute;
+            background: #002147;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border: 2px solid #C5A065;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 100;
         }
 
-        /**************/
-        /* Animations */
-        /**************/
+        .map-city-pin:hover .map-tooltip {
+            opacity: 1;
+        }
 
-        /* Fade in from top */
-        @keyframes fadein {
-            0% {
-                opacity: 0;
-                top: calc(var(--city-radius));
-            }
-
-            100% {
-                opacity: 1;
-                top: calc(var(--city-radius) + var(--city-pin-size-font) / 2);
+        /* Mobile Optimization Start */
+        @media (max-width: 1024px) {
+            .reach-flex-container {
+                justify-content: center;
             }
         }
 
-        /* Grow from the ground */
-        @keyframes grow {
-            0% {
-                transform: translate(0, 200%);
-            }
-
-            10% {
-                transform: translate(5%, 180%);
-            }
-
-            20% {
-                transform: translate(-10%, 160%);
-            }
-
-            30% {
-                transform: translate(15%, 140%);
-            }
-
-            40% {
-                transform: translate(-5%, 120%);
-            }
-
-            50% {
-                transform: translate(10%, 100%);
-            }
-
-            60% {
-                transform: translate(-15%, 80%);
-            }
-
-            70% {
-                transform: translate(5%, 60%);
-            }
-
-            80% {
-                transform: translate(0, 40%);
-            }
-
-            90% {
-                transform: translate(0, 20%);
-            }
-
-            100% {
-                transform: translate(0, 0);
-            }
-        }
-
-        /* Slide in from left */
-        @keyframes slidein {
-            0% {
-                transform: translateX(-200%);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-        
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .map-container {
-                width: 90%;
-                --city-pin-size-font: 1rem;
+            /* Adjust Hero Typography */
+            .hero-title {
+                font-size: 2.2rem !important;
+                line-height: 1.2;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem !important;
+                padding: 0 20px;
+            }
+
+            /* Normalize Section Padding */
+            .stats-section, .philosophy-section, .reach-section {
+                padding: 50px 20px !important;
             }
             
-            .map-city__sign {
-                font-size: 0.75rem;
-                padding: 0.4em 0.6em 0.4em 0.3em;
+            /* Stats Grid - 2 columns on tablet */
+            .stats-grid-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px;
+            }
+
+            /* Global Reach Flex Stack */
+            .reach-flex-container {
+                flex-direction: column;
+                gap: 40px !important;
+            }
+            
+            /* Force full width for flex items to override inline min-width */
+            .reach-flex-item {
+                min-width: 100% !important;
+                flex: none !important;
+                width: 100% !important;
+            }
+            
+            /* Adjust regional cards grid */
+            .regional-grid {
+                grid-template-columns: 1fr !important;
             }
         }
+
+        @media (max-width: 480px) {
+            /* Ensure images are responsive */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Stats Grid - 1 column on mobile */
+            .stats-grid-container {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Typography Scaling */
+            .hero-title {
+                font-size: 1.8rem !important;
+            }
+            .philosophy-headline {
+                font-size: 1.5rem !important;
+            }
+            .philosophy-subheading {
+                font-size: 1rem !important;
+            }
+            
+            /* Adjust spacing */
+            .reach-section, .philosophy-section {
+                padding: 40px 15px !important;
+            }
+            
+            /* Pin size adjustment for better touch targets */
+            .map-city-pin {
+                width: 40px;
+                height: 40px;
+            }
+            .map-city-pin::before {
+                font-size: 28px;
+            }
+        }
+        /* Mobile Optimization End */
     </style>
+
 </head>
 
 <body>
@@ -291,7 +187,7 @@
 
     <!-- Stats Grid -->
     <section class="stats-section" id="insights" style="background: var(--primary-navy); padding-bottom: 50px;">
-        <div class="stats-grid">
+        <div class="stats-grid stats-grid-container">
             <div class="stat-card">
                 <div class="stat-number" data-target="3.3" data-suffix="%">0</div>
                 <div class="stat-label">WTO 2025 Growth Projection</div>
@@ -314,8 +210,8 @@
     <!-- Market Analysis Content -->
     <section class="philosophy-section" id="about" style="background: var(--primary-navy);">
         <div class="philosophy-container">
-            <h2 class="philosophy-headline">Market Analysis & Insights</h2>
-            <p class="philosophy-subheading" style="max-width: 800px; margin: 0 auto 50px;">
+            <h2 class="philosophy-headline" style="color: #ffffff;">Market Analysis & Insights</h2>
+            <p class="philosophy-subheading" style="max-width: 800px; margin: 0 auto 50px; color: #ffffff;">
                 At AORR, we recognize the importance of providing our clients with up-to-date opportunities, insights, and perspectives to facilitate informed decision-making in the dynamic world of international trade.
             </p>
 
@@ -336,9 +232,9 @@
                 <!-- Regional Trade Dynamics -->
                 <h3 style="color: var(--accent-gold); margin-bottom: 30px; font-size: 1.8rem;">🌍 Regional Trade Dynamics</h3>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 50px;">
+                <div class="regional-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 50px;">
                     <!-- Africa Card -->
-                    <div style="background: rgba(0, 33, 71, 0.3); padding: 30px; border-radius: 12px; border-top: 4px solid #C5A065;">
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(197, 160, 101, 0.05) 100%); padding: 30px; border-radius: 12px; border: 2px solid rgba(197, 160, 101, 0.3); border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
                         <h4 style="color: #C5A065; margin-bottom: 15px; font-size: 1.3rem;">🌍 Africa (High Growth)</h4>
                         <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
                             <strong>5.3% Export Growth in 2024</strong>
@@ -349,7 +245,7 @@
                     </div>
 
                     <!-- Asia Card -->
-                    <div style="background: rgba(0, 33, 71, 0.3); padding: 30px; border-radius: 12px; border-top: 4px solid #C5A065;">
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(197, 160, 101, 0.05) 100%); padding: 30px; border-radius: 12px; border: 2px solid rgba(197, 160, 101, 0.3); border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
                         <h4 style="color: #C5A065; margin-bottom: 15px; font-size: 1.3rem;">🌏 Asia (Strong Demand)</h4>
                         <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
                             <strong>5.6% Import Growth Expected</strong>
@@ -360,7 +256,7 @@
                     </div>
 
                     <!-- Europe Card -->
-                    <div style="background: rgba(0, 33, 71, 0.3); padding: 30px; border-radius: 12px; border-top: 4px solid #C5A065;">
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(197, 160, 101, 0.05) 100%); padding: 30px; border-radius: 12px; border: 2px solid rgba(197, 160, 101, 0.3); border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
                         <h4 style="color: #C5A065; margin-bottom: 15px; font-size: 1.3rem;">🇪🇺 Europe (Challenging)</h4>
                         <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
                             <strong>1.7% Export Growth</strong>
@@ -371,7 +267,7 @@
                     </div>
 
                     <!-- China Card -->
-                    <div style="background: rgba(0, 33, 71, 0.3); padding: 30px; border-radius: 12px; border-top: 4px solid #C5A065;">
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(197, 160, 101, 0.05) 100%); padding: 30px; border-radius: 12px; border: 2px solid rgba(197, 160, 101, 0.3); border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
                         <h4 style="color: #C5A065; margin-bottom: 15px; font-size: 1.3rem;">🇨🇳 China</h4>
                         <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
                             <strong>Economic Stimulus</strong>
@@ -437,6 +333,113 @@
                                 </p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Reach with Map Section -->
+    <section class="reach-section" style="background: var(--primary-navy); padding: 80px 20px;">
+        <div class="reach-flex-container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px;">
+            <!-- Map Container -->
+            <div class="reach-flex-item" style="flex: 1; min-width: 350px; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); position: relative;">
+                <div class="map-container-simple">
+                    <svg viewBox="0 0 500 500" style="width: 100%; height: auto; display: block;">
+                        <rect style="fill: #f5f0e5" width="500" height="500"></rect>
+                        <path
+                            style="fill: #90daee"
+                            d="M0,367.82c5.83-4.39,14.42-10.16,25.59-15.34,4.52-2.09,43.19-19.51,79.55-11.93,36.1,7.52,35.75,32.55,78.41,60.23,46.34,30.06,109.47,41.21,123.32,22.1,11.95-16.49-22.61-41.92-13.66-84.6,4.85-23.1,22.33-50.71,47.73-58.52,42.42-13.05,78.83,39.45,102.84,23.86,15.81-10.26.01-32.87,22.73-74.43,5.8-10.62,11.65-21.15,11.93-36.93.28-15.69-5.63-26.64-7.95-32.39-6.66-16.45-6.21-45.15,28.84-98.55.23,146.23.46,292.46.69,438.69H0v-132.18Z"
+                        ></path>
+                    </svg>
+                    
+                    <!-- Location Pins -->
+                    <div class="map-city-pin" style="left: 15%; top: 45%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">West Africa Hub</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 35%; top: 52%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">East Africa Port</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 52%; top: 38%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">Middle East</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 68%; top: 28%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">Mumbai Hub</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 78%; top: 42%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">Southeast Asia</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 88%; top: 55%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">Pacific Port</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features Container -->
+            <div class="reach-flex-item" style="flex: 1; min-width: 350px; display: flex; flex-direction: column; gap: 40px;">
+                <!-- Feature 1: Africa -->
+                <div style="display: flex; gap: 20px;">
+                    <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #C5A065 0%, #e0c088 100%); color: #002147; flex-shrink: 0;">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <h2 style="color: #C5A065; font-size: 1.2rem; font-weight: 600; margin-bottom: 12px;">Africa: Emerging Market Leader</h2>
+                        <p style="color: #ccc; line-height: 1.7; margin-bottom: 15px;">
+                            With 5.3% projected export growth, Africa represents our fastest-growing market for agro-commodities, particularly cashews, sesame seeds, and timber.
+                        </p>
+                        <a href="#" style="color: #C5A065; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500;">
+                            Explore Products
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 16px; height: 16px;" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Asia -->
+                <div style="display: flex; gap: 20px;">
+                    <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #C5A065 0%, #e0c088 100%); color: #002147; flex-shrink: 0;">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+                            <circle cx="6" cy="6" r="3"></circle>
+                            <circle cx="6" cy="18" r="3"></circle>
+                            <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+                        </svg>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <h2 style="color: #C5A065; font-size: 1.2rem; font-weight: 600; margin-bottom: 12px;">Asia: Import Powerhouse</h2>
+                        <p style="color: #ccc; line-height: 1.7; margin-bottom: 15px;">
+                            Expected 5.6% import growth signals strong demand for FMCG products, industrial machinery, and premium spices across Asian markets.
+                        </p>
+                        <a href="#" style="color: #C5A065; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500;">
+                            View Opportunities
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 16px; height: 16px;" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Middle East -->
+                <div style="display: flex; gap: 20px;">
+                    <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #C5A065 0%, #e0c088 100%); color: #002147; flex-shrink: 0;">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <h2 style="color: #C5A065; font-size: 1.2rem; font-weight: 600; margin-bottom: 12px;">Middle East: Strategic Hub</h2>
+                        <p style="color: #ccc; line-height: 1.7; margin-bottom: 15px;">
+                            Our Middle East operations serve as a critical gateway for ICUMSA 45 sugar distribution and consumer goods across the region.
+                        </p>
+                        <a href="#" style="color: #C5A065; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500;">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 16px; height: 16px;" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
