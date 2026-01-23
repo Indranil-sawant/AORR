@@ -37,7 +37,8 @@
 html {
 	scroll-behavior: smooth;
 	font-size: 16px;
-	/* Base font size */
+	overflow-x: hidden; /* Global horizontal scroll fix */
+	width: 100%;
 }
 
 /* Fluid Typography - Prevents awkward size jumps when zooming */
@@ -1782,8 +1783,66 @@ img {
 	}
 
 	.performance-features-grid {
+		display: grid;
 		grid-template-columns: 1fr;
-		gap: 20px;
+		gap: 25px;
+		overflow: visible; /* Ensure page scrolls naturally */
+		margin: 20px 0;
+		padding: 10px 5px;
+	}
+
+	.performance-features-grid::-webkit-scrollbar {
+		display: none;
+	}
+
+	.performance-features-grid .reveal-card {
+		width: 100%;
+		flex: none;
+		scroll-snap-align: none;
+		background: white; /* Cleaner white background */
+		border: 1px solid rgba(0, 0, 0, 0.05);
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+		border-radius: 16px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* Premium Top Gradient Border */
+	.performance-features-grid .reveal-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: linear-gradient(90deg, var(--primary-navy), var(--accent-gold));
+	}
+
+	/* Tap Hint for Usability */
+	.performance-features-grid .reveal-card::after {
+		content: 'Tap for Details';
+		position: absolute;
+		bottom: 20px;
+		width: 100%;
+		text-align: center;
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: #aaa;
+		pointer-events: none;
+		opacity: 0.6;
+		font-weight: 600;
+	}
+
+	.performance-features-grid .reveal-card:hover::after {
+		opacity: 0;
+	}
+
+	.performance-features-grid .reveal-card svg {
+		width: 60px;
+		height: 60px;
+		filter: drop-shadow(0 4px 10px rgba(197, 160, 101, 0.2));
+		margin-bottom: 20px;
 	}
 
 	#performanceChart {
@@ -3708,7 +3767,7 @@ html {
 	position: relative;
 	/* Optimize Repaints */
 	transform: translateZ(0);
-	overflow: visible;
+	overflow: hidden; /* Fix horizontal scroll wobble */
 }
 
 .impact-container {
@@ -3787,23 +3846,16 @@ html {
 	overflow: hidden;
 }
 
-/* Hide scrollbars for all elements in global impact section */
+/* Force hide scrollbars as requested */
 .global-impact-section,
-.global-impact-section *,
-.impact-container,
-.impact-stats-list {
+.global-impact-section * {
 	scrollbar-width: none;
-	/* Firefox */
 	-ms-overflow-style: none;
-	/* IE and Edge */
 }
 
 .global-impact-section::-webkit-scrollbar,
-.global-impact-section *::-webkit-scrollbar,
-.impact-container::-webkit-scrollbar,
-.impact-stats-list::-webkit-scrollbar {
+.global-impact-section *::-webkit-scrollbar {
 	display: none;
-	/* Chrome, Safari, Opera */
 }
 
 /* Background decorative glow */
@@ -3915,24 +3967,26 @@ html {
 /* Mobile Responsive */
 @media (max-width: 900px) {
 	.impact-headline {
-		font-size: 2.5rem;
+		font-size: 2rem;
+		word-wrap: break-word; /* Ensure clear wrapping */
 	}
 
 	.impact-stat-item strong {
-		font-size: 3rem;
+		font-size: 2.2rem; /* Prevent text overflow */
 	}
 
 	.impact-container {
 		grid-template-columns: 1fr;
 		gap: 40px;
 		padding: 0 15px;
+		overflow: hidden; /* Ensure internal containment */
 	}
 
 	.impact-visual-globe {
-		height: 300px;
+		height: 280px;
 		width: 100%;
-		max-width: 300px;
-		margin: 40px auto 0;
+		max-width: 260px; /* Ensure it fits */
+		margin: 30px auto 0;
 		right: 0;
 	}
 
@@ -4225,12 +4279,29 @@ html {
 	background-color: #f2f2f2;
 	border-radius: 10px;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
 	perspective: 1000px;
 	box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5);
 	transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.front-title {
+	margin-top: 20px;
+	font-family: var(--font-main);
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--primary-navy);
+	text-align: center;
+	padding: 0 15px;
+	transition: all 0.3s ease;
+}
+
+.reveal-card:hover .front-title {
+	opacity: 0;
+	transform: translateY(-10px);
 }
 
 .reveal-card svg {
