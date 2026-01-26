@@ -87,7 +87,7 @@ function initCarousel() {
         const item = createCarouselItem(data, index);
         carousel.appendChild(item);
     });
-    // Scroll listener moved to main DOMContentLoaded block to handle debounce correctly
+    updateCarousel(); // Initial positioning
 }
 
 // Update Carousel with Professional 'Deck' Style
@@ -110,8 +110,6 @@ function updateCarousel() {
         item.style.opacity = '';
         item.style.boxShadow = '';
 
-        // Tighter spacing and less rotation for corporate look
-        const spacing = isMobile ? 40 : 120; // Much tighter than 320px
         const baseScale = isMobile ? 0.9 : 0.95;
 
         if (absOffset === 0) {
@@ -122,13 +120,13 @@ function updateCarousel() {
             item.style.boxShadow = '0 20px 50px rgba(0,0,0,0.2)'; // Emphasis shadow
         } else if (absOffset === 1) {
             // Immediate Neighbors
-            item.style.transform = `translate(-50%, -50%) translateX(${sign * (isMobile ? 180 : 380)}px) translateZ(-100px) scale(${baseScale})`;
+            item.style.transform = `translate(-50%, -50%) translateX(${sign * (isMobile ? 140 : 380)}px) translateZ(-100px) scale(${baseScale})`;
             item.style.zIndex = '5';
             item.style.opacity = '0.9';
             item.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
         } else if (absOffset === 2) {
             // Far Neighbors
-            item.style.transform = `translate(-50%, -50%) translateX(${sign * (isMobile ? 320 : 700)}px) translateZ(-200px) scale(${baseScale * 0.9})`;
+            item.style.transform = `translate(-50%, -50%) translateX(${sign * (isMobile ? 220 : 700)}px) translateZ(-200px) scale(${baseScale * 0.9})`;
             item.style.zIndex = '2';
             item.style.opacity = '0.6';
         } else {
@@ -199,6 +197,17 @@ if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         menuToggle.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    });
+
+    // Close menu when a link is clicked
+    const navLinks = navMenu.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
     });
 }
 

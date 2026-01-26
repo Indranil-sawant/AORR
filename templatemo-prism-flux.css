@@ -251,6 +251,7 @@ img {
 	/* Reduced height to fit better */
 	margin-top: 20px;
 	transform-style: preserve-3d;
+	overflow: hidden;
 }
 
 .carousel {
@@ -3181,6 +3182,11 @@ img {
 		z-index: 1001;
 	}
 
+	/* Body Scroll Lock */
+	body.no-scroll {
+		overflow: hidden;
+	}
+
 	.nav-menu {
 		position: fixed;
 		top: 0;
@@ -3196,6 +3202,7 @@ img {
 		box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
 		padding: 20px;
 		backdrop-filter: blur(10px);
+		z-index: 1000;
 	}
 
 	.nav-menu.active {
