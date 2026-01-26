@@ -2,38 +2,38 @@
 const portfolioData = [
     {
         id: 1,
-        title: 'Agro-Commodities',
-        description: 'Premium quality Cashew, Spices, and Cocoa sourced directly from top producers. Ensuring food safety and traceability.',
-        image: 'images/design.jpg',
-        tech: ['Cashew', 'Spices', 'Cocoa']
+        title: 'Marine Supplies',
+        description: 'Shipbuilding raw materials including Fiberglass, Resins, and Repair Kits. ISO Certified for marine safety.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=Marine+Supplies',
+        tech: ['Fiberglass', 'Resins', 'Marine']
     },
     {
         id: 2,
-        title: 'Sugar & Sweeteners',
-        description: 'High-grade ICUMSA 45 Sugar and sweeteners. Sparkling white purity for industrial and consumer applications.',
-        image: 'images/quantum-cloud.jpg',
-        tech: ['ICUMSA 45', 'Refined', 'Global']
+        title: 'Industrial Components',
+        description: 'High-performance Water Pump Valves and Utility Hardware for commercial industrial applications.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=Industrial+Valves',
+        tech: ['Valves', 'Hardware', 'Industrial']
     },
     {
         id: 3,
-        title: 'FMCG Logistics',
-        description: 'Rapid distribution of fast-moving consumer goods to international markets with efficient supply chain management.',
-        image: 'images/boat.jpg',
-        tech: ['Consumer Goods', 'Fast Moving', 'Export']
+        title: 'Domestic Logistics',
+        description: 'Dedicated domestic supply chain services for perishable goods like fruits and vegetables.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=Domestic+Logistics',
+        tech: ['Perishables', 'Logistics', 'Supply']
     },
     {
         id: 4,
-        title: 'Industrial',
-        description: 'Heavy machinery, scrap metal, and timber logs. Powering infrastructure and manufacturing globally.',
-        image: 'images/iot-matrix.jpg',
-        tech: ['Machinery', 'Timber', 'Metals']
+        title: 'Marine Timber',
+        description: 'Premium Grade A Teak Logs and marine-grade timber for shipbuilding and decking.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=Marine+Timber',
+        tech: ['Teak', 'Timber', 'Shipbuilding']
     },
     {
         id: 5,
-        title: 'Consulting',
-        description: 'Expert guidance on trade regulations, customs clearance, and market entry strategies.',
-        image: 'images/data-nexus.jpg',
-        tech: ['Strategy', 'Compliance', 'Logistics']
+        title: 'General Trading',
+        description: 'Global trading of engineered mechanical parts, accessories, and commercial consumer goods.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=General+Trading',
+        tech: ['Trading', 'Commercial', 'Global']
     }
 ];
 
@@ -87,7 +87,7 @@ function initCarousel() {
         const item = createCarouselItem(data, index);
         carousel.appendChild(item);
     });
-    updateCarousel();
+    // Scroll listener moved to main DOMContentLoaded block to handle debounce correctly
 }
 
 // Update Carousel with Professional 'Deck' Style
@@ -221,13 +221,37 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticles();
 
     // Carousel buttons
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    // Auto rotate carousel - REMOVED for user preference (no auto rotation)
+    // setInterval(nextSlide, 5000);
 
-    // Auto rotate carousel
-    setInterval(nextSlide, 5000);
+    // Debounce state for scroll
+    let isTransitioning = false;
+    const scrollCooldown = 800; // Matches transition time
+
+    // Add Scroll/Wheel Interaction with Debounce
+    const container = document.querySelector('.carousel-container');
+    if (container) {
+        container.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            
+            if (isTransitioning) return;
+            
+            // Threshold for trackpads
+            if (Math.abs(e.deltaY) < 20) return;
+
+            isTransitioning = true;
+            
+            if (e.deltaY > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+
+            setTimeout(() => {
+                isTransitioning = false;
+            }, scrollCooldown);
+        }, { passive: false }); // key for preventing default
+    }
 
     // Contact form listener
     const contactForm = document.getElementById('contactForm');
