@@ -83,11 +83,35 @@ function createCarouselItem(data, index) {
 function initCarousel() {
     if (!carousel) return;
     carousel.innerHTML = '';
-    portfolioData.forEach((data, index) => {
+    
+    // Create items
+    const createdItems = portfolioData.map((data, index) => {
         const item = createCarouselItem(data, index);
         carousel.appendChild(item);
+        return item;
     });
-    // Scroll listener moved to main DOMContentLoaded block to handle debounce correctly
+
+    // Robust Image Loading Handler
+    const images = Array.from(carousel.querySelectorAll('img'));
+    const imagePromises = images.map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => {
+            img.onload = resolve;
+            img.onerror = resolve; // Proceed even if an image fails
+        });
+    });
+
+    // Wait for images then initialize layout
+    Promise.all(imagePromises).then(() => {
+        // Force a layout update
+        updateCarousel();
+        
+        // Add class to reveal container smoothly
+        const container = carousel.parentElement;
+        if (container) {
+            container.classList.add('initialized');
+        }
+    });
 }
 
 // Update Carousel with Professional 'Deck' Style
