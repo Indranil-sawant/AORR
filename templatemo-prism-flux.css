@@ -251,7 +251,13 @@ img {
 	/* Reduced height to fit better */
 	margin-top: 20px;
 	transform-style: preserve-3d;
-	overflow: hidden;
+	overflow: hidden; /* Prevent overflow */
+	opacity: 0; /* Hidden until initialized to prevent CLS */
+	transition: opacity 0.8s ease-out;
+}
+
+.carousel-container.initialized {
+	opacity: 1; /* Show when ready */
 }
 
 .carousel {
@@ -267,12 +273,15 @@ img {
 	top: 50%;
 	left: 50%;
 	width: 320px;
+	max-width: 90vw; /* Mobile safety */
 	height: 480px;
 	background: white;
 	border-radius: 12px;
 	overflow: hidden;
 	transition: 0.5s;
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+	backface-visibility: hidden; /* Performance */
+	transform-origin: center center;
 }
 
 
@@ -3157,10 +3166,12 @@ img {
 	.carousel-container {
 		height: 420px;
 		margin-top: 30px;
+		/* overflow-x: hidden; handled by main class, but safe to keep container bounds */
 	}
 
 	.carousel-item {
 		width: 260px;
+		max-width: 85vw; /* Extra safety for fold devices */
 		height: 360px;
 	}
 
@@ -3182,11 +3193,6 @@ img {
 		z-index: 1001;
 	}
 
-	/* Body Scroll Lock */
-	body.no-scroll {
-		overflow: hidden;
-	}
-
 	.nav-menu {
 		position: fixed;
 		top: 0;
@@ -3202,7 +3208,6 @@ img {
 		box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
 		padding: 20px;
 		backdrop-filter: blur(10px);
-		z-index: 1000;
 	}
 
 	.nav-menu.active {
@@ -3776,7 +3781,9 @@ html {
 	position: relative;
 	/* Optimize Repaints */
 	transform: translateZ(0);
-	overflow: hidden; /* Fix horizontal scroll wobble */
+	overflow-x: hidden; /* Fix horizontal scroll wobble, allow vertical flow */
+	height: auto;
+	min-height: unset;
 }
 
 .impact-container {
@@ -3790,6 +3797,8 @@ html {
 	position: relative;
 	z-index: 2;
 	overflow: visible;
+	height: auto;
+	min-height: unset;
 }
 
 .impact-headline {
@@ -3856,16 +3865,7 @@ html {
 }
 
 /* Force hide scrollbars as requested */
-.global-impact-section,
-.global-impact-section * {
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-}
-
-.global-impact-section::-webkit-scrollbar,
-.global-impact-section *::-webkit-scrollbar {
-	display: none;
-}
+/* Standard scroll behavior restored */
 
 /* Background decorative glow */
 .global-impact-section::before {
@@ -3988,7 +3988,7 @@ html {
 		grid-template-columns: 1fr;
 		gap: 40px;
 		padding: 0 15px;
-		overflow: hidden; /* Ensure internal containment */
+		overflow: visible; /* Restore natural flow */
 	}
 
 	.impact-visual-globe {
