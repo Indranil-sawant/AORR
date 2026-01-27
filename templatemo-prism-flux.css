@@ -3781,7 +3781,7 @@ html {
 	position: relative;
 	/* Optimize Repaints */
 	transform: translateZ(0);
-	overflow-x: hidden; /* Fix horizontal scroll wobble, allow vertical flow */
+	overflow: visible; /* Prevent forced scroll context */
 	height: auto;
 	min-height: unset;
 }
@@ -4263,7 +4263,6 @@ html {
 .skills-section,
 .bento-section,
 .tech-section,
-.impact-container,
 .features-grid-section {
 	overflow-x: hidden;
 	max-width: 100%;
