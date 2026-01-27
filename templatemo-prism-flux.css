@@ -3781,7 +3781,9 @@ html {
 	position: relative;
 	/* Optimize Repaints */
 	transform: translateZ(0);
-	overflow: hidden; /* Fix horizontal scroll wobble */
+	overflow-x: hidden; /* Fix horizontal scroll wobble, allow vertical flow */
+	height: auto;
+	min-height: unset;
 }
 
 .impact-container {
@@ -3795,6 +3797,8 @@ html {
 	position: relative;
 	z-index: 2;
 	overflow: visible;
+	height: auto;
+	min-height: unset;
 }
 
 .impact-headline {
@@ -3861,16 +3865,7 @@ html {
 }
 
 /* Force hide scrollbars as requested */
-.global-impact-section,
-.global-impact-section * {
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-}
-
-.global-impact-section::-webkit-scrollbar,
-.global-impact-section *::-webkit-scrollbar {
-	display: none;
-}
+/* Standard scroll behavior restored */
 
 /* Background decorative glow */
 .global-impact-section::before {
@@ -3993,7 +3988,7 @@ html {
 		grid-template-columns: 1fr;
 		gap: 40px;
 		padding: 0 15px;
-		overflow: hidden; /* Ensure internal containment */
+		overflow: visible; /* Restore natural flow */
 	}
 
 	.impact-visual-globe {
