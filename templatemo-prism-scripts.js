@@ -121,6 +121,20 @@ function updateCarousel() {
     const totalItems = items.length;
     const isMobile = window.innerWidth <= 768;
 
+    if (isMobile) {
+        // Mobile: Reset styles to allow CSS flex/scroll handling
+        items.forEach((item) => {
+            item.style.transform = '';
+            item.style.zIndex = '';
+            item.style.opacity = '';
+            item.style.boxShadow = '';
+            item.style.position = '';
+            item.style.top = '';
+            item.style.left = '';
+        });
+        return;
+    }
+
     items.forEach((item, index) => {
         let offset = index - currentIndex;
         if (offset > totalItems / 2) offset -= totalItems;
@@ -135,8 +149,8 @@ function updateCarousel() {
         item.style.boxShadow = '';
 
         // Tighter spacing and less rotation for corporate look
-        const spacing = isMobile ? 40 : 120; // Much tighter than 320px
-        const baseScale = isMobile ? 0.9 : 0.95;
+        const spacing = 120;
+        const baseScale = 0.95;
 
         if (absOffset === 0) {
             // Center Item
@@ -146,13 +160,13 @@ function updateCarousel() {
             item.style.boxShadow = '0 20px 50px rgba(0,0,0,0.2)'; // Emphasis shadow
         } else if (absOffset === 1) {
             // Immediate Neighbors
-            item.style.transform = `translate(-50%, -50%) translateX(${sign * (isMobile ? 180 : 380)}px) translateZ(-100px) scale(${baseScale})`;
+            item.style.transform = `translate(-50%, -50%) translateX(${sign * 380}px) translateZ(-100px) scale(${baseScale})`;
             item.style.zIndex = '5';
             item.style.opacity = '0.9';
             item.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
         } else if (absOffset === 2) {
             // Far Neighbors
-            item.style.transform = `translate(-50%, -50%) translateX(${sign * (isMobile ? 320 : 700)}px) translateZ(-200px) scale(${baseScale * 0.9})`;
+            item.style.transform = `translate(-50%, -50%) translateX(${sign * 700}px) translateZ(-200px) scale(${baseScale * 0.9})`;
             item.style.zIndex = '2';
             item.style.opacity = '0.6';
         } else {
@@ -244,6 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarousel();
     initParticles();
 
+    // Handle Resize for Carousel to switch between 3D and Scroll modes
+    window.addEventListener('resize', () => {
+        updateCarousel();
+    });
+
     // Carousel buttons
     // Auto rotate carousel - REMOVED for user preference (no auto rotation)
     // setInterval(nextSlide, 5000);
@@ -256,6 +275,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.carousel-container');
     if (container) {
         container.addEventListener('wheel', (e) => {
+            // Disable custom scroll logic on mobile/tablets to ensure native vertical scrolling works
+            if (window.innerWidth <= 768) return; 
+
             e.preventDefault();
             
             if (isTransitioning) return;
