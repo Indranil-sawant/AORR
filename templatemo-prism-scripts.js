@@ -132,6 +132,11 @@ function updateCarousel() {
             item.style.top = '';
             item.style.left = '';
         });
+        // Initialize highlights once
+        if (!carousel.dataset.mobileInitialized) {
+            initMobileScrollHighlight();
+            carousel.dataset.mobileInitialized = 'true';
+        }
         return;
     }
 
@@ -621,4 +626,49 @@ function initCatalogFilters() {
         
         filterItems(categoryName, e.target.value);
     });
+}
+
+// Mobile Scroll Highlight Logic
+function initMobileScrollHighlight() {
+    const carousel = document.getElementById('carousel');
+    if (!carousel) return;
+
+    const items = carousel.querySelectorAll('.carousel-item');
+    if (items.length === 0) return;
+
+    // Helper to find center card
+    const updateActiveCard = () => {
+        const containerCenter = carousel.scrollLeft + (carousel.offsetWidth / 2);
+        let closestItem = null;
+        let minDistance = Infinity;
+
+        items.forEach(item => {
+            // Get item center relative to the container scroll
+            // item.offsetLeft is relative to container start (0), not viewport
+            const itemCenter = item.offsetLeft + (item.offsetWidth / 2);
+            const distance = Math.abs(containerCenter - itemCenter);
+
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestItem = item;
+            }
+        });
+
+        items.forEach(item => {
+            if (item === closestItem) {
+                item.classList.add('active-card');
+            } else {
+                item.classList.remove('active-card');
+            }
+        });
+    };
+
+    // Listen for scroll
+    carousel.addEventListener('scroll', () => {
+        // Throttling via RequestAnimationFrame for performance
+        window.requestAnimationFrame(updateActiveCard);
+    }, { passive: true });
+
+    // Initial run
+    setTimeout(updateActiveCard, 100);
 }
