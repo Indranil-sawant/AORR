@@ -5739,3 +5739,18 @@ html {
         flex-direction: column;
     }
 }
+
+/* Industries Check List Grid */
+.industries-check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .industries-check-grid {
+        grid-template-columns: 1fr; /* Stack on mobile to prevent overflow */
+        gap: 10px;
+    }
+}
