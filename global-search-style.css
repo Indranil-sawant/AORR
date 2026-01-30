@@ -1,0 +1,207 @@
+/* Global Search Bar Styles - Desktop Defaults */
+.nav-search-container {
+    position: relative;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 100; /* Ensure above other nav elements */
+}
+
+.nav-search-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 6px 15px;
+    padding-right: 32px;
+    color: white;
+    font-size: 0.85rem;
+    width: 160px; /* Standard pill width */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 34px;
+}
+
+.nav-search-input:focus {
+    width: 240px;
+    background: rgba(255,255,255,0.15);
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 3px rgba(197, 160, 101, 0.15);
+}
+
+.nav-search-input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.nav-search-icon {
+    position: absolute;
+    right: 10px;
+    color: rgba(255,255,255,0.7);
+    pointer-events: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    top: 0;
+}
+
+/* Dropdown Styles */
+.search-results-dropdown {
+    position: absolute;
+    top: 130%;
+    right: 0;
+    width: 320px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0,0,0,0.08); /* Subtle border */
+}
+
+.search-results-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-result-header {
+    padding: 10px 15px;
+    background: #f8f9fa;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+}
+
+.search-results-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f9f9f9;
+    cursor: pointer;
+    transition: background 0.1s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.search-result-item:hover {
+    background: #f0f4f8;
+    border-left: 3px solid var(--accent-gold);
+    padding-left: 12px;
+}
+
+.result-title {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--primary-navy);
+    display: block;
+}
+
+.result-category {
+    font-size: 0.7rem;
+    color: #999;
+}
+
+/* ~~~~~ MOBILE OPTIMIZED LAYOUT (Reason: Fixed Collision Issues) ~~~~~ */
+@media (max-width: 992px) {
+    /* 1. Reset Container Layout to handle 3 items cleanly */
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    /* 2. Position the Search Container nicely next to Toggle */
+    .nav-search-container {
+        margin-right: 15px; /* Space between Search Icon and Menu Toggle */
+        margin-left: auto;  /* Push to the right, next to toggle */
+        width: 40px;        /* Fixed small square for touch target */
+        height: 40px;
+        justify-content: center;
+    }
+
+    /* 3. The Input acts as the invisible trigger button */
+    .nav-search-input {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%; /* Circle */
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.1); /* Subtle outline */
+        color: transparent; /* Hide placeholder text */
+        cursor: pointer;
+        position: relative;
+        z-index: 5; /* On top of icon */
+    }
+
+    .nav-search-input::placeholder {
+        color: transparent;
+    }
+
+    /* 4. The Loop Icon (Visible Center) */
+    .nav-search-icon {
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        margin: auto;
+        font-size: 1.2rem;
+        color: white; /* Visible icon color */
+    }
+
+    /* 5. EXPANDED STATE (Focus) - Overlay Bar */
+    .nav-search-input:focus {
+        position: fixed; /* Break out of flow */
+        top: 70px; /* Below header */
+        left: 20px;
+        right: 20px;
+        width: calc(100% - 40px);
+        height: 50px;
+        background: white;
+        color: #333;
+        border-radius: 8px;
+        padding: 0 20px;
+        border: 1px solid #ddd;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        z-index: 1001; /* High z-index */
+        opacity: 1;
+    }
+    
+    /* Reveal text color on focus */
+    .nav-search-input:focus {
+        color: #333;
+    }
+
+    .nav-search-input:focus::placeholder {
+        color: #999;
+    }
+    
+    /* Hide the static icon when expanded (optional, but input covers it anyway because of Fixed positioning moving it away) */
+
+    /* 6. Dropdown Position Mobile */
+    .search-results-dropdown {
+        position: fixed;
+        top: 130px; /* Below the fixed search bar */
+        left: 20px;
+        right: 20px;
+        width: calc(100% - 40px);
+        max-height: 50vh;
+        z-index: 1002;
+    }
+}

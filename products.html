@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>AORR - Global Trading & Distribution | Products</title>
+    <meta name="description" content="Explore our extensive catalog of industrial machinery, mechanical appliances, garments, marine supplies, and agricultural products.">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="templatemo-prism-flux.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="products-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global-search-style.css">
 </head>
-
 <body>
 
     <!-- Header -->
@@ -39,588 +40,114 @@
         </nav>
     </header>
 
-    <!-- Hero Section (3D Carousel) -->
-    <section class="hero" id="home" style="min-height: 60vh; padding-top: 150px;">
-        <div class="hero-overlay-text">
-            <h1 class="hero-title">Product Catalog</h1>
-            <p class="hero-subtitle">World-Class Commodities & Goods</p>
+    <!-- Product Hero -->
+    <section class="products-hero-section">
+        <div class="products-hero-content">
+            <h1 class="products-hero-title">Product <span>Catalog</span></h1>
+            <p class="products-hero-subtitle">Comprehensive supply solutions across machinery, garments, and raw materials.</p>
         </div>
     </section>
 
-    <!-- Integrated BENTO Section (Features) -->
-    <!-- WHERE: Placed below Hero to highlight the logistics/tech advantages before showing products -->
-    <!-- WHY: Establishes trust and capability ("Deploy Faster" -> "Trade Faster") -->
-
-    <style>
-        /* Professional Flip Card Styles */
-        .flip-cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .flip-card {
-            background-color: transparent;
-            width: 100%;
-            height: 420px; /* Increased height to fit content */
-            perspective: 1000px; 
-        }
-
-        .flip-card-content {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-        }
-
-        .flip-card:hover .flip-card-content {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Front Styling */
-        .flip-card-front {
-            background: #ffffff;
-            border: 1px solid rgba(0, 33, 71, 0.1);
-        }
-
-        /* Abstract/Geometric Background for Front */
-        .flip-card-front::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 140px;
-            background: linear-gradient(135deg, #002147 0%, #001a38 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            z-index: 1;
-        }
-
-        .flip-front-content {
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .flip-icon-wrapper {
-            width: 80px;
-            height: 80px;
-            background: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px rgba(0, 33, 71, 0.15);
-            margin-top: 20px;
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            border: 2px solid #C5A065;
-            color: #002147;
-            z-index: 3;
-        }
-
-        .flip-category-badge {
-            background: rgba(197, 160, 101, 0.15);
-            color: #002147;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .flip-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            color: #002147;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .flip-short-desc {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            max-width: 90%;
-        }
-
-        .flip-indicator {
-            margin-top: auto;
-            color: #C5A065;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            opacity: 0.8;
-        }
-
-        /* Back Styling */
-        .flip-card-back {
-            background: linear-gradient(135deg, #002147 0%, #0d3b66 100%);
-            color: white;
-            transform: rotateY(180deg);
-            padding: 30px 20px; /* Reduced padding */
-            border: 2px solid #C5A065; 
-        }
-
-        .flip-back-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            height: 100%;
-            justify-content: center;
-            gap: 15px; /* Reduced gap */
-            width: 100%;
-        }
-
-        .flip-back-title {
-            font-family: 'Orbitron', sans-serif;
-            color: #C5A065; 
-            font-size: 1.3rem; /* Slightly smaller title */
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .flip-back-details {
-            list-style: none;
-            padding: 0;
-            width: 100%;
-            text-align: left;
-        }
-
-        .flip-back-details li {
-            padding: 10px 0; /* Reduced padding */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: #e0e0e0;
-            font-size: 0.9rem; /* Smaller font size */
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .flip-back-details li:last-child {
-            border-bottom: none;
-        }
-
-        .flip-back-details strong {
-            color: #C5A065;
-            font-weight: 600;
-        }
-
-        .flip-cta-btn {
-            margin-top: 15px; /* Reduced margin */
-            background: #C5A065;
-            color: #002147;
-            border: none;
-            padding: 10px 24px; /* Slightly smaller padding */
-            font-size: 0.85rem;
-            font-weight: 700;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .flip-cta-btn:hover {
-            background: #d4af7a;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(197, 160, 101, 0.3);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .flip-cards-container {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 20px;
-                padding: 20px;
-            }
-            .flip-card {
-                height: 350px;
-            }
-        }
-    </style>
-
-    <!-- Product Categories Flip Cards -->
-    <section class="skills-section" id="services">
-        <div class="section-header">
-            <h2 class="section-title">Core Categories</h2>
-            <p style="color: var(--text-secondary);">Specialized handling for premium goods</p>
-        </div>
-
-        <div class="flip-cards-container">
-            <!-- Marine Card (Was Agro) -->
-            <div class="flip-card">
-                <div class="flip-card-content">
-                    <div class="flip-card-front">
-                        <div class="flip-front-content">
-                            <span class="flip-category-badge">Marine Industry</span>
-                            <div class="flip-icon-wrapper">
-                                ⚓
-                            </div>
-                            <h3 class="flip-title">Marine Supplies</h3>
-                            <p class="flip-short-desc">Shipbuilding raw materials, repair components, and fiberglass manufacturing supplies.</p>
-                            <div class="flip-indicator">
-                                View Details <span>→</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <div class="flip-back-content">
-                            <h3 class="flip-back-title">Marine Supplies</h3>
-                            <ul class="flip-back-details">
-                                <li><strong>Materials</strong> <span>Fiberglass, Resins</span></li>
-                                <li><strong>Parts</strong> <span>Repair Components</span></li>
-                                <li><strong>Hardware</strong> <span>Marine Grade</span></li>
-                                <li><strong>Standard</strong> <span>ISO Certified</span></li>
-                            </ul>
-                            <a href="#marine" class="flip-cta-btn">View Catalog</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Industrial Card (Was Sugar) -->
-            <div class="flip-card">
-                <div class="flip-card-content">
-                    <div class="flip-card-front">
-                        <div class="flip-front-content">
-                            <span class="flip-category-badge">Industrial</span>
-                            <div class="flip-icon-wrapper">
-                                🔧
-                            </div>
-                            <h3 class="flip-title">Industrial Components</h3>
-                            <p class="flip-short-desc">Water pump valves, mechanical parts, and utility hardware for commercial applications.</p>
-                            <div class="flip-indicator">
-                                View Details <span>→</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <div class="flip-back-content">
-                            <h3 class="flip-back-title">Industrial Components</h3>
-                            <ul class="flip-back-details">
-                                <li><strong>Components</strong> <span>Pump Valves</span></li>
-                                <li><strong>Hardware</strong> <span>Utility Parts</span></li>
-                                <li><strong>Trading</strong> <span>Artificial Jewellery</span></li>
-                                <li><strong>Supply</strong> <span>Bulk/Wholesale</span></li>
-                            </ul>
-                            <a href="#industrial" class="flip-cta-btn">View Catalog</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Domestic Card (Was FMCG) -->
-            <div class="flip-card">
-                <div class="flip-card-content">
-                    <div class="flip-card-front">
-                        <div class="flip-front-content">
-                            <span class="flip-category-badge">Domestic Supply</span>
-                            <div class="flip-icon-wrapper">
-                                🚚
-                            </div>
-                            <h3 class="flip-title">Domestic Logistics</h3>
-                            <p class="flip-short-desc">Specialized logistics and supply services for vegetables, fruits, and perishables (Domestic Only).</p>
-                            <div class="flip-indicator">
-                                View Details <span>→</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <div class="flip-back-content">
-                            <h3 class="flip-back-title">Domestic Supply</h3>
-                            <ul class="flip-back-details">
-                                <li><strong>Logistics</strong> <span>Perishables</span></li>
-                                <li><strong>Service</strong> <span>Fruit/Veg Supply</span></li>
-                                <li><strong>Region</strong> <span>Domestic Only</span></li>
-                                <li><strong>Support</strong> <span>24/7 Fleet</span></li>
-                            </ul>
-                            <a href="#domestic" class="flip-cta-btn">View Catalog</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- General Trading Card (Was Industrial) -->
-            <div class="flip-card">
-                <div class="flip-card-content">
-                    <div class="flip-card-front">
-                        <div class="flip-front-content">
-                            <span class="flip-category-badge">General Trading</span>
-                            <div class="flip-icon-wrapper">
-                                🏗️
-                            </div>
-                            <h3 class="flip-title">General Trading</h3>
-                            <p class="flip-short-desc">Trading of engineered goods, marine accessories, and consumer products globally.</p>
-                            <div class="flip-indicator">
-                                View Details <span>→</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <div class="flip-back-content">
-                            <h3 class="flip-back-title">Commercial Goods</h3>
-                            <ul class="flip-back-details">
-                                <li><strong>Engineering</strong> <span>Mechanical Parts</span></li>
-                                <li><strong>Consumer</strong> <span>General Goods</span></li>
-                                <li><strong>Marine</strong> <span>Accessories</span></li>
-                                <li><strong>Service</strong> <span>Global Trade</span></li>
-                            </ul>
-                            <a href="#trading" class="flip-cta-btn">View Catalog</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Integrated Product Grid (Catalog) -->
-    <!-- WHERE: Main content area for browsing products -->
-    <!-- WHY: Visual representation of the inventory (replacing the generic "Detailed Specifications" text list with photos) -->
-    <section class="catalog-section">
-        <div class="section-header">
-            <h2 class="section-title">Featured Inventory</h2>
-            <p style="color: #666;">Live availability from our global warehouses</p>
-        </div>
-
-        <div class="catalog-layout">
-            <!-- Sidebar Section -->
+    <!-- Main Content Layout -->
+    <main class="catalog-section">
+        <div class="catalog-container map-layout">
+            
+            <!-- SIDEBAR -->
             <aside class="catalog-sidebar">
+                
                 <!-- Search Widget -->
-                <div class="sidebar-widget search-widget">
-                    <h3 class="widget-title">Search</h3>
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Search Catalog</h3>
                     <div class="search-box">
-                        <input type="text" placeholder="Search inventory...">
-                        <button type="button">🔍</button>
+                        <input type="text" id="product-search" placeholder="Search products...">
+                        <span class="search-icon">🔍</span>
                     </div>
                 </div>
 
-                <!-- Categories Widget -->
+                <!-- Navigation Widget -->
                 <div class="sidebar-widget">
                     <h3 class="widget-title">Categories</h3>
-                    <ul class="category-list">
-                        <li><a href="#" class="cat-link active">All Products <span class="count">(8)</span></a></li>
-                        <li><a href="#" class="cat-link">Marine Supplies <span class="count">(3)</span></a></li>
-                        <li><a href="#" class="cat-link">Industrial Components <span class="count">(2)</span></a></li>
-                        <li><a href="#" class="cat-link">Domestic Logistics <span class="count">(2)</span></a></li>
-                        <li><a href="#" class="cat-link">General Trading <span class="count">(1)</span></a></li>
+                    <ul class="sidebar-nav" id="sidebar-nav-list">
+                        <!-- Javascript will populate this based on data -->
+                        <li><a href="#" class="active">Loading...</a></li>
                     </ul>
                 </div>
 
-                <!-- Status Filter -->
-                <div class="sidebar-widget">
-                    <h3 class="widget-title">Availability</h3>
-                    <div class="filter-options">
-                        <label class="filter-check">
-                            <input type="checkbox" checked>
-                            <span class="check-box"></span>
-                            In Stock Ready
-                        </label>
-                        <label class="filter-check">
-                            <input type="checkbox">
-                            <span class="check-box"></span>
-                            Pre-Order Bulk
-                        </label>
-                        <label class="filter-check">
-                            <input type="checkbox">
-                            <span class="check-box"></span>
-                            Export Grade Only
-                        </label>
-                    </div>
+                <!-- Contact Widget -->
+                <div class="sidebar-widget help-widget">
+                    <h4>Need Bulk Pricing?</h4>
+                    <p>We offer specialized rates for container loads.</p>
+                    <a href="contact.html" class="btn-sidebar">Request Quote</a>
                 </div>
 
-                <!-- Need Help Widget -->
-                <div class="sidebar-widget help-widget">
-                    <div class="help-box">
-                        <h4>Need Bulk Pricing?</h4>
-                        <p>Contact our sales team for container-load quotes.</p>
-                        <a href="contact.html" class="help-btn">Get Quote</a>
-                    </div>
-                </div>
             </aside>
 
-            <!-- Product Grid -->
-            <div class="catalog-grid">
-            <!-- Product 1 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Fiberglass Kit" src="https://dummyimage.com/420x260/e0e0e0/002147&text=Fiberglass+Boat+Material">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">MARINE</h3>
-                    <h2 class="catalog-title">Fiberglass Boat Manufacturing Kit</h2>
-                    <p class="catalog-price">Contact for Quote</p>
+            <!-- PRODUCT GRID -->
+            <div class="catalog-content">
+                <div class="section-header-left">
+                    <h2>Inventory & Specifications</h2>
+                    <p>Showing full product range available for global shipping.</p>
                 </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Pump Valve" src="https://dummyimage.com/421x261/e0e0e0/002147&text=Water+Pump+Valve">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">INDUSTRIAL</h3>
-                    <h2 class="catalog-title">Industrial Water Pump Valve</h2>
-                    <p class="catalog-price">Unit Price</p>
+                
+                <!-- Dynamic Grid -->
+                <div id="products-root" class="catalog-grid">
+                    <div class="catalog-loading">Loading Catalog Data...</div>
                 </div>
-            </div>
 
-            <!-- Product 3 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Teak Logs" src="https://dummyimage.com/422x262/e0e0e0/002147&text=Teak+Wood+Logs">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">MARINE</h3>
-                    <h2 class="catalog-title">Marine Grade Timber</h2>
-                    <p class="catalog-price">Cubic Meter</p>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Marine Timber"
-                        src="https://dummyimage.com/423x263/e0e0e0/002147&text=Marine+Mechanical+Part">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">MECHANICAL</h3>
-                    <h2 class="catalog-title">Precision Mechanical Component</h2>
-                    <p class="catalog-price">Unit Price</p>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Marine Hardware"
-                        src="https://dummyimage.com/424x264/e0e0e0/002147&text=Marine+Hardware+Set">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">MARINE</h3>
-                    <h2 class="catalog-title">Marine Utility Hardware</h2>
-                    <p class="catalog-price">Set Price</p>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Ship Repair Material" src="https://dummyimage.com/425x265/e0e0e0/002147&text=Ship+Repair+Material">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">MARINE</h3>
-                    <h2 class="catalog-title">Ship Repairing Materials</h2>
-                    <p class="catalog-price">Bulk Order</p>
-                </div>
-            </div>
-
-            <!-- Product 7 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Jewellery" src="https://dummyimage.com/427x267/e0e0e0/002147&text=Artificial+Jewellery">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">TRADING</h3>
-                    <h2 class="catalog-title">Artificial Jewellery Collection</h2>
-                    <p class="catalog-price">Catalog Price</p>
-                </div>
-            </div>
-
-            <!-- Product 8 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Domestic Logistics" src="https://dummyimage.com/428x268/e0e0e0/002147&text=Domestic+Supply+Logistics">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">DOMESTIC</h3>
-                    <h2 class="catalog-title">Perishables Logistics Service</h2>
-                    <p class="catalog-price">Service Quote</p>
+                <!-- No Results State (Hidden by default) -->
+                <div id="no-results" class="no-results-message" style="display: none;">
+                    <h3>No products found</h3>
+                    <p>Try adjusting your search terms.</p>
+                    <button id="reset-search">View All Products</button>
                 </div>
             </div>
 
         </div>
-        </div>
-    </section>
+    </main>
 
+    <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 AORR Global Trading & Distribution. All Rights Reserved.</p>
+        <div class="footer-large-logo">
+            <div class="footer-logo-icon"></div>
+            AORR
+        </div>
+
+        <div class="footer-content-grid">
+            <div class="footer-tagline">
+                Delivering practical, compliant, and scalable trade solutions for international commerce across borders.
+            </div>
+
+            <div class="footer-contact">
+                <div class="footer-heading">Contact Us</div>
+                <p>49/1/1, Shri Hari Krupa<br>Kothrud, Pune, MH 411038</p>
+                <br>
+                <p><a href="mailto:Shraddha.kaluskar@gmail.com">Shraddha.kaluskar@gmail.com</a></p>
+                <p>+91 8975218910</p>
+            </div>
+
+            <div class="footer-newsletter">
+                <div class="footer-heading">Stay Informed</div>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom-nav">
+            <a href="index.html" class="footer-nav-link">Home</a>
+            <a href="about-us.html" class="footer-nav-link">About</a>
+            <a href="services.html" class="footer-nav-link">Services</a>
+            <a href="products.html" class="footer-nav-link">Products</a>
+            <a href="market-insights.html" class="footer-nav-link">Insights</a>
+            <a href="contact.html" class="footer-nav-link">Privacy Policy</a>
+            <a href="#" class="footer-nav-link">Terms</a>
+            <span style="font-size: 0.8rem; color: #555;">&copy; 2026 AORR Global Trading</span>
+        </div>
     </footer>
 
-    <script>
-        // Flip cards animation when they come into view
-        const flipCards = document.querySelectorAll('.flip-card');
-        
-        // Intersection Observer for auto-flip on scroll
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Stagger the animation for each card
-                    setTimeout(() => {
-                        entry.target.classList.add('in-view');
-                    }, index * 200);
-                    
-                    // Remove the animation class after it completes so it can be triggered again
-                    setTimeout(() => {
-                        entry.target.classList.remove('in-view');
-                    }, 3000 + (index * 200));
-                }
-            });
-        }, observerOptions);
-
-        flipCards.forEach(card => {
-            observer.observe(card);
-        });
-
-        // Mobile tap-to-flip functionality
-        if ('ontouchstart' in window) {
-            flipCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    this.classList.toggle('tapped');
-                });
-            });
-        }
-    </script>
     <script src="templatemo-prism-scripts.js"></script>
+    <script type="module" src="products-logic.js"></script>
+    <script type="module" src="global-search-logic.js"></script>
 </body>
-
 </html>
