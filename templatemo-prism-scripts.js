@@ -2,38 +2,38 @@
 const portfolioData = [
     {
         id: 1,
-        title: 'Agro-Commodities',
-        description: 'Premium quality Cashew, Spices, and Cocoa sourced directly from top producers. Ensuring food safety and traceability.',
-        image: 'images/design.jpg',
-        tech: ['Cashew', 'Spices', 'Cocoa']
+        title: 'Marine Supplies',
+        description: 'Shipbuilding raw materials including Fiberglass, Resins, and Repair Kits. ISO Certified for marine safety.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=Marine+Supplies',
+        tech: ['Fiberglass', 'Resins', 'Marine']
     },
     {
         id: 2,
-        title: 'Sugar & Sweeteners',
-        description: 'High-grade ICUMSA 45 Sugar and sweeteners. Sparkling white purity for industrial and consumer applications.',
-        image: 'images/quantum-cloud.jpg',
-        tech: ['ICUMSA 45', 'Refined', 'Global']
+        title: 'Industrial Components',
+        description: 'High-performance Water Pump Valves and Utility Hardware for commercial industrial applications.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=Industrial+Valves',
+        tech: ['Valves', 'Hardware', 'Industrial']
     },
     {
         id: 3,
-        title: 'FMCG Logistics',
-        description: 'Rapid distribution of fast-moving consumer goods to international markets with efficient supply chain management.',
-        image: 'images/boat.jpg',
-        tech: ['Consumer Goods', 'Fast Moving', 'Export']
+        title: 'Domestic Logistics',
+        description: 'Dedicated domestic supply chain services for perishable goods like fruits and vegetables.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=Domestic+Logistics',
+        tech: ['Perishables', 'Logistics', 'Supply']
     },
     {
         id: 4,
-        title: 'Industrial',
-        description: 'Heavy machinery, scrap metal, and timber logs. Powering infrastructure and manufacturing globally.',
-        image: 'images/iot-matrix.jpg',
-        tech: ['Machinery', 'Timber', 'Metals']
+        title: 'Marine Timber',
+        description: 'Premium Grade A Teak Logs and marine-grade timber for shipbuilding and decking.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=Marine+Timber',
+        tech: ['Teak', 'Timber', 'Shipbuilding']
     },
     {
         id: 5,
-        title: 'Consulting',
-        description: 'Expert guidance on trade regulations, customs clearance, and market entry strategies.',
-        image: 'images/data-nexus.jpg',
-        tech: ['Strategy', 'Compliance', 'Logistics']
+        title: 'General Trading',
+        description: 'Global trading of engineered mechanical parts, accessories, and commercial consumer goods.',
+        image: 'https://dummyimage.com/320x220/002147/fff&text=General+Trading',
+        tech: ['Trading', 'Commercial', 'Global']
     }
 ];
 
@@ -83,11 +83,35 @@ function createCarouselItem(data, index) {
 function initCarousel() {
     if (!carousel) return;
     carousel.innerHTML = '';
-    portfolioData.forEach((data, index) => {
+    
+    // Create items
+    const createdItems = portfolioData.map((data, index) => {
         const item = createCarouselItem(data, index);
         carousel.appendChild(item);
+        return item;
     });
-    updateCarousel();
+
+    // Robust Image Loading Handler
+    const images = Array.from(carousel.querySelectorAll('img'));
+    const imagePromises = images.map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => {
+            img.onload = resolve;
+            img.onerror = resolve; // Proceed even if an image fails
+        });
+    });
+
+    // Wait for images then initialize layout
+    Promise.all(imagePromises).then(() => {
+        // Force a layout update
+        updateCarousel();
+        
+        // Add class to reveal container smoothly
+        const container = carousel.parentElement;
+        if (container) {
+            container.classList.add('initialized');
+        }
+    });
 }
 
 // Update Carousel with Professional 'Deck' Style
@@ -96,6 +120,25 @@ function updateCarousel() {
     const items = document.querySelectorAll('.carousel-item');
     const totalItems = items.length;
     const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+        // Mobile: Reset styles to allow CSS flex/scroll handling
+        items.forEach((item) => {
+            item.style.transform = '';
+            item.style.zIndex = '';
+            item.style.opacity = '';
+            item.style.boxShadow = '';
+            item.style.position = '';
+            item.style.top = '';
+            item.style.left = '';
+        });
+        // Initialize highlights once
+        if (!carousel.dataset.mobileInitialized) {
+            initMobileScrollHighlight();
+            carousel.dataset.mobileInitialized = 'true';
+        }
+        return;
+    }
 
     items.forEach((item, index) => {
         let offset = index - currentIndex;
@@ -111,8 +154,8 @@ function updateCarousel() {
         item.style.boxShadow = '';
 
         // Tighter spacing and less rotation for corporate look
-        const spacing = isMobile ? 40 : 120; // Much tighter than 320px
-        const baseScale = isMobile ? 0.9 : 0.95;
+        const spacing = 120;
+        const baseScale = 0.95;
 
         if (absOffset === 0) {
             // Center Item
@@ -122,13 +165,13 @@ function updateCarousel() {
             item.style.boxShadow = '0 20px 50px rgba(0,0,0,0.2)'; // Emphasis shadow
         } else if (absOffset === 1) {
             // Immediate Neighbors
-            item.style.transform = `translate(-50%, -50%) translateX(${sign * (isMobile ? 180 : 380)}px) translateZ(-100px) scale(${baseScale})`;
+            item.style.transform = `translate(-50%, -50%) translateX(${sign * 380}px) translateZ(-100px) scale(${baseScale})`;
             item.style.zIndex = '5';
             item.style.opacity = '0.9';
             item.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
         } else if (absOffset === 2) {
             // Far Neighbors
-            item.style.transform = `translate(-50%, -50%) translateX(${sign * (isMobile ? 320 : 700)}px) translateZ(-200px) scale(${baseScale * 0.9})`;
+            item.style.transform = `translate(-50%, -50%) translateX(${sign * 700}px) translateZ(-200px) scale(${baseScale * 0.9})`;
             item.style.zIndex = '2';
             item.style.opacity = '0.6';
         } else {
@@ -220,14 +263,46 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarousel();
     initParticles();
 
-    // Carousel buttons
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    // Handle Resize for Carousel to switch between 3D and Scroll modes
+    window.addEventListener('resize', () => {
+        updateCarousel();
+    });
 
-    // Auto rotate carousel
-    setInterval(nextSlide, 5000);
+    // Carousel buttons
+    // Auto rotate carousel - REMOVED for user preference (no auto rotation)
+    // setInterval(nextSlide, 5000);
+
+    // Debounce state for scroll
+    let isTransitioning = false;
+    const scrollCooldown = 800; // Matches transition time
+
+    // Add Scroll/Wheel Interaction with Debounce
+    const container = document.querySelector('.carousel-container');
+    if (container) {
+        container.addEventListener('wheel', (e) => {
+            // Disable custom scroll logic on mobile/tablets to ensure native vertical scrolling works
+            if (window.innerWidth <= 768) return; 
+
+            e.preventDefault();
+            
+            if (isTransitioning) return;
+            
+            // Threshold for trackpads
+            if (Math.abs(e.deltaY) < 20) return;
+
+            isTransitioning = true;
+            
+            if (e.deltaY > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+
+            setTimeout(() => {
+                isTransitioning = false;
+            }, scrollCooldown);
+        }, { passive: false }); // key for preventing default
+    }
 
     // Contact form listener
     const contactForm = document.getElementById('contactForm');
@@ -551,4 +626,49 @@ function initCatalogFilters() {
         
         filterItems(categoryName, e.target.value);
     });
+}
+
+// Mobile Scroll Highlight Logic
+function initMobileScrollHighlight() {
+    const carousel = document.getElementById('carousel');
+    if (!carousel) return;
+
+    const items = carousel.querySelectorAll('.carousel-item');
+    if (items.length === 0) return;
+
+    // Helper to find center card
+    const updateActiveCard = () => {
+        const containerCenter = carousel.scrollLeft + (carousel.offsetWidth / 2);
+        let closestItem = null;
+        let minDistance = Infinity;
+
+        items.forEach(item => {
+            // Get item center relative to the container scroll
+            // item.offsetLeft is relative to container start (0), not viewport
+            const itemCenter = item.offsetLeft + (item.offsetWidth / 2);
+            const distance = Math.abs(containerCenter - itemCenter);
+
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestItem = item;
+            }
+        });
+
+        items.forEach(item => {
+            if (item === closestItem) {
+                item.classList.add('active-card');
+            } else {
+                item.classList.remove('active-card');
+            }
+        });
+    };
+
+    // Listen for scroll
+    carousel.addEventListener('scroll', () => {
+        // Throttling via RequestAnimationFrame for performance
+        window.requestAnimationFrame(updateActiveCard);
+    }, { passive: true });
+
+    // Initial run
+    setTimeout(updateActiveCard, 100);
 }

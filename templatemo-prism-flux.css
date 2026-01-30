@@ -37,7 +37,8 @@
 html {
 	scroll-behavior: smooth;
 	font-size: 16px;
-	/* Base font size */
+	overflow-x: hidden; /* Global horizontal scroll fix */
+	width: 100%;
 }
 
 /* Fluid Typography - Prevents awkward size jumps when zooming */
@@ -250,6 +251,13 @@ img {
 	/* Reduced height to fit better */
 	margin-top: 20px;
 	transform-style: preserve-3d;
+	overflow: hidden; /* Prevent overflow */
+	opacity: 0; /* Hidden until initialized to prevent CLS */
+	transition: opacity 0.8s ease-out;
+}
+
+.carousel-container.initialized {
+	opacity: 1; /* Show when ready */
 }
 
 .carousel {
@@ -265,13 +273,18 @@ img {
 	top: 50%;
 	left: 50%;
 	width: 320px;
+	max-width: 90vw; /* Mobile safety */
 	height: 480px;
 	background: white;
 	border-radius: 12px;
 	overflow: hidden;
 	transition: 0.5s;
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+	backface-visibility: hidden; /* Performance */
+	transform-origin: center center;
 }
+
+
 
 .card {
 	padding: 0;
@@ -1782,8 +1795,66 @@ img {
 	}
 
 	.performance-features-grid {
+		display: grid;
 		grid-template-columns: 1fr;
-		gap: 20px;
+		gap: 25px;
+		overflow: visible; /* Ensure page scrolls naturally */
+		margin: 20px 0;
+		padding: 10px 5px;
+	}
+
+	.performance-features-grid::-webkit-scrollbar {
+		display: none;
+	}
+
+	.performance-features-grid .reveal-card {
+		width: 100%;
+		flex: none;
+		scroll-snap-align: none;
+		background: white; /* Cleaner white background */
+		border: 1px solid rgba(0, 0, 0, 0.05);
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+		border-radius: 16px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* Premium Top Gradient Border */
+	.performance-features-grid .reveal-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: linear-gradient(90deg, var(--primary-navy), var(--accent-gold));
+	}
+
+	/* Tap Hint for Usability */
+	.performance-features-grid .reveal-card::after {
+		content: 'Tap for Details';
+		position: absolute;
+		bottom: 20px;
+		width: 100%;
+		text-align: center;
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: #aaa;
+		pointer-events: none;
+		opacity: 0.6;
+		font-weight: 600;
+	}
+
+	.performance-features-grid .reveal-card:hover::after {
+		opacity: 0;
+	}
+
+	.performance-features-grid .reveal-card svg {
+		width: 60px;
+		height: 60px;
+		filter: drop-shadow(0 4px 10px rgba(197, 160, 101, 0.2));
+		margin-bottom: 20px;
 	}
 
 	#performanceChart {
@@ -1980,7 +2051,9 @@ img {
 	margin-bottom: 25px;
 }
 
-.story-text p {
+.story-text p,
+.story-text ul li,
+.story-text li {
 	font-size: 1.05rem;
 	line-height: 1.8;
 	color: #555;
@@ -3095,10 +3168,12 @@ img {
 	.carousel-container {
 		height: 420px;
 		margin-top: 30px;
+		/* overflow-x: hidden; handled by main class, but safe to keep container bounds */
 	}
 
 	.carousel-item {
 		width: 260px;
+		max-width: 85vw; /* Extra safety for fold devices */
 		height: 360px;
 	}
 
@@ -3708,7 +3783,9 @@ html {
 	position: relative;
 	/* Optimize Repaints */
 	transform: translateZ(0);
-	overflow: visible;
+	overflow: visible; /* Prevent forced scroll context */
+	height: auto;
+	min-height: unset;
 }
 
 .impact-container {
@@ -3722,6 +3799,8 @@ html {
 	position: relative;
 	z-index: 2;
 	overflow: visible;
+	height: auto;
+	min-height: unset;
 }
 
 .impact-headline {
@@ -3787,24 +3866,8 @@ html {
 	overflow: hidden;
 }
 
-/* Hide scrollbars for all elements in global impact section */
-.global-impact-section,
-.global-impact-section *,
-.impact-container,
-.impact-stats-list {
-	scrollbar-width: none;
-	/* Firefox */
-	-ms-overflow-style: none;
-	/* IE and Edge */
-}
-
-.global-impact-section::-webkit-scrollbar,
-.global-impact-section *::-webkit-scrollbar,
-.impact-container::-webkit-scrollbar,
-.impact-stats-list::-webkit-scrollbar {
-	display: none;
-	/* Chrome, Safari, Opera */
-}
+/* Force hide scrollbars as requested */
+/* Standard scroll behavior restored */
 
 /* Background decorative glow */
 .global-impact-section::before {
@@ -3915,24 +3978,26 @@ html {
 /* Mobile Responsive */
 @media (max-width: 900px) {
 	.impact-headline {
-		font-size: 2.5rem;
+		font-size: 2rem;
+		word-wrap: break-word; /* Ensure clear wrapping */
 	}
 
 	.impact-stat-item strong {
-		font-size: 3rem;
+		font-size: 2.2rem; /* Prevent text overflow */
 	}
 
 	.impact-container {
 		grid-template-columns: 1fr;
 		gap: 40px;
 		padding: 0 15px;
+		overflow: visible; /* Restore natural flow */
 	}
 
 	.impact-visual-globe {
-		height: 300px;
+		height: 280px;
 		width: 100%;
-		max-width: 300px;
-		margin: 40px auto 0;
+		max-width: 260px; /* Ensure it fits */
+		margin: 30px auto 0;
 		right: 0;
 	}
 
@@ -4200,7 +4265,6 @@ html {
 .skills-section,
 .bento-section,
 .tech-section,
-.impact-container,
 .features-grid-section {
 	overflow-x: hidden;
 	max-width: 100%;
@@ -4225,12 +4289,29 @@ html {
 	background-color: #f2f2f2;
 	border-radius: 10px;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
 	perspective: 1000px;
 	box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5);
 	transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.front-title {
+	margin-top: 20px;
+	font-family: var(--font-main);
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--primary-navy);
+	text-align: center;
+	padding: 0 15px;
+	transition: all 0.3s ease;
+}
+
+.reveal-card:hover .front-title {
+	opacity: 0;
+	transform: translateY(-10px);
 }
 
 .reveal-card svg {
@@ -5559,5 +5640,117 @@ html {
     
     .catalog-category {
         font-size: 0.7rem;
+    }
+}
+
+
+
+/* Mobile Carousel Optimization - Native Smooth Scroll */
+@media (max-width: 768px) {
+    .carousel-container {
+        height: auto !important;
+        overflow: visible !important;
+        padding: 20px 0; /* Vertical padding */
+        margin-top: 10px;
+    }
+
+    .carousel {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        
+        /* Flex Layout for Horizontal Scroll */
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        gap: 20px;
+        
+        /* Scroll Properties */
+        overflow-x: auto !important;
+        overflow-y: hidden;
+        width: 100% !important;
+        /* Padding calculation to center the active item: (100vw - CardWidth) / 2 */
+        /* Card Width is 75vw. So Padding needs to be roughly 12.5vw on sides. */
+        padding: 20px 12.5vw 50px 12.5vw !important; 
+        
+        /* Smooth Scroll & Snap */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        
+        /* Reset 3D */
+        perspective: none !important;
+        transform-style: flat !important;
+    }
+    
+    /* Hide Scrollbar */
+    .carousel::-webkit-scrollbar {
+        display: none;
+    }
+    .carousel {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .carousel-item {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        z-index: 1 !important;
+        
+        /* Default State (Inactive) */
+        opacity: 0.5 !important;
+        transform: scale(0.9) !important;
+        transition: all 0.3s ease !important;
+        
+        /* Sizing - 75vw allows partial visibility of neighbors (approx 12.5vw each side) */
+        flex: 0 0 75vw !important;
+        width: 75vw !important;
+        max-width: 340px !important; /* Cap it for larger phones/tablets */
+        height: 480px !important;
+        
+        /* Snap & Margin */
+        scroll-snap-align: center;
+        margin: 0 !important;
+        
+        /* Deep Shadow & Radius */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 12px !important;
+        background: white !important;
+        border: 1px solid transparent; 
+    }
+    
+    /* Highlighted / Active Card State */
+    .carousel-item.active-card {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        z-index: 10 !important;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
+        border-color: var(--accent-gold) !important; /* Optional gold highlight */
+    }
+    
+    .carousel-item .card {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Industries Check List Grid */
+.industries-check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .industries-check-grid {
+        grid-template-columns: 1fr; /* Stack on mobile to prevent overflow */
+        gap: 10px;
     }
 }

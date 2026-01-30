@@ -4,11 +4,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AORR - Global Trading & Distribution</title>
+    <title>Market Analysis: Empowering Informed Decisions in Global Trade | AORR</title>
     <link rel="stylesheet" href="templatemo-prism-flux.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap"
         rel="stylesheet">
+    
+    <style>
+        /* Map Styles */
+        .map-container-simple {
+            position: relative;
+            width: 100%;
+        }
+
+        .map-city-pin {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease;
+        }
+
+        .map-city-pin:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+        }
+
+        .map-city-pin::before {
+            content: '📍';
+            font-size: 24px;
+            display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: #002147;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border: 2px solid #C5A065;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .map-city-pin:hover .map-tooltip {
+            opacity: 1;
+        }
+        
+        /* Light Theme Overrides for Stats */
+        .stat-card {
+            background: #ffffff !important;
+            border: 1px solid #e0e0e0 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-card:hover {
+            background: #f8f9fa !important;
+            border-color: #C5A065 !important;
+            transform: translateY(-5px);
+        }
+        
+        .stat-label {
+            color: #002147 !important; /* Navy text for visibility */
+            font-weight: 600;
+        }
+
+        /* Highlighting Classes */
+        .highlight-text {
+            background: linear-gradient(120deg, rgba(197, 160, 101, 0.2) 0%, rgba(197, 160, 101, 0.1) 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #002147 !important;
+            font-weight: 700;
+        }
+
+        /* Mobile Optimization Start */
+        @media (max-width: 1024px) {
+            .reach-flex-container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Adjust Hero Typography */
+            .hero-title {
+                font-size: 2.2rem !important;
+                line-height: 1.2;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem !important;
+                padding: 0 20px;
+            }
+
+            /* Normalize Section Padding */
+            .stats-section, .philosophy-section, .reach-section {
+                padding: 50px 20px !important;
+            }
+            
+            /* Stats Grid - 2 columns on tablet */
+            .stats-grid-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px;
+            }
+
+            /* Global Reach Flex Stack */
+            .reach-flex-container {
+                flex-direction: column;
+                gap: 40px !important;
+            }
+            
+            /* Force full width for flex items to override inline min-width */
+            .reach-flex-item {
+                min-width: 100% !important;
+                flex: none !important;
+                width: 100% !important;
+            }
+            
+            /* Adjust regional cards grid */
+            .regional-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Ensure images are responsive */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Stats Grid - 1 column on mobile */
+            .stats-grid-container {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Typography Scaling */
+            .hero-title {
+                font-size: 1.8rem !important;
+            }
+            .philosophy-headline {
+                font-size: 1.5rem !important;
+            }
+            .philosophy-subheading {
+                font-size: 1rem !important;
+            }
+            
+            /* Adjust spacing */
+            .reach-section, .philosophy-section {
+                padding: 40px 15px !important;
+            }
+            
+            /* Pin size adjustment for better touch targets */
+            .map-city-pin {
+                width: 40px;
+                height: 40px;
+            }
+            .map-city-pin::before {
+                font-size: 28px;
+            }
+        }
+        /* Mobile Optimization End */
+    </style>
+
+    <link rel="stylesheet" href="global-search-style.css">
 </head>
 
 <body>
@@ -29,6 +195,7 @@
                 <li><a href="services.html" class="nav-link">Services</a></li>
                 <li><a href="products.html" class="nav-link">Products</a></li>
                 <li><a href="market-insights.html" class="nav-link active">Insights</a></li>
+                <li><a href="how-it-works.html" class="nav-link">Process</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
@@ -39,16 +206,16 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home" style="height: 60vh;">
+    <section class="hero" id="home" style="height: 60vh; background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(0, 21, 46, 0.8)), url('images/background_image.jpg'); background-size: cover; background-position: center;">
         <div class="hero-overlay-text">
-            <h1 class="hero-title">Market Intelligence</h1>
-            <p class="hero-subtitle">Data-Driven Trade Strategies</p>
+            <h1 class="hero-title">Empowering Informed Decisions</h1>
+            <p class="hero-subtitle">Up-to-date insights for dynamic international trade</p>
         </div>
     </section>
 
     <!-- Stats Grid -->
-    <section class="stats-section" id="insights" style="background: var(--primary-navy); padding-bottom: 50px;">
-        <div class="stats-grid">
+    <section class="stats-section" id="insights" style="background: #ffffff; padding-bottom: 50px;">
+        <div class="stats-grid stats-grid-container">
             <div class="stat-card">
                 <div class="stat-number" data-target="3.3" data-suffix="%">0</div>
                 <div class="stat-label">WTO 2025 Growth Projection</div>
@@ -68,36 +235,242 @@
         </div>
     </section>
 
-    <!-- Insights Content -->
-    <section class="philosophy-section" id="about">
-        <!-- <div class="philosophy-particles" id="particles"></div> -->
+    <!-- Market Analysis Content -->
+    <section class="philosophy-section" id="about" style="background: #ffffff;">
         <div class="philosophy-container">
-            <h2 class="philosophy-headline">Global Trade Outlook</h2>
-            <p class="philosophy-subheading">
-                We analyze global trends to position your products where demand is highest.
+            <h2 class="philosophy-headline" style="color: #002147;">Market Analysis & Insights</h2>
+            <p class="philosophy-subheading" style="max-width: 800px; margin: 0 auto 50px; color: #555555;">
+                At AORR, we recognize the importance of providing our clients with up-to-date opportunities, insights, and perspectives to facilitate informed decision-making in the dynamic world of international trade.
             </p>
 
-            <div style="margin-top: 50px; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
-                <h3 style="color: var(--accent-gold); margin-bottom: 20px;">WTO 2025 Projections</h3>
-                <p style="color: #ccc; margin-bottom: 40px;">
-                    World merchandise trade volume is projected to grow by <strong>3.3% in 2025</strong>. This signals a
-                    robust recovery in international exchange, driven primarily by industrialization in developing
-                    nations.
-                </p>
+            <!-- Global Trade Outlook -->
+            <!-- Global Trade Outlook -->
+            <div style="margin-top: 50px; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <div style="background: #f8f9fa; padding: 40px; border-radius: 15px; border-left: 5px solid var(--accent-gold); margin-bottom: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <h3 style="color: #002147; margin-bottom: 15px; font-size: 1.8rem;">📊 Global Trade Outlook (2025 Projections)</h3>
+                    <div style="color: #555; line-height: 1.8;">
+                        <p style="margin-bottom: 15px;">
+                            <strong style="color: #002147; font-size: 1.1rem;">Growth Forecast:</strong> The World Trade Organization (WTO) projects that global merchandise trade will grow by <strong style="color: #bfa15f;">3.3% in 2025</strong>.
+                        </p>
+                        <p style="margin-bottom: 0; padding-left: 20px; border-left: 3px solid #C5A065;">
+                            <strong>Context:</strong> This follows a recovery period after a 1.2% decline in 2023. The anticipated growth is expected to be driven by a rebound in global merchandise trade, while services trade remains strong.
+                        </p>
+                    </div>
+                </div>
 
-                <h3 style="color: var(--accent-gold); margin-bottom: 20px;">Regional Hotspots</h3>
-                <p style="color: #ccc; margin-bottom: 40px;">
-                    <strong>Africa (5.3% Growth)</strong>: Rapidly expanding export capabilities in agriculture and raw
-                    materials.<br>
-                    <strong>Asia (5.6% Demand)</strong>: Continuing to drive global import demand, particularly for FMCG
-                    and industrial machinery.
-                </p>
+                <!-- Regional Trade Dynamics -->
+                <h3 style="color: #002147; margin-bottom: 30px; font-size: 1.8rem;">🌍 Regional Trade Dynamics</h3>
+                
+                <div class="regional-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 50px;">
+                    <!-- Africa Card -->
+                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                        <h4 style="color: #002147; margin-bottom: 15px; font-size: 1.3rem;">🌍 Africa (High Growth)</h4>
+                        <p style="color: #333; font-size: 1.1rem; margin-bottom: 10px;">
+                            <strong>5.3% Export Growth in 2024</strong>
+                        </p>
+                        <p style="color: #666; line-height: 1.7;">
+                            Forecasted to experience the highest export growth, with continued robust performance expected in 2025. This presents a <em>"new market for expansion"</em>.
+                        </p>
+                    </div>
 
-                <h3 style="color: var(--accent-gold); margin-bottom: 20px;">Strategic Agility</h3>
-                <p style="color: #ccc; margin-bottom: 20px;">
-                    Our team monitors US-EU tariffs and trade policy shifts 24/7, allowing us to pivot supply chains
-                    instantly to avoid bottlenecks and minimize costs.
-                </p>
+                    <!-- Asia Card -->
+                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                        <h4 style="color: #002147; margin-bottom: 15px; font-size: 1.3rem;">🌏 Asia (Strong Demand)</h4>
+                        <p style="color: #333; font-size: 1.1rem; margin-bottom: 10px;">
+                            <strong>5.6% Import Growth Expected</strong>
+                        </p>
+                        <p style="color: #666; line-height: 1.7;">
+                            Imports expected to grow significantly, indicating strong demand and potential opportunities for exporters across multiple sectors.
+                        </p>
+                    </div>
+
+                    <!-- Europe Card -->
+                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                        <h4 style="color: #002147; margin-bottom: 15px; font-size: 1.3rem;">🇪🇺 Europe (Challenging)</h4>
+                        <p style="color: #333; font-size: 1.1rem; margin-bottom: 10px;">
+                            <strong>1.7% Export Growth</strong>
+                        </p>
+                        <p style="color: #666; line-height: 1.7;">
+                            Exports anticipated to grow modestly, suggesting a more challenging environment for exporters in this region.
+                        </p>
+                    </div>
+
+                    <!-- China Card -->
+                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                        <h4 style="color: #002147; margin-bottom: 15px; font-size: 1.3rem;">🇨🇳 China</h4>
+                        <p style="color: #333; font-size: 1.1rem; margin-bottom: 10px;">
+                            <strong>Economic Stimulus</strong>
+                        </p>
+                        <p style="color: #666; line-height: 1.7;">
+                            Aggressive financial measures expected to stimulate the economy, potentially boosting trade volumes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Trade Policies Impact -->
+                <div style="background: #f8f9fa; padding: 40px; border-radius: 15px; margin-bottom: 50px; border: 1px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <h3 style="color: #002147; margin-bottom: 20px; font-size: 1.8rem;">⚠️ Impact of Trade Policies & Tensions</h3>
+                    <div style="color: #555; line-height: 1.8;">
+                        <p style="margin-bottom: 20px;">
+                            <strong style="color: #333;">US-EU Relations:</strong> Recent trade tensions between the U.S. and Europe have introduced uncertainties. The American Chamber of Commerce to the EU warns that the <strong style="color: #bfa15f;">U.S.-EU tariff conflict threatens $9.5 trillion in annual business</strong>.
+                        </p>
+                        <div style="background: #ffffff; padding: 20px; border-radius: 8px; border-left: 4px solid #002147; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <p style="margin: 0; color: #333;">
+                                <strong>📌 Advisory:</strong> This emphasizes the critical need for businesses to stay informed and agile regarding policy changes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategic Considerations -->
+                <div style="background: #f0f4f8; padding: 50px; border-radius: 15px; border: 1px solid #d1d9e6;">
+                    <h3 style="color: #002147; margin-bottom: 30px; font-size: 1.8rem; text-align: center;">💡 Strategic Considerations for AORR Clients</h3>
+                    <p style="color: #555; text-align: center; margin-bottom: 40px; font-size: 1.05rem;">
+                        To navigate this landscape, AORR recommends the following strategies:
+                    </p>
+                    
+                    <div style="display: grid; gap: 25px;">
+                        <!-- Strategy 1 -->
+                        <div style="display: flex; gap: 20px; align-items: start;">
+                            <div style="background: #002147; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">1</div>
+                            <div>
+                                <h4 style="color: #002147; margin-bottom: 10px; font-size: 1.2rem;">🌍 Diversify Markets</h4>
+                                <p style="color: #555; line-height: 1.7; margin: 0;">
+                                    Engage with high-growth regions like Africa and Asia to mitigate risks associated with slower-growing markets.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Strategy 2 -->
+                        <div style="display: flex; gap: 20px; align-items: start;">
+                            <div style="background: #002147; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">2</div>
+                            <div>
+                                <h4 style="color: #002147; margin-bottom: 10px; font-size: 1.2rem;">📊 Stay Informed</h4>
+                                <p style="color: #555; line-height: 1.7; margin: 0;">
+                                    Monitor and adapt to changing trade policies to navigate potential barriers and capitalize on emerging opportunities.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Strategy 3 -->
+                        <div style="display: flex; gap: 20px; align-items: start;">
+                            <div style="background: #002147; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">3</div>
+                            <div>
+                                <h4 style="color: #002147; margin-bottom: 10px; font-size: 1.2rem;">⚙️ Leverage Technology</h4>
+                                <p style="color: #555; line-height: 1.7; margin: 0;">
+                                    Utilize advanced supply chain management tools to enhance efficiency and responsiveness in a dynamic trade environment.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Reach with Map Section -->
+    <section class="reach-section" style="background: #ffffff; padding: 80px 20px;">
+        <div class="reach-flex-container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px;">
+            <!-- Map Container -->
+            <div class="reach-flex-item" style="flex: 1; min-width: 350px; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); position: relative;">
+                <div class="map-container-simple">
+                    <svg viewBox="0 0 500 500" style="width: 100%; height: auto; display: block;">
+                        <rect style="fill: #f0f4f8" width="500" height="500"></rect>
+                        <path
+                            style="fill: #cbd5e1"
+                            d="M0,367.82c5.83-4.39,14.42-10.16,25.59-15.34,4.52-2.09,43.19-19.51,79.55-11.93,36.1,7.52,35.75,32.55,78.41,60.23,46.34,30.06,109.47,41.21,123.32,22.1,11.95-16.49-22.61-41.92-13.66-84.6,4.85-23.1,22.33-50.71,47.73-58.52,42.42-13.05,78.83,39.45,102.84,23.86,15.81-10.26.01-32.87,22.73-74.43,5.8-10.62,11.65-21.15,11.93-36.93.28-15.69-5.63-26.64-7.95-32.39-6.66-16.45-6.21-45.15,28.84-98.55.23,146.23.46,292.46.69,438.69H0v-132.18Z"
+                        ></path>
+                    </svg>
+                    
+                    <!-- Location Pins -->
+                    <div class="map-city-pin" style="left: 15%; top: 45%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">West Africa Hub</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 35%; top: 52%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">East Africa Port</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 52%; top: 38%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">Middle East</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 68%; top: 28%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">Mumbai Hub</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 78%; top: 42%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">Southeast Asia</div>
+                    </div>
+                    <div class="map-city-pin" style="left: 88%; top: 55%;">
+                        <div class="map-tooltip" style="bottom: 30px; left: 50%; transform: translateX(-50%);">Pacific Port</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features Container -->
+            <div class="reach-flex-item" style="flex: 1; min-width: 350px; display: flex; flex-direction: column; gap: 40px;">
+                <!-- Feature 1: Africa -->
+                <div style="display: flex; gap: 20px;">
+                    <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #f0f4f8; color: #002147; flex-shrink: 0;">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <h2 style="color: #002147; font-size: 1.2rem; font-weight: 600; margin-bottom: 12px;">Africa: Emerging Market Leader</h2>
+                        <p style="color: #555; line-height: 1.7; margin-bottom: 15px;">
+                            With 5.3% projected export growth, Africa represents our fastest-growing market for marine supplies, particularly fiberglass boat kits and repair materials.
+                        </p>
+                        <a href="#" style="color: #002147; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500;">
+                            Explore Products
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 16px; height: 16px;" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Asia -->
+                <div style="display: flex; gap: 20px;">
+                    <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #f0f4f8; color: #002147; flex-shrink: 0;">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+                            <circle cx="6" cy="6" r="3"></circle>
+                            <circle cx="6" cy="18" r="3"></circle>
+                            <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+                        </svg>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <h2 style="color: #002147; font-size: 1.2rem; font-weight: 600; margin-bottom: 12px;">Asia: Import Powerhouse</h2>
+                        <p style="color: #555; line-height: 1.7; margin-bottom: 15px;">
+                            Expected 5.6% import growth signals strong demand for industrial valves, mechanical components, and marine hardware across Asian markets.
+                        </p>
+                        <a href="#" style="color: #002147; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500;">
+                            View Opportunities
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 16px; height: 16px;" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Middle East -->
+                <div style="display: flex; gap: 20px;">
+                    <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #f0f4f8; color: #002147; flex-shrink: 0;">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <h2 style="color: #002147; font-size: 1.2rem; font-weight: 600; margin-bottom: 12px;">Middle East: Strategic Hub</h2>
+                        <p style="color: #555; line-height: 1.7; margin-bottom: 15px;">
+                            Our Middle East operations serve as a critical gateway for industrial goods distribution and commercial trading across the region.
+                        </p>
+                        <a href="#" style="color: #002147; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500;">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 16px; height: 16px;" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -107,6 +480,7 @@
     </footer>
 
     <script src="templatemo-prism-scripts.js"></script>
+    <script type="module" src="global-search-logic.js"></script>
 </body>
 
 </html>

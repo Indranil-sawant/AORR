@@ -1,0 +1,525 @@
+/* Product Catalog - Sidebar Layout & Card Grid */
+
+/* Hero Section */
+.products-hero-section {
+    background-color: var(--primary-dark);
+    background: linear-gradient(rgba(0, 33, 71, 0.9), rgba(0, 21, 46, 0.95)), 
+                url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 180px 20px 80px;
+    text-align: center;
+    color: white;
+}
+
+.products-hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.products-hero-title span {
+    color: var(--accent-gold);
+}
+
+.products-hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Two-Column Layout */
+.catalog-section {
+    background-color: #f4f6f9;
+    min-height: 80vh;
+    padding: 60px 20px;
+}
+
+.catalog-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Slightly narrower Sidebar */
+    gap: 40px;
+    align-items: start;
+}
+
+/* Sidebar Styles */
+.catalog-sidebar {
+    position: sticky;
+    top: 100px; /* Stick below header */
+    height: auto;
+    max-height: 85vh; /* Prevent sidebar from being longer than viewport */
+    overflow-y: auto; /* Scrollable sidebar */
+    scrollbar-width: thin;
+}
+
+/* Widget Container - Clean White Card */
+.sidebar-widget {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03); /* Softer, deeper shadow */
+    border: 1px solid rgba(0,0,0,0.02);
+    margin-bottom: 20px;
+}
+
+/* Widget Header Text */
+.widget-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--primary-navy); /* Darker for better visibility */
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* PREMIUM SEARCH BOX DESIGN */
+.search-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* The Input Field */
+.search-box input {
+    width: 100%;
+    padding: 12px 18px; /* Comfortable padding */
+    padding-right: 44px; /* Space for icon */
+    border: 1px solid #e0e6ed;
+    border-radius: 8px; 
+    font-size: 0.95rem; /* Readable size */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: #fdfdfd; 
+    height: 48px; /* Taller, premium feel */
+    color: var(--primary-navy);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02) inset;
+}
+
+.search-box input:focus {
+    border-color: var(--accent-gold);
+    background: white;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(197, 160, 101, 0.15); /* Gold glow */
+}
+
+.search-box input::placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+/* The Search Icon */
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: #b0b0b0; /* Neutral grey initially */
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.search-box input:focus + .search-icon {
+    color: var(--accent-gold); /* Gold on active */
+    transform: translateY(-50%) scale(1.1);
+}
+
+
+/* SIDEBAR NAVIGATION */
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-bottom: 4px;
+}
+
+/* Parent Links */
+.nav-link-parent {
+    display: block;
+    padding: 12px 15px; /* More breathing room */
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--primary-navy);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.nav-link-parent:hover {
+    background: #f4f6f9;
+    color: var(--accent-gold);
+}
+
+.nav-link-parent.active {
+    background: linear-gradient(90deg, #f0f4f8, white);
+    color: var(--primary-navy);
+    border-left: 3px solid var(--accent-gold);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+/* Nested Sub-list */
+.nav-sub-list {
+    list-style: none;
+    padding-left: 10px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    display: block; 
+}
+
+.nav-link-child {
+    display: block;
+    padding: 8px 15px;
+    font-size: 0.85rem; 
+    color: #666;
+    text-decoration: none;
+    border-left: 1px solid #eee;
+    transition: 0.2s;
+    margin-left: 10px;
+}
+
+.nav-link-child:hover {
+    color: var(--accent-gold);
+    border-left-color: var(--accent-gold);
+    padding-left: 18px;
+    background: transparent; /* Cleaner hover without bg */
+}
+
+.nav-link-child.active {
+    color: var(--primary-navy);
+    font-weight: 700;
+    border-left-color: var(--primary-navy);
+    background: transparent;
+}
+
+/* Main Content Area */
+.section-header-left {
+    margin-bottom: 30px;
+}
+
+.section-header-left h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-navy);
+    margin-bottom: 10px;
+}
+
+.section-header-left p {
+    color: #666;
+}
+
+/* Card Grid - Keep Existing */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top: 120px; 
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-color: rgba(197, 160, 101, 0.3);
+}
+
+.card-header-visual {
+    height: 140px;
+    background: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-header-visual::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,33,71,0.9), rgba(0,21,46,0.95));
+    z-index: 1;
+}
+
+.card-icon-large {
+    position: relative;
+    z-index: 2;
+    font-size: 3.5rem;
+    color: var(--accent-gold);
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+}
+
+.card-body {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.card-content {
+    margin-top: auto;
+}
+
+details.card-details-drawer {
+    outline: none;
+}
+
+summary.card-drawer-trigger {
+    list-style: none;
+    cursor: pointer;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.2s;
+}
+
+summary.card-drawer-trigger:hover {
+    color: var(--accent-gold);
+}
+
+summary.card-drawer-trigger::after {
+    content: '+';
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+details[open] summary.card-drawer-trigger::after {
+    transform: rotate(45deg);
+}
+
+.hidden-list {
+    padding-top: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* List Items */
+.subcategory-title {
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 15px 0 5px 0;
+    letter-spacing: 0.5px;
+}
+
+.item-list {
+    list-style: none;
+    padding: 0;
+}
+
+.item-list li {
+    font-size: 0.9rem;
+    color: #444;
+    padding: 4px 0;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.item-list li::before {
+    content: '›';
+    color: #ccc;
+    margin-right: 8px;
+}
+
+/* Subcategory Page View Styles */
+.subcategory-view-container {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.sub-hero-banner {
+    height: 300px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.sub-hero-overlay {
+    background: rgba(0, 33, 71, 0.7); /* Navy overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sub-hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 20px;
+}
+
+.sub-hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+}
+
+.sub-hero-desc {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: var(--primary-navy);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    color: var(--accent-gold);
+    transform: translateX(-5px);
+}
+
+/* Products in Subcategory (Cards) */
+.products-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Smaller cards for items */
+    gap: 25px;
+}
+
+.item-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: var(--accent-gold);
+}
+
+.item-card-image-placeholder {
+    height: 160px;
+    background: #f4f6f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: rgba(0, 33, 71, 0.1); /* Faint icon */
+}
+
+.item-card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-card-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    color: var(--primary-navy);
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.item-card-category {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* Mobile Layout - Sidebar handling */
+@media (max-width: 992px) {
+    .catalog-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .catalog-sidebar {
+        position: relative;
+        top: 0;
+        margin-bottom: 30px;
+        max-height: 250px; /* Even smaller constraint for mobile convenience */
+        z-index: 10;
+        border: 1px solid #e0e0e0;
+    }
+    
+    .sidebar-widget {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+
+    .search-box input {
+        padding: 12px;
+        background: #f8f9fa;
+        height: 48px; /* Easier touch target */
+    }
+    
+    .btn-sidebar {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>AORR - Global Trading & Distribution | Products</title>
+    <meta name="description" content="Explore our extensive catalog of industrial machinery, mechanical appliances, garments, marine supplies, and agricultural products.">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="templatemo-prism-flux.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="products-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global-search-style.css">
 </head>
-
 <body>
 
     <!-- Header -->
@@ -39,247 +40,114 @@
         </nav>
     </header>
 
-    <!-- Hero Section (3D Carousel) -->
-    <section class="hero" id="home" style="min-height: 60vh; padding-top: 150px;">
-        <div class="hero-overlay-text">
-            <h1 class="hero-title">Product Catalog</h1>
-            <p class="hero-subtitle">World-Class Commodities & Goods</p>
+    <!-- Product Hero -->
+    <section class="products-hero-section">
+        <div class="products-hero-content">
+            <h1 class="products-hero-title">Product <span>Catalog</span></h1>
+            <p class="products-hero-subtitle">Comprehensive supply solutions across machinery, garments, and raw materials.</p>
         </div>
     </section>
 
-    <!-- Integrated BENTO Section (Features) -->
-    <!-- WHERE: Placed below Hero to highlight the logistics/tech advantages before showing products -->
-    <!-- WHY: Establishes trust and capability ("Deploy Faster" -> "Trade Faster") -->
-
-    <!-- Detailed Specifications (Existing Hexagons) -->
-    <!-- KEPT: As requested, preserving existing structure not explicitly replaced, but moving down -->
-    <section class="skills-section" id="services">
-        <div class="section-header">
-            <h2 class="section-title">Core Categories</h2>
-            <p style="color: var(--text-secondary);">Specialized handling for premium goods</p>
-        </div>
-
-        <div class="skills-hexagon-grid">
-            <!-- Agro -->
-            <div class="skill-hexagon">
-                <div class="skill-content">
-                    <span class="skill-icon">🌾</span>
-                    <h3 class="skill-title">Agro-Commodities</h3>
-                    <p style="font-size: 0.9rem;">
-                        <strong>Cashews:</strong> W-180 to W-450 grades.<br>
-                        <strong>Spices:</strong> Cardamom, Black Pepper.
-                    </p>
-                </div>
-            </div>
-            <!-- Sugar -->
-            <div class="skill-hexagon">
-                <div class="skill-content">
-                    <span class="skill-icon">🍬</span>
-                    <h3 class="skill-title">Sugar</h3>
-                    <p style="font-size: 0.9rem;">
-                        <strong>ICUMSA 45:</strong> Refined white sugar.<br>
-                        <strong>Origin:</strong> Brazil & India.
-                    </p>
-                </div>
-            </div>
-            <!-- FMCG -->
-            <div class="skill-hexagon">
-                <div class="skill-content">
-                    <span class="skill-icon">📦</span>
-                    <h3 class="skill-title">FMCG</h3>
-                    <p style="font-size: 0.9rem;">
-                        <strong>Goods</strong>: Daily consumer essentials.<br>
-                        <strong>Markets</strong>: Africa, Asia, Middle East.
-                    </p>
-                </div>
-            </div>
-            <div class="skill-hexagon">
-                <div class="skill-content">
-                    <span class="skill-icon">🚜</span>
-                    <h3 class="skill-title">Industrial</h3>
-                    <p style="font-size: 0.9rem;">
-                        <strong>Machinery</strong>: Tractors, Sewing Machines.<br>
-                        <strong>Materials</strong>: Scrap Metal.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Integrated Product Grid (Catalog) -->
-    <!-- WHERE: Main content area for browsing products -->
-    <!-- WHY: Visual representation of the inventory (replacing the generic "Detailed Specifications" text list with photos) -->
-    <section class="catalog-section">
-        <div class="section-header">
-            <h2 class="section-title">Featured Inventory</h2>
-            <p style="color: #666;">Live availability from our global warehouses</p>
-        </div>
-
-        <div class="catalog-layout">
-            <!-- Sidebar Section -->
+    <!-- Main Content Layout -->
+    <main class="catalog-section">
+        <div class="catalog-container map-layout">
+            
+            <!-- SIDEBAR -->
             <aside class="catalog-sidebar">
+                
                 <!-- Search Widget -->
-                <div class="sidebar-widget search-widget">
-                    <h3 class="widget-title">Search</h3>
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Search Catalog</h3>
                     <div class="search-box">
-                        <input type="text" placeholder="Search inventory...">
-                        <button type="button">🔍</button>
+                        <input type="text" id="product-search" placeholder="Search products...">
+                        <span class="search-icon">🔍</span>
                     </div>
                 </div>
 
-                <!-- Categories Widget -->
+                <!-- Navigation Widget -->
                 <div class="sidebar-widget">
                     <h3 class="widget-title">Categories</h3>
-                    <ul class="category-list">
-                        <li><a href="#" class="cat-link active">All Products <span class="count">(8)</span></a></li>
-                        <li><a href="#" class="cat-link">Agro-Commodities <span class="count">(3)</span></a></li>
-                        <li><a href="#" class="cat-link">Industrial Machinery <span class="count">(2)</span></a></li>
-                        <li><a href="#" class="cat-link">Spices & Herbs <span class="count">(2)</span></a></li>
-                        <li><a href="#" class="cat-link">Raw Materials <span class="count">(1)</span></a></li>
+                    <ul class="sidebar-nav" id="sidebar-nav-list">
+                        <!-- Javascript will populate this based on data -->
+                        <li><a href="#" class="active">Loading...</a></li>
                     </ul>
                 </div>
 
-                <!-- Status Filter -->
-                <div class="sidebar-widget">
-                    <h3 class="widget-title">Availability</h3>
-                    <div class="filter-options">
-                        <label class="filter-check">
-                            <input type="checkbox" checked>
-                            <span class="check-box"></span>
-                            In Stock Ready
-                        </label>
-                        <label class="filter-check">
-                            <input type="checkbox">
-                            <span class="check-box"></span>
-                            Pre-Order Bulk
-                        </label>
-                        <label class="filter-check">
-                            <input type="checkbox">
-                            <span class="check-box"></span>
-                            Export Grade Only
-                        </label>
-                    </div>
+                <!-- Contact Widget -->
+                <div class="sidebar-widget help-widget">
+                    <h4>Need Bulk Pricing?</h4>
+                    <p>We offer specialized rates for container loads.</p>
+                    <a href="contact.html" class="btn-sidebar">Request Quote</a>
                 </div>
 
-                <!-- Need Help Widget -->
-                <div class="sidebar-widget help-widget">
-                    <div class="help-box">
-                        <h4>Need Bulk Pricing?</h4>
-                        <p>Contact our sales team for container-load quotes.</p>
-                        <a href="contact.html" class="help-btn">Get Quote</a>
-                    </div>
-                </div>
             </aside>
 
-            <!-- Product Grid -->
-            <div class="catalog-grid">
-            <!-- Product 1 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Cashew W180" src="https://dummyimage.com/420x260/e0e0e0/002147&text=Premium+Cashew+W180">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">AGRO-COMMODITY</h3>
-                    <h2 class="catalog-title">Premium Cashew W-180</h2>
-                    <p class="catalog-price">Market Price</p>
+            <!-- PRODUCT GRID -->
+            <div class="catalog-content">
+                <div class="section-header-left">
+                    <h2>Inventory & Specifications</h2>
+                    <p>Showing full product range available for global shipping.</p>
                 </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="ICUMSA 45 Sugar" src="https://dummyimage.com/421x261/e0e0e0/002147&text=ICUMSA+45+Sugar">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">COMMODITY</h3>
-                    <h2 class="catalog-title">Refined Sugar ICUMSA 45</h2>
-                    <p class="catalog-price">Bulk / Ton</p>
+                
+                <!-- Dynamic Grid -->
+                <div id="products-root" class="catalog-grid">
+                    <div class="catalog-loading">Loading Catalog Data...</div>
                 </div>
-            </div>
 
-            <!-- Product 3 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Teak Logs" src="https://dummyimage.com/422x262/e0e0e0/002147&text=Teak+Wood+Logs">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">INDUSTRIAL</h3>
-                    <h2 class="catalog-title">Teak Wood Logs (Grade A)</h2>
-                    <p class="catalog-price">Cubic Meter</p>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Sewing Machine"
-                        src="https://dummyimage.com/423x263/e0e0e0/002147&text=Industrial+Sewing+unit">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">MACHINERY</h3>
-                    <h2 class="catalog-title">Industrial Sewing Unit</h2>
-                    <p class="catalog-price">Unit Price</p>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Black Pepper"
-                        src="https://dummyimage.com/424x264/e0e0e0/002147&text=Organic+Black+Pepper">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">SPICES</h3>
-                    <h2 class="catalog-title">Organic Black Pepper</h2>
-                    <p class="catalog-price">Kg / Ton</p>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Scrap Metal" src="https://dummyimage.com/425x265/e0e0e0/002147&text=HMS+1%262+Scrap">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">RECYCLING</h3>
-                    <h2 class="catalog-title">HMS 1&2 Scrap Metal</h2>
-                    <p class="catalog-price">Bulk / Ton</p>
-                </div>
-            </div>
-
-            <!-- Product 7 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Coffee Beans" src="https://dummyimage.com/427x267/e0e0e0/002147&text=Arabica+Coffee">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">AGRO-COMMODITY</h3>
-                    <h2 class="catalog-title">Arabica Coffee Beans</h2>
-                    <p class="catalog-price">Market Price</p>
-                </div>
-            </div>
-
-            <!-- Product 8 -->
-            <div class="catalog-item">
-                <a href="#" class="catalog-image-box">
-                    <img alt="Tractors" src="https://dummyimage.com/428x268/e0e0e0/002147&text=Farm+Tractors">
-                </a>
-                <div class="catalog-details">
-                    <h3 class="catalog-category">MACHINERY</h3>
-                    <h2 class="catalog-title">Agricultural Tractors</h2>
-                    <p class="catalog-price">Unit Price</p>
+                <!-- No Results State (Hidden by default) -->
+                <div id="no-results" class="no-results-message" style="display: none;">
+                    <h3>No products found</h3>
+                    <p>Try adjusting your search terms.</p>
+                    <button id="reset-search">View All Products</button>
                 </div>
             </div>
 
         </div>
-        </div>
-    </section>
+    </main>
 
+    <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 AORR Global Trading & Distribution. All Rights Reserved.</p>
+        <div class="footer-large-logo">
+            <div class="footer-logo-icon"></div>
+            AORR
+        </div>
+
+        <div class="footer-content-grid">
+            <div class="footer-tagline">
+                Delivering practical, compliant, and scalable trade solutions for international commerce across borders.
+            </div>
+
+            <div class="footer-contact">
+                <div class="footer-heading">Contact Us</div>
+                <p>49/1/1, Shri Hari Krupa<br>Kothrud, Pune, MH 411038</p>
+                <br>
+                <p><a href="mailto:Shraddha.kaluskar@gmail.com">Shraddha.kaluskar@gmail.com</a></p>
+                <p>+91 8975218910</p>
+            </div>
+
+            <div class="footer-newsletter">
+                <div class="footer-heading">Stay Informed</div>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom-nav">
+            <a href="index.html" class="footer-nav-link">Home</a>
+            <a href="about-us.html" class="footer-nav-link">About</a>
+            <a href="services.html" class="footer-nav-link">Services</a>
+            <a href="products.html" class="footer-nav-link">Products</a>
+            <a href="market-insights.html" class="footer-nav-link">Insights</a>
+            <a href="contact.html" class="footer-nav-link">Privacy Policy</a>
+            <a href="#" class="footer-nav-link">Terms</a>
+            <span style="font-size: 0.8rem; color: #555;">&copy; 2026 AORR Global Trading</span>
+        </div>
     </footer>
 
     <script src="templatemo-prism-scripts.js"></script>
+    <script type="module" src="products-logic.js"></script>
+    <script type="module" src="global-search-logic.js"></script>
 </body>
-
 </html>
