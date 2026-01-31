@@ -307,11 +307,72 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contact form listener
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        // Email Template Logic
+        const emailButtons = document.querySelectorAll('.email-btn');
+        if (emailButtons.length > 0) {
+            emailButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const emailType = btn.dataset.email;
+                    const messageField = contactForm.querySelector('textarea[name="message"]');
+                    
+                    let templateMessage = "";
+                    let targetEmail = "";
+
+                    if (emailType === 'sales') {
+                        targetEmail = "sales@aorr.in";
+                        templateMessage = "Hello Sales Team,\n\nI am interested in purchasing products from your catalog. specifically [Product Name].\n\nPlease provide pricing and availability.\n\nBest regards,";
+                    } else if (emailType === 'purchase') {
+                        targetEmail = "purchase@aorr.in";
+                        templateMessage = "Hello Purchase Team,\n\nI have a query regarding a recent order [Order ID].\n\nPlease assist.\n\nBest regards,";
+                    } else if (emailType === 'general') {
+                        targetEmail = "aorr@aorr.in";
+                        templateMessage = "Hello AORR Team,\n\nI would like to inquire about [Topic].\n\nBest regards,";
+                    }
+
+                    // Scroll to form
+                    contactForm.scrollIntoView({ behavior: 'smooth' });
+
+                    // Fill message
+                    if (messageField) {
+                        messageField.value = templateMessage;
+                    }
+                    
+                    // Store target email
+                    contactForm.dataset.targetEmail = targetEmail;
+                });
+            });
+        }
+
         contactForm.addEventListener('submit', (e) => {
-            // Optional: prevent default if you want to handle via JS, but for now let's fake it
             e.preventDefault();
-            alert('Transmission Received. We will respond within 24 hours.');
-            contactForm.reset();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email'); 
+            const phone = formData.get('phone');
+            const location = formData.get('location');
+            const message = formData.get('message');
+            
+            // Determine recipient
+            const recipient = contactForm.dataset.targetEmail || "aorr@aorr.in"; 
+            
+            // Construct Mailto Link
+            const subject = encodeURIComponent(`New Inquiry from ${name} - ${location}`);
+            const body = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Phone: ${phone}\n` +
+                `Email: ${email}\n` +
+                `Location: ${location}\n\n` +
+                `Message:\n${message}`
+            );
+
+            // Open Email Client
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            
+            // Reset form (optional, maybe keep it filled for reference)
+            // contactForm.reset();
         });
     }
 

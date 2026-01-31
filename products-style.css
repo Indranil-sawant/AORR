@@ -14,7 +14,7 @@
 }
 
 .products-hero-title {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-main);
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
     margin-bottom: 20px;
@@ -236,7 +236,7 @@
 }
 
 .section-header-left h2 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-main);
     font-size: 2rem;
     color: var(--primary-navy);
     margin-bottom: 10px;
@@ -428,7 +428,7 @@ details[open] summary.card-drawer-trigger::after {
 }
 
 .sub-hero-title {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-main);
     font-size: 2.5rem;
     margin-bottom: 10px;
     color: #fff;
