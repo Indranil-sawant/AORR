@@ -91,8 +91,17 @@
                 
                 <!-- Dynamic Grid -->
                 <div id="products-root" class="catalog-grid">
-                    <div class="catalog-loading">Loading Catalog Data...</div>
-                </div>
+    <noscript>
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #333;">
+            <h3>JavaScript is required to view the catalog.</h3>
+            <p>Please enable JavaScript to browse our products.</p>
+        </div>
+    </noscript>
+    <div class="catalog-loading">
+        <div class="loading-spinner"></div>
+        <span>Loading Catalog...</span>
+    </div>
+</div>
 
                 <!-- No Results State (Hidden by default) -->
                 <div id="no-results" class="no-results-message" style="display: none;">

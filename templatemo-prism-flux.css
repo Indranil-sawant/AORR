@@ -249,11 +249,18 @@ img {
 	width: 100%;
 	height: 500px;
 	/* Reduced height to fit better */
+	min-height: 60vh; /* Responsive height */
 	margin-top: 20px;
 	transform-style: preserve-3d;
 	overflow: hidden; /* Prevent overflow */
 	opacity: 0; /* Hidden until initialized to prevent CLS */
 	transition: opacity 0.8s ease-out;
+}
+
+@media (max-width: 767px) {
+	.carousel-container {
+		height: 450px; /* Smaller height for mobile */
+	}
 }
 
 .carousel-container.initialized {
@@ -776,11 +783,39 @@ img {
 	width: 100%;
 }
 
+/* Tablet & Mobile: Stack Columns */
+@media (max-width: 991px) {
+	.contact-split-layout {
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+}
+
 .contact-split-layout iframe {
 	width: 100%;
 	height: 100%;
 	min-height: 500px;
 	border-radius: 12px;
+}
+
+/* Info Cards (Contact Page) */
+.contact-info-card {
+    background: var(--bg-light);
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-gold);
+}
+
+.contact-info-card h4 {
+    color: var(--primary-navy);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.contact-info-card p {
+    color: #555;
+    line-height: 1.6;
 }
 
 .contact-form label {
@@ -4192,8 +4227,8 @@ html {
 	}
 }
 
-/* Tablet Devices (769px - 900px) */
-@media (min-width: 769px) and (max-width: 900px) {
+/* Tablet Devices (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
 	.skills-hexagon-grid {
 		grid-template-columns: repeat(2, 1fr) !important;
 		gap: 25px;
@@ -4221,8 +4256,8 @@ html {
 	}
 }
 
-/* Small Desktop (901px - 1200px) */
-@media (min-width: 901px) and (max-width: 1200px) {
+/* Laptop Devices (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
 	.skills-hexagon-grid {
 		grid-template-columns: repeat(2, 1fr);
 	}
