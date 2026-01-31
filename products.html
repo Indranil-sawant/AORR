@@ -113,6 +113,50 @@
         </div>
     </main>
 
+    <!-- PRODUCT ENQUIRY MODAL -->
+    <div id="product-enquiry-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="modal-close">&times;</button>
+            
+            <div class="modal-header">
+                <h3>Enquire About <span id="modal-product-name" style="color: var(--accent-gold);">Product</span></h3>
+                <p>Please fill in your details below and we will get back to you with a quote.</p>
+            </div>
+
+            <form id="product-enquiry-form" method="POST" target="hidden_iframe_product" action="https://script.google.com/macros/s/AKfycbzOUHjshiWKCBgY-TQ0yx-z59NvyXHMLKplyMW4IvHAMLSgwBEmWHM9Ub1fuke0gOfj8Q/exec">
+                <input type="hidden" name="product" id="form-product-name">
+                <input type="hidden" name="page" id="form-page-url">
+                
+                <!-- Honeypot -->
+                <input type="text" name="company" style="display:none">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required placeholder="john@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number (Optional)</label>
+                    <input type="tel" name="phone" placeholder="+1 234 567 890">
+                </div>
+
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="3" placeholder="I am interested in this product..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Enquiry</button>
+                <p id="enquiry-status" style="margin-top: 10px; font-weight: 600; text-align: center;"></p>
+            </form>
+            <iframe name="hidden_iframe_product" style="display:none;"></iframe>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-large-logo" style="display: flex; justify-content: center; align-items: center;">

@@ -99,7 +99,7 @@
                 <!-- Contact Form -->
                 <div class="card" style="margin: 0;">
                     <div class="card2">
-                        <form class="form" id="contactForm">
+                        <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec">
                             <p id="heading">Contact Us</p>
 
                             <!-- Name -->
@@ -139,13 +139,20 @@
                                     required></textarea>
                             </div>
 
+                            <input type="hidden" name="page" value="">
+                            
+                            <!-- Honeypot (must stay hidden) -->
+                            <input type="text" name="company" style="display:none">
+
                             <!-- Button -->
                             <div class="btn">
                                 <button class="button1" type="submit">
                                     Send Message
                                 </button>
                             </div>
+                            <p id="formStatus" style="text-align: center; margin-top: 10px; color: green; font-weight: bold;"></p>
                         </form>
+                        <iframe name="hidden_iframe" style="display:none;"></iframe>
                     </div>
                 </div>
 

@@ -344,35 +344,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email'); 
-            const phone = formData.get('phone');
-            const location = formData.get('location');
-            const message = formData.get('message');
-            
-            // Determine recipient
-            const recipient = contactForm.dataset.targetEmail || "aorr@aorr.in"; 
-            
-            // Construct Mailto Link
-            const subject = encodeURIComponent(`New Inquiry from ${name} - ${location}`);
-            const body = encodeURIComponent(
-                `Name: ${name}\n` +
-                `Phone: ${phone}\n` +
-                `Email: ${email}\n` +
-                `Location: ${location}\n\n` +
-                `Message:\n${message}`
-            );
+        const status = document.getElementById("formStatus");
+        if (contactForm.elements.page) {
+             contactForm.elements.page.value = window.location.href;
+        }
 
-            // Open Email Client
-            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-            
-            // Reset form (optional, maybe keep it filled for reference)
-            // contactForm.reset();
+        contactForm.addEventListener('submit', () => {
+            // We do NOT prevent default here, so the form submits to the iframe
+            if (status) {
+                status.textContent = "Sending...";
+                status.style.color = "blue";
+                
+                setTimeout(() => {
+                    status.textContent = "Thank you! We will respond within 24 hours.";
+                    status.style.color = "green";
+                    contactForm.reset();
+                }, 1500);
+            }
         });
     }
 

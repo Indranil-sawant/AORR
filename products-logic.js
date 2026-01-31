@@ -25,7 +25,9 @@ const DEFAULT_ICON = '📦';
 
 document.addEventListener('DOMContentLoaded', () => {
     initCatalog();
+    initCatalog();
     setupSearch();
+    setupEnquiryModal();
     
     // Listen for browser back/forward buttons
     window.addEventListener('popstate', handleRouting);
@@ -230,7 +232,7 @@ function createItemCard(name, categoryName) {
         <div class="item-card-body">
             <div class="item-card-category">${categoryName}</div>
             <h3 class="item-card-title">${name}</h3>
-            <button class="item-card-btn">View Details</button>
+            <button class="item-card-btn enquiry-trigger" data-product="${name}">Enquire Now</button>
         </div>
     `;
     return el;
@@ -288,7 +290,16 @@ function appendList(container, title, items) {
     ul.className = 'item-list';
     items.forEach(i => {
          const li = document.createElement('li');
-         li.textContent = i;
+         // Make the list item clickable for enquiry
+         const link = document.createElement('a');
+         link.href = "#";
+         link.className = 'enquiry-trigger';
+         link.dataset.product = i; // Use the item name as the product
+         link.textContent = i;
+         link.style.textDecoration = 'none';
+         link.style.color = 'inherit';
+         
+         li.appendChild(link);
          ul.appendChild(li);
     });
     container.appendChild(ul);
@@ -355,4 +366,80 @@ function setupSearch() {
 
 function formatTitle(str) {
     return str.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
+/**
+ * 6. PRODUCT ENQUIRY MODAL LOGIC
+ * Handles opening, closing, and submitting the enquiry form.
+ */
+function setupEnquiryModal() {
+    const modal = document.getElementById('product-enquiry-modal');
+    const closeBtn = document.getElementById('modal-close');
+    const form = document.getElementById('product-enquiry-form');
+    const root = document.getElementById('products-root'); // For delegation
+
+    if (!modal || !form) return;
+
+    // 1. OPEN MODAL (Event Delegation)
+    // We listen on the document body or a high-level container to catch clicks on dynamically created buttons
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('enquiry-trigger')) {
+            e.preventDefault();
+            const productName = e.target.dataset.product;
+            openModal(productName);
+        }
+    });
+
+    // 2. CLOSE MODAL
+    const closeModal = () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scroll
+        
+        // Reset status message after delay, but keep form data for now in case of error retry? 
+        // Best to clear if success. 
+        setTimeout(() => {
+            document.getElementById('enquiry-status').textContent = '';
+        }, 500);
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // Click outside to close
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
+
+    // 3. OPEN LOGIC
+    function openModal(productName) {
+        document.getElementById('modal-product-name').textContent = productName || 'Product';
+        document.getElementById('form-product-name').value = productName || 'General Product';
+        document.getElementById('form-page-url').value = window.location.href;
+        
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Lock scroll
+    }
+
+    // 4. SUBMIT HANDLER (Hidden Iframe approach)
+    form.addEventListener('submit', () => {
+        const status = document.getElementById('enquiry-status');
+        status.textContent = "Sending Enquiry...";
+        status.style.color = "blue";
+
+        // Give it a second to "send" (since it goes to iframe invisible)
+        setTimeout(() => {
+            status.textContent = "✓ Enquiry Sent Successfully!";
+            status.style.color = "green";
+            form.reset();
+            
+            // Close after success
+            setTimeout(closeModal, 2000);
+        }, 1500);
+    });
 }
