@@ -391,6 +391,8 @@ details[open] summary.card-drawer-trigger::after {
 
 /* Subcategory Page View Styles */
 .subcategory-view-container {
+    grid-column: 1 / -1; /* Span full width of parent grid */
+    width: 100%;
     animation: fadeIn 0.4s ease-out;
 }
 
