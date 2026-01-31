@@ -1,0 +1,33 @@
+# robots.txt for AORR Global Trading
+# This file tells search engines what they can and cannot crawl
+
+User-agent: *
+Allow: /
+
+# Sitemap location (update with your actual domain)
+Sitemap: https://www.aorr.in/sitemap.xml
+
+# Disallow crawling of scripts and styles (save crawl budget)
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Disallow private/system files
+Disallow: /Code.gs
+Disallow: /*.py$
+Disallow: /*.txt$
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /*.sh$
+Disallow: /.git/
+
+# Allow all images for Google Images
+Allow: /images/
+
+# Allow specific CSS/JS for rendering (Google may need these)
+Allow: /templatemo-prism-flux.css$
+Allow: /templatemo-prism-scripts.js$
+Allow: /global-search-logic.js$
+Allow: /global-search-style.css$
+
+# Crawl-delay (optional - prevents server overload)
+Crawl-delay: 1
