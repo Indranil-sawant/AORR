@@ -1,0 +1,59 @@
+# PRIORITY IMAGE LIST - COPY THESE FILENAMES
+
+## TOP 10 CRITICAL (Optimize First)
+
+1. dubai-hub.jpg
+2. general_trading.jpg
+3. AORR (3).jpg
+4. ignacio-moreira-7XHo4D_iH_w-unsplash.jpg
+5. mumbai port.jpg
+6. marine_supplies.jpg
+7. john-simmons-N7_NUUtCkDU-unsplash.jpg
+8. shanghai.jpg
+9. AORR (1).jpg
+10. AORR (2).jpg
+
+---
+
+## HIGH PRIORITY (Optimize Next)
+
+11. marine_timber.jpg
+12. newyork.jpg
+13. domestic.jpg
+14. background_image.jpg
+15. background_image_index.jpg
+16. rotterdam.jpg
+17. delivery_support.png
+18. industrial.jpg
+19. process.png
+20. Global trade compliance and regulatory mastery.png
+
+---
+
+## SETTINGS FOR SQUOOSH.APP
+
+Format: WebP
+Quality: 75-80% (for JPG), 85% (for PNG)
+Resize: Max width 1200px (for images >1200px wide)
+
+Target sizes:
+- Large images (>3MB): Target 100-150 KB
+- Medium images (1-3MB): Target 80-100 KB  
+- Small images (<1MB): Target 50-80 KB
+
+---
+
+## QUICK INSTRUCTIONS
+
+1. Go to: https://squoosh.app
+2. Drag image into browser
+3. Select WebP (left panel)
+4. Set quality 75-80%
+5. Resize if needed
+6. Download
+7. Replace in images/ folder
+
+Repeat for each file above.
+
+Time: ~2-3 min per image
+Total: ~30 min for top 10
