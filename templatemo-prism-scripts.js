@@ -4,35 +4,35 @@ const portfolioData = [
         id: 1,
         title: 'Marine Supplies',
         description: 'Shipbuilding raw materials including Fiberglass, Resins, and Repair Kits. ISO Certified for marine safety.',
-        image: 'https://dummyimage.com/320x220/002147/fff&text=Marine+Supplies',
+        image: 'images/marine_supplies.jpg',
         tech: ['Fiberglass', 'Resins', 'Marine']
     },
     {
         id: 2,
         title: 'Industrial Components',
         description: 'High-performance Water Pump Valves and Utility Hardware for commercial industrial applications.',
-        image: 'https://dummyimage.com/320x220/002147/fff&text=Industrial+Valves',
+        image: 'images/industrial.jpg',
         tech: ['Valves', 'Hardware', 'Industrial']
     },
     {
         id: 3,
         title: 'Domestic Logistics',
         description: 'Dedicated domestic supply chain services for perishable goods like fruits and vegetables.',
-        image: 'https://dummyimage.com/320x220/002147/fff&text=Domestic+Logistics',
+        image: 'images/domestic.jpg',
         tech: ['Perishables', 'Logistics', 'Supply']
     },
     {
         id: 4,
         title: 'Marine Timber',
         description: 'Premium Grade A Teak Logs and marine-grade timber for shipbuilding and decking.',
-        image: 'https://dummyimage.com/320x220/002147/fff&text=Marine+Timber',
+        image: 'images/marine_timber.jpg',
         tech: ['Teak', 'Timber', 'Shipbuilding']
     },
     {
         id: 5,
         title: 'General Trading',
         description: 'Global trading of engineered mechanical parts, accessories, and commercial consumer goods.',
-        image: 'https://dummyimage.com/320x220/002147/fff&text=General+Trading',
+        image: 'images/general_trading.jpg',
         tech: ['Trading', 'Commercial', 'Global']
     }
 ];
