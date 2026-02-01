@@ -245,16 +245,32 @@ if (menuToggle && navMenu) {
     });
 }
 
-// Header scroll effect
+// Header scroll effect - OPTIMIZED with IntersectionObserver
 const header = document.getElementById('header');
 if (header) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+    // Create a sentinel element at the top of the body to detect scroll position
+    const sentinel = document.createElement('div');
+    sentinel.style.position = 'absolute';
+    sentinel.style.top = '0';
+    sentinel.style.left = '0';
+    sentinel.style.width = '100%';
+    sentinel.style.height = '1px';
+    sentinel.style.pointerEvents = 'none';
+    sentinel.style.visibility = 'hidden';
+    document.body.prepend(sentinel);
+
+    const headerObserver = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        // If sentinel is NOT intersecting (scrolled down past 50px roughly via margin if needed, or just 0)
+        // We want > 50px. So we can position sentinel at 50px.
+        if (!entry.isIntersecting) {
             header.style.boxShadow = "0 8px 24px rgba(0,0,0,0.1)";
         } else {
             header.style.boxShadow = "none";
         }
-    });
+    }, { rootMargin: '-50px 0px 0px 0px', threshold: 0 }); // Trigger when scrolled 50px
+
+    headerObserver.observe(sentinel);
 }
 
 // Initialize everything on load
@@ -264,28 +280,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticles();
 
     // Handle Resize for Carousel to switch between 3D and Scroll modes
+    let resizeTimer;
     window.addEventListener('resize', () => {
-        updateCarousel();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            updateCarousel();
+        }, 100); // Debounce resize
     });
-
-    // Carousel buttons
-    // Auto rotate carousel - REMOVED for user preference (no auto rotation)
-    // setInterval(nextSlide, 5000);
-
-    // Debounce state for scroll
-    let isTransitioning = false;
-    const scrollCooldown = 800; // Matches transition time
-
-    // Add Scroll/Wheel Interaction with Debounce
-    // Add Scroll/Wheel Interaction with Debounce - REMOVED to prevent scroll jacking
-    /*
-    const container = document.querySelector('.carousel-container');
-    if (container) {
-        container.addEventListener('wheel', (e) => {
-             // Logic removed to restore smooth native scrolling
-        }, { passive: false });
-    }
-    */
 
     // Contact form listener
     const contactForm = document.getElementById('contactForm');
@@ -555,36 +556,7 @@ function initCatalogFilters() {
         }
     });
 
-    // Helper to calculate counts
-    function updateCounts() {
-        // Reset counts mapping
-        const counts = {
-            'All Products': 0,
-            'Agro-Commodities': 0,
-            'Industrial Machinery': 0,
-            'Spices & Herbs': 0,
-            'Raw Materials': 0
-            // Add other mapping if needed
-        };
-        
-        // Manual mapping from UPPERCASE categories in HTML to Title Case sidebar categories
-        // HTML categories: AGRO-COMMODITY, COMMODITY, INDUSTRIAL, MACHINERY, SPICES, RECYCLING
-        const categoryMap = {
-            'AGRO-COMMODITY': 'Agro-Commodities',
-            'COMMODITY': 'All Products', // General fallback or specific? Let's treat 'Refined Sugar' as part of 'All' for now unless we add a Sugar category
-            'INDUSTRIAL': 'Raw Materials', // Teak logs -> Raw Materials
-            'MACHINERY': 'Industrial Machinery',
-            'SPICES': 'Spices & Herbs',
-            'RECYCLING': 'Raw Materials' // Scrap -> Raw Materials
-        };
-        
-        // Count visible items based on their category
-        // Note: For this simple implementation, we might just filter by text match if we don't have strict data attributes
-        
-        // Let's implement Filtering First, then update counts dynamically or just execute filter
-    }
-
-    // Filter Logic
+    // Filtering Logic
     function filterItems(category, searchTerm) {
         category = category.trim();
         searchTerm = searchTerm.toLowerCase().trim();
@@ -593,11 +565,7 @@ function initCatalogFilters() {
 
         catalogItems.forEach(item => {
             const title = item.querySelector('.catalog-title').textContent.toLowerCase();
-            const categoryTag = item.querySelector('.catalog-category').textContent.trim(); // e.g. AGRO-COMMODITY
-            
-            // Map Sidebar Category to Item Category
-            // Sidebar: 'All Products', 'Agro-Commodities', 'Industrial Machinery', 'Spices & Herbs', 'Raw Materials'
-            // Items: 'AGRO-COMMODITY', 'COMMODITY'(Sugar), 'INDUSTRIAL'(Wood), 'MACHINERY', 'SPICES', 'RECYCLING'
+            const categoryTag = item.querySelector('.catalog-category').textContent.trim(); 
             
             let matchCategory = false;
             
@@ -626,8 +594,6 @@ function initCatalogFilters() {
                 item.style.display = 'none';
             }
         });
-        
-        // Update "All Products" count text if needed, but for now we just filter
     }
 
     // Event Listeners for Categories
@@ -641,8 +607,6 @@ function initCatalogFilters() {
             link.classList.add('active');
             
             // Get category name
-            // Text content includes count e.g. "Agro-Commodities (3)"
-            // We need just the text node or parse it
             const fullText = link.textContent; // "Agro-Commodities (3)"
             const categoryName = fullText.split('(')[0].trim();
             
@@ -660,7 +624,7 @@ function initCatalogFilters() {
     });
 }
 
-// Mobile Scroll Highlight Logic
+// Mobile Scroll Highlight Logic - OPTIMIZED with IntersectionObserver
 function initMobileScrollHighlight() {
     const carousel = document.getElementById('carousel');
     if (!carousel) return;
@@ -668,39 +632,20 @@ function initMobileScrollHighlight() {
     const items = carousel.querySelectorAll('.carousel-item');
     if (items.length === 0) return;
 
-    // Helper to find center card
-    const updateActiveCard = () => {
-        const containerCenter = carousel.scrollLeft + (carousel.offsetWidth / 2);
-        let closestItem = null;
-        let minDistance = Infinity;
-
-        items.forEach(item => {
-            // Get item center relative to the container scroll
-            // item.offsetLeft is relative to container start (0), not viewport
-            const itemCenter = item.offsetLeft + (item.offsetWidth / 2);
-            const distance = Math.abs(containerCenter - itemCenter);
-
-            if (distance < minDistance) {
-                minDistance = distance;
-                closestItem = item;
+    // Use IntersectionObserver to track which card is active
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active class from all
+               items.forEach(i => i.classList.remove('active-card'));
+                // Add to current
+                entry.target.classList.add('active-card');
             }
         });
+    }, {
+        root: carousel,
+        threshold: 0.6 // Trigger when 60% visible
+    });
 
-        items.forEach(item => {
-            if (item === closestItem) {
-                item.classList.add('active-card');
-            } else {
-                item.classList.remove('active-card');
-            }
-        });
-    };
-
-    // Listen for scroll
-    carousel.addEventListener('scroll', () => {
-        // Throttling via RequestAnimationFrame for performance
-        window.requestAnimationFrame(updateActiveCard);
-    }, { passive: true });
-
-    // Initial run
-    setTimeout(updateActiveCard, 100);
+    items.forEach(item => observer.observe(item));
 }

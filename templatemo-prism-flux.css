@@ -63,13 +63,27 @@ body {
 	overflow-x: hidden;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-image:
+	min-height: 100vh;
+	position: relative;
+    /* PERFORMANCE FIX: Removing background-attachment: fixed from body */
+}
+
+/* PERFORMANCE FIX: Hardware accelerated fixed background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind everything */
+    background-image:
 		linear-gradient(rgba(0, 33, 71, 0.95), rgba(0, 21, 46, 0.98)),
 		url('images/hero_globe_shipping_1768230459789.webp');
 	background-size: cover;
-	background-attachment: fixed;
 	background-position: center;
-	min-height: 100vh;
+    will-change: transform; /* Hint to browser to promote to layer */
+    pointer-events: none;
 }
 
 
@@ -320,6 +334,7 @@ img {
 
 	.hero-title {
 		margin-bottom: 15px;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Performance: Reduced blur radius */
 	}
 
 	.hero-subtitle {
@@ -341,11 +356,13 @@ img {
 	overflow: hidden; /* Prevent overflow */
 	opacity: 0; /* Hidden until initialized to prevent CLS */
 	transition: opacity 0.8s ease-out;
+    contain: layout paint; /* Performance: Isolate reflows */
 }
 
 @media (max-width: 767px) {
 	.carousel-container {
-		height: 450px; /* Smaller height for mobile */
+		height: 480px; 
+        /* Note: Main mobile carousel styles are handled at the end of this file */
 	}
 }
 
@@ -372,6 +389,7 @@ img {
 	border-radius: 12px;
 	overflow: hidden;
 	transition: 0.5s;
+    will-change: transform, opacity; /* Performance: Promote to layer */
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 	backface-visibility: hidden; /* Performance */
 	transform-origin: center center;
@@ -2035,7 +2053,7 @@ img {
 		url('images/about-hero.webp');
 	background-size: cover;
 	background-position: center;
-	background-attachment: fixed;
+	background-attachment: scroll; /* Performance fix: fixed causes jank */
 	padding: 160px 20px 60px; /* Generous top padding to clear header */
 	position: relative;
 	overflow: hidden;
@@ -2768,7 +2786,7 @@ img {
 	background:
 		linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)),
 		url('../images/AORR (3).webp') center/cover fixed;
-	background-attachment: fixed;
+	background-attachment: scroll; /* Performance fix */
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
