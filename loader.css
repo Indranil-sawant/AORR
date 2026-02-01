@@ -1,0 +1,179 @@
+/* =========================================
+   AORR GLOBAL TRADE - CUSTOM LOADER STYLES
+   ========================================= */
+
+/* Use site variables if available, otherwise fallback to brand colors */
+:root {
+    --loader-bg-color: #00152e;      /* Primary Dark */
+    --loader-accent-color: #C5A065;  /* Gold Accent */
+    --loader-text-color: #ffffff;    /* White */
+    --loader-secondary: #004d9a;     /* Lighter Navy for contrast */
+}
+
+/* Main Loader Container - Covers entire viewport */
+#aorr-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--loader-bg-color);
+    z-index: 999999; /* Higher than everything else */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+}
+
+/* Hide state */
+#aorr-loader.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Loader Content Wrapper */
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+/* 
+   ANIMATION: GLOBAL ORBIT 
+   Concept: A stylized globe with rotating trade routes
+*/
+
+/* Central Core (The World) */
+.loader-globe {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%, #4169E1, #002147);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(0, 33, 71, 0.6);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+/* Orbit Ring 1 */
+.loader-ring-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(197, 160, 101, 0.2); /* Gold transparent */
+    border-top: 2px solid var(--loader-accent-color); /* Gold solid */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 2s linear infinite;
+    z-index: 1;
+}
+
+/* Orbit Ring 2 (Counter-rotating) */
+.loader-ring-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 140px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid var(--loader-secondary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin-reverse 3s linear infinite;
+    z-index: 1;
+}
+
+/* Text Section */
+.loader-text-container {
+    margin-top: 100px; /* Push below the rings */
+    text-align: center;
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(10px);
+    animation-delay: 0.2s;
+}
+
+.loader-brand {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: var(--loader-text-color);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.loader-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: var(--loader-accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+/* Progress Bar (Minimal) */
+.loader-progress-track {
+    width: 120px;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 20px;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    /* Centering logic for margin auto if needed */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loader-progress-bar {
+    width: 30%;
+    height: 100%;
+    background: var(--loader-accent-color);
+    position: absolute;
+    left: -30%;
+    animation: progress-slide 1.5s ease-in-out infinite;
+}
+
+/* KEYFRAMES */
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes progress-slide {
+    0% { left: -30%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .loader-ring-1 { width: 80px; height: 80px; }
+    .loader-ring-2 { width: 110px; height: 110px; }
+    .loader-globe { width: 50px; height: 50px; }
+    .loader-content { width: 160px; height: 160px; }
+    .loader-text-container { margin-top: 80px; }
+    .loader-brand { font-size: 1.2rem; }
+}
