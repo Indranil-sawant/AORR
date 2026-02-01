@@ -277,32 +277,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollCooldown = 800; // Matches transition time
 
     // Add Scroll/Wheel Interaction with Debounce
+    // Add Scroll/Wheel Interaction with Debounce - REMOVED to prevent scroll jacking
+    /*
     const container = document.querySelector('.carousel-container');
     if (container) {
         container.addEventListener('wheel', (e) => {
-            // Disable custom scroll logic on mobile/tablets to ensure native vertical scrolling works
-            if (window.innerWidth <= 768) return; 
-
-            e.preventDefault();
-            
-            if (isTransitioning) return;
-            
-            // Threshold for trackpads
-            if (Math.abs(e.deltaY) < 20) return;
-
-            isTransitioning = true;
-            
-            if (e.deltaY > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
-            }
-
-            setTimeout(() => {
-                isTransitioning = false;
-            }, scrollCooldown);
-        }, { passive: false }); // key for preventing default
+             // Logic removed to restore smooth native scrolling
+        }, { passive: false });
     }
+    */
 
     // Contact form listener
     const contactForm = document.getElementById('contactForm');
