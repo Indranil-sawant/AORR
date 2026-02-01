@@ -82,17 +82,18 @@
             <!-- Responsive Info Grid -->
             <div class="contact-split-layout" style="margin-bottom: 50px;">
                 <!-- Email Template Selection Buttons -->
-                <div class="contact-info-card" style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; padding: 20px; background: rgba(255, 255, 255, 0.8);">
-                    <h4 style="width: 100%; text-align: center; margin-bottom: 15px;">Who would you like to contact?</h4>
-                    <button class="email-btn" data-email="sales" style="padding: 10px 20px; border: 2px solid var(--primary-navy); border-radius: 5px; background: transparent; color: var(--primary-navy); cursor: pointer; font-weight: 600; transition: all 0.3s;">
-                        Sales Inquiry
-                    </button>
-                    <button class="email-btn" data-email="purchase" style="padding: 10px 20px; border: 2px solid var(--primary-navy); border-radius: 5px; background: transparent; color: var(--primary-navy); cursor: pointer; font-weight: 600; transition: all 0.3s;">
-                        Purchase Inquiry
-                    </button>
-                    <button class="email-btn" data-email="general" style="padding: 10px 20px; border: 2px solid var(--primary-navy); border-radius: 5px; background: transparent; color: var(--primary-navy); cursor: pointer; font-weight: 600; transition: all 0.3s;">
-                        General Support
-                    </button>
+                <!-- Single Quick Enquiry Button -->
+                <div class="contact-info-card" style="grid-column: 1 / -1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; background: rgba(255, 255, 255, 0.9);">
+                    <h4 style="width: 100%; text-align: center; margin-bottom: 25px;">Send Us a Quick Message</h4>
+                    <div class="quick-enquiry-wrapper" style="margin-top: 0;">
+                        <a href="mailto:aorr@aorr.in?subject=Quick%20Enquiry%20from%20Website&body=Hi%20AORR%20Team%2C%0A%0AI%20came%20across%20your%20website%20and%20would%20love%20to%20know%20more%20about%20your%20services.%20Please%20get%20in%20touch.%0A%0AThanks!" 
+                           class="quick-enquiry-btn" 
+                           role="button" 
+                           aria-label="Send a quick enquiry email to AORR">
+                            <span>Quick Enquiry</span>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="contact-info-card">
