@@ -72,6 +72,8 @@ body {
 	min-height: 100vh;
 }
 
+
+
 /* Prevent layout shift on zoom */
 * {
 	margin: 0;
@@ -206,54 +208,125 @@ img {
 	width: 80%;
 }
 
-/* Hero Section */
+/* Hero Section - Enterprise Redesign */
 .hero {
 	min-height: 100vh;
-	height: auto;
+	width: 100%;
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	/* Stack elements vertically */
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	perspective: 1000px;
-	padding-top: 150px;
-	/* Increased Space for fixed header */
-	padding-bottom: 50px;
+	padding: 180px 20px 80px; /* Generous padding */
+	text-align: center;
 }
 
 .hero-overlay-text {
 	position: relative;
-	/* Part of the flow */
-	top: auto;
 	width: 100%;
-	text-align: center;
+	max-width: 1200px;
+	margin: 0 auto 40px;
 	z-index: 10;
-	margin-bottom: 10px;
-	/* Space between text and carousel */
-	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .hero-title {
-	font-size: 3.5rem;
+	font-size: clamp(2.8rem, 6vw, 5rem); /* Massive, responsive headline */
 	font-family: var(--font-main);
-	font-weight: 700;
+	font-weight: 800;
 	color: white;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	text-transform: uppercase;
-	letter-spacing: 1px;
+	letter-spacing: -1px;
+	line-height: 1.1;
+	text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
-	font-size: 1.1rem;
+	font-size: clamp(0.9rem, 2vw, 1.1rem);
 	color: var(--accent-gold);
-	font-weight: 300;
-	letter-spacing: 2px;
-	background: rgba(0, 0, 0, 0.3);
+	font-weight: 600;
+	letter-spacing: 3px;
+	background: rgba(0, 0, 0, 0.4);
 	display: inline-block;
-	padding: 5px 20px;
+	padding: 10px 30px;
 	border-radius: 50px;
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(197, 160, 101, 0.3);
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
+
+.hero-description {
+	font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+	color: rgba(255, 255, 255, 0.95);
+	max-width: 800px;
+	margin: 0 auto 30px;
+	line-height: 1.6;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero-cta-group {
+	margin-top: 30px;
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.hero-btn {
+	text-decoration: none;
+	padding: 12px 30px;
+	border-radius: 50px;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 0.9rem;
+}
+
+.hero-btn.primary {
+	background: var(--accent-gold);
+	color: var(--primary-navy);
+	border: 2px solid var(--accent-gold);
+}
+
+.hero-btn.primary:hover {
+	background: transparent;
+	color: white;
+}
+
+.hero-btn.secondary {
+	background: transparent;
+	color: white;
+	border: 2px solid white;
+}
+
+.hero-btn.secondary:hover {
+	background: white;
+	color: var(--primary-navy);
+}
+
+/* Mobile Hero Optimization */
+@media (max-width: 768px) {
+	.hero {
+		padding-top: 140px;
+		padding-bottom: 60px;
+		min-height: auto;
+	}
+
+	.hero-title {
+		margin-bottom: 15px;
+	}
+
+	.hero-subtitle {
+		padding: 8px 20px;
+		font-size: 0.8rem;
+		margin-bottom: 15px;
+	}
 }
 
 /* 3D Carousel - Professional Card Style */
@@ -1949,55 +2022,70 @@ img {
    ABOUT US PAGE STYLES
    ============================================ */
 
-/* About Hero Section */
+/* About Hero Section - Enterprise Redesign */
 .about-hero {
-	min-height: 70vh;
+	width: 100%;
+	min-height: 95vh; /* Premium Full Height */
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-dark) 100%);
-	padding: 150px 20px 80px;
+    flex-direction: column;
+	background:
+		linear-gradient(to bottom, rgba(0, 33, 71, 0.85), rgba(0, 16, 36, 0.95)),
+		url('images/about-hero.webp');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	padding: 160px 20px 60px; /* Generous top padding to clear header */
 	position: relative;
 	overflow: hidden;
+    color: white;
+    text-align: center;
 }
 
+/* Subtle Animated Texture Overlay */
 .about-hero::before {
 	content: '';
 	position: absolute;
 	top: 0;
 	left: 0;
-	right: 0;
-	bottom: 0;
-	background: radial-gradient(circle at 30% 50%, rgba(197, 160, 101, 0.1) 0%, transparent 50%),
-		radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
 	pointer-events: none;
+    z-index: 1;
 }
 
 .about-hero-content {
 	max-width: 1100px;
+	width: 100%;
 	margin: 0 auto;
-	text-align: center;
 	position: relative;
-	z-index: 1;
+	z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .about-hero-tag {
 	display: inline-block;
 	background: rgba(197, 160, 101, 0.15);
 	color: var(--accent-gold);
-	padding: 8px 24px;
-	border-radius: 20px;
-	font-size: 0.75rem;
-	font-weight: 600;
-	letter-spacing: 2px;
+	padding: 10px 24px;
+	border-radius: 50px;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 3px;
 	margin-bottom: 25px;
 	border: 1px solid rgba(197, 160, 101, 0.3);
+    text-transform: uppercase;
+    backdrop-filter: blur(5px);
 }
 
 .about-hero-title {
 	font-family: var(--font-main);
-	font-size: clamp(2.5rem, 6vw, 4.5rem);
-	font-weight: 700;
+	font-size: clamp(2.5rem, 5vw, 4.8rem); /* Responsive scaling */
+	font-weight: 800;
 	color: white;
 	margin-bottom: 25px;
 	line-height: 1.1;
@@ -2007,44 +2095,82 @@ img {
 .about-hero-title span {
 	color: var(--accent-gold);
 	display: inline-block;
+    position: relative;
 }
 
 .about-hero-description {
-	font-size: clamp(1rem, 2vw, 1.25rem);
-	color: rgba(255, 255, 255, 0.85);
+	font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+	color: rgba(255, 255, 255, 0.9);
 	max-width: 800px;
-	margin: 0 auto 50px;
-	line-height: 1.7;
+	margin: 0 auto 60px;
+	line-height: 1.8;
+    font-weight: 400;
 }
 
 .about-hero-stats {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-	gap: 30px;
-	max-width: 900px;
+	display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+	gap: 60px;
+	max-width: 1000px;
+	width: 100%;
 	margin: 0 auto;
-	padding: 40px 0 0;
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding-top: 50px;
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .hero-stat-item {
 	text-align: center;
+    flex: 1;
+    min-width: 140px;
 }
 
 .hero-stat-item strong {
 	display: block;
 	font-family: var(--font-main);
-	font-size: clamp(2rem, 4vw, 2.5rem);
+	font-size: clamp(2.2rem, 3.5vw, 3rem);
 	color: var(--accent-gold);
 	font-weight: 700;
-	margin-bottom: 6px;
+	margin-bottom: 8px;
+    line-height: 1;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .hero-stat-item span {
-	font-size: 0.9rem;
-	color: rgba(255, 255, 255, 0.7);
+	font-size: 0.85rem;
+	color: rgba(255, 255, 255, 0.75);
 	text-transform: uppercase;
-	letter-spacing: 1px;
+	letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .about-hero {
+        min-height: auto;
+        padding: 140px 20px 80px;
+        background-attachment: scroll; /* Performance fix */
+    }
+
+    .about-hero-title {
+        font-size: 2.8rem;
+    }
+
+    .about-hero-stats {
+        gap: 40px;
+        flex-direction: column; /* Stack stats on mobile */
+        padding-top: 40px;
+    }
+
+    .hero-stat-item {
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 20px;
+    }
+
+    .hero-stat-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
 }
 
 /* Company Story Section */
@@ -2291,14 +2417,20 @@ img {
 }
 
 .director-showcase {
+	background: white;
+	border-radius: 16px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.director-row {
 	display: grid;
 	grid-template-columns: 300px 1fr;
 	gap: 60px;
-	align-items: start;
-	background: white;
 	padding: 60px;
-	border-radius: 16px;
-	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+	align-items: start;
 }
 
 .director-image-placeholder {
@@ -2307,10 +2439,38 @@ img {
 	background: linear-gradient(135deg, var(--primary-navy) 0%, var(--accent-gold) 100%);
 	border-radius: 16px;
 	display: flex;
+	flex-direction: column;
+	gap: 15px; /* Spacing between icons */
 	align-items: center;
 	justify-content: center;
 	position: relative;
 	overflow: hidden;
+	color: white;
+}
+
+/* Mobile Optimization for Director Showcase */
+@media (max-width: 900px) {
+	.director-row {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		padding: 40px 20px;
+		text-align: center;
+	}
+
+	.director-image-placeholder {
+		width: 180px;
+		margin: 0 auto;
+		gap: 10px;
+	}
+	
+	.director-content h3 {
+		font-size: 1.8rem;
+	}
+	
+	.director-highlights {
+		justify-content: center;
+	}
 }
 
 .director-initials {
@@ -5619,6 +5779,201 @@ html {
     }
     
     .help-box p {
+        font-size: 0.9rem;
+    }
+    
+    .help-btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Product Grid - Single column with better spacing */
+    .catalog-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    .catalog-item {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .catalog-image-box {
+        height: 280px;
+    }
+}
+
+/* Small Mobile (≤480px) - Extra Small Screens */
+@media (max-width: 480px) {
+    .catalog-section {
+        padding: 50px 12px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .catalog-sidebar {
+        margin: 0 -5px;
+    }
+    
+    .sidebar-widget {
+        padding: 18px 12px;
+    }
+    
+    .widget-title {
+        font-size: 0.95rem;
+    }
+    
+    .search-box input {
+        font-size: 15px;
+        padding: 12px;
+    }
+    
+    .cat-link {
+        font-size: 0.9rem;
+        padding: 10px 0;
+    }
+    
+    .filter-check {
+        font-size: 0.9rem;
+    }
+    
+    .help-widget {
+        padding: 20px 15px;
+        margin: 10px;
+    }
+    
+    .catalog-image-box {
+        height: 240px;
+    }
+    
+    .catalog-title {
+        font-size: 1rem;
+    }
+    
+    .catalog-category {
+        font-size: 0.7rem;
+    }
+}
+
+
+
+/* Mobile Carousel Optimization - Native Smooth Scroll */
+@media (max-width: 768px) {
+    .carousel-container {
+        height: auto !important;
+        overflow: visible !important;
+        padding: 20px 0; /* Vertical padding */
+        margin-top: 10px;
+    }
+
+    .carousel {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        
+        /* Flex Layout for Horizontal Scroll */
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        gap: 20px;
+        
+        /* Scroll Properties */
+        overflow-x: auto !important;
+        overflow-y: hidden;
+        width: 100% !important;
+        /* Padding calculation to center the active item: (100vw - CardWidth) / 2 */
+        /* Card Width is 75vw. So Padding needs to be roughly 12.5vw on sides. */
+        padding: 20px 12.5vw 50px 12.5vw !important; 
+        
+        /* Smooth Scroll & Snap */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        
+        /* Reset 3D */
+        perspective: none !important;
+        transform-style: flat !important;
+    }
+    
+    /* Hide Scrollbar */
+    .carousel::-webkit-scrollbar {
+        display: none;
+    }
+    .carousel {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .carousel-item {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        z-index: 1 !important;
+        
+        /* Default State (Inactive) */
+        opacity: 0.5 !important;
+        transform: scale(0.9) !important;
+        transition: all 0.3s ease !important;
+        
+        /* Sizing - 75vw allows partial visibility of neighbors (approx 12.5vw each side) */
+        flex: 0 0 75vw !important;
+        width: 75vw !important;
+        max-width: 340px !important; /* Cap it for larger phones/tablets */
+        height: auto !important;
+        min-height: auto !important;
+        padding-bottom: 10px;
+        
+        /* Snap & Margin */
+        scroll-snap-align: center;
+        margin: 0 !important;
+        
+        /* Deep Shadow & Radius */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 12px !important;
+        background: white !important;
+        border: 1px solid transparent; 
+    }
+    
+    /* Highlighted / Active Card State */
+    .carousel-item.active-card {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        z-index: 10 !important;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
+        border-color: var(--accent-gold) !important; /* Optional gold highlight */
+    }
+    
+    .carousel-item .card {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-description {
+        flex-grow: 0 !important;
+        margin-bottom: 25px !important;
+    }
+}
+
+/* Industries Check List Grid */
+.industries-check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .industries-check-grid {
+        grid-template-columns: 1fr; /* Stack on mobile to prevent overflow */
         font-size: 0.9rem;
     }
     
