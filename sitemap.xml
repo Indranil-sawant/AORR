@@ -5,19 +5,19 @@
     <!-- Homepage - Highest Priority -->
     <url>
         <loc>https://www.aorr.in/</loc>
-        <lastmod>2026-01-31</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
             <image:loc>https://www.aorr.in/images/logo.png</image:loc>
-            <image:title>AORR Global Trading Logo</image:title>
+            <image:title>AORR India Export Company Logo</image:title>
         </image:image>
     </url>
     
     <!-- About Us -->
     <url>
         <loc>https://www.aorr.in/about-us.html</loc>
-        <lastmod>2026-01-31</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -25,7 +25,7 @@
     <!-- Services - High Priority -->
     <url>
         <loc>https://www.aorr.in/services.html</loc>
-        <lastmod>2026-01-31</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -33,7 +33,7 @@
     <!-- Products - High Priority -->
     <url>
         <loc>https://www.aorr.in/products.html</loc>
-        <lastmod>2026-01-31</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -41,25 +41,27 @@
     <!-- Market Insights -->
     <url>
         <loc>https://www.aorr.in/market-insights.html</loc>
-        <lastmod>2026-01-31</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
-    <!-- How It Works -->
-    <url>
-        <loc>https://www.aorr.in/how-it-works.html</loc>
-        <lastmod>2026-01-31</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
+
     
     <!-- Contact -->
     <url>
         <loc>https://www.aorr.in/contact.html</loc>
-        <lastmod>2026-01-31</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Client Questionnaire -->
+    <url>
+        <loc>https://www.aorr.in/client-questionnaire.html</loc>
+        <lastmod>2026-02-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     
 </urlset>

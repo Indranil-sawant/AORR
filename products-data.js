@@ -1,6 +1,6 @@
 const PRODUCTS_CATALOG = {
   machinery_mechanical: {
-    title: "Machinery & Mechanical Appliances",
+    title: "Export Quality Machinery & Mechanical Appliances",
     items: [
       "Pressure Regulators",
       "Pressure Regulator Valves",
@@ -46,7 +46,7 @@ const PRODUCTS_CATALOG = {
   },
 
   garments: {
-    title: "Readymade Garments",
+    title: "Readymade Garments Export",
     subcategories: {
       knitted: [
         "T-Shirts",
@@ -65,7 +65,7 @@ const PRODUCTS_CATALOG = {
   },
 
   agriculture: {
-    title: "Agricultural Products",
+    title: "Agricultural Export Products",
     sections: {
       animal_products: [
         "Live Animals",
