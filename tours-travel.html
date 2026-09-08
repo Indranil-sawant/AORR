@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF3X4BWLJ0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MF3X4BWLJ0');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <title>Tours & Travel Services | Corporate & Leisure Travel Management — AORR</title>
+    <meta name="description" content="AORR Tours & Travel delivers professional corporate travel management, bespoke holiday packages, flight ticketing, and seamless global travel solutions with 24/7 assistance.">
+    <meta name="keywords" content="AORR travel, corporate travel management, international tour packages, business travel India, bespoke holiday itineraries, flight booking assistance, group tours">
+    <meta name="author" content="AORR Global Trading & Services">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aorr.in/tours-travel.html">
+    <meta property="og:title" content="AORR Tours & Travel | Corporate & Leisure Travel Management">
+    <meta property="og:description" content="Professional travel solutions, corporate itineraries, and global holiday management backed by AORR's commitment to reliability and customer care.">
+    <meta property="og:image" content="https://www.aorr.in/images/logo.webp">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.aorr.in/tours-travel.html">
+    <link rel="icon" type="image/webp" href="images/logo.webp">
+    
+    <!-- Fonts & Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="templatemo-prism-flux.css">
+    <link rel="stylesheet" href="global-search-style.css">
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="whatsapp-widget.css">
+
+    <style>
+        .travel-hero {
+            min-height: 70vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 160px 20px 80px;
+            text-align: center;
+            background: linear-gradient(rgba(27, 94, 32, 0.88), rgba(15, 56, 20, 0.94)), url('images/background_image_index.webp');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .travel-services-section {
+            padding: 90px 20px;
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .travel-services-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .travel-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 30px rgba(27, 94, 32, 0.06);
+            border: 1px solid rgba(165, 214, 167, 0.35);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .travel-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(27, 94, 32, 0.12);
+            border-color: var(--accent-green);
+        }
+
+        .travel-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            background: rgba(102, 187, 106, 0.15);
+            color: var(--color-deep-forest);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .travel-card-title {
+            font-family: var(--font-main);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-forest);
+            margin-bottom: 12px;
+        }
+
+        .travel-card-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .travel-card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            border-top: 1px solid #edf2f0;
+            padding-top: 15px;
+        }
+
+        .travel-card-features li {
+            font-size: 0.88rem;
+            color: #374151;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .travel-card-features li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .travel-process-section {
+            padding: 90px 20px;
+            background: var(--primary-dark);
+            color: var(--text-white);
+            text-align: center;
+        }
+
+        .process-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 50px auto 0;
+            text-align: left;
+        }
+
+        .process-step-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 30px 25px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease;
+        }
+
+        .process-step-item:hover {
+            border-color: var(--accent-green);
+        }
+
+        .step-number {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-green-light);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .step-title {
+            font-family: var(--font-main);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-white);
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .travel-inquiry-section {
+            padding: 90px 20px;
+            background: var(--bg-light);
+        }
+
+        @media (max-width: 768px) {
+            .travel-hero {
+                padding-top: 130px;
+                padding-bottom: 50px;
+            }
+            .travel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- AORR Custom Loader -->
+    <div id="aorr-loader">
+        <div class="loader-content">
+            <div class="loader-globe"></div>
+            <div class="loader-ring-1"></div>
+            <div class="loader-ring-2"></div>
+            <div class="loader-text-container">
+                <span class="loader-brand">AORR</span>
+                <span class="loader-tagline">Tours & Travel</span>
+                <div class="loader-progress-track">
+                    <div class="loader-progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <picture>
+                    <source srcset="images/logo.webp" type="image/webp">
+                    <img src="images/logo.png" alt="AORR Logo - Premier Multi-Service Company" class="nav-logo-img" loading="eager" width="200" height="100">
+                </picture>
+                <span class="logo-text">AORR</span>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about-us.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="products.html" class="nav-link">Import & Export</a></li>
+                <li><a href="tours-travel.html" class="nav-link active">Tours & Travel</a></li>
+                <li><a href="market-insights.html" class="nav-link">Insights</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Travel Hero -->
+    <section class="travel-hero">
+        <div class="hero-overlay-text">
+            <span class="hero-subtitle">AORR Travel Division</span>
+            <h1 class="hero-title">Elevating Corporate & Leisure Travel Experiences</h1>
+            <p class="hero-description">
+                Seamless journey curation, corporate delegations, customized international holiday packages, 
+                and comprehensive travel logistics backed by AORR's standard of operational excellence.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#travel-inquiry" class="hero-btn primary">Plan Your Journey</a>
+                <a href="#services-list" class="hero-btn secondary">Explore Travel Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Travel Services -->
+    <section class="travel-services-section" id="services-list">
+        <div class="travel-services-container">
+            <div class="section-header-about" style="text-align: center; margin-bottom: 30px;">
+                <span class="section-tag-about">OUR TRAVEL SERVICES</span>
+                <h2 style="font-family: var(--font-main); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--primary-forest); margin-bottom: 15px;">
+                    Comprehensive Travel Management
+                </h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto;">
+                    Tailored solutions designed for corporate executives, business delegations, family holidays, and group expeditions.
+                </p>
+            </div>
+
+            <div class="travel-grid">
+                
+                <!-- Service 1: Corporate & Business Travel -->
+                <div class="travel-card">
+                    <div>
+                        <div class="travel-card-icon">💼</div>
+                        <h3 class="travel-card-title">Corporate & Business Travel</h3>
+                        <p class="travel-card-text">
+                            End-to-end travel management for executive delegations, international trade conferences, corporate meetings, and business incentive tours.
+                        </p>
+                        <ul class="travel-card-features">
+                            <li>Dedicated corporate travel manager</li>
+                            <li>Flexible booking & itinerary adjustments</li>
+                            <li>VIP airport transfers & lounge access</li>
+                            <li>Corporate billing & expense documentation</li>
+                        </ul>
+                    </div>
+                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Inquire Corporate Travel</a>
+                </div>
+
+                <!-- Service 2: Customized Holiday Packages -->
+                <div class="travel-card">
+                    <div>
+                        <div class="travel-card-icon">🌴</div>
+                        <h3 class="travel-card-title">Customized Holiday Packages</h3>
+                        <p class="travel-card-text">
+                            Bespoke international and domestic itineraries crafted around your preferences, pacing, luxury accommodation standards, and cultural interests.
+                        </p>
+                        <ul class="travel-card-features">
+                            <li>Personalized day-by-day itinerary planning</li>
+                            <li>Hand-picked premium hotels and resorts</li>
+                            <li>Private sightseeing & local guided experiences</li>
+                            <li>Family-friendly & couple retreat packages</li>
+                        </ul>
+                    </div>
+                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Plan Custom Holiday</a>
+                </div>
+
+                <!-- Service 3: Flights, Hotels & Logistics -->
+                <div class="travel-card">
+                    <div>
+                        <div class="travel-card-icon">✈️</div>
+                        <h3 class="travel-card-title">Flight Ticketing & Stays</h3>
+                        <p class="travel-card-text">
+                            Competitive airline ticketing across global carriers, premium hotel reservations, group bookings, and seamless airport ground logistics.
+                        </p>
+                        <ul class="travel-card-features">
+                            <li>Domestic & international flight routing</li>
+                            <li>Group fare optimization & seat management</li>
+                            <li>Verified hotel partnerships worldwide</li>
+                            <li>24/7 rescheduling & cancellation assistance</li>
+                        </ul>
+                    </div>
+                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Book Flights & Stays</a>
+                </div>
+
+                <!-- Service 4: Visa & Documentation Assistance -->
+                <div class="travel-card">
+                    <div>
+                        <div class="travel-card-icon">🛂</div>
+                        <h3 class="travel-card-title">Visa & Documentation Support</h3>
+                        <p class="travel-card-text">
+                            Professional guidance through visa application formalities, required travel permits, travel insurance advisory, and documentation checks.
+                        </p>
+                        <ul class="travel-card-features">
+                            <li>Step-by-step visa application advisory</li>
+                            <li>Document pre-verification to minimize delays</li>
+                            <li>Comprehensive travel insurance coverage</li>
+                            <li>Up-to-date international travel regulations</li>
+                        </ul>
+                    </div>
+                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Get Visa Support</a>
+                </div>
+
+                <!-- Service 5: Group & Institutional Tours -->
+                <div class="travel-card">
+                    <div>
+                        <div class="travel-card-icon">👥</div>
+                        <h3 class="travel-card-title">Group & Institutional Expeditions</h3>
+                        <p class="travel-card-text">
+                            Specialized group travel coordination for educational institutions, corporate team-building events, sports teams, and large family reunions.
+                        </p>
+                        <ul class="travel-card-features">
+                            <li>Dedicated on-ground tour coordinators</li>
+                            <li>Custom coach and private transport fleets</li>
+                            <li>Tailored dining and dietary arrangements</li>
+                            <li>Safety-first group management protocols</li>
+                        </ul>
+                    </div>
+                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Coordinate Group Tour</a>
+                </div>
+
+                <!-- Service 6: Destination Management -->
+                <div class="travel-card">
+                    <div>
+                        <div class="travel-card-icon">🗺️</div>
+                        <h3 class="travel-card-title">Destination Management</h3>
+                        <p class="travel-card-text">
+                            Curated local hospitality, cultural immersion excursions, specialized language guides, and round-the-clock on-trip support across major destinations.
+                        </p>
+                        <ul class="travel-card-features">
+                            <li>Vetted local tour guides and chauffeurs</li>
+                            <li>Authentic cultural & culinary journeys</li>
+                            <li>Emergency travel support hotline</li>
+                            <li>Transparent pricing with zero hidden fees</li>
+                        </ul>
+                    </div>
+                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Explore Destinations</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Planning Process -->
+    <section class="travel-process-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <span class="section-tag-about" style="color: var(--accent-green-light);">HOW WE WORK</span>
+            <h2 style="font-family: var(--font-main); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #ffffff; margin-top: 10px; margin-bottom: 15px;">
+                Our Seamless Travel Planning Process
+            </h2>
+            <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 650px; margin: 0 auto;">
+                From your initial idea to your safe return, every detail is engineered with precision.
+            </p>
+
+            <div class="process-steps-grid">
+                
+                <div class="process-step-item">
+                    <div class="step-number">01</div>
+                    <h4 class="step-title">Requirement Discovery</h4>
+                    <p class="step-desc">
+                        We understand your schedule, group dynamics, destination interests, budget parameters, and accommodation preferences.
+                    </p>
+                </div>
+
+                <div class="process-step-item">
+                    <div class="step-number">02</div>
+                    <h4 class="step-title">Itinerary Curation</h4>
+                    <p class="step-desc">
+                        Our specialists design a personalized, day-by-day travel plan including optimized flights, stays, and activities.
+                    </p>
+                </div>
+
+                <div class="process-step-item">
+                    <div class="step-number">03</div>
+                    <h4 class="step-title">Booking & Verification</h4>
+                    <p class="step-desc">
+                        We lock in reservations, process visa and insurance documentation, and issue complete digital travel kits.
+                    </p>
+                </div>
+
+                <div class="process-step-item">
+                    <div class="step-number">04</div>
+                    <h4 class="step-title">24/7 Journey Care</h4>
+                    <p class="step-desc">
+                        Throughout your travels, our dedicated concierge team remains on standby to ensure effortless coordination.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Inquiry Form Section -->
+    <section class="travel-inquiry-section" id="travel-inquiry">
+        <div class="contact-container">
+            <h2 class="section-title" style="text-align: center; color: var(--primary-forest);">
+                Plan Your Next Journey With AORR
+            </h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--text-muted); font-size: 1.05rem;">
+                Submit your travel requirements below. Our travel consultants will respond within 24 hours with custom recommendations.
+            </p>
+
+            <div class="contact-split-layout">
+                <!-- Form -->
+                <div class="card" style="margin: 0;">
+                    <div class="card2">
+                        <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec">
+                            <p id="heading">Travel Inquiry Form</p>
+
+                            <!-- Name -->
+                            <div class="field">
+                                <input type="text" class="input-field" placeholder="Full Name" name="name" required />
+                            </div>
+
+                            <!-- Email -->
+                            <div class="field">
+                                <input type="email" class="input-field" placeholder="Email Address" name="email" required />
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="field">
+                                <input type="tel" class="input-field" placeholder="Phone Number" name="phone" required />
+                            </div>
+
+                            <!-- Travel Type / Location -->
+                            <div class="field">
+                                <select class="input-field" required name="location">
+                                    <option value="" disabled selected>Select Travel Service</option>
+                                    <option>Corporate Business Travel</option>
+                                    <option>International Holiday Package</option>
+                                    <option>Domestic Tour Package</option>
+                                    <option>Flight Ticketing & Visas</option>
+                                    <option>Group / Institutional Expedition</option>
+                                    <option>Other Travel Query</option>
+                                </select>
+                            </div>
+
+                            <!-- Message / Requirements -->
+                            <div class="field">
+                                <textarea class="input-field" placeholder="Destination, expected dates, group size, and specific requirements..." rows="4" name="message" required></textarea>
+                            </div>
+
+                            <input type="hidden" name="product" value="Tours & Travel Inquiry">
+                            <input type="hidden" name="page" value="tours-travel.html">
+                            
+                            <!-- Honeypot -->
+                            <input type="text" name="company" style="display:none">
+
+                            <div class="btn">
+                                <button class="button1" type="submit">
+                                    Submit Travel Request
+                                </button>
+                            </div>
+                            <p id="formStatus" style="text-align: center; margin-top: 10px; color: green; font-weight: bold;"></p>
+                        </form>
+                        <iframe name="hidden_iframe" style="display:none;"></iframe>
+                    </div>
+                </div>
+
+                <!-- Info Card -->
+                <div style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(6,19,11,0.06); border: 1px solid rgba(27,77,62,0.1); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="font-family: var(--font-main); color: var(--primary-forest); font-size: 1.6rem; margin-bottom: 20px;">
+                            Why Travel With AORR?
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 20px; color: var(--text-muted); font-size: 0.95rem;">
+                            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                                <span style="font-size: 1.5rem; color: var(--accent-green);">🛡️</span>
+                                <div>
+                                    <strong style="color: var(--primary-forest); display: block; margin-bottom: 3px;">Operational Reliability</strong>
+                                    Backed by AORR's proven global management standards across 50+ countries.
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                                <span style="font-size: 1.5rem; color: var(--accent-green);">🎯</span>
+                                <div>
+                                    <strong style="color: var(--primary-forest); display: block; margin-bottom: 3px;">Tailored To Your Pace</strong>
+                                    No rigid cookie-cutter tours. Every itinerary is customized to match your schedule and comfort.
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                                <span style="font-size: 1.5rem; color: var(--accent-green);">📞</span>
+                                <div>
+                                    <strong style="color: var(--primary-forest); display: block; margin-bottom: 3px;">Direct Human Support</strong>
+                                    Direct access to our corporate travel desk in Pune, India, available throughout your journey.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #edf2f0;">
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">Direct Travel Desk Contact:</p>
+                        <p style="margin: 0; font-weight: 600; color: var(--primary-forest);">Phone: +91 9730004911 / +91 8975218910</p>
+                        <p style="margin: 0; color: var(--primary-forest);">Email: <a href="mailto:aorr@aorr.in" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">aorr@aorr.in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="footer">
+        <div class="footer-large-logo" style="display: flex; justify-content: center; align-items: center;">
+            <picture>
+                <source srcset="images/logo.webp" type="image/webp">
+                <img src="images/logo.png" alt="AORR Global Trading & Services Logo" style="height: 220px;" loading="lazy" decoding="async">
+            </picture>
+        </div>
+
+        <div class="footer-content-grid">
+            <div class="footer-tagline">
+                Professional Multi-Service Enterprise powering global trade solutions and premier corporate & leisure travel experiences.
+            </div>
+
+            <div class="footer-contact">
+                <div class="footer-heading">Corporate Office</div>
+                <p>49/1/1, Shri Hari Krupa<br>Kothrud, Pune, MH 411038, India</p>
+                <br>
+                <p><a href="mailto:aorr@aorr.in">aorr@aorr.in</a></p>
+                <p>+91 9730004911 / +91 8975218910</p>
+            </div>
+
+            <div class="footer-newsletter">
+                <div class="footer-heading">Stay Up To Date</div>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom-nav">
+            <a href="index.html" class="footer-nav-link">Home</a>
+            <a href="about-us.html" class="footer-nav-link">About</a>
+            <a href="services.html" class="footer-nav-link">Services</a>
+            <a href="products.html" class="footer-nav-link">Import & Export</a>
+            <a href="tours-travel.html" class="footer-nav-link">Tours & Travel</a>
+            <a href="market-insights.html" class="footer-nav-link">Insights</a>
+            <a href="contact.html" class="footer-nav-link">Contact</a>
+            <span style="font-size: 0.8rem; color: #888;">&copy; 2026 AORR Global Trading & Services. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Widget -->
+    <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20would%20like%20to%20enquire%20about%20your%20Tours%20%26%20Travel%20services." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with AORR on WhatsApp">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script defer src="templatemo-prism-scripts.js"></script>
+    <script type="module" src="global-search-logic.js"></script>
+    <script defer src="accessibility-enhancements.js"></script>
+    <script src="loader.js"></script>
+</body>
+</html>

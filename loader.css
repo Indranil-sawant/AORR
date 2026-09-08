@@ -4,10 +4,11 @@
 
 /* Use site variables if available, otherwise fallback to brand colors */
 :root {
-    --loader-bg-color: #00152e;      /* Primary Dark */
-    --loader-accent-color: #C5A065;  /* Gold Accent */
+    --loader-bg-color: #0F3814;      /* Deep Forest Dark */
+    --loader-accent-color: #66BB6A;  /* Vibrant Green */
     --loader-text-color: #ffffff;    /* White */
-    --loader-secondary: #004d9a;     /* Lighter Navy for contrast */
+    --loader-secondary: #1B5E20;     /* Deep Forest */
+    --loader-soft: #A5D6A7;          /* Soft Sage */
 }
 
 /* Main Loader Container - Covers entire viewport */
@@ -47,16 +48,16 @@
 
 /* 
    ANIMATION: GLOBAL ORBIT 
-   Concept: A stylized globe with rotating trade routes
+   Concept: A stylized globe with rotating trade & travel routes
 */
 
 /* Central Core (The World) */
 .loader-globe {
     width: 60px;
     height: 60px;
-    background: radial-gradient(circle at 30% 30%, #4169E1, #002147);
+    background: radial-gradient(circle at 30% 30%, #66BB6A, #1B5E20);
     border-radius: 50%;
-    box-shadow: 0 0 30px rgba(0, 33, 71, 0.6);
+    box-shadow: 0 0 30px rgba(102, 187, 106, 0.5);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -71,8 +72,8 @@
     left: 50%;
     width: 100px;
     height: 100px;
-    border: 2px solid rgba(197, 160, 101, 0.2); /* Gold transparent */
-    border-top: 2px solid var(--loader-accent-color); /* Gold solid */
+    border: 2px solid rgba(165, 214, 167, 0.25);
+    border-top: 2px solid var(--loader-accent-color);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: spin 2s linear infinite;

@@ -52,7 +52,7 @@
 
         .map-tooltip {
             position: absolute;
-            background: #002147;
+            background: var(--primary-navy);
             color: white;
             padding: 8px 12px;
             border-radius: 6px;
@@ -62,7 +62,7 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
-            border: 2px solid #C5A065;
+            border: 2px solid var(--accent-gold);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             z-index: 100;
         }
@@ -80,21 +80,21 @@
         
         .stat-card:hover {
             background: #f8f9fa !important;
-            border-color: #C5A065 !important;
+            border-color: var(--accent-gold) !important;
             transform: translateY(-5px);
         }
         
         .stat-label {
-            color: #002147 !important; /* Navy text for visibility */
+            color: var(--primary-navy) !important; /* Brand green text for visibility */
             font-weight: 600;
         }
 
         /* Highlighting Classes */
         .highlight-text {
-            background: linear-gradient(120deg, rgba(197, 160, 101, 0.2) 0%, rgba(197, 160, 101, 0.1) 100%);
+            background: linear-gradient(120deg, rgba(165, 214, 167, 0.35) 0%, rgba(232, 245, 233, 0.5) 100%);
             padding: 2px 6px;
             border-radius: 4px;
-            color: #002147 !important;
+            color: var(--primary-navy) !important;
             font-weight: 700;
         }
 
@@ -226,7 +226,8 @@
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about-us.html" class="nav-link">About</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="products.html" class="nav-link">Products</a></li>
+                <li><a href="products.html" class="nav-link">Import & Export</a></li>
+                <li><a href="tours-travel.html" class="nav-link">Tours & Travel</a></li>
                 <li><a href="market-insights.html" class="nav-link active">Insights</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
@@ -238,10 +239,10 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home" style="height: 60vh; background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(0, 21, 46, 0.8)), url('images/background_image.webp'); background-size: cover; background-position: center;">
+    <section class="hero" id="home" style="height: 60vh; background: linear-gradient(rgba(27, 94, 32, 0.82), rgba(15, 56, 20, 0.92)), url('images/background_image.webp'); background-size: cover; background-position: center;">
         <div class="hero-overlay-text">
-            <h1 class="hero-title">Insights for <span>Smarter Exports</span></h1>
-            <p class="hero-subtitle">Data-driven decisions for your global trade business</p>
+            <h1 class="hero-title">Insights for <span>Smarter Global Operations</span></h1>
+            <p class="hero-subtitle">Data-driven market intelligence for trade and international operations</p>
         </div>
     </section>
 
@@ -282,21 +283,21 @@
                     <h3 style="color: #002147; margin-bottom: 15px; font-size: 1.8rem;">📊 Global Trade Outlook (2025 Projections)</h3>
                     <div style="color: #555; line-height: 1.8;">
                         <p style="margin-bottom: 15px;">
-                            <strong style="color: #002147; font-size: 1.1rem;">Growth Forecast:</strong> The World Trade Organization (WTO) projects that global merchandise trade will grow by <strong style="color: #bfa15f;">3.3% in 2025</strong>.
+                            <strong style="color: var(--primary-navy); font-size: 1.1rem;">Growth Forecast:</strong> The World Trade Organization (WTO) projects that global merchandise trade will grow by <strong style="color: var(--accent-gold);">3.3% in 2025</strong>.
                         </p>
-                        <p style="margin-bottom: 0; padding-left: 20px; border-left: 3px solid #C5A065;">
+                        <p style="margin-bottom: 0; padding-left: 20px; border-left: 3px solid var(--accent-gold);">
                             <strong>Context:</strong> This follows a recovery period after a 1.2% decline in 2023. The anticipated growth is expected to be driven by a rebound in global merchandise trade, while services trade remains strong.
                         </p>
                     </div>
                 </div>
 
                 <!-- Regional Trade Dynamics -->
-                <h3 style="color: #002147; margin-bottom: 30px; font-size: 1.8rem;">🌍 Regional Trade Dynamics</h3>
+                <h3 style="color: var(--primary-navy); margin-bottom: 30px; font-size: 1.8rem;">🌍 Regional Trade Dynamics</h3>
                 
                 <div class="regional-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 50px;">
                     <!-- Africa Card -->
-                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
-                        <h4 style="color: #002147; margin-bottom: 15px; font-size: 1.3rem;">🌍 Africa (High Growth)</h4>
+                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                        <h4 style="color: var(--primary-navy); margin-bottom: 15px; font-size: 1.3rem;">🌍 Africa (High Growth)</h4>
                         <p style="color: #333; font-size: 1.1rem; margin-bottom: 10px;">
                             <strong>5.3% Export Growth in 2024</strong>
                         </p>
@@ -306,8 +307,8 @@
                     </div>
 
                     <!-- Asia Card -->
-                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
-                        <h4 style="color: #002147; margin-bottom: 15px; font-size: 1.3rem;">🌏 Asia (Strong Demand)</h4>
+                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                        <h4 style="color: var(--primary-navy); margin-bottom: 15px; font-size: 1.3rem;">🌏 Asia (Strong Demand)</h4>
                         <p style="color: #333; font-size: 1.1rem; margin-bottom: 10px;">
                             <strong>5.6% Import Growth Expected</strong>
                         </p>
@@ -317,8 +318,8 @@
                     </div>
 
                     <!-- Europe Card -->
-                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
-                        <h4 style="color: #002147; margin-bottom: 15px; font-size: 1.3rem;">🇪🇺 Europe (Challenging)</h4>
+                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                        <h4 style="color: var(--primary-navy); margin-bottom: 15px; font-size: 1.3rem;">🇪🇺 Europe (Challenging)</h4>
                         <p style="color: #333; font-size: 1.1rem; margin-bottom: 10px;">
                             <strong>1.7% Export Growth</strong>
                         </p>
@@ -328,8 +329,8 @@
                     </div>
 
                     <!-- China Card -->
-                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid #C5A065; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
-                        <h4 style="color: #002147; margin-bottom: 15px; font-size: 1.3rem;">🇨🇳 China</h4>
+                    <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #e0e0e0; border-top: 4px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                        <h4 style="color: var(--primary-navy); margin-bottom: 15px; font-size: 1.3rem;">🇨🇳 China</h4>
                         <p style="color: #333; font-size: 1.1rem; margin-bottom: 10px;">
                             <strong>Economic Stimulus</strong>
                         </p>
@@ -542,10 +543,10 @@
             <a href="index.html" class="footer-nav-link">Home</a>
             <a href="about-us.html" class="footer-nav-link">About</a>
             <a href="services.html" class="footer-nav-link">Services</a>
-            <a href="products.html" class="footer-nav-link">Products</a>
+            <a href="products.html" class="footer-nav-link">Import & Export</a>
+            <a href="tours-travel.html" class="footer-nav-link">Tours & Travel</a>
             <a href="market-insights.html" class="footer-nav-link">Insights</a>
-            <a href="contact.html" class="footer-nav-link">Private Policy</a>
-            <a href="#" class="footer-nav-link">Terms</a>
+            <a href="contact.html" class="footer-nav-link">Contact</a>
             <span style="font-size: 0.8rem; color: #555;">&copy; 2026 AORR Global Trading</span>
         </div>
     </footer>

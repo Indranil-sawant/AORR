@@ -3,7 +3,7 @@
 /* Hero Section */
 .products-hero-section {
     background-color: var(--primary-dark);
-    background: linear-gradient(rgba(0, 33, 71, 0.9), rgba(0, 21, 46, 0.95)), 
+    background: linear-gradient(rgba(27, 94, 32, 0.88), rgba(15, 56, 20, 0.95)), 
                 url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
@@ -36,7 +36,7 @@
 
 /* Two-Column Layout */
 .catalog-section {
-    background-color: #f4f6f9;
+    background-color: var(--bg-light);
     min-height: 80vh;
     padding: 60px 20px;
 }
@@ -107,7 +107,7 @@
     border-color: var(--accent-gold);
     background: white;
     outline: none;
-    box-shadow: 0 4px 12px rgba(197, 160, 101, 0.15); /* Gold glow */
+    box-shadow: 0 4px 12px rgba(102, 187, 106, 0.2); /* Green glow */
 }
 
 .search-box input::placeholder {
@@ -128,7 +128,7 @@
 }
 
 .search-box input:focus + .search-icon {
-    color: var(--accent-gold); /* Gold on active */
+    color: var(--accent-gold); /* Active color */
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -154,7 +154,7 @@
 .btn-sidebar:hover {
     background: var(--primary-navy);
     color: white;
-    box-shadow: 0 5px 15px rgba(0, 33, 71, 0.2);
+    box-shadow: 0 5px 15px rgba(27, 94, 32, 0.2);
     transform: translateY(-2px);
 }
 
@@ -412,7 +412,7 @@ details[open] summary.card-drawer-trigger::after {
 }
 
 .sub-hero-overlay {
-    background: rgba(0, 33, 71, 0.7); /* Navy overlay */
+    background: rgba(15, 56, 20, 0.78); /* Dark Forest overlay */
     position: absolute;
     top: 0;
     left: 0;
@@ -488,12 +488,12 @@ details[open] summary.card-drawer-trigger::after {
 
 .item-card-image-placeholder {
     height: 160px;
-    background: #f4f6f9;
+    background: var(--bg-light);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2.5rem;
-    color: rgba(0, 33, 71, 0.1); /* Faint icon */
+    color: rgba(27, 94, 32, 0.15); /* Faint icon */
 }
 
 .item-card-body {
@@ -625,7 +625,7 @@ details[open] summary.card-drawer-trigger::after {
 .loading-spinner {
     width: 40px;
     height: 40px;
-    border: 3px solid rgba(0, 33, 71, 0.1);
+    border: 3px solid rgba(27, 94, 32, 0.15);
     border-radius: 50%;
     border-top-color: var(--accent-gold);
     animation: spin 1s ease-in-out infinite;

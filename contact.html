@@ -61,7 +61,8 @@
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about-us.html" class="nav-link">About</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="products.html" class="nav-link">Products</a></li>
+                <li><a href="products.html" class="nav-link">Import & Export</a></li>
+                <li><a href="tours-travel.html" class="nav-link">Tours & Travel</a></li>
                 <li><a href="market-insights.html" class="nav-link">Insights</a></li>
                 <li><a href="contact.html" class="nav-link active">Contact</a></li>
             </ul>
@@ -73,19 +74,19 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home" style="height: 60vh; background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(0, 21, 46, 0.8)), url('images/contact-hero.webp'); background-size: cover; background-position: center;">
+    <section class="hero" id="home" style="height: 60vh; background: linear-gradient(rgba(27, 94, 32, 0.82), rgba(15, 56, 20, 0.92)), url('images/contact-hero.webp'); background-size: cover; background-position: center;">
         <div class="hero-overlay-text">
-            <h1 class="hero-title">Contact Our Export Team</h1>
-            <p class="hero-subtitle">Start Your Global Trade Partnership</p>
+            <h1 class="hero-title">Contact AORR Enterprise</h1>
+            <p class="hero-subtitle">Global Trade Inquiries & Bespoke Travel Management</p>
         </div>
     </section>
 
     <!-- Contact & Address -->
     <section class="contact-section" id="contact" style="padding-top: 50px;">
         <div class="contact-container">
-            <h2 class="section-title" style="text-align: center;">Partner with AORR for Exports</h2>
+            <h2 class="section-title" style="text-align: center;">Partner with AORR</h2>
             <p style="text-align: center; margin-bottom: 40px; color: var(--text-secondary);">
-                Ready to source quality products from India? Contact AORR today for a consultation.
+                Ready to source quality products or plan your next corporate or luxury travel journey? Contact AORR today.
             </p>
 
             <!-- Responsive Info Grid -->
@@ -133,7 +134,7 @@
                 <div class="card" style="margin: 0;">
                     <div class="card2">
                         <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec">
-                            <p id="heading">Submit Export Inquiry</p>
+                            <p id="heading">Submit An Inquiry</p>
 
                             <!-- Name -->
                             <div class="field">
@@ -152,6 +153,23 @@
                                     required />
                             </div>
 
+                            <!-- Service / Division of Interest -->
+                            <div class="field">
+                                <select class="input-field" required name="product">
+                                    <option value="" disabled selected>Select Service / Division</option>
+                                    <option value="Global Import & Export Supplies">Global Import & Export Supplies</option>
+                                    <option value="Marine & Ship Raw Materials">Marine & Ship Raw Materials</option>
+                                    <option value="Industrial Machinery & Valves">Industrial Machinery & Valves</option>
+                                    <option value="Garments & Textiles">Garments & Textiles</option>
+                                    <option value="Agricultural Exports">Agricultural Exports</option>
+                                    <option value="Corporate & Business Travel">Corporate & Business Travel</option>
+                                    <option value="Bespoke Leisure & Holidays">Bespoke Leisure & Holidays</option>
+                                    <option value="Flight & Hotel Bookings">Flight & Hotel Bookings</option>
+                                    <option value="Visa Assistance & Insurance">Visa Assistance & Insurance</option>
+                                    <option value="General Corporate Inquiry">General Corporate Inquiry</option>
+                                </select>
+                            </div>
+
                             <!-- Location -->
                             <div class="field">
                                 <select class="input-field" required name="location">
@@ -168,11 +186,11 @@
 
                             <!-- Message -->
                             <div class="field">
-                                <textarea class="input-field" placeholder="Your Message" rows="4" name="message"
+                                <textarea class="input-field" placeholder="Your Message or Requirements" rows="4" name="message"
                                     required></textarea>
                             </div>
 
-                            <input type="hidden" name="page" value="">
+                            <input type="hidden" name="page" value="contact.html">
                             
                             <!-- Honeypot (must stay hidden) -->
                             <input type="text" name="company" style="display:none">
@@ -180,7 +198,7 @@
                             <!-- Button -->
                             <div class="btn">
                                 <button class="button1" type="submit">
-                                    Send Message
+                                    Send Inquiry
                                 </button>
                             </div>
                             <p id="formStatus" style="text-align: center; margin-top: 10px; color: green; font-weight: bold;"></p>
@@ -213,8 +231,7 @@
 
         <div class="footer-content-grid">
             <div class="footer-tagline">
-                AI-driven insights and global logistics to help you win and move more freight efficiently across
-                borders.
+                AI-driven insights, global trade logistics, and bespoke corporate travel management from Pune, India to the world.
             </div>
 
             <div class="footer-contact">
@@ -238,10 +255,10 @@
             <a href="index.html" class="footer-nav-link">Home</a>
             <a href="about-us.html" class="footer-nav-link">About</a>
             <a href="services.html" class="footer-nav-link">Services</a>
-            <a href="products.html" class="footer-nav-link">Products</a>
+            <a href="products.html" class="footer-nav-link">Import & Export</a>
+            <a href="tours-travel.html" class="footer-nav-link">Tours & Travel</a>
             <a href="market-insights.html" class="footer-nav-link">Insights</a>
-            <a href="contact.html" class="footer-nav-link">Private Policy</a>
-            <a href="#" class="footer-nav-link">Terms</a>
+            <a href="contact.html" class="footer-nav-link">Contact</a>
             <span style="font-size: 0.8rem; color: #555;">&copy; 2026 AORR Global Trading</span>
         </div>
     </footer>

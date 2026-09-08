@@ -136,6 +136,28 @@ function buildSearchIndex() {
         }
     });
 
+    // Add Tours & Travel Services to Search Index
+    const travelServices = [
+        { title: 'Tours & Travel Division', category: 'Travel Services', url: 'tours-travel.html', icon: '✈️' },
+        { title: 'Corporate & Business Travel', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '💼' },
+        { title: 'Bespoke Leisure & Holiday Packages', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏖️' },
+        { title: 'Global Flight & Hotel Bookings', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏨' },
+        { title: 'Visa Assistance & Travel Insurance', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🛂' },
+        { title: 'Luxury Cruises & Yacht Charters', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🛳️' },
+        { title: 'MICE & Corporate Group Expeditions', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏛️' },
+        { title: 'Custom Travel Itinerary Planning', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '🗺️' }
+    ];
+
+    travelServices.forEach(item => {
+        index.push({
+            type: 'Service',
+            title: item.title,
+            category: item.category,
+            url: item.url,
+            icon: item.icon
+        });
+    });
+
     return index;
 }
 
