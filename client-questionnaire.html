@@ -26,45 +26,52 @@
 
     <style>
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: #F8FAF9;
+            color: #111827;
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
         }
 
         .questionnaire-container {
-            max-width: 850px;
+            max-width: 880px;
             /* A4 width approx */
             margin: 40px auto;
-            background: white;
-            padding: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-top: 5px solid var(--primary-navy);
+            background: #FFFFFF;
+            padding: 50px 60px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            border-top: 6px solid #059669;
+            border-left: 1px solid rgba(5, 150, 105, 0.12);
+            border-right: 1px solid rgba(5, 150, 105, 0.12);
+            border-bottom: 1px solid rgba(5, 150, 105, 0.12);
         }
 
         .q-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #E5E7EB;
+            padding-bottom: 24px;
         }
 
         .q-logo {
-            color: var(--primary-navy);
-            font-family: var(--font-main);
-            font-size: 24px;
-            font-weight: 700;
+            color: #0B3B17;
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            letter-spacing: 0.5px;
         }
 
         .q-logo-icon {
             width: 24px;
             height: 24px;
-            border: 2px solid var(--accent-gold);
+            border: 2.5px solid #059669;
             transform: rotate(45deg);
+            border-radius: 3px;
         }
 
         .q-title {
@@ -72,24 +79,29 @@
         }
 
         .q-title h1 {
-            font-size: 1.5rem;
-            color: var(--primary-navy);
-            margin-bottom: 5px;
+            font-size: 1.6rem;
+            color: #0B3B17;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
         .q-title p {
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 0.95rem;
+            color: #4B5563;
+            font-weight: 500;
         }
 
         .section-header {
-            background: var(--bg-light);
-            padding: 10px 15px;
-            border-left: 4px solid var(--accent-gold);
-            margin: 30px 0 20px;
-            color: var(--primary-navy);
-            font-family: var(--font-main);
-            font-weight: 600;
+            background: #F0FDF4;
+            padding: 12px 18px;
+            border-left: 4px solid #059669;
+            border-radius: 0 8px 8px 0;
+            margin: 35px 0 22px;
+            color: #0B3B17;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
             page-break-after: avoid;
         }
 
@@ -111,22 +123,28 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-size: 0.85rem;
-            color: #444;
+            font-size: 0.88rem;
+            color: #1F2937;
             font-weight: 600;
         }
 
         .form-control {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            background: #fff;
+            padding: 11px 14px;
+            border: 1.5px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            background: #FAFAFA;
+            color: #111827;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
         }
 
         .form-control:focus {
-            border-color: var(--primary-navy);
+            border-color: #059669;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
             outline: none;
         }
 
@@ -140,8 +158,10 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9rem;
-            color: #555;
+            font-size: 0.92rem;
+            color: #374151;
+            font-weight: 500;
+            cursor: pointer;
         }
 
         .actions-panel {
@@ -150,6 +170,7 @@
             right: 30px;
             display: flex;
             gap: 15px;
+            z-index: 100;
         }
 
         .btn-action {
@@ -158,26 +179,29 @@
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.95rem;
         }
 
         .btn-print {
-            background: var(--primary-navy);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: white;
         }
 
         .btn-home {
             background: white;
-            color: var(--primary-navy);
+            color: #0B3B17;
+            border: 1px solid #E5E7EB;
         }
 
         .btn-action:hover {
             transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
         }
 
         /* Print Specifics */
@@ -193,6 +217,7 @@
                 width: 100%;
                 max-width: 100%;
                 border-top: none;
+                border: none;
                 padding: 20px;
             }
 
@@ -215,8 +240,7 @@
         <!-- Header -->
         <div class="q-header">
             <div class="q-logo">
-                <div class="q-logo-icon"></div>
-                AORR
+                <img src="images/logo.png" alt="AORR Global Enterprise Logo" style="height: 56px; width: auto;">
             </div>
             <div class="q-title">
                 <h1>New Client Questionnaire</h1>
@@ -224,7 +248,7 @@
             </div>
         </div>
 
-        <p style="margin-bottom: 30px; color: #555; font-size: 0.9rem; line-height: 1.6;">
+        <p style="margin-bottom: 30px; color: #374151; font-size: 0.95rem; line-height: 1.65; font-weight: 400;">
             Thank you for your interest in partnering with AORR Global Trading.
             To better understand your requirements and provide a tailored solution, please complete the following
             details.
@@ -335,7 +359,7 @@
             <div class="form-group full">
                 <label>Preferred Mode of Transport</label>
                 <div class="checkbox-group">
-                    <label class="checkbox-item"><input type="radio" name="transport"> Sea Freight</label>
+                    <label class="checkbox-item"><input type="radio" name="transport"> Ocean Freight</label>
                     <label class="checkbox-item"><input type="radio" name="transport"> Air Freight</label>
                     <label class="checkbox-item"><input type="radio" name="transport"> Land Transport</label>
                     <label class="checkbox-item"><input type="radio" name="transport"> Multi-modal</label>

@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="global-search-style.css">
     <link rel="stylesheet" href="loader.css">
     <link rel="stylesheet" href="whatsapp-widget.css">
-    <link rel="icon" type="image/webp" href="images/logo.webp">
+    <link rel="icon" type="image/png" href="images/logo.png">
 </head>
 
 <body>
@@ -39,7 +39,7 @@
             <div class="loader-ring-2"></div>
             <div class="loader-text-container">
                 <span class="loader-brand">AORR</span>
-                <span class="loader-tagline">Global Trading</span>
+                <span class="loader-tagline">Global Enterprise</span>
                 <div class="loader-progress-track">
                     <div class="loader-progress-bar"></div>
                 </div>
@@ -52,19 +52,18 @@
         <nav class="nav-container">
             <a href="index.html" class="logo">
                 <picture>
-                    <source srcset="images/logo.webp" type="image/webp">
-                    <img src="images/logo.png" alt="AORR Export Services India Logo" class="nav-logo-img" loading="eager" width="200" height="100">
+                    <source srcset="images/logo.png" type="image/png">
+                    <img src="images/logo.png" alt="AORR Global Enterprise Logo" class="nav-logo-img" loading="eager" width="90" height="90">
                 </picture>
-                <span class="logo-text">AORR</span>
             </a>
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about-us.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link active">Services</a></li>
-                <li><a href="products.html" class="nav-link">Import & Export</a></li>
+                <li><a href="products.html" class="nav-link">Global Trade</a></li>
                 <li><a href="tours-travel.html" class="nav-link">Tours & Travel</a></li>
-                <li><a href="market-insights.html" class="nav-link">Insights</a></li>
+                <li><a href="medical-tourism.html" class="nav-link">Medical Tourism</a></li>
+                <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                <li><a href="market-insights.html" class="nav-link">Global Network</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
@@ -128,7 +127,7 @@
                     <div class="story-card">
                         <div class="story-card-icon">🚢</div>
                         <h4>End-to-End Logistics</h4>
-                        <p>Complete management of sea, air, and land freight logistics.</p>
+                        <p>Complete management of ocean, air, and land freight logistics.</p>
                     </div>
                     <div class="story-card">
                         <div class="story-card-icon">📦</div>
@@ -162,13 +161,13 @@
                 </p>
                 <div style="margin-top: 30px;">
                     <div style="margin-bottom: 15px; border-left: 3px solid var(--accent-gold); padding-left: 15px;">
-                        <h4 style="color: white; font-size: 1.1rem;">Regulatory Alignment</h4>
-                        <p style="font-size: 0.9rem; color: #aaa;">Ensuring your business meets all local and
+                        <h4 style="color: white; font-size: 1.1rem; font-weight: 600;">Regulatory Alignment</h4>
+                        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">Ensuring your business meets all local and
                             international legal standards.</p>
                     </div>
                     <div style="margin-bottom: 15px; border-left: 3px solid var(--accent-gold); padding-left: 15px;">
-                        <h4 style="color: white; font-size: 1.1rem;">Risk Mitigation</h4>
-                        <p style="font-size: 0.9rem; color: #aaa;">Identifying and neutralizing potential compliance
+                        <h4 style="color: white; font-size: 1.1rem; font-weight: 600;">Risk Mitigation</h4>
+                        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">Identifying and neutralizing potential compliance
                             risks before they impact operations.</p>
                     </div>
                 </div>
@@ -358,33 +357,54 @@
     </section>
 
     <!-- Division Cross-Navigation Section -->
-    <section class="values-section" style="background: var(--bg-light); padding: 60px 20px;">
-        <div class="values-container" style="max-width: 1200px; margin: 0 auto;">
+    <section class="values-section" style="background: var(--bg-light); padding: 70px 20px;">
+        <div class="values-container" style="max-width: 1300px; margin: 0 auto;">
             <div class="section-header-about" style="text-align: center; margin-bottom: 40px;">
-                <span class="section-tag-about">EXPLORE OUR DOMAINS</span>
-                <h2>Dedicated Enterprise Divisions</h2>
-                <p>Comprehensive capabilities spanning international trade and specialized travel solutions</p>
+                <span class="editorial-kicker" style="color: var(--primary-forest);">EXPLORE OUR DOMAINS</span>
+                <h2 class="editorial-title dark" style="font-size: clamp(2rem, 3.5vw, 2.6rem); margin-top: 10px;">Three Dedicated Business Pillars</h2>
+                <p class="editorial-subtitle dark">Comprehensive cross-border capabilities spanning trade supply chains, bespoke travel, and healthcare coordination</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div class="value-card" style="background: white; border-radius: 12px; padding: 35px; border-top: 4px solid var(--accent-gold); box-shadow: 0 8px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+            <div class="three-pillars-grid">
+                <!-- Pillar 01: Global Trade -->
+                <div class="pillar-card">
                     <div>
-                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🚢</div>
-                        <h3 style="color: var(--primary-navy); margin-bottom: 12px; font-size: 1.4rem;">Import & Export Division</h3>
-                        <p style="color: #4a5568; line-height: 1.6; margin-bottom: 20px;">
-                            Supplying verified marine materials, FRP systems, valves, machinery, and garments across 50+ countries with complete customs compliance and logistics.
+                        <div style="font-size: 2.2rem; margin-bottom: 12px;">🚢</div>
+                        <span class="pillar-badge">Pillar 01</span>
+                        <h3 class="pillar-title" style="margin-top: 10px;">Global Trade</h3>
+                        <p class="pillar-tagline">Import. Export. Sourcing.</p>
+                        <p class="pillar-description">
+                            Verified marine supplies, industrial valves, machinery, garments, and agricultural exports across 50+ countries with complete customs compliance.
                         </p>
                     </div>
-                    <a href="products.html" class="hero-btn primary" style="text-align: center; display: inline-block;">Browse Product Catalog →</a>
+                    <a href="products.html" class="pillar-action-btn primary" style="text-align: center; text-decoration: none;">Browse Trade Catalog →</a>
                 </div>
-                <div class="value-card" style="background: white; border-radius: 12px; padding: 35px; border-top: 4px solid var(--accent-gold); box-shadow: 0 8px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+
+                <!-- Pillar 02: Tours & Travels -->
+                <div class="pillar-card">
                     <div>
-                        <div style="font-size: 2.5rem; margin-bottom: 15px;">✈️</div>
-                        <h3 style="color: var(--primary-navy); margin-bottom: 12px; font-size: 1.4rem;">Tours & Travel Division</h3>
-                        <p style="color: #4a5568; line-height: 1.6; margin-bottom: 20px;">
-                            Bespoke corporate itineraries, international flight & hotel bookings, MICE expeditions, visa assistance, and tailor-made leisure packages.
+                        <div style="font-size: 2.2rem; margin-bottom: 12px;">✈️🚆</div>
+                        <span class="pillar-badge">Pillar 02</span>
+                        <h3 class="pillar-title" style="margin-top: 10px;">Tours & Travels</h3>
+                        <p class="pillar-tagline">Datta Chaya Tourism & IRCTC Desk</p>
+                        <p class="pillar-description">
+                            Spiritual & heritage pilgrimages, Authorised IRCTC Railway Ticket Booking Desk, corporate travel itineraries, flights, luxury hotels, and 24/7 dedicated travel concierge.
                         </p>
                     </div>
-                    <a href="tours-travel.html" class="hero-btn primary" style="text-align: center; display: inline-block;">Explore Travel Services →</a>
+                    <a href="tours-travel.html" class="pillar-action-btn primary" style="text-align: center; text-decoration: none;">Explore Tours & Travel →</a>
+                </div>
+
+                <!-- Pillar 03: Medical Tourism -->
+                <div class="pillar-card">
+                    <div>
+                        <div style="font-size: 2.2rem; margin-bottom: 12px;">🩺</div>
+                        <span class="pillar-badge">Pillar 03</span>
+                        <h3 class="pillar-title" style="margin-top: 10px;">Medical Tourism</h3>
+                        <p class="pillar-tagline">Healthcare Without Borders</p>
+                        <p class="pillar-description">
+                            Ethical patient concierge assisting families with accredited hospital discovery, specialist consultations, visa support, and on-ground care in India.
+                        </p>
+                    </div>
+                    <a href="medical-tourism.html" class="pillar-action-btn primary" style="text-align: center; text-decoration: none;">Explore Medical Tourism →</a>
                 </div>
             </div>
         </div>
@@ -393,8 +413,8 @@
     <!-- Call to Action -->
     <section class="about-cta-section">
         <div class="about-cta-container">
-            <h2>Optimize Your Supply Chain & Travel Operations</h2>
-            <p>Let AORR design a custom trade or corporate travel solution for your organization.</p>
+            <h2>Optimize Your Global Supply Chain & Travel Operations</h2>
+            <p>Let AORR design a custom trade, corporate travel, or healthcare coordination solution for your organization.</p>
             <div class="about-cta-buttons">
                 <a href="contact.html" class="btn-primary">Request Consultation</a>
                 <a href="about-us.html" class="btn-secondary">Learn About Us</a>
@@ -404,44 +424,45 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-large-logo" style="display: flex; justify-content: center; align-items: center;">
+        <div class="footer-large-logo" style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
             <picture>
-                <source srcset="images/logo.webp" type="image/webp">
-                <img src="images/logo.png" alt="AORR Logo" style="height: 220px;" loading="lazy">
+                <source srcset="images/logo.png" type="image/png">
+                <img src="images/logo.png" alt="AORR Global Enterprise Logo" style="height: 140px; width: auto;" loading="lazy" decoding="async">
             </picture>
         </div>
 
         <div class="footer-content-grid">
             <div class="footer-tagline">
-                AI-driven insights, global logistics, and bespoke travel management to empower your global enterprise.
+                <p style="font-weight: 700; font-size: 1.1rem; color: #ffffff; margin-bottom: 8px;">AORR Global Services</p>
+                Connecting people, businesses, and opportunities across borders through Global Trade, Tours & Travels, and Medical Tourism Coordination.
             </div>
 
             <div class="footer-contact">
-                <div class="footer-heading">Contact Us</div>
-                <p>49/1/1, Shri Hari Krupa<br>Kothrud, Pune, MH 411038</p>
+                <div class="footer-heading">Corporate Office</div>
+                <p>49/1/1, Shri Hari Krupa<br>Kothrud, Pune, MH 411038, India</p>
                 <br>
                 <p><a href="mailto:aorr@aorr.in">aorr@aorr.in</a></p>
-                <p>+91 8975218910</p>
+                <p>+91 9730004911 / +91 8975218910</p>
             </div>
 
             <div class="footer-newsletter">
-                <div class="footer-heading">Stay Up To Date</div>
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
-                    <button type="submit" class="newsletter-btn">Submit</button>
-                </form>
+                <div class="footer-heading">Global Inquiries</div>
+                <p style="font-size: 0.9rem; color: #d8e2dc; margin-bottom: 15px;">
+                    Reach out directly for specialized trade supply chains, corporate itineraries, or confidential healthcare coordination.
+                </p>
+                <a href="contact.html" class="hero-btn primary" style="display: inline-block; padding: 10px 22px; font-size: 0.88rem; border-radius: 6px;">Contact All Divisions →</a>
             </div>
         </div>
 
         <div class="footer-bottom-nav">
             <a href="index.html" class="footer-nav-link">Home</a>
-            <a href="about-us.html" class="footer-nav-link">About</a>
-            <a href="services.html" class="footer-nav-link">Services</a>
-            <a href="products.html" class="footer-nav-link">Import & Export</a>
+            <a href="products.html" class="footer-nav-link">Global Trade</a>
             <a href="tours-travel.html" class="footer-nav-link">Tours & Travel</a>
-            <a href="market-insights.html" class="footer-nav-link">Insights</a>
+            <a href="medical-tourism.html" class="footer-nav-link">Medical Tourism</a>
+            <a href="about-us.html" class="footer-nav-link">About Us</a>
+            <a href="market-insights.html" class="footer-nav-link">Global Network</a>
             <a href="contact.html" class="footer-nav-link">Contact</a>
-            <span style="font-size: 0.8rem; color: #555;">&copy; 2026 AORR Global Trading</span>
+            <span style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7);">&copy; 2026 AORR Global Enterprise. All rights reserved.</span>
         </div>
     </footer>
 

@@ -69,14 +69,14 @@ This document catalogues all reusable user interface components, patterns, layou
                   <source srcset="images/logo.webp" type="image/webp">
                   <img src="images/logo.png" alt="AORR Logo" class="nav-logo-img" loading="eager" width="200" height="100">
               </picture>
-              <span class="logo-text">AORR</span>
           </a>
 
           <ul class="nav-menu" id="navMenu">
               <li><a href="index.html" class="nav-link active">Home</a></li>
               <li><a href="about-us.html" class="nav-link">About</a></li>
               <li><a href="services.html" class="nav-link">Services</a></li>
-              <li><a href="products.html" class="nav-link">Products</a></li>
+              <li><a href="products.html" class="nav-link">Import & Export</a></li>
+              <li><a href="tours-travel.html" class="nav-link">Tours & Travel</a></li>
               <li><a href="market-insights.html" class="nav-link">Insights</a></li>
               <li><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>

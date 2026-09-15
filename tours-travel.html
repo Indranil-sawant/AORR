@@ -25,11 +25,11 @@
     <meta property="og:url" content="https://www.aorr.in/tours-travel.html">
     <meta property="og:title" content="AORR Tours & Travel | Corporate & Leisure Travel Management">
     <meta property="og:description" content="Professional travel solutions, corporate itineraries, and global holiday management backed by AORR's commitment to reliability and customer care.">
-    <meta property="og:image" content="https://www.aorr.in/images/logo.webp">
+    <meta property="og:image" content="https://www.aorr.in/images/logo.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.aorr.in/tours-travel.html">
-    <link rel="icon" type="image/webp" href="images/logo.webp">
+    <link rel="icon" type="image/png" href="images/logo.png">
     
     <!-- Fonts & Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,102 +54,303 @@
             justify-content: center;
             padding: 160px 20px 80px;
             text-align: center;
-            background: linear-gradient(rgba(27, 94, 32, 0.88), rgba(15, 56, 20, 0.94)), url('images/background_image_index.webp');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 100%);
         }
 
         .travel-services-section {
             padding: 90px 20px;
-            background: var(--bg-light);
+            background: #F8FAF9;
             color: var(--text-dark);
         }
 
         .travel-services-container {
-            max-width: 1300px;
+            max-width: 1320px;
             margin: 0 auto;
         }
 
-        .travel-grid {
+        .tour-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
-        .travel-card {
+        .tour-card {
             background: #ffffff;
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 35px 30px;
-            box-shadow: 0 10px 30px rgba(27, 94, 32, 0.06);
-            border: 1px solid rgba(165, 214, 167, 0.35);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(5, 150, 105, 0.2);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+            overflow: hidden;
         }
 
-        .travel-card:hover {
+        .tour-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #059669 0%, #A5D6A7 100%);
+        }
+
+        .tour-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 18px 40px rgba(27, 94, 32, 0.12);
-            border-color: var(--accent-green);
+            box-shadow: 0 20px 45px rgba(5, 150, 105, 0.14);
+            border-color: #059669;
         }
 
-        .travel-card-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 14px;
-            background: rgba(102, 187, 106, 0.15);
-            color: var(--color-deep-forest);
+        .tour-card-img-wrap {
+            width: 100%;
+            height: 190px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 18px;
+            position: relative;
+            background: #E8F5E9;
+        }
+
+        .tour-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .tour-card:hover .tour-card-img {
+            transform: scale(1.06);
+        }
+
+        .tour-header-meta {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
-        .travel-card-title {
-            font-family: var(--font-main);
-            font-size: 1.4rem;
+        .tour-badge {
+            background: #E8F5E9;
+            color: #0B3B17;
+            font-size: 0.82rem;
             font-weight: 700;
-            color: var(--primary-forest);
-            margin-bottom: 12px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(5, 150, 105, 0.25);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
-        .travel-card-text {
-            color: var(--text-muted);
+        .tour-duration {
+            background: #0B3B17;
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .tour-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0B3B17;
+            margin-bottom: 10px;
+            line-height: 1.35;
+        }
+
+        .tour-tagline {
+            color: #059669;
             font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
+            font-weight: 600;
+            margin-bottom: 16px;
         }
 
-        .travel-card-features {
+        .tour-route-box {
+            background: #F8FAF9;
+            border-left: 3px solid #059669;
+            padding: 12px 16px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 20px;
+            font-size: 0.88rem;
+            color: #1F2937;
+            line-height: 1.55;
+        }
+
+        .tour-route-box strong {
+            color: #0B3B17;
+            display: block;
+            margin-bottom: 3px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tour-highlights {
             list-style: none;
             padding: 0;
             margin: 0 0 25px 0;
-            border-top: 1px solid #edf2f0;
+            border-top: 1px solid #E5E7EB;
             padding-top: 15px;
-        }
-
-        .travel-card-features li {
-            font-size: 0.88rem;
-            color: #374151;
-            margin-bottom: 8px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 8px;
         }
 
-        .travel-card-features li::before {
-            content: '✓';
-            color: var(--accent-green);
+        .tour-highlights li {
+            font-size: 0.9rem;
+            color: #374151;
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.45;
+        }
+
+        .tour-highlights li span {
+            color: #059669;
             font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .card-cta {
+            display: block;
+            width: 100%;
+            padding: 13px 20px;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+        }
+
+        .card-cta:hover {
+            background: linear-gradient(135deg, #047857 0%, #064E3B 100%);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.35);
+        }
+
+        /* IRCTC Rail Section */
+        .rail-section {
+            padding: 90px 20px;
+            background: linear-gradient(135deg, #0B3B17 0%, #064E3B 100%);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rail-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(165, 214, 167, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .rail-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rail-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .rail-features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .rail-feat-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(165, 214, 167, 0.25);
+            border-radius: 14px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .rail-feat-card:hover {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: #66BB6A;
+            transform: translateY(-3px);
+        }
+
+        .rail-feat-card h4 {
+            color: #A5D6A7;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .rail-feat-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.88rem;
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        .rail-action-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 35px;
+            color: #111827;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .rail-action-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: #0B3B17;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .rail-classes-pill {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 15px 0 25px;
+        }
+
+        .class-pill {
+            background: #E8F5E9;
+            color: #0B3B17;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(5, 150, 105, 0.2);
         }
 
         .travel-process-section {
             padding: 90px 20px;
-            background: var(--primary-dark);
+            background: #0B3B17;
             color: var(--text-white);
             text-align: center;
         }
@@ -164,9 +365,9 @@
         }
 
         .process-step-item {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
             padding: 30px 25px;
             position: relative;
             backdrop-filter: blur(10px);
@@ -175,34 +376,42 @@
 
         .process-step-item:hover {
             border-color: var(--accent-green);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .step-number {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--accent-green-light);
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #A5D6A7;
             margin-bottom: 10px;
             line-height: 1;
         }
 
         .step-title {
             font-family: var(--font-main);
-            font-size: 1.15rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             margin-bottom: 10px;
-            color: var(--text-white);
+            color: #ffffff;
         }
 
         .step-desc {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            line-height: 1.5;
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
         }
 
         .travel-inquiry-section {
             padding: 90px 20px;
-            background: var(--bg-light);
+            background: #F8FAF9;
+        }
+
+        @media (max-width: 900px) {
+            .rail-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -210,7 +419,10 @@
                 padding-top: 130px;
                 padding-bottom: 50px;
             }
-            .travel-grid {
+            .tour-grid {
+                grid-template-columns: 1fr;
+            }
+            .rail-features-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -240,19 +452,18 @@
         <nav class="nav-container">
             <a href="index.html" class="logo">
                 <picture>
-                    <source srcset="images/logo.webp" type="image/webp">
-                    <img src="images/logo.png" alt="AORR Logo - Premier Multi-Service Company" class="nav-logo-img" loading="eager" width="200" height="100">
+                    <source srcset="images/logo.png" type="image/png">
+                    <img src="images/logo.png" alt="AORR Global Enterprise Logo" class="nav-logo-img" loading="eager" width="90" height="90">
                 </picture>
-                <span class="logo-text">AORR</span>
             </a>
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about-us.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="products.html" class="nav-link">Import & Export</a></li>
+                <li><a href="products.html" class="nav-link">Global Trade</a></li>
                 <li><a href="tours-travel.html" class="nav-link active">Tours & Travel</a></li>
-                <li><a href="market-insights.html" class="nav-link">Insights</a></li>
+                <li><a href="medical-tourism.html" class="nav-link">Medical Tourism</a></li>
+                <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                <li><a href="market-insights.html" class="nav-link">Global Network</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
@@ -265,191 +476,279 @@
     <!-- Travel Hero -->
     <section class="travel-hero">
         <div class="hero-overlay-text">
-            <span class="hero-subtitle">AORR Travel Division</span>
-            <h1 class="hero-title">Elevating Corporate & Leisure Travel Experiences</h1>
+            <div style="margin-bottom: 15px;">
+                <span style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #0B3B17 0%, #047857 100%); color: #ffffff; padding: 8px 22px; border-radius: 30px; font-size: 0.92rem; font-weight: 800; letter-spacing: 1.5px; border: 1.5px solid #A5D6A7; box-shadow: 0 4px 18px rgba(5,150,105,0.25); text-transform: uppercase;">
+                    🌟 AORR TOURS & TRAVEL SERVICES — DATTA CHAYA TOURISM 🌟
+                </span>
+            </div>
+            <h1 class="hero-title">Travel Beyond Boundaries…<br><span style="color: #059669;">Experience Heritage, Nature & Divinity!</span></h1>
             <p class="hero-description">
-                Seamless journey curation, corporate delegations, customized international holiday packages, 
-                and comprehensive travel logistics backed by AORR's standard of operational excellence.
+                <strong>Datta Chaya Tourism</strong> presents specialized Spiritual Pilgrimage Packages, UNESCO Heritage Expeditions, and an <strong>Authorised IRCTC Railway Ticket Booking Desk</strong> — designed to make every sacred journey comfortable, peaceful, and unforgettable.
             </p>
             <div class="hero-cta-group">
-                <a href="#travel-inquiry" class="hero-btn primary">Plan Your Journey</a>
-                <a href="#services-list" class="hero-btn secondary">Explore Travel Services</a>
+                <a href="#tour-packages" class="hero-btn primary">Explore Datta Chaya Tour Packages →</a>
+                <a href="#irctc-railway" class="hero-btn secondary">IRCTC Railway Desk 🚆</a>
+            </div>
+
+            <!-- Datta Chaya Highlights Strip -->
+            <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; justify-content: center; font-size: 0.88rem; font-weight: 700; color: #0B3B17;">
+                <span style="background: #ffffff; border: 1px solid rgba(5,150,105,0.3); padding: 6px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">🙏 Dedicated Darshan Assistance</span>
+                <span style="background: #ffffff; border: 1px solid rgba(5,150,105,0.3); padding: 6px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">🚆 IRCTC Confirmed Train Tickets</span>
+                <span style="background: #ffffff; border: 1px solid rgba(5,150,105,0.3); padding: 6px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">🚌 AC Pushback Coaches</span>
+                <span style="background: #ffffff; border: 1px solid rgba(5,150,105,0.3); padding: 6px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">🍲 Hygienic Satvik Meals</span>
             </div>
         </div>
     </section>
 
-    <!-- Core Travel Services -->
-    <section class="travel-services-section" id="services-list">
+    <!-- Special Tour Collection (Datta Chaya Tourism) -->
+    <section class="travel-services-section" id="tour-packages">
         <div class="travel-services-container">
-            <div class="section-header-about" style="text-align: center; margin-bottom: 30px;">
-                <span class="section-tag-about">OUR TRAVEL SERVICES</span>
-                <h2 style="font-family: var(--font-main); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--primary-forest); margin-bottom: 15px;">
-                    Comprehensive Travel Management
+            <div class="section-header-about" style="text-align: center; margin-bottom: 25px;">
+                <span class="section-tag-about" style="background: #E8F5E9; color: #0B3B17; font-weight: 800; border: 1.5px solid #059669; padding: 6px 20px; letter-spacing: 1px;">
+                    ✨ DATTA CHAYA TOURISM — SPECIAL TOUR COLLECTION ✨
+                </span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: #0B3B17; margin: 12px 0 10px;">
+                    Handcrafted Spiritual & Heritage Expeditions
                 </h2>
-                <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto;">
-                    Tailored solutions designed for corporate executives, business delegations, family holidays, and group expeditions.
+                <p style="font-size: 1.05rem; color: #4B5563; max-width: 820px; margin: 0 auto; line-height: 1.65;">
+                    Experience the divinity of holy temples, majestic UNESCO heritage, and sacred river confluences. Every Datta Chaya itinerary includes curated accommodations, comfortable transportation, and personalized assistance.
                 </p>
             </div>
 
-            <div class="travel-grid">
+            <div class="tour-grid">
                 
-                <!-- Service 1: Corporate & Business Travel -->
-                <div class="travel-card">
+                <!-- Tour 1: Divine Andhra -->
+                <div class="tour-card">
                     <div>
-                        <div class="travel-card-icon">💼</div>
-                        <h3 class="travel-card-title">Corporate & Business Travel</h3>
-                        <p class="travel-card-text">
-                            End-to-end travel management for executive delegations, international trade conferences, corporate meetings, and business incentive tours.
-                        </p>
-                        <ul class="travel-card-features">
-                            <li>Dedicated corporate travel manager</li>
-                            <li>Flexible booking & itinerary adjustments</li>
-                            <li>VIP airport transfers & lounge access</li>
-                            <li>Corporate billing & expense documentation</li>
+                        <div class="tour-card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop" alt="Sacred Coastal Temple and Godavari River Sunrise in Andhra Pradesh" class="tour-card-img" loading="lazy" decoding="async" width="400" height="190">
+                        </div>
+                        <div class="tour-header-meta">
+                            <span class="tour-badge">🌊 Tour 01 • Spiritual & Coastal</span>
+                            <span class="tour-duration">5 Days / 4 Nights</span>
+                        </div>
+                        <h3 class="tour-title">Divine Andhra Journey</h3>
+                        <p class="tour-tagline">Spiritual & Coastal Andhra Experience</p>
+                        
+                        <div class="tour-route-box">
+                            <strong>Detailed Route:</strong>
+                            Pithapuram • Annavaram • Kakinada • Draksharamam • Antarvedi • Rajamahendravaram
+                        </div>
+
+                        <ul class="tour-highlights">
+                            <li><span>✓</span> Sacred Shaktipeeth & Shri Pada Shri Vallabha Kshetra (Pithapuram)</li>
+                            <li><span>✓</span> Shri Veera Venkata Satyanarayana Swamy Temple (Annavaram)</li>
+                            <li><span>✓</span> Ancient Draksharamam Bhimeswara Swamy (Pancharama Kshetra)</li>
+                            <li><span>✓</span> Godavari River Confluence with Bay of Bengal & Beach at Antarvedi</li>
+                            <li><span>✓</span> Scenic Rajamahendravaram Godavari River Ghats & Mangrove Forests</li>
                         </ul>
                     </div>
-                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Inquire Corporate Travel</a>
+                    <a href="#travel-inquiry" class="card-cta">Book Divine Andhra Tour →</a>
                 </div>
 
-                <!-- Service 2: Customized Holiday Packages -->
-                <div class="travel-card">
+                <!-- Tour 2: Karnataka Heritage & Spiritual -->
+                <div class="tour-card">
                     <div>
-                        <div class="travel-card-icon">🌴</div>
-                        <h3 class="travel-card-title">Customized Holiday Packages</h3>
-                        <p class="travel-card-text">
-                            Bespoke international and domestic itineraries crafted around your preferences, pacing, luxury accommodation standards, and cultural interests.
-                        </p>
-                        <ul class="travel-card-features">
-                            <li>Personalized day-by-day itinerary planning</li>
-                            <li>Hand-picked premium hotels and resorts</li>
-                            <li>Private sightseeing & local guided experiences</li>
-                            <li>Family-friendly & couple retreat packages</li>
+                        <div class="tour-card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1600100397608-f010f443b711?q=80&w=800&auto=format&fit=crop" alt="UNESCO World Heritage Monuments of Hampi and Badami Caves, Karnataka" class="tour-card-img" loading="lazy" decoding="async" width="400" height="190">
+                        </div>
+                        <div class="tour-header-meta">
+                            <span class="tour-badge">🏛️ Tour 02 • UNESCO Heritage</span>
+                            <span class="tour-duration">5 Days / 4 Nights</span>
+                        </div>
+                        <h3 class="tour-title">Karnataka Heritage & Spiritual</h3>
+                        <p class="tour-tagline">Explore History | Heritage | Nature | Spirituality</p>
+                        
+                        <div class="tour-route-box">
+                            <strong>Detailed Route:</strong>
+                            Solapur • Bijapur • Shiv Giri • Almatti • Badami • Banashankari • Pattadakal • Hampi • Tungabhadra • Kudalasangama
+                        </div>
+
+                        <ul class="tour-highlights">
+                            <li><span>✓</span> World-Famous UNESCO Heritage Sites of Hampi & Pattadakal</li>
+                            <li><span>✓</span> 6th-Century Rock-Cut Cave Temples of Badami & Banashankari Devi</li>
+                            <li><span>✓</span> Historic Gol Gumbaz & Massive Shiv Giri Statue in Bijapur</li>
+                            <li><span>✓</span> Picturesque Almatti Dam & Beautiful Mughal-style Gardens</li>
+                            <li><span>✓</span> Sacred Sangam of Krishna & Malaprabha at Kudalasangama</li>
                         </ul>
                     </div>
-                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Plan Custom Holiday</a>
+                    <a href="#travel-inquiry" class="card-cta">Book Karnataka Tour →</a>
                 </div>
 
-                <!-- Service 3: Flights, Hotels & Logistics -->
-                <div class="travel-card">
+                <!-- Tour 3: Divine Datta & Vitthal Pilgrimage -->
+                <div class="tour-card">
                     <div>
-                        <div class="travel-card-icon">✈️</div>
-                        <h3 class="travel-card-title">Flight Ticketing & Stays</h3>
-                        <p class="travel-card-text">
-                            Competitive airline ticketing across global carriers, premium hotel reservations, group bookings, and seamless airport ground logistics.
-                        </p>
-                        <ul class="travel-card-features">
-                            <li>Domestic & international flight routing</li>
-                            <li>Group fare optimization & seat management</li>
-                            <li>Verified hotel partnerships worldwide</li>
-                            <li>24/7 rescheduling & cancellation assistance</li>
+                        <div class="tour-card-img-wrap">
+                            <picture>
+                                <source srcset="images/pexels-ravishm-11903704.webp" type="image/webp">
+                                <img src="images/pexels-ravishm-11903704.jpg" alt="Sacred Pilgrimage Temple Shrine at Pandharpur and Akkalkot" class="tour-card-img" loading="lazy" decoding="async" width="400" height="190">
+                            </picture>
+                        </div>
+                        <div class="tour-header-meta">
+                            <span class="tour-badge">🕉️ Tour 03 • Sacred Pilgrimage</span>
+                            <span class="tour-duration">5 Days / 4 Nights</span>
+                        </div>
+                        <h3 class="tour-title">Divine Datta & Vitthal Pilgrimage</h3>
+                        <p class="tour-tagline">A Soulful Journey of Faith, Devotion & Blessings</p>
+                        
+                        <div class="tour-route-box">
+                            <strong>Detailed Route:</strong>
+                            Solapur • Akkalkot • Gangapur • Pandharpur • Tuljapur • Solapur
+                        </div>
+
+                        <ul class="tour-highlights">
+                            <li><span>✓</span> Shri Swami Samarth Maharaj Vatavruksha Mandir & Annachhatra (Akkalkot)</li>
+                            <li><span>✓</span> Shri Dattatreya Nirguna Paduka Darshan & Bima-Amarja Sangam (Gangapur)</li>
+                            <li><span>✓</span> Shri Vitthal-Rukmini Mandir & Sacred Chandrabhaga Snan (Pandharpur)</li>
+                            <li><span>✓</span> Kulswamini Shri Tulja Bhavani Mata Darshan (Tuljapur)</li>
+                            <li><span>✓</span> Seamless daily darshan assistance & peaceful planned stays</li>
                         </ul>
                     </div>
-                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Book Flights & Stays</a>
+                    <a href="#travel-inquiry" class="card-cta">Book Datta & Vitthal Tour →</a>
                 </div>
 
-                <!-- Service 4: Visa & Documentation Assistance -->
-                <div class="travel-card">
+                <!-- Tour 4: Divine Dattatreya & Guru Pilgrimage -->
+                <div class="tour-card">
                     <div>
-                        <div class="travel-card-icon">🛂</div>
-                        <h3 class="travel-card-title">Visa & Documentation Support</h3>
-                        <p class="travel-card-text">
-                            Professional guidance through visa application formalities, required travel permits, travel insurance advisory, and documentation checks.
-                        </p>
-                        <ul class="travel-card-features">
-                            <li>Step-by-step visa application advisory</li>
-                            <li>Document pre-verification to minimize delays</li>
-                            <li>Comprehensive travel insurance coverage</li>
-                            <li>Up-to-date international travel regulations</li>
-                        </ul>
-                    </div>
-                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Get Visa Support</a>
-                </div>
+                        <div class="tour-card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop" alt="Sacred Krishna River Ghats and Island Shrine at Kuravpur and Mantralaya" class="tour-card-img" loading="lazy" decoding="async" width="400" height="190">
+                        </div>
+                        <div class="tour-header-meta">
+                            <span class="tour-badge">🪔 Tour 04 • Guru Parampara</span>
+                            <span class="tour-duration">5 Days / 4 Nights</span>
+                        </div>
+                        <h3 class="tour-title">Divine Dattatreya & Guru Pilgrimage</h3>
+                        <p class="tour-tagline">Sacred Rivers & Powerful Guru Kshetras</p>
+                        
+                        <div class="tour-route-box">
+                            <strong>Detailed Route:</strong>
+                            Solapur • Akkalkot • Gangapur • Kuravpur • Mantralaya • Solapur
+                        </div>
 
-                <!-- Service 5: Group & Institutional Tours -->
-                <div class="travel-card">
-                    <div>
-                        <div class="travel-card-icon">👥</div>
-                        <h3 class="travel-card-title">Group & Institutional Expeditions</h3>
-                        <p class="travel-card-text">
-                            Specialized group travel coordination for educational institutions, corporate team-building events, sports teams, and large family reunions.
-                        </p>
-                        <ul class="travel-card-features">
-                            <li>Dedicated on-ground tour coordinators</li>
-                            <li>Custom coach and private transport fleets</li>
-                            <li>Tailored dining and dietary arrangements</li>
-                            <li>Safety-first group management protocols</li>
+                        <ul class="tour-highlights">
+                            <li><span>✓</span> Shri Swami Samarth Maharaj Divine Presence (Akkalkot)</li>
+                            <li><span>✓</span> Shri Kshetra Gangapur Nirguna Paduka & Audumbar Tree Puja</li>
+                            <li><span>✓</span> Shri Pada Shri Vallabha Tapobhoomi on sacred island of Kuravpur (Krishna River)</li>
+                            <li><span>✓</span> Shri Raghavendra Swamy Moola Brindavanam & Tungabhadra Snan (Mantralaya)</li>
+                            <li><span>✓</span> Complete boat transfers to Kuravpur and planned comfortable travel</li>
                         </ul>
                     </div>
-                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Coordinate Group Tour</a>
-                </div>
-
-                <!-- Service 6: Destination Management -->
-                <div class="travel-card">
-                    <div>
-                        <div class="travel-card-icon">🗺️</div>
-                        <h3 class="travel-card-title">Destination Management</h3>
-                        <p class="travel-card-text">
-                            Curated local hospitality, cultural immersion excursions, specialized language guides, and round-the-clock on-trip support across major destinations.
-                        </p>
-                        <ul class="travel-card-features">
-                            <li>Vetted local tour guides and chauffeurs</li>
-                            <li>Authentic cultural & culinary journeys</li>
-                            <li>Emergency travel support hotline</li>
-                            <li>Transparent pricing with zero hidden fees</li>
-                        </ul>
-                    </div>
-                    <a href="#travel-inquiry" class="card-cta" style="text-align: center; text-decoration: none;">Explore Destinations</a>
+                    <a href="#travel-inquiry" class="card-cta">Book Guru Pilgrimage Tour →</a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Travel Planning Process -->
-    <section class="travel-process-section">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <span class="section-tag-about" style="color: var(--accent-green-light);">HOW WE WORK</span>
-            <h2 style="font-family: var(--font-main); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #ffffff; margin-top: 10px; margin-bottom: 15px;">
-                Our Seamless Travel Planning Process
-            </h2>
-            <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 650px; margin: 0 auto;">
-                From your initial idea to your safe return, every detail is engineered with precision.
-            </p>
-
-            <div class="process-steps-grid">
+    <!-- Authorised IRCTC Railway Ticket Booking Desk -->
+    <section class="rail-section" id="irctc-railway">
+        <div class="rail-container">
+            <div class="rail-grid">
                 
-                <div class="process-step-item">
-                    <div class="step-number">01</div>
-                    <h4 class="step-title">Requirement Discovery</h4>
-                    <p class="step-desc">
-                        We understand your schedule, group dynamics, destination interests, budget parameters, and accommodation preferences.
+                <div>
+                    <span style="background: rgba(165, 214, 167, 0.2); color: #A5D6A7; font-weight: 700; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">
+                        🚆 AUTHORISED IRCTC AGENT
+                    </span>
+                    <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 3.5vw, 2.7rem); font-weight: 700; color: #ffffff; margin-top: 15px; line-height: 1.25;">
+                        Railway Ticket Booking<br><span style="color: #66BB6A;">All Over India</span>
+                    </h2>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.05rem; line-height: 1.65; margin-top: 15px;">
+                        <em>"From Kashmir to Kanyakumari – Let AORR take you closer to India!" 🇮🇳</em><br>
+                        Enjoy fast, dependable, and verified railway reservation assistance with direct personal support from our Pune travel desk.
                     </p>
+
+                    <div class="rail-features-grid">
+                        <div class="rail-feat-card">
+                            <h4>⚡ Tatkal Bookings</h4>
+                            <p>Fast Tatkal reservation assistance for urgent personal and business travel.</p>
+                        </div>
+                        <div class="rail-feat-card">
+                            <h4>👨‍👩‍👧‍👦 Group Bookings</h4>
+                            <p>Seamless block booking for pilgrimage yatras, wedding guests, and family groups.</p>
+                        </div>
+                        <div class="rail-feat-card">
+                            <h4>📅 Confirmed & Waitlist</h4>
+                            <p>Alternative route planning and proactive status tracking for confirmed berths.</p>
+                        </div>
+                        <div class="rail-feat-card">
+                            <h4>📱 Instant E-Tickets</h4>
+                            <p>Direct electronic tickets delivered securely to your WhatsApp and Email.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="process-step-item">
-                    <div class="step-number">02</div>
-                    <h4 class="step-title">Itinerary Curation</h4>
-                    <p class="step-desc">
-                        Our specialists design a personalized, day-by-day travel plan including optimized flights, stays, and activities.
+                <!-- Right Action Box -->
+                <div class="rail-action-box">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                        <span style="font-size: 2.2rem;">🎫</span>
+                        <div>
+                            <span style="font-size: 0.8rem; font-weight: 700; color: #059669; text-transform: uppercase;">Instant Rail Desk</span>
+                            <h3 style="margin: 0; font-size: 1.35rem; color: #0B3B17;">Book Your Train Tickets</h3>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.92rem; color: #4B5563; line-height: 1.55;">
+                        We arrange reservations across all train categories and classes with prompt assistance:
                     </p>
+
+                    <div class="rail-classes-pill">
+                        <span class="class-pill">1AC (First AC)</span>
+                        <span class="class-pill">2AC (2-Tier AC)</span>
+                        <span class="class-pill">3AC (3-Tier AC)</span>
+                        <span class="class-pill">Sleeper Class</span>
+                        <span class="class-pill">Vande Bharat</span>
+                        <span class="class-pill">Rajdhani / Shatabdi</span>
+                    </div>
+
+                    <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20would%20like%20to%20book%20Railway%20Tickets.%20Please%20assist%20me." target="_blank" rel="noopener noreferrer" class="card-cta" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; font-size: 0.95rem; text-decoration: none;">
+                        <span>Book on WhatsApp 📲</span>
+                    </a>
+                    <a href="#travel-inquiry" style="display: block; text-align: center; margin-top: 12px; color: #0B3B17; font-weight: 600; font-size: 0.88rem; text-decoration: underline;">
+                        Or Submit Form Inquiry ↓
+                    </a>
                 </div>
 
-                <div class="process-step-item">
-                    <div class="step-number">03</div>
-                    <h4 class="step-title">Booking & Verification</h4>
-                    <p class="step-desc">
-                        We lock in reservations, process visa and insurance documentation, and issue complete digital travel kits.
-                    </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose AORR Travel -->
+    <section class="travel-services-section" style="background: #ffffff; padding: 80px 20px;">
+        <div class="travel-services-container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+                <span class="section-tag-about" style="background: #E8F5E9; color: #0B3B17; font-weight: 800; border: 1.5px solid #059669; padding: 6px 18px;">WHY CHOOSE DATTA CHAYA TOURISM?</span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.3rem; font-weight: 700; color: #0B3B17; margin-top: 10px;">
+                    Your Sacred Journey, Our Responsibility!
+                </h2>
+                <p style="color: #4B5563; font-size: 1.05rem; margin-top: 8px;">
+                    <em>Travel with Faith. Travel with Comfort. Travel with Datta Chaya Tourism (AORR).</em>
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+                <div style="background: #F8FAF9; padding: 25px; border-radius: 14px; border: 1px solid rgba(5,150,105,0.15);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🛡️</div>
+                    <h4 style="color: #0B3B17; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">Safety First</h4>
+                    <p style="color: #4B5563; font-size: 0.9rem; line-height: 1.5; margin: 0;">Verified vehicles, disciplined chauffeurs, and family-safe travel protocols.</p>
                 </div>
 
-                <div class="process-step-item">
-                    <div class="step-number">04</div>
-                    <h4 class="step-title">24/7 Journey Care</h4>
-                    <p class="step-desc">
-                        Throughout your travels, our dedicated concierge team remains on standby to ensure effortless coordination.
-                    </p>
+                <div style="background: #F8FAF9; padding: 25px; border-radius: 14px; border: 1px solid rgba(5,150,105,0.15);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🏨</div>
+                    <h4 style="color: #0B3B17; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">Planned Accommodation</h4>
+                    <p style="color: #4B5563; font-size: 0.9rem; line-height: 1.5; margin: 0;">Clean, comfortable, and well-reviewed hotels near major temple & heritage landmarks.</p>
                 </div>
 
+                <div style="background: #F8FAF9; padding: 25px; border-radius: 14px; border: 1px solid rgba(5,150,105,0.15);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🙏</div>
+                    <h4 style="color: #0B3B17; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">Meaningful Darshan</h4>
+                    <p style="color: #4B5563; font-size: 0.9rem; line-height: 1.5; margin: 0;">Carefully timed itinerary ensuring peaceful puja, rituals, and darshan without rush.</p>
+                </div>
+
+                <div style="background: #F8FAF9; padding: 25px; border-radius: 14px; border: 1px solid rgba(5,150,105,0.15);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🤝</div>
+                    <h4 style="color: #0B3B17; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">Personal Assistance</h4>
+                    <p style="color: #4B5563; font-size: 0.9rem; line-height: 1.5; margin: 0;">Direct access to our Pune office coordinators before, during, and after your trip.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -458,10 +757,10 @@
     <section class="travel-inquiry-section" id="travel-inquiry">
         <div class="contact-container">
             <h2 class="section-title" style="text-align: center; color: var(--primary-forest);">
-                Plan Your Next Journey With AORR
+                Book Your Journey Today With AORR
             </h2>
             <p style="text-align: center; margin-bottom: 40px; color: var(--text-muted); font-size: 1.05rem;">
-                Submit your travel requirements below. Our travel consultants will respond within 24 hours with custom recommendations.
+                Submit your tour package or railway ticket requirement below. Our travel team will contact you promptly.
             </p>
 
             <div class="contact-split-layout">
@@ -469,7 +768,7 @@
                 <div class="card" style="margin: 0;">
                     <div class="card2">
                         <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec">
-                            <p id="heading">Travel Inquiry Form</p>
+                            <p id="heading">Tour & Railway Inquiry</p>
 
                             <!-- Name -->
                             <div class="field">
@@ -483,28 +782,31 @@
 
                             <!-- Phone -->
                             <div class="field">
-                                <input type="tel" class="input-field" placeholder="Phone Number" name="phone" required />
+                                <input type="tel" class="input-field" placeholder="Phone Number (e.g., +91 9730004911)" name="phone" required />
                             </div>
 
                             <!-- Travel Type / Location -->
                             <div class="field">
                                 <select class="input-field" required name="location">
-                                    <option value="" disabled selected>Select Travel Service</option>
+                                    <option value="" disabled selected>Select Tour / Service</option>
+                                    <option>Divine Andhra Tour (5D/4N)</option>
+                                    <option>Karnataka Heritage & Spiritual Tour (5D/4N)</option>
+                                    <option>Divine Datta & Vitthal Pilgrimage (5D/4N)</option>
+                                    <option>Divine Dattatreya & Guru Pilgrimage (5D/4N)</option>
+                                    <option>IRCTC Railway Ticket Booking (Tatkal / Group / General)</option>
                                     <option>Corporate Business Travel</option>
-                                    <option>International Holiday Package</option>
-                                    <option>Domestic Tour Package</option>
+                                    <option>Customized Holiday Package</option>
                                     <option>Flight Ticketing & Visas</option>
-                                    <option>Group / Institutional Expedition</option>
                                     <option>Other Travel Query</option>
                                 </select>
                             </div>
 
                             <!-- Message / Requirements -->
                             <div class="field">
-                                <textarea class="input-field" placeholder="Destination, expected dates, group size, and specific requirements..." rows="4" name="message" required></textarea>
+                                <textarea class="input-field" placeholder="Dates, number of passengers, boarding station / destination, and special requirements..." rows="4" name="message" required></textarea>
                             </div>
 
-                            <input type="hidden" name="product" value="Tours & Travel Inquiry">
+                            <input type="hidden" name="product" value="Tours & Travel Inquiry (Datta Chaya)">
                             <input type="hidden" name="page" value="tours-travel.html">
                             
                             <!-- Honeypot -->
@@ -524,40 +826,42 @@
                 <!-- Info Card -->
                 <div style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(6,19,11,0.06); border: 1px solid rgba(27,77,62,0.1); display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
-                        <h3 style="font-family: var(--font-main); color: var(--primary-forest); font-size: 1.6rem; margin-bottom: 20px;">
-                            Why Travel With AORR?
+                        <span style="background: #E8F5E9; color: #0B3B17; font-weight: 700; font-size: 0.82rem; padding: 4px 12px; border-radius: 20px; text-transform: uppercase;">
+                            DATTA CHAYA TOURISM
+                        </span>
+                        <h3 style="font-family: 'Poppins', sans-serif; color: #0B3B17; font-size: 1.5rem; margin-top: 12px; margin-bottom: 15px;">
+                            AORR Tours & Travel Services
                         </h3>
-                        <div style="display: flex; flex-direction: column; gap: 20px; color: var(--text-muted); font-size: 0.95rem;">
-                            <div style="display: flex; gap: 15px; align-items: flex-start;">
-                                <span style="font-size: 1.5rem; color: var(--accent-green);">🛡️</span>
+                        <p style="color: #4B5563; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                            One Travel Partner • Multiple Travel Solutions! Whether you are looking for a sacred pilgrimage, UNESCO heritage tour, or an authorised IRCTC train booking, we are ready to assist you.
+                        </p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 15px; color: #374151; font-size: 0.92rem;">
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <span style="font-size: 1.3rem;">📞</span>
                                 <div>
-                                    <strong style="color: var(--primary-forest); display: block; margin-bottom: 3px;">Operational Reliability</strong>
-                                    Backed by AORR's proven global management standards across 50+ countries.
+                                    <strong>Phone:</strong> +91 9730004911 / +91 8975218910
                                 </div>
                             </div>
-
-                            <div style="display: flex; gap: 15px; align-items: flex-start;">
-                                <span style="font-size: 1.5rem; color: var(--accent-green);">🎯</span>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <span style="font-size: 1.3rem;">📧</span>
                                 <div>
-                                    <strong style="color: var(--primary-forest); display: block; margin-bottom: 3px;">Tailored To Your Pace</strong>
-                                    No rigid cookie-cutter tours. Every itinerary is customized to match your schedule and comfort.
+                                    <strong>Email:</strong> <a href="mailto:aorr@aorr.in" style="color: #059669; text-decoration: none; font-weight: 600;">aorr@aorr.in</a> / <a href="mailto:aorr.company@gmail.com" style="color: #059669; text-decoration: none;">aorr.company@gmail.com</a>
                                 </div>
                             </div>
-
-                            <div style="display: flex; gap: 15px; align-items: flex-start;">
-                                <span style="font-size: 1.5rem; color: var(--accent-green);">📞</span>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <span style="font-size: 1.3rem;">📍</span>
                                 <div>
-                                    <strong style="color: var(--primary-forest); display: block; margin-bottom: 3px;">Direct Human Support</strong>
-                                    Direct access to our corporate travel desk in Pune, India, available throughout your journey.
+                                    <strong>Office:</strong> Kothrud, Pune, Maharashtra, India
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #edf2f0;">
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">Direct Travel Desk Contact:</p>
-                        <p style="margin: 0; font-weight: 600; color: var(--primary-forest);">Phone: +91 9730004911 / +91 8975218910</p>
-                        <p style="margin: 0; color: var(--primary-forest);">Email: <a href="mailto:aorr@aorr.in" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">aorr@aorr.in</a></p>
+                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20would%20like%20to%20inquire%20about%20your%20Tour%20Packages%20and%20Railway%20Bookings." target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: white; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.92rem;">
+                            <span>Chat Directly on WhatsApp 💬</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -566,10 +870,10 @@
 
     <!-- Global Footer -->
     <footer class="footer">
-        <div class="footer-large-logo" style="display: flex; justify-content: center; align-items: center;">
+        <div class="footer-large-logo" style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
             <picture>
-                <source srcset="images/logo.webp" type="image/webp">
-                <img src="images/logo.png" alt="AORR Global Trading & Services Logo" style="height: 220px;" loading="lazy" decoding="async">
+                <source srcset="images/logo.png" type="image/png">
+                <img src="images/logo.png" alt="AORR Global Enterprise Logo" style="height: 140px; width: auto;" loading="lazy" decoding="async">
             </picture>
         </div>
 
@@ -597,13 +901,13 @@
 
         <div class="footer-bottom-nav">
             <a href="index.html" class="footer-nav-link">Home</a>
-            <a href="about-us.html" class="footer-nav-link">About</a>
-            <a href="services.html" class="footer-nav-link">Services</a>
-            <a href="products.html" class="footer-nav-link">Import & Export</a>
+            <a href="products.html" class="footer-nav-link">Global Trade</a>
             <a href="tours-travel.html" class="footer-nav-link">Tours & Travel</a>
-            <a href="market-insights.html" class="footer-nav-link">Insights</a>
+            <a href="medical-tourism.html" class="footer-nav-link">Medical Tourism</a>
+            <a href="about-us.html" class="footer-nav-link">About Us</a>
+            <a href="market-insights.html" class="footer-nav-link">Global Network</a>
             <a href="contact.html" class="footer-nav-link">Contact</a>
-            <span style="font-size: 0.8rem; color: #888;">&copy; 2026 AORR Global Trading & Services. All rights reserved.</span>
+            <span style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7);">&copy; 2026 AORR Global Enterprise. All rights reserved.</span>
         </div>
     </footer>
 

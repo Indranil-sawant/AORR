@@ -15,22 +15,22 @@ This document maps the content architecture, copywriting guidelines, page titles
 
 ### Primary Navbar Links (`.nav-menu`)
 1. **Home** $\rightarrow$ `index.html`
-2. **About** $\rightarrow$ `about-us.html`
-3. **Services** $\rightarrow$ `services.html`
-4. **Import & Export** $\rightarrow$ `products.html`
-5. **Tours & Travel** $\rightarrow$ `tours-travel.html`
-6. **Insights** $\rightarrow$ `market-insights.html`
+2. **Global Trade** $\rightarrow$ `products.html`
+3. **Tours & Travel** $\rightarrow$ `tours-travel.html`
+4. **Medical Tourism** $\rightarrow$ `medical-tourism.html`
+5. **About Us** $\rightarrow$ `about-us.html`
+6. **Global Network** $\rightarrow$ `market-insights.html`
 7. **Contact** $\rightarrow$ `contact.html`
 
 ### Footer Secondary Navigation (`.footer-bottom-nav`)
 * `index.html` (Home)
-* `about-us.html` (About)
-* `services.html` (Services)
-* `products.html` (Import & Export)
+* `products.html` (Global Trade)
 * `tours-travel.html` (Tours & Travel)
-* `market-insights.html` (Insights)
+* `medical-tourism.html` (Medical Tourism)
+* `about-us.html` (About Us)
+* `market-insights.html` (Global Network)
 * `contact.html` (Contact)
-* Copyright: `© 2026 AORR Global Trading`
+* Copyright: `© 2026 AORR Global Enterprise. All rights reserved.`
 
 ---
 
@@ -90,7 +90,7 @@ This document maps the content architecture, copywriting guidelines, page titles
   * **Global Distribution:** Strategic logistics networks & port connections
   * **Quality Inspection & Testing:** Marine and industrial standards compliance
   * **Customs Clearance & Documentation:** Automated documentation & AEO compliance
-  * **Multi-Modal Transport:** Air, sea, and overland freight coordination
+  * **Multi-Modal Transport:** Air, ocean, and overland freight coordination
 
 ---
 

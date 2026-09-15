@@ -37,7 +37,7 @@ function initGlobalSearch() {
     
     const input = document.createElement('input');
     input.type = 'text';
-    input.placeholder = 'Search products...';
+    input.placeholder = 'Search trade, travel, medical services...';
     input.className = 'nav-search-input';
     
     const icon = document.createElement('span');
@@ -128,7 +128,7 @@ function buildSearchIndex() {
                         type: 'Product',
                         title: item,
                         category: `${data.title} > ${subTitle}`,
-                        url: `products.html?category=${catKey}&sub=${subKey}`, // Link to sub page
+                        url: `products.html?category=${catKey}&sub=${subKey}`,
                         icon: icon
                     });
                 });
@@ -138,17 +138,41 @@ function buildSearchIndex() {
 
     // Add Tours & Travel Services to Search Index
     const travelServices = [
-        { title: 'Tours & Travel Division', category: 'Travel Services', url: 'tours-travel.html', icon: '✈️' },
-        { title: 'Corporate & Business Travel', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '💼' },
-        { title: 'Bespoke Leisure & Holiday Packages', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏖️' },
-        { title: 'Global Flight & Hotel Bookings', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏨' },
-        { title: 'Visa Assistance & Travel Insurance', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🛂' },
-        { title: 'Luxury Cruises & Yacht Charters', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🛳️' },
+        { title: 'Tours & Travel Division', category: 'Tours & Travel', url: 'tours-travel.html', icon: '✈️' },
+        { title: 'Corporate & Business Travel Management', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '💼' },
+        { title: 'Bespoke Leisure & Luxury Holiday Packages', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏖️' },
+        { title: 'Global Flight & Luxury Hotel Bookings', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏨' },
+        { title: 'Visa Assistance & Travel Documentation', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🛂' },
+        { title: 'Luxury Cruises & Private Yacht Charters', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🛳️' },
         { title: 'MICE & Corporate Group Expeditions', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏛️' },
         { title: 'Custom Travel Itinerary Planning', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '🗺️' }
     ];
 
     travelServices.forEach(item => {
+        index.push({
+            type: 'Service',
+            title: item.title,
+            category: item.category,
+            url: item.url,
+            icon: item.icon
+        });
+    });
+
+    // Add Medical Tourism Services to Search Index
+    const medicalServices = [
+        { title: 'Medical Tourism & Healthcare Travel Coordination', category: 'Medical Tourism', url: 'medical-tourism.html', icon: '🩺' },
+        { title: 'Hospital & Specialist Discovery', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🏥' },
+        { title: 'Doctor & Specialist Coordination', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '👨‍⚕️' },
+        { title: 'Medical Treatment Itinerary Planning', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '📋' },
+        { title: 'Consultation & Appointment Scheduling', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🗓️' },
+        { title: 'Medical Visa & Travel Documentation', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🛂' },
+        { title: 'Patient Accommodation & Airport Transfers', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🏨' },
+        { title: 'Dedicated On-Ground Patient Concierge', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🤝' },
+        { title: 'Post-Treatment Recovery & Follow-up Coordination', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '💚' },
+        { title: 'Confidential Medical Travel Inquiry', category: 'Medical Tourism', url: 'medical-tourism.html#medical-inquiry', icon: '🔒' }
+    ];
+
+    medicalServices.forEach(item => {
         index.push({
             type: 'Service',
             title: item.title,
@@ -206,7 +230,7 @@ function handleSearch(term, dropdown, index) {
         
         dropdown.appendChild(list);
     } else {
-        dropdown.innerHTML = '<div class="no-results">No products found</div>';
+        dropdown.innerHTML = '<div class="no-results">No results found</div>';
     }
 
     dropdown.classList.add('active');
@@ -220,3 +244,4 @@ function highlight(text, term) {
 function formatTitle(str) {
     return str.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 }
+

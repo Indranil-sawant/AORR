@@ -6,11 +6,12 @@ Welcome, AI Agent. This document defines the operating rules, technical architec
 
 ## 1. Project Overview
 
-* **Website Name:** AORR Global Enterprise (Trading & Travel)
+* **Website Name:** AORR Global Enterprise (Trade · Travel · Healthcare)
 * **Website Domain:** `https://www.aorr.in` (custom domain with `CNAME` configured)
-* **Business Domain:** Multi-service global enterprise based in Pune, Maharashtra, India operating two primary divisions:
-  1. **Import & Export Services:** Government-recognized export house and international trade partner specializing in marine supplies (shipbuilding raw materials, resins, fiberglass, timber), industrial equipment & components (valves, fittings, machinery), garments, agricultural exports, and global logistics spanning 50+ countries.
+* **Business Domain:** Multi-service global enterprise based in Pune, Maharashtra, India operating three primary verticals:
+  1. **Global Trade (Import & Export):** Government-recognized export house and international trade partner specializing in marine supplies (shipbuilding raw materials, resins, fiberglass, timber), industrial equipment & components (valves, fittings, machinery), garments, agricultural exports, and global logistics spanning 50+ countries.
   2. **Tours & Travel Services:** Premier travel management division delivering bespoke corporate travel itineraries, international flight & luxury hotel bookings, MICE group expeditions, visa assistance, and customized holiday packages.
+  3. **Medical Tourism & Global Healthcare:** Ethical cross-border healthcare travel coordination connecting international patients with NABH/JCI-accredited hospitals, super-specialists, medical visas, and end-to-end dedicated on-ground concierge support in India.
 * **Architecture:** Static Multi-Page Application (MPA) built with standard HTML5, modern vanilla CSS3 (CSS Variables, Flexbox, Grid), and Vanilla JavaScript (ES6+ modules and vanilla scripts).
 
 ---
@@ -53,13 +54,14 @@ c:\Users\indranil sawant\Desktop\Projects\AORR\
 ├── Code.gs                            # Google Apps Script reference code (forms & email)
 │
 ├── [HTML Pages]
-│   ├── index.html                     # Homepage (Hero, 3D Carousel, Bento, Divisions Showcase, Stats, Chart, Contact)
-│   ├── about-us.html                  # About Us page (Company story, leadership, values, metrics)
-│   ├── services.html                  # Services overview (Global distribution, sourcing, travel solutions)
-│   ├── products.html                  # Interactive Product Catalog (Import & Export Division with category filtering & enquiry modal)
+│   ├── index.html                     # Homepage (Hero, 3 Pillars Showcase, Trade Corridors, 5-Step Process, Stats, Contact)
+│   ├── products.html                  # Interactive Product Catalog (Global Trade Division with category filtering & enquiry modal)
 │   ├── tours-travel.html              # Dedicated Tours & Travel Division (Corporate travel, leisure, flights, inquiry form)
-│   ├── market-insights.html           # Market intelligence, trade signals, interactive city pins
-│   ├── contact.html                   # Contact page (Direct info, multi-service inquiry form, Google Maps)
+│   ├── medical-tourism.html           # Dedicated Medical Tourism Division (8 Core Services, 7-Step Journey, Ethics, Inquiry)
+│   ├── about-us.html                  # About Us page (Company story, 3-pillar ecosystem, leadership, values, metrics)
+│   ├── market-insights.html           # Global Network & Market Intelligence (Trade signals, interactive city pins)
+│   ├── contact.html                   # Contact page (Direct info, 3-vertical inquiry form, Google Maps)
+│   ├── services.html                  # Services overview (Cross-vertical overview: Trade, Travel, Healthcare)
 │   └── client-questionnaire.html      # Client onboarding & requirement questionnaire with PDF export
 │
 ├── [HTML Component & Test Snippets]

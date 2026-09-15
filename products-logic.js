@@ -25,7 +25,6 @@ const DEFAULT_ICON = '📦';
 
 document.addEventListener('DOMContentLoaded', () => {
     initCatalog();
-    initCatalog();
     setupSearch();
     setupEnquiryModal();
     

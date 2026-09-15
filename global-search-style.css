@@ -1,41 +1,41 @@
-/* Global Search Bar Styles - Desktop Defaults */
+/* Global Search Bar Styles - Desktop Defaults (Light Theme) */
 .nav-search-container {
     position: relative;
     margin-right: 20px;
     display: flex;
     align-items: center;
-    z-index: 100; /* Ensure above other nav elements */
+    z-index: 100;
 }
 
 .nav-search-input {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: #F3F4F6;
+    border: 1px solid #E5E7EB;
     border-radius: 20px;
-    padding: 6px 15px;
-    padding-right: 32px;
-    color: white;
+    padding: 7px 16px;
+    padding-right: 34px;
+    color: #1F2937;
     font-size: 0.85rem;
-    width: 160px; /* Standard pill width */
+    width: 170px;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    height: 34px;
+    height: 36px;
 }
 
 .nav-search-input:focus {
-    width: 240px;
-    background: rgba(255,255,255,0.15);
+    width: 250px;
+    background: #ffffff;
     outline: none;
-    border-color: var(--accent-gold);
-    box-shadow: 0 0 0 3px rgba(197, 160, 101, 0.15);
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
 }
 
 .nav-search-input::placeholder {
-    color: rgba(255,255,255,0.6);
+    color: #9CA3AF;
 }
 
 .nav-search-icon {
     position: absolute;
-    right: 10px;
-    color: rgba(255,255,255,0.7);
+    right: 12px;
+    color: #6B7280;
     pointer-events: none;
     font-size: 0.9rem;
     display: flex;
