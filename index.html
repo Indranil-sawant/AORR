@@ -52,17 +52,17 @@
     <!-- Critical CSS - Inline for FCP (First Contentful Paint) - Light Luxury Theme -->
     <style>
         :root {
-            --primary-forest: #0B3B17;
-            --primary-navy: #0B3B17;
-            --primary-dark: #F6FAF7;
-            --accent-green: #059669;
-            --accent-green-light: #10B981;
-            --accent-gold: #059669;
-            --accent-gold-light: #10B981;
-            --bg-light: #F0FDF4;
+            --primary-forest: #0B3C23;
+            --primary-navy: #0B3C23;
+            --primary-dark: #072B18;
+            --accent-green: #0E5A30;
+            --accent-green-light: #2D7D46;
+            --accent-gold: #C59B27;
+            --accent-gold-light: #E5C365;
+            --bg-light: #F4F8F5;
             --text-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #4B5563;
+            --text-dark: #0B2516;
+            --text-gray: #374151;
             --font-main: 'Poppins', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -70,31 +70,14 @@
         html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; width: 100%; }
         body { background-color: #FFFFFF; color: #1F2937; font-family: var(--font-body); font-size: 1rem; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-height: 100vh; }
         img { max-width: 100%; height: auto; display: block; }
-        .header { position: fixed; top: 0; left: 0; width: 100%; padding: clamp(10px, 2vh, 15px) clamp(15px, 5vw, 50px); z-index: 1000; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(0, 0, 0, 0.06); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); transition: all .3s ease; }
+        .header { position: fixed; top: 0; left: 0; width: 100%; padding: clamp(10px, 2vh, 15px) clamp(15px, 5vw, 50px); z-index: 1000; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(197, 155, 39, 0.2); box-shadow: 0 4px 20px rgba(11, 60, 35, 0.05); transition: all .3s ease; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
-        .logo { font-family: var(--font-main); font-weight: 700; font-size: clamp(18px, 4vw, 24px); color: #0B3B17; text-decoration: none; display: flex; align-items: center; transition: transform .3s ease; }
-        .nav-logo-img { height: 90px; margin-right: 0; width: auto; transition: height .3s ease; }
+        .logo { font-family: var(--font-main); font-weight: 700; font-size: clamp(18px, 4vw, 24px); color: #0B3C23; text-decoration: none; display: flex; align-items: center; transition: transform .3s ease; }
+        .nav-logo-img { height: 90px; margin-right: 0; width: auto; transition: height .3s ease; filter: drop-shadow(0 2px 8px rgba(11, 60, 35, 0.1)); }
         @media (max-width: 768px) { .nav-logo-img { height: 48px; } }
         .nav-menu { display: flex; list-style: none; gap: clamp(12px, 2vw, 24px); align-items: center; }
-        .nav-link { color: #1F2937; text-decoration: none; font-family: var(--font-body); font-weight: 600; text-transform: uppercase; font-size: clamp(.82rem, 1vw, .92rem); letter-spacing: .8px; transition: all .25s ease; padding: 8px 12px; border-radius: 6px; position: relative; }
-        .nav-link:hover, .nav-link.active { color: var(--accent-green); }
-        .hero { min-height: 85vh; width: 100%; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 160px 20px 70px; text-align: center; background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 100%); }
-        .hero-overlay-text { width: 100%; max-width: 1200px; margin: 0 auto 30px; z-index: 10; display: flex; flex-direction: column; align-items: center; }
-        .hero-title { font-size: clamp(2.6rem, 5.5vw, 4.6rem); font-family: var(--font-main); font-weight: 800; color: #0B3B17; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -1px; line-height: 1.12; }
-        .hero-subtitle { font-size: clamp(.82rem, 1.6vw, .95rem); color: #059669; font-weight: 700; letter-spacing: 2.5px; background: #E8F5E9; display: inline-block; padding: 8px 24px; border-radius: 50px; border: 1px solid rgba(5, 150, 105, .25); margin-bottom: 22px; text-transform: uppercase; }
-        .hero-description { font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: #4B5563; max-width: 820px; margin: 0 auto 30px; line-height: 1.65; }
-        .hero-cta-group { margin-top: 25px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .hero-btn { text-decoration: none; padding: 14px 32px; border-radius: 50px; font-weight: 700; transition: all .3s ease; text-transform: uppercase; letter-spacing: .8px; font-size: .88rem; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
-        .hero-btn.primary { background: var(--accent-green); color: #fff; border: 2px solid var(--accent-green); box-shadow: 0 4px 15px rgba(5, 150, 105, .3); }
-        .hero-btn.primary:hover { background: #047857; border-color: #047857; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(5, 150, 105, .4); }
-        .hero-btn.secondary { background: #fff; color: #0B3B17; border: 2px solid #E5E7EB; box-shadow: 0 2px 8px rgba(0, 0, 0, .04); }
-        .hero-btn.secondary:hover { background: #F0FDF4; border-color: var(--accent-green); color: var(--accent-green); transform: translateY(-2px); }
-        @media (max-width: 768px) {
-            .hero { padding-top: 130px; padding-bottom: 50px; min-height: auto; }
-            .hero-title { font-size: 2.3rem; line-height: 1.18; margin-bottom: 12px; }
-            .nav-menu { display: none; }
-            .hero-subtitle { font-size: 0.75rem; padding: 6px 16px; margin-bottom: 14px; }
-        }
+        .nav-link { color: #0B3C23; text-decoration: none; font-family: var(--font-body); font-weight: 600; text-transform: uppercase; font-size: clamp(.82rem, 1vw, .92rem); letter-spacing: .8px; transition: all .25s ease; padding: 8px 12px; border-radius: 6px; position: relative; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-gold); }
     </style>
     
     <!-- Preload critical fonts -->
@@ -149,7 +132,12 @@
     <!-- AORR Custom Loader -->
     <div id="aorr-loader">
         <div class="loader-content">
-            <div class="loader-globe"></div>
+            <div class="loader-logo-wrapper">
+                <picture>
+                    <source srcset="images/logo.webp" type="image/webp">
+                    <img src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img">
+                </picture>
+            </div>
             <div class="loader-ring-1"></div>
             <div class="loader-ring-2"></div>
             <div class="loader-text-container">
@@ -190,37 +178,64 @@
 
     <!-- Hero Section (Light Luxury Multi-Service Enterprise Portal) -->
     <section class="hero-wrapper" id="home">
+        <!-- Ambient Background Glow Elements -->
+        <div class="hero-ambient-glow glow-1"></div>
+        <div class="hero-ambient-glow glow-2"></div>
+        <div class="hero-grid-pattern"></div>
+
         <div class="hero-content-container">
             <!-- Left Text & Actions Side -->
             <div class="hero-text-side">
-                <div style="margin-bottom: 18px;">
-                    <span class="hero-subtitle" style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 0;">
+                <div class="hero-badge-wrapper">
+                    <span class="hero-subtitle">
                         <span class="live-pulse"></span>
                         <span>EST. 2026 • PEOPLE | PRODUCTS | POSSIBILITIES</span>
                     </span>
                 </div>
+
+                <!-- Vertical Pill Tags -->
+                <div class="hero-verticals-pills-strip">
+                    <a href="products.html" class="v-pill v-pill-trade">
+                        <span class="v-pill-icon">🚢</span> Global Trade
+                    </a>
+                    <a href="tours-travel.html" class="v-pill v-pill-travel">
+                        <span class="v-pill-icon">✈️</span> Tours &amp; Travel
+                    </a>
+                    <a href="medical-tourism.html" class="v-pill v-pill-health">
+                        <span class="v-pill-icon">🩺</span> Medical Tourism
+                    </a>
+                </div>
                 
-                <h1 class="hero-title" style="text-align: left; margin-bottom: 18px;">
+                <h1 class="hero-title">
                     Connecting India With The World.
                     <span class="hero-highlight-phrase">Trade • Travel • Healthcare</span>
                 </h1>
 
-                <p class="hero-description" style="text-align: left; margin: 0 0 25px 0;">
-                    AORR is a premier global enterprise based in Pune, India, uniting <strong>Global Trade & Marine Sourcing</strong>, <strong>Datta Chaya Tourism (Spiritual & Heritage Tours + IRCTC Railway Desk)</strong>, and ethical <strong>Medical Tourism Coordination</strong> across 50+ countries.
+                <p class="hero-description">
+                    AORR is a premier global enterprise based in Pune, India — seamlessly uniting <strong class="text-highlight">Global Trade &amp; Marine Sourcing</strong>, <strong class="text-highlight">Datta Chaya Tourism &amp; IRCTC Rail Desk</strong>, and ethical <strong class="text-highlight">Medical Tourism Coordination</strong> across 50+ countries.
                 </p>
 
-                <div class="hero-cta-group" style="justify-content: flex-start; margin-top: 5px;">
-                    <a href="#three-pillars" class="hero-btn primary">Explore 3 Divisions ↓</a>
-                    <a href="tours-travel.html" class="hero-btn secondary">Datta Chaya Tours ✈️</a>
-                    <a href="tours-travel.html#irctc-desk" class="hero-btn secondary" style="background: #F0FDF4; border-color: #059669; color: #059669;">IRCTC Rail Desk 🚆</a>
+                <div class="hero-cta-group">
+                    <a href="#three-pillars" class="hero-btn primary">
+                        <span>Explore 3 Divisions</span>
+                        <span class="btn-arrow">↓</span>
+                    </a>
+                    <a href="tours-travel.html" class="hero-btn secondary">
+                        <span>Datta Chaya Tours</span>
+                        <span class="btn-icon">✈️</span>
+                    </a>
+                    <a href="tours-travel.html#irctc-desk" class="hero-btn secondary irctc-btn">
+                        <span>IRCTC Rail Desk</span>
+                        <span class="btn-icon">🚆</span>
+                    </a>
                 </div>
 
                 <!-- Trust Micro-Highlights Strip -->
-                <div style="display: flex; gap: 18px; margin-top: 30px; flex-wrap: wrap; font-size: 0.85rem; font-weight: 700; color: #0B3B17;">
-                    <span style="display: flex; align-items: center; gap: 6px;">✓ 50+ Global Ports</span>
-                    <span style="display: flex; align-items: center; gap: 6px;">✓ IRCTC Authorised Desk</span>
-                    <span style="display: flex; align-items: center; gap: 6px;">✓ NABH/JCI Hospital Care</span>
-                    <span style="display: flex; align-items: center; gap: 6px;">✓ 24/7 Dedicated Concierge</span>
+                <div class="trust-micro-strip">
+                    <span class="trust-chip"><i class="trust-check">✓</i> 50+ Global Ports</span>
+                    <span class="trust-chip"><i class="trust-check">✓</i> IRCTC Authorised Desk</span>
+                    <span class="trust-chip"><i class="trust-check">✓</i> NABH/JCI Hospital Care</span>
+                    <span class="trust-chip"><i class="trust-check">✓</i> 24/7 Dedicated Concierge</span>
                 </div>
             </div>
 
@@ -234,16 +249,14 @@
                         </picture>
                     </div>
                     <div>
-                        <div style="font-size: 0.75rem; font-weight: 800; color: #059669; letter-spacing: 1px; text-transform: uppercase;">MASTER ENTERPRISE PORTAL</div>
-                        <div style="font-family: var(--font-main); font-size: 1.25rem; font-weight: 800; color: #0B3B17;">AORR Global Ecosystem</div>
-                        <div style="font-size: 0.82rem; color: #6B7280; font-weight: 500;">Pune Headquarters • Worldwide Reach</div>
+                        <div class="emblem-tag">MASTER ENTERPRISE PORTAL</div>
+                        <div class="emblem-title">AORR Global Ecosystem</div>
+                        <div class="emblem-sub">Pune Headquarters • Worldwide Reach</div>
                     </div>
                 </div>
 
                 <!-- 4 Mobility Modes Bar -->
-                <div style="margin-bottom: 12px; font-size: 0.76rem; font-weight: 800; color: #0B3B17; letter-spacing: 0.8px; text-transform: uppercase;">
-                    4-PILLAR MOVEMENT MODES:
-                </div>
+                <div class="hub-section-label">4-PILLAR MOVEMENT MODES:</div>
                 <div class="hero-mode-strip">
                     <a href="#movement-ecosystem" class="hero-mode-pill">
                         <span>✈️</span> AIR
@@ -260,40 +273,41 @@
                 </div>
 
                 <!-- 3 Core Divisions Quick Stack -->
-                <div style="margin-bottom: 10px; font-size: 0.76rem; font-weight: 800; color: #0B3B17; letter-spacing: 0.8px; text-transform: uppercase;">
-                    CORE SERVICE VERTICALS:
-                </div>
+                <div class="hub-section-label">CORE SERVICE VERTICALS:</div>
                 <div class="hero-vertical-cards-stack">
-                    <a href="#vertical-trade" class="hero-v-card">
+                    <a href="products.html" class="hero-v-card">
                         <div class="hero-v-info">
                             <span class="hero-v-icon">🚢</span>
                             <div>
-                                <div class="hero-v-title">01 Global Trade & Sourcing</div>
-                                <div class="hero-v-sub">Marine timber, valves, agro commodities & 50+ ports</div>
+                                <div class="hero-v-title">01 Global Trade &amp; Sourcing</div>
+                                <div class="hero-v-sub">Marine timber, valves, agro commodities &amp; 50+ ports</div>
                             </div>
                         </div>
+                        <span class="hero-v-badge">EXPORT HUB</span>
                         <span class="hero-v-arrow">→</span>
                     </a>
 
-                    <a href="#vertical-travel" class="hero-v-card" style="border-color: rgba(5, 150, 105, 0.35); background: #F0FDF4;">
+                    <a href="tours-travel.html" class="hero-v-card active-v-card">
                         <div class="hero-v-info">
                             <span class="hero-v-icon">✨</span>
                             <div>
-                                <div class="hero-v-title" style="color: #059669;">02 Datta Chaya Tourism & IRCTC</div>
+                                <div class="hero-v-title text-emerald">02 Datta Chaya Tourism &amp; IRCTC</div>
                                 <div class="hero-v-sub">4 Handcrafted Tours + Confirmed Rail Booking</div>
                             </div>
                         </div>
+                        <span class="hero-v-badge badge-gold">AUTHORISED</span>
                         <span class="hero-v-arrow">→</span>
                     </a>
 
-                    <a href="#vertical-medical" class="hero-v-card">
+                    <a href="medical-tourism.html" class="hero-v-card">
                         <div class="hero-v-info">
                             <span class="hero-v-icon">🩺</span>
                             <div>
                                 <div class="hero-v-title">03 Medical Tourism Concierge</div>
-                                <div class="hero-v-sub">NABH/JCI doctors, medical visa VIL & patient care</div>
+                                <div class="hero-v-sub">NABH/JCI doctors, medical visa VIL &amp; patient care</div>
                             </div>
                         </div>
+                        <span class="hero-v-badge badge-mint">NABH CARE</span>
                         <span class="hero-v-arrow">→</span>
                     </a>
                 </div>
@@ -301,26 +315,26 @@
         </div>
 
         <!-- Trust Highlights Bar (Floating Glass Bar) -->
-        <div style="max-width: 1360px; width: 100%; margin: 50px auto 0; background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 20px; padding: 22px 25px; box-shadow: 0 12px 35px rgba(0,0,0,0.05); display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; position: relative; z-index: 10;">
-            <div style="text-align: center; border-right: 1px solid #F3F4F6; padding: 0 10px;">
-                <div style="font-family: 'Rajdhani', sans-serif; font-size: 1.9rem; font-weight: 800; color: #059669; line-height: 1;">50+</div>
-                <div style="font-size: 0.85rem; color: #0B3B17; font-weight: 700; margin-top: 4px;">Global Trade Ports</div>
-                <div style="font-size: 0.75rem; color: #6B7280;">Seamless Export Lines</div>
+        <div class="hero-stats-glass-bar">
+            <div class="stat-glass-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Global Trade Ports</div>
+                <div class="stat-sub">Seamless Export Lines</div>
             </div>
-            <div style="text-align: center; border-right: 1px solid #F3F4F6; padding: 0 10px;">
-                <div style="font-family: 'Rajdhani', sans-serif; font-size: 1.9rem; font-weight: 800; color: #059669; line-height: 1;">IRCTC</div>
-                <div style="font-size: 0.85rem; color: #0B3B17; font-weight: 700; margin-top: 4px;">Authorised Rail Agent</div>
-                <div style="font-size: 0.75rem; color: #6B7280;">Tatkal & All-India Booking</div>
+            <div class="stat-glass-card">
+                <div class="stat-number text-gold">IRCTC</div>
+                <div class="stat-label">Authorised Rail Agent</div>
+                <div class="stat-sub">Tatkal &amp; All-India Booking</div>
             </div>
-            <div style="text-align: center; border-right: 1px solid #F3F4F6; padding: 0 10px;">
-                <div style="font-family: 'Rajdhani', sans-serif; font-size: 1.9rem; font-weight: 800; color: #059669; line-height: 1;">NABH / JCI</div>
-                <div style="font-size: 0.85rem; color: #0B3B17; font-weight: 700; margin-top: 4px;">Accredited Network</div>
-                <div style="font-size: 0.75rem; color: #6B7280;">Super-Specialist Care</div>
+            <div class="stat-glass-card">
+                <div class="stat-number">NABH / JCI</div>
+                <div class="stat-label">Accredited Network</div>
+                <div class="stat-sub">Super-Specialist Care</div>
             </div>
-            <div style="text-align: center; padding: 0 10px;">
-                <div style="font-family: 'Rajdhani', sans-serif; font-size: 1.9rem; font-weight: 800; color: #059669; line-height: 1;">24 / 7</div>
-                <div style="font-size: 0.85rem; color: #0B3B17; font-weight: 700; margin-top: 4px;">Dedicated Concierge</div>
-                <div style="font-size: 0.75rem; color: #6B7280;">On-Ground Pune Support</div>
+            <div class="stat-glass-card">
+                <div class="stat-number text-gold">24 / 7</div>
+                <div class="stat-label">Dedicated Concierge</div>
+                <div class="stat-sub">On-Ground Pune Support</div>
             </div>
         </div>
     </section>

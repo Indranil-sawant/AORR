@@ -2,10 +2,10 @@
 
 /* Hero Section */
 .products-hero-section {
-    background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 100%);
+    background: linear-gradient(180deg, #F4F8F5 0%, #FFFFFF 100%);
     padding: 160px 20px 60px;
     text-align: center;
-    color: #0B3B17;
+    color: var(--primary-forest);
 }
 
 .products-hero-title {
@@ -14,11 +14,11 @@
     font-weight: 800;
     margin-bottom: 16px;
     text-transform: uppercase;
-    color: #0B3B17;
+    color: var(--primary-forest);
 }
 
 .products-hero-title span {
-    color: var(--accent-green);
+    color: var(--accent-gold);
 }
 
 .products-hero-subtitle {

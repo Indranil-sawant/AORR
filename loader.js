@@ -1,49 +1,65 @@
 /**
- * AORR Global Trading - Loader Logic
- * Handles safe removal of the preloader after site assets are ready.
+ * AORR Global Enterprise - Preloader Controller
+ * Ensures clean, non-overlapping preloader display & seamless dismissal.
  */
 
 (function() {
-    // Configuration
-    const MIN_DISPLAY_TIME = 800; // ms (prevent flickering on fast networks)
-    const MAX_DISPLAY_TIME = 5000; // ms (safety fallback)
-    
+    const MIN_DISPLAY_TIME = 500; // ms
+    const MAX_DISPLAY_TIME = 3000; // ms safety fallback
     let renderStart = Date.now();
-    
+    let hidden = false;
+
+    // Lock scrolling immediately when loader initializes
+    function lockScroll() {
+        if (document.documentElement) document.documentElement.style.overflow = 'hidden';
+        if (document.body) document.body.style.overflow = 'hidden';
+    }
+
+    function unlockScroll() {
+        if (document.documentElement) document.documentElement.style.overflow = '';
+        if (document.body) document.body.style.overflow = '';
+    }
+
+    lockScroll();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', lockScroll);
+    }
+
     function hideLoader() {
+        if (hidden) return;
         const loader = document.getElementById('aorr-loader');
-        if (!loader) return;
+        if (!loader) {
+            unlockScroll();
+            return;
+        }
         
-        // Calculate how much time has passed
+        hidden = true;
         const elapsedTime = Date.now() - renderStart;
         const remainingTime = Math.max(0, MIN_DISPLAY_TIME - elapsedTime);
         
         setTimeout(() => {
-            // Add fade-out class
             loader.classList.add('loader-hidden');
-            
-            // Remove from DOM after transition completes to free memory
-            loader.addEventListener('transitionend', () => {
-                if (loader.parentNode) {
+            unlockScroll();
+
+            // Remove element from DOM after fade-out transition completes
+            setTimeout(() => {
+                if (loader && loader.parentNode) {
                     loader.parentNode.removeChild(loader);
                 }
-            }, { once: true });
-            
-            // Allow scrolling again (if we locked it)
-            document.body.style.overflow = '';
-            
+            }, 400);
         }, remainingTime);
     }
     
-    // Safety Fallback (in case onload event hangs)
+    // Safety Fallback
     const fallbackTimer = setTimeout(hideLoader, MAX_DISPLAY_TIME);
     
-    // Main Event Listener
-    window.addEventListener('load', () => {
-        clearTimeout(fallbackTimer); // Clear safety timer
-        hideLoader(); // Trigger removal
-    });
-    
-    // Initialize: Lock scrolling while loading
-    // document.body.style.overflow = 'hidden'; // Optional: prefer not to lock if content height varies
+    if (document.readyState === 'complete') {
+        clearTimeout(fallbackTimer);
+        hideLoader();
+    } else {
+        window.addEventListener('load', () => {
+            clearTimeout(fallbackTimer);
+            hideLoader();
+        }, { once: true });
+    }
 })();

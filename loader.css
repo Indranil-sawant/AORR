@@ -1,32 +1,32 @@
 /* =========================================
-   AORR GLOBAL TRADE - CUSTOM LOADER STYLES
+   AORR GLOBAL ENTERPRISE - BRAND LOGO LOADER
    ========================================= */
 
-/* Use site variables if available, otherwise fallback to brand colors */
 :root {
-    --loader-bg-color: #0F3814;      /* Deep Forest Dark */
-    --loader-accent-color: #66BB6A;  /* Vibrant Green */
-    --loader-text-color: #ffffff;    /* White */
-    --loader-secondary: #1B5E20;     /* Deep Forest */
-    --loader-soft: #A5D6A7;          /* Soft Sage */
+    --loader-bg-color: #0B3C23;      /* Dark Brand Forest Green */
+    --loader-accent-color: #C59B27;  /* Metallic Warm Gold */
+    --loader-text-color: #ffffff;    /* Pure White */
+    --loader-secondary: #0E5A30;     /* Rich Emerald Accent */
+    --loader-soft: #E5C365;          /* Champagne Gold */
 }
 
-/* Main Loader Container - Covers entire viewport */
+/* Main Loader Container - Solid opaque overlay */
 #aorr-loader {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: var(--loader-bg-color);
-    z-index: 999999; /* Higher than everything else */
+    z-index: 999999;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    pointer-events: auto;
 }
 
 /* Hide state */
@@ -36,119 +36,148 @@
     pointer-events: none;
 }
 
+#aorr-loader.loader-hidden .loader-content {
+    opacity: 0;
+    transform: scale(0.92);
+}
+
 /* Loader Content Wrapper */
 .loader-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: relative;
-    width: 200px;
-    height: 200px;
+    padding-top: 170px; /* Space for orbit rings and logo */
+    width: 300px;
+    z-index: 10;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 /* 
-   ANIMATION: GLOBAL ORBIT 
-   Concept: A stylized globe with rotating trade & travel routes
+   BRAND LOGO & ROTATING ORBIT RINGS
 */
 
-/* Central Core (The World) */
-.loader-globe {
-    width: 60px;
-    height: 60px;
-    background: radial-gradient(circle at 30% 30%, #66BB6A, #1B5E20);
-    border-radius: 50%;
-    box-shadow: 0 0 30px rgba(102, 187, 106, 0.5);
+/* Central Logo & Globe Container */
+.loader-globe,
+.loader-logo-wrapper {
     position: absolute;
-    top: 50%;
+    top: 80px;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(197, 155, 39, 0.45);
+    animation: logoGlow 2.5s ease-in-out infinite alternate;
 }
 
-/* Orbit Ring 1 */
+/* Standalone Globe element fallback */
+.loader-globe {
+    background: url('images/logo.png') center/contain no-repeat, radial-gradient(circle, #0B3C23, #072B18);
+}
+
+/* Explicit img container (No CSS background to prevent duplicate logo display) */
+.loader-logo-wrapper {
+    background: radial-gradient(circle, #0B3C23, #072B18);
+}
+
+.loader-logo-img {
+    width: 105px;
+    height: 105px;
+    object-fit: contain;
+    border-radius: 50%;
+    z-index: 6;
+}
+
+/* Orbit Ring 1 (Inner Gold Swoosh) */
 .loader-ring-1 {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    border: 2px solid rgba(165, 214, 167, 0.25);
-    border-top: 2px solid var(--loader-accent-color);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: spin 2s linear infinite;
-    z-index: 1;
-}
-
-/* Orbit Ring 2 (Counter-rotating) */
-.loader-ring-2 {
-    position: absolute;
-    top: 50%;
+    top: 80px;
     left: 50%;
     width: 140px;
     height: 140px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 2px solid var(--loader-secondary);
+    border: 2px solid rgba(229, 195, 101, 0.25);
+    border-top: 3px solid var(--loader-accent-color);
+    border-right: 3px solid var(--loader-soft);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    animation: spin-reverse 3s linear infinite;
+    animation: spin 2.2s linear infinite;
+    z-index: 2;
+}
+
+/* Orbit Ring 2 (Outer Counter-rotating Ring) */
+.loader-ring-2 {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    width: 170px;
+    height: 170px;
+    border: 1px solid rgba(197, 155, 39, 0.2);
+    border-bottom: 2px solid var(--loader-accent-color);
+    border-left: 2px solid var(--loader-secondary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin-reverse 3.2s linear infinite;
     z-index: 1;
 }
 
 /* Text Section */
 .loader-text-container {
-    margin-top: 100px; /* Push below the rings */
+    margin-top: 10px;
     text-align: center;
-    animation: fadeUp 0.8s ease-out forwards;
+    animation: fadeUp 0.6s ease-out forwards;
     opacity: 0;
     transform: translateY(10px);
-    animation-delay: 0.2s;
 }
 
 .loader-brand {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 3px;
+    font-size: 1.6rem;
+    letter-spacing: 4px;
     color: var(--loader-text-color);
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     display: block;
 }
 
 .loader-tagline {
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     color: var(--loader-accent-color);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.9;
+    letter-spacing: 2.5px;
+    opacity: 0.95;
+    font-weight: 600;
 }
 
-/* Progress Bar (Minimal) */
+/* Progress Bar Track */
 .loader-progress-track {
-    width: 120px;
-    height: 2px;
-    background: rgba(255,255,255,0.1);
-    margin-top: 20px;
-    border-radius: 2px;
+    width: 140px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    margin-top: 18px;
+    border-radius: 3px;
     overflow: hidden;
     position: relative;
-    /* Centering logic for margin auto if needed */
     margin-left: auto;
     margin-right: auto;
 }
 
 .loader-progress-bar {
-    width: 30%;
+    width: 40%;
     height: 100%;
-    background: var(--loader-accent-color);
+    background: linear-gradient(90deg, var(--loader-accent-color), var(--loader-soft));
     position: absolute;
-    left: -30%;
-    animation: progress-slide 1.5s ease-in-out infinite;
+    left: -40%;
+    animation: progress-slide 1.4s ease-in-out infinite;
 }
 
 /* KEYFRAMES */
-
 @keyframes spin {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -159,22 +188,34 @@
     100% { transform: translate(-50%, -50%) rotate(-360deg); }
 }
 
+@keyframes logoGlow {
+    0% {
+        transform: translate(-50%, -50%) scale(0.96);
+        box-shadow: 0 0 15px rgba(197, 155, 39, 0.35);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.04);
+        box-shadow: 0 0 35px rgba(197, 155, 39, 0.7);
+    }
+}
+
 @keyframes fadeUp {
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes progress-slide {
-    0% { left: -30%; }
+    0% { left: -40%; }
     50% { left: 100%; }
     100% { left: 100%; }
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .loader-ring-1 { width: 80px; height: 80px; }
-    .loader-ring-2 { width: 110px; height: 110px; }
-    .loader-globe { width: 50px; height: 50px; }
-    .loader-content { width: 160px; height: 160px; }
-    .loader-text-container { margin-top: 80px; }
-    .loader-brand { font-size: 1.2rem; }
+    .loader-content { padding-top: 150px; width: 250px; }
+    .loader-globe, .loader-logo-wrapper { top: 70px; width: 90px; height: 90px; }
+    .loader-logo-img { width: 85px; height: 85px; }
+    .loader-ring-1 { top: 70px; width: 115px; height: 115px; }
+    .loader-ring-2 { top: 70px; width: 140px; height: 140px; }
+    .loader-brand { font-size: 1.3rem; letter-spacing: 3px; }
+    .loader-tagline { font-size: 0.7rem; }
 }
