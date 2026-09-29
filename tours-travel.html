@@ -30,6 +30,24 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.aorr.in/tours-travel.html">
     <link rel="icon" type="image/png" href="images/logo.png">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "Datta Chaya Tourism - AORR Travel Division",
+      "description": "Premier corporate travel management, sacred pilgrimage tours, and customized holiday packages.",
+      "url": "https://www.aorr.in/tours-travel.html",
+      "telephone": "+91-9552528784",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "India"
+      }
+    }
+    </script>
     
     <!-- Fonts & Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,24 +73,35 @@
             justify-content: center;
             padding: 160px 20px 80px;
             text-align: center;
-            background: radial-gradient(circle at 50% 20%, #E8F5E9 0%, #FFFFFF 100%);
+            background: linear-gradient(180deg, rgba(244, 248, 245, 0.86) 0%, rgba(255, 255, 255, 0.95) 100%), url('images/tours-hero-banner.webp') center/cover no-repeat;
         }
 
         .hero-badge-pill {
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #0B3C23 0%, #0E5A30 100%);
-            color: #FFFFFF;
-            padding: 10px 24px;
+            justify-content: center;
+            background: #FFFDF0;
+            color: #0B3C23;
+            padding: 10px 32px 12px;
             border-radius: 30px;
             font-size: 0.92rem;
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             border: 1.5px solid #C59B27;
-            box-shadow: 0 4px 20px rgba(11, 60, 35, 0.25);
+            box-shadow: 0 4px 18px rgba(197, 155, 39, 0.18);
             text-transform: uppercase;
             margin-bottom: 20px;
+            position: relative;
+        }
+
+        .hero-badge-pill::after {
+            content: '';
+            width: 44px;
+            height: 2.5px;
+            background: #C59B27;
+            margin-top: 4px;
+            border-radius: 2px;
         }
 
         .hero-title-main {
@@ -284,13 +313,32 @@
         .tour-detail-header {
             background: linear-gradient(135deg, #0B3C23 0%, #0E5A30 100%);
             color: #FFFFFF;
-            padding: 35px 40px;
+            padding: 55px 40px;
+            min-height: 230px;
             position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #divine-andhra .tour-detail-header {
+            background: linear-gradient(90deg, rgba(7, 43, 24, 0.95) 0%, rgba(7, 43, 24, 0.82) 48%, rgba(7, 43, 24, 0.15) 100%), url('images/divya-andhra-temple.webp') center 10%/cover no-repeat;
+        }
+
+        #dattatreya-guru .tour-detail-header {
+            background: linear-gradient(90deg, rgba(7, 43, 24, 0.95) 0%, rgba(7, 43, 24, 0.82) 48%, rgba(7, 43, 24, 0.15) 100%), url('images/dattatreya-guru-kshetra.webp') center 10%/cover no-repeat;
+        }
+
+        #datta-vitthal .tour-detail-header {
+            background: linear-gradient(90deg, rgba(7, 43, 24, 0.95) 0%, rgba(7, 43, 24, 0.82) 48%, rgba(7, 43, 24, 0.15) 100%), url('images/datta-vitthal-pandharpur.webp') center 10%/cover no-repeat;
+        }
+
+        #karnataka-heritage .tour-detail-header {
+            background: linear-gradient(90deg, rgba(7, 43, 24, 0.95) 0%, rgba(7, 43, 24, 0.82) 48%, rgba(7, 43, 24, 0.15) 100%), url('images/karnataka-heritage-murudeshwar.webp') center 5%/cover no-repeat;
         }
 
         .tour-detail-header::after {
@@ -615,7 +663,7 @@
         /* IRCTC Rail Section */
         .rail-section {
             padding: 90px 20px;
-            background: linear-gradient(135deg, #0B3C23 0%, #0E5A30 100%);
+            background: linear-gradient(135deg, rgba(11, 60, 35, 0.90) 0%, rgba(14, 90, 48, 0.94) 100%), url('images/irctc-vande-bharat.webp') center/cover no-repeat;
             color: #FFFFFF;
             position: relative;
             overflow: hidden;
@@ -798,7 +846,7 @@
     <section class="travel-hero">
         <div>
             <div class="hero-badge-pill">
-                🌟 DATTA CHAYA TOURISM (AORR TOURS & TRAVEL) 🌟
+                DATTA CHAYA TOURISM
             </div>
             <h1 class="hero-title-main">
                 Travel Beyond Boundaries…<br>
@@ -1361,6 +1409,55 @@
                     </a>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR TRAVEL FLEET SHOWCASE -->
+    <section style="background: #F8FAF9; padding: 70px 20px; border-top: 1px solid rgba(14, 90, 48, 0.1); border-bottom: 1px solid rgba(14, 90, 48, 0.1);">
+        <div class="tour-container">
+            <div style="text-align: center; max-width: 820px; margin: 0 auto 40px;">
+                <span class="section-tag-about" style="background: #E8F5E9; color: #0B3C23; font-weight: 800; border: 1.5px solid #0E5A30; padding: 6px 20px;">
+                    🚘 OUR PREMIUM TRAVEL FLEET 🚌
+                </span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 800; color: #0B3C23; margin-top: 12px;">
+                    Sanitised & Chauffeur-Driven Vehicles
+                </h2>
+                <p style="color: #4B5563; font-size: 1.02rem; margin-top: 8px;">
+                    Equipped for comfort, GPS tracking, and safety on every pilgrimage and corporate expedition.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                <!-- Fleet Card 1: Executive Sedan -->
+                <div style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(14, 90, 48, 0.15); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);">
+                    <div style="height: 220px; overflow: hidden; position: relative;">
+                        <picture>
+                            <source srcset="images/executive-travel-sedan.webp" type="image/webp">
+                            <img src="images/executive-travel-sedan.jpg" alt="Executive Sedan Chauffeur Fleet" loading="lazy" decoding="async" width="600" height="350" style="width: 100%; height: 100%; object-fit: cover;">
+                        </picture>
+                    </div>
+                    <div style="padding: 24px;">
+                        <span style="background: #E8F5E9; color: #0B3C23; font-weight: 800; font-size: 0.8rem; padding: 4px 12px; border-radius: 12px; text-transform: uppercase;">Private Family Sedan</span>
+                        <h3 style="color: #0B3C23; font-size: 1.3rem; font-weight: 800; margin: 10px 0 6px;">Executive Chauffeur Sedans</h3>
+                        <p style="color: #4B5563; font-size: 0.9rem; line-height: 1.55; margin: 0;">Comfortable AC sedans tailored for small families (1-4 passengers) with full luggage capacity, experienced route drivers, and toll assistance.</p>
+                    </div>
+                </div>
+
+                <!-- Fleet Card 2: Luxury Pushback Bus -->
+                <div style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(14, 90, 48, 0.15); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);">
+                    <div style="height: 220px; overflow: hidden; position: relative;">
+                        <picture>
+                            <source srcset="images/luxury-pushback-bus.webp" type="image/webp">
+                            <img src="images/luxury-pushback-bus.jpg" alt="Luxury Pushback Coach Bus" loading="lazy" decoding="async" width="600" height="350" style="width: 100%; height: 100%; object-fit: cover;">
+                        </picture>
+                    </div>
+                    <div style="padding: 24px;">
+                        <span style="background: #FEF3C7; color: #92400E; font-weight: 800; font-size: 0.8rem; padding: 4px 12px; border-radius: 12px; text-transform: uppercase;">Group & MICE Expeditions</span>
+                        <h3 style="color: #0B3C23; font-size: 1.3rem; font-weight: 800; margin: 10px 0 6px;">Luxury Pushback Coaches</h3>
+                        <p style="color: #4B5563; font-size: 0.9rem; line-height: 1.55; margin: 0;">High-comfort pushback seat coaches for large pilgrimage sanghs, family groups, and MICE corporate delegates with music systems and air suspension.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

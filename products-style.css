@@ -2,10 +2,11 @@
 
 /* Hero Section */
 .products-hero-section {
-    background: linear-gradient(180deg, #F4F8F5 0%, #FFFFFF 100%);
-    padding: 160px 20px 60px;
+    background: linear-gradient(180deg, rgba(244, 248, 245, 0.86) 0%, rgba(255, 255, 255, 0.95) 100%), url('images/aorr-trade-hero.webp') center/cover no-repeat;
+    padding: 160px 20px 70px;
     text-align: center;
     color: var(--primary-forest);
+    position: relative;
 }
 
 .products-hero-title {
