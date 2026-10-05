@@ -189,20 +189,20 @@
                 <div class="hero-badge-wrapper">
                     <span class="hero-subtitle">
                         <span class="live-pulse"></span>
-                        <span>EST. 2026 • PEOPLE | PRODUCTS | POSSIBILITIES</span>
+                        <span>EST. 2026 • CORPORATE MASTER PORTAL | TRADE • TRAVEL • HEALTHCARE</span>
                     </span>
                 </div>
 
                 <!-- Vertical Pill Tags -->
                 <div class="hero-verticals-pills-strip">
                     <a href="products.html" class="v-pill v-pill-trade">
-                        <span class="v-pill-icon">🚢</span> Global Trade
+                        <span class="v-pill-icon">🚢</span> Global Trade Division
                     </a>
                     <a href="tours-travel.html" class="v-pill v-pill-travel">
-                        <span class="v-pill-icon">✈️</span> Tours &amp; Travel
+                        <span class="v-pill-icon">✈️</span> Datta Chaya Tourism
                     </a>
                     <a href="medical-tourism.html" class="v-pill v-pill-health">
-                        <span class="v-pill-icon">🩺</span> Medical Tourism
+                        <span class="v-pill-icon">🩺</span> Medical Tourism Desk
                     </a>
                 </div>
                 
@@ -212,7 +212,7 @@
                 </h1>
 
                 <p class="hero-description">
-                    AORR is a premier global enterprise based in Pune, India — seamlessly uniting <strong class="text-highlight">Global Trade &amp; Marine Sourcing</strong>, <strong class="text-highlight">Datta Chaya Tourism &amp; IRCTC Rail Desk</strong>, and ethical <strong class="text-highlight">Medical Tourism Coordination</strong> across 50+ countries.
+                    AORR is a premier global enterprise based in Pune, India — serving as the master corporate umbrella uniting <strong class="text-highlight">AORR Global Trade &amp; Logistics</strong>, <strong class="text-highlight">Datta Chaya Tourism &amp; IRCTC Desk</strong>, and ethical <strong class="text-highlight">Medical Tourism Coordination</strong> across 50+ countries.
                 </p>
 
                 <div class="hero-cta-group">
@@ -342,93 +342,815 @@
     <!-- ========================================================================= -->
     <!-- 4-PILLAR MOVEMENT SYSTEM (AIR • OCEAN • RAIL • ROAD)                       -->
     <!-- ========================================================================= -->
-    <section class="movement-section" id="movement-ecosystem">
+    <!-- ========================================================================= -->
+    <!-- 4-PILLAR MOVEMENT SYSTEM (AIR • OCEAN • RAIL • ROAD INTERACTIVE STAGE)     -->
+    <!-- ========================================================================= -->
+    <style>
+        .movement-system-wrapper {
+            background: #FFFFFF;
+            border-radius: 20px;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            overflow: hidden;
+            padding: 35px 40px;
+            margin-top: 25px;
+        }
+
+        /* Nav Tabs Bar */
+        .movement-nav-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #E5E7EB;
+            padding-bottom: 0;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .movement-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 14px 24px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #6B7280;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            white-space: nowrap;
+        }
+
+        .movement-tab-btn:hover {
+            color: #0B3C23;
+            background: #F4F8F5;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .movement-tab-btn.active {
+            color: #0B3C23;
+            border-bottom-color: #059669;
+            background: #F4F8F5;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .movement-tab-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Stage Content Layout */
+        .movement-stage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .movement-system-wrapper {
+                padding: 24px 18px;
+            }
+            .movement-stage-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        /* Real HD Photography Visual Card */
+        .movement-visual-area {
+            position: relative;
+            height: 340px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(11, 60, 35, 0.15);
+            background: #0B3C23;
+        }
+
+        .movement-stage-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+            transition: opacity 0.35s ease, transform 0.4s ease, object-position 0.3s ease;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .movement-visual-area.transitioning .movement-stage-img {
+            opacity: 0.3;
+            transform: scale(1.05);
+        }
+
+        .movement-visual-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 22px;
+            background: linear-gradient(to top, rgba(7, 35, 19, 0.9) 0%, rgba(7, 35, 19, 0.2) 60%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .movement-badge-tag {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.95);
+            color: #0B3C23;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        }
+
+        .movement-feeling-tag {
+            color: #ffffff;
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background: rgba(7, 43, 24, 0.75);
+            backdrop-filter: blur(8px);
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-block;
+        }
+
+        /* Content Right Box */
+        .movement-details-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .movement-mode-kicker {
+            color: #059669;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .movement-mode-headline {
+            font-family: var(--font-main);
+            font-size: clamp(1.5rem, 3vw, 2.1rem);
+            font-weight: 800;
+            color: #0B3C23;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .movement-mode-statement {
+            font-size: 0.98rem;
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .movement-capabilities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 26px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .movement-cap-chip {
+            background: #F4F8F5;
+            color: #0B3C23;
+            border: 1px solid #C8E6C9;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .movement-cap-check {
+            color: #059669;
+            font-weight: 800;
+        }
+
+        .movement-cta-btn {
+            align-self: flex-start;
+            background: #0B3C23;
+            color: #ffffff;
+            padding: 13px 26px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(11, 60, 35, 0.2);
+        }
+
+        .movement-cta-btn:hover {
+            background: #059669;
+            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+
+    <section class="movement-section" id="movement-ecosystem" style="padding: 70px 20px; background: #F8FAF9;">
         <div style="max-width: 1350px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <span class="editorial-kicker">INTEGRATED MOBILITY & LOGISTICS</span>
+            <div style="text-align: center; margin-bottom: 25px;">
+                <span class="editorial-kicker">INTEGRATED MOBILITY NETWORK</span>
                 <h2 class="editorial-title" style="margin-top: 8px;">
                     The 4-Pillar Movement System
                 </h2>
                 <p class="editorial-subtitle">
-                    Powering seamless cross-border mobility and domestic distribution across four dedicated transportation modes.
+                    One unified cross-border network operating seamlessly across Air, Ocean, Rail, and Road.
                 </p>
             </div>
 
-            <div class="movement-grid">
-                <!-- Pillar 1: AIR -->
-                <div class="movement-card">
-                    <div>
-                        <div class="movement-icon-box">✈️</div>
-                        <h3 class="movement-title">AIR</h3>
-                        <div class="movement-subtitle">Aviation & Priority Transit</div>
-                        <p class="movement-desc">
-                            Rapid international flight ticketing for corporate executives, bespoke leisure holiday connections, express air cargo, and sample dispatches worldwide.
-                        </p>
-                        <ul class="movement-features">
-                            <li><span class="check">✔</span> Global Airline Ticketing & Desks</li>
-                            <li><span class="check">✔</span> Fast-Track Priority Air Freight</li>
-                            <li><span class="check">✔</span> Corporate Executive Itineraries</li>
-                        </ul>
-                    </div>
-                    <a href="tours-travel.html" class="movement-link">Explore Air & Travel Desk →</a>
+            <!-- The Interactive Movement Stage Container -->
+            <div class="movement-system-wrapper">
+                
+                <!-- Mode Navigation Control Tabs Bar -->
+                <div class="movement-nav-bar" role="tablist" aria-label="4-Pillar Movement Modes">
+                    <button class="movement-tab-btn active" data-mode="air" role="tab" aria-selected="true">
+                        <span class="movement-tab-icon">✈️</span> AIR
+                    </button>
+                    <button class="movement-tab-btn" data-mode="ocean" role="tab" aria-selected="false">
+                        <span class="movement-tab-icon">🚢</span> OCEAN
+                    </button>
+                    <button class="movement-tab-btn" data-mode="rail" role="tab" aria-selected="false">
+                        <span class="movement-tab-icon">🚆</span> RAIL
+                    </button>
+                    <button class="movement-tab-btn" data-mode="road" role="tab" aria-selected="false">
+                        <span class="movement-tab-icon">🚛</span> ROAD
+                    </button>
                 </div>
 
-                <!-- Pillar 2: OCEAN -->
-                <div class="movement-card">
-                    <div>
-                        <div class="movement-icon-box">🚢</div>
-                        <h3 class="movement-title">OCEAN</h3>
-                        <div class="movement-subtitle">Maritime & Global Shipping</div>
-                        <p class="movement-desc">
-                            High-capacity maritime supply chains from major Indian ports (Nhava Sheva, Mundra, Chennai) moving marine supplies, industrial valves, and bulk commodities to 50+ countries.
-                        </p>
-                        <ul class="movement-features">
-                            <li><span class="check">✔</span> Ocean Freight (FCL & LCL)</li>
-                            <li><span class="check">✔</span> Marine Supplies & Industrial Valves</li>
-                            <li><span class="check">✔</span> 100% Customs & AEO Compliance</li>
-                        </ul>
+                <!-- Active Stage Experience Grid -->
+                <div class="movement-stage-grid">
+                    
+                    <!-- Left Column: Real HD Photography Visual Card -->
+                    <div class="movement-visual-area" id="movementVisualArea">
+                        <img src="images/tours-hero-banner.jpg" alt="AIR Movement System Aviation" id="movementImg" class="movement-stage-img" loading="eager" width="600" height="340">
+                        <div class="movement-visual-overlay">
+                            <span class="movement-badge-tag" id="movementBadge">⚡ FAST • GLOBAL • ELEVATED</span>
+                            <span class="movement-feeling-tag" id="movementFeeling">Rapid Air Logistics &amp; Executive Flight Desks</span>
+                        </div>
                     </div>
-                    <a href="products.html" class="movement-link">Explore Maritime Catalog →</a>
-                </div>
 
-                <!-- Pillar 3: RAIL -->
-                <div class="movement-card">
-                    <div>
-                        <div class="movement-icon-box">🚆</div>
-                        <h3 class="movement-title">RAIL</h3>
-                        <div class="movement-subtitle">IRCTC Agent & Overland Transit</div>
-                        <p class="movement-desc">
-                            Authorised IRCTC Railway Ticket Booking Desk handling confirmed train bookings across India (1AC, 2AC, 3AC, Sleeper, Tatkal) and nationwide rail logistics.
+                    <!-- Right Column: High-Impact Details -->
+                    <div class="movement-details-box">
+                        <span class="movement-mode-kicker" id="movementKicker">MODE 01/04 • AVIATION &amp; PRIORITY TRANSIT</span>
+                        <h3 class="movement-mode-headline" id="movementHeadline">AIR — Aviation &amp; Priority Freight</h3>
+                        <p class="movement-mode-statement" id="movementStatement">
+                            Fast international connectivity for corporate travel, priority air freight, executive itineraries, and urgent sample dispatches.
                         </p>
-                        <ul class="movement-features">
-                            <li><span class="check">✔</span> Authorised IRCTC Railway Agent</li>
-                            <li><span class="check">✔</span> All-India Train Tickets & Tatkal Desk</li>
-                            <li><span class="check">✔</span> Pilgrimage Tour Rail Bookings</li>
+                        
+                        <ul class="movement-capabilities-list" id="movementCaps">
+                            <li class="movement-cap-chip"><span class="movement-cap-check">✓</span> Global Airline Booking</li>
+                            <li class="movement-cap-chip"><span class="movement-cap-check">✓</span> Priority Air Freight</li>
+                            <li class="movement-cap-chip"><span class="movement-cap-check">✓</span> Executive Itineraries</li>
                         </ul>
-                    </div>
-                    <a href="tours-travel.html#irctc-desk" class="movement-link">IRCTC Railway Desk →</a>
-                </div>
 
-                <!-- Pillar 4: ROAD -->
-                <div class="movement-card">
-                    <div>
-                        <div class="movement-icon-box">🚛</div>
-                        <h3 class="movement-title">ROAD</h3>
-                        <div class="movement-subtitle">Domestic Fleet & Ground Care</div>
-                        <p class="movement-desc">
-                            Multi-axle container road logistics, air-conditioned luxury tourist coach fleets for spiritual and heritage tours, and dedicated medical patient transfers.
-                        </p>
-                        <ul class="movement-features">
-                            <li><span class="check">✔</span> AC Luxury Coaches & Tour Vehicles</li>
-                            <li><span class="check">✔</span> Factory-to-Port Container Transit</li>
-                            <li><span class="check">✔</span> Medical Airport Transfers & Concierge</li>
-                        </ul>
+                        <div>
+                            <a href="tours-travel.html" class="movement-cta-btn" id="movementCta">
+                                Explore Air &amp; Travel Desk →
+                            </a>
+                        </div>
                     </div>
-                    <a href="tours-travel.html#tour-packages" class="movement-link">Explore Tour Packages →</a>
+
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Embedded Vanilla Script for Interactive Movement Stage -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const movementData = {
+            air: {
+                kicker: 'MODE 01/04 • AVIATION & PRIORITY TRANSIT',
+                headline: 'AIR — Aviation & Priority Freight',
+                statement: 'Fast international connectivity for corporate travel, priority air freight, executive itineraries, and urgent sample dispatches.',
+                img: 'images/tours-hero-banner.jpg',
+                objPos: 'center 40%',
+                badge: '⚡ FAST • GLOBAL • ELEVATED',
+                feeling: 'Rapid Air Logistics & Executive Flight Desks',
+                caps: ['Global Airline Booking', 'Priority Air Freight', 'Executive Itineraries'],
+                ctaText: 'Explore Air & Travel Desk →',
+                ctaUrl: 'tours-travel.html'
+            },
+            ocean: {
+                kicker: 'MODE 02/04 • MARITIME & GLOBAL SHIPPING',
+                headline: 'OCEAN — Maritime Supply Chains',
+                statement: 'High-capacity ocean freight moving marine raw materials, industrial valves, and bulk cargo from Indian ports to 50+ countries.',
+                img: 'images/aorr-trade-port.jpg',
+                objPos: 'center center',
+                badge: '🌊 GLOBAL • MASSIVE • CONNECTED',
+                feeling: '50+ Global Export Ports & Deep-Sea Shipping',
+                caps: ['Ocean Freight (FCL/LCL)', 'Marine Supplies & Valves', '100% Customs Clearance'],
+                ctaText: 'Explore Maritime Catalog →',
+                ctaUrl: 'products.html'
+            },
+            rail: {
+                kicker: 'MODE 03/04 • AUTHORISED IRCTC RAILWAY DESK',
+                headline: 'RAIL — Nationwide Train Logistics',
+                statement: 'Authorised IRCTC Railway Desk delivering confirmed train reservations, Tatkal tickets, group bookings, and nationwide rail transit.',
+                img: 'images/irctc-vande-bharat.jpg',
+                objPos: 'center 35%',
+                badge: '🚆 CONNECTED • RELIABLE • NATIONWIDE',
+                feeling: 'Authorised IRCTC Agent & Tatkal Ticket Desk',
+                caps: ['Authorised IRCTC Agent', 'All-India Tatkal Desk', 'Pilgrimage Rail Travel'],
+                ctaText: 'IRCTC Railway Desk →',
+                ctaUrl: 'tours-travel.html#irctc-desk'
+            },
+            road: {
+                kicker: 'MODE 04/04 • DOMESTIC FLEET & GROUND CARE',
+                headline: 'ROAD — Fleet & Ground Logistics',
+                statement: 'Multi-axle container road logistics, AC luxury coach fleets for spiritual yatras, and 24/7 dedicated medical patient transfers.',
+                img: 'images/luxury-pushback-bus.jpg',
+                objPos: 'center 45%',
+                badge: '🚛 FLEXIBLE • DOMESTIC • ACCESSIBLE',
+                feeling: 'Luxury Tour Coaches & Container Freight',
+                caps: ['AC Luxury Tour Coaches', 'Factory-to-Port Freight', 'Medical Patient Transfers'],
+                ctaText: 'Explore Tour Packages →',
+                ctaUrl: 'tours-travel.html#tour-packages'
+            }
+        };
+
+        const tabs = document.querySelectorAll('.movement-tab-btn');
+        const visualArea = document.getElementById('movementVisualArea');
+        const imgEl = document.getElementById('movementImg');
+        const badgeEl = document.getElementById('movementBadge');
+        const feelingEl = document.getElementById('movementFeeling');
+        const kickerEl = document.getElementById('movementKicker');
+        const headlineEl = document.getElementById('movementHeadline');
+        const statementEl = document.getElementById('movementStatement');
+        const capsEl = document.getElementById('movementCaps');
+        const ctaEl = document.getElementById('movementCta');
+
+        function switchMovementMode(modeKey) {
+            const data = movementData[modeKey];
+            if (!data) return;
+
+            tabs.forEach(tab => {
+                if (tab.dataset.mode === modeKey) {
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+                } else {
+                    tab.classList.remove('active');
+                    tab.setAttribute('aria-selected', 'false');
+                }
+            });
+
+            visualArea.classList.add('transitioning');
+            setTimeout(() => {
+                imgEl.src = data.img;
+                if (data.objPos) imgEl.style.objectPosition = data.objPos;
+                badgeEl.textContent = data.badge;
+                feelingEl.textContent = data.feeling;
+                kickerEl.textContent = data.kicker;
+                headlineEl.textContent = data.headline;
+                statementEl.textContent = data.statement;
+
+                capsEl.innerHTML = data.caps.map(cap => 
+                    `<li class="movement-cap-chip"><span class="movement-cap-check">✓</span> ${cap}</li>`
+                ).join('');
+
+                ctaEl.textContent = data.ctaText;
+                ctaEl.href = data.ctaUrl;
+
+                visualArea.classList.remove('transitioning');
+            }, 150);
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                switchMovementMode(this.dataset.mode);
+            });
+            tab.addEventListener('mouseenter', function () {
+                switchMovementMode(this.dataset.mode);
+            });
+        });
+    });
+    </script>
+
+    <!-- ========================================================================= -->
+    <!-- DATTA CHAYA TOURISM INTERACTIVE EXPERIENCE SYSTEM                         -->
+    <!-- ========================================================================= -->
+    <style>
+        .tourism-system-wrapper {
+            background: #FFFFFF;
+            border-radius: 20px;
+            border: 1px solid rgba(5, 150, 105, 0.25);
+            box-shadow: 0 15px 40px rgba(5, 150, 105, 0.08);
+            overflow: hidden;
+            padding: 35px 40px;
+            margin-top: 25px;
+        }
+
+        .tourism-nav-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #E5E7EB;
+            padding-bottom: 0;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tourism-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 14px 22px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: #4B5563;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            white-space: nowrap;
+        }
+
+        .tourism-tab-btn:hover {
+            color: #059669;
+            background: #F0FDF4;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tourism-tab-btn.active {
+            color: #059669;
+            border-bottom-color: #059669;
+            background: #F0FDF4;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tourism-stage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .tourism-system-wrapper {
+                padding: 24px 18px;
+            }
+            .tourism-stage-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        .tourism-visual-area {
+            position: relative;
+            height: 340px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(5, 150, 105, 0.15);
+            background: #072B18;
+        }
+
+        .tourism-stage-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            transition: opacity 0.35s ease, transform 0.4s ease, object-position 0.3s ease;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .tourism-visual-area.transitioning .tourism-stage-img {
+            opacity: 0.3;
+            transform: scale(1.05);
+        }
+
+        .tourism-visual-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 22px;
+            background: linear-gradient(to top, rgba(7, 43, 24, 0.9) 0%, rgba(7, 43, 24, 0.2) 60%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .tourism-badge-tag {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.95);
+            color: #072B18;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        }
+
+        .tourism-feeling-tag {
+            color: #ffffff;
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background: rgba(7, 43, 24, 0.75);
+            backdrop-filter: blur(8px);
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-block;
+        }
+
+        .tourism-mode-kicker {
+            color: #059669;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .tourism-mode-headline {
+            font-family: var(--font-main);
+            font-size: clamp(1.5rem, 3vw, 2.1rem);
+            font-weight: 800;
+            color: #0B3C23;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .tourism-mode-statement {
+            font-size: 0.98rem;
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .tourism-capabilities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 26px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .tourism-cap-chip {
+            background: #F0FDF4;
+            color: #0B3C23;
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tourism-cta-btn {
+            align-self: flex-start;
+            background: #059669;
+            color: #ffffff;
+            padding: 13px 26px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.25);
+        }
+
+        .tourism-cta-btn:hover {
+            background: #047857;
+            box-shadow: 0 6px 20px rgba(4, 120, 87, 0.35);
+            transform: translateY(-2px);
+        }
+    </style>
+
+    <section class="tourism-section" id="dattachaya-showcase" style="padding: 70px 20px; background: #FFFFFF;">
+        <div style="max-width: 1350px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <span class="editorial-kicker" style="background: #E8F5E9; color: #0B3B17; font-weight: 800; border: 1.5px solid #059669; padding: 4px 16px; border-radius: 20px; display: inline-block;">
+                    ✨ DATTA CHAYA TOURISM SHOWCASE ✨
+                </span>
+                <h2 class="editorial-title" style="margin-top: 8px;">
+                    Handcrafted Yatras &amp; IRCTC Rail Desk
+                </h2>
+                <p class="editorial-subtitle">
+                    Select a sacred circuit or rail service to explore complete itineraries, darshan packages, and booking details.
+                </p>
+            </div>
+
+            <div class="tourism-system-wrapper">
+                <!-- Mode Navigation Control Tabs Bar -->
+                <div class="tourism-nav-bar" role="tablist" aria-label="Datta Chaya Tourism Circuits">
+                    <button class="tourism-tab-btn active" data-tour="andhra" role="tab" aria-selected="true">
+                        🌊 DIVINE ANDHRA
+                    </button>
+                    <button class="tourism-tab-btn" data-tour="karnataka" role="tab" aria-selected="false">
+                        🏛️ KARNATAKA HERITAGE
+                    </button>
+                    <button class="tourism-tab-btn" data-tour="vitthal" role="tab" aria-selected="false">
+                        🚩 DATTA &amp; VITTHAL
+                    </button>
+                    <button class="tourism-tab-btn" data-tour="guru" role="tab" aria-selected="false">
+                        🕉️ GURU PARAMPARA
+                    </button>
+                    <button class="tourism-tab-btn" data-tour="irctc" role="tab" aria-selected="false">
+                        🚆 IRCTC RAIL DESK
+                    </button>
+                </div>
+
+                <!-- Active Stage Experience Grid -->
+                <div class="tourism-stage-grid">
+                    
+                    <!-- Left Column: Real HD Photography Visual Card -->
+                    <div class="tourism-visual-area" id="tourismVisualArea">
+                        <img src="images/divya-andhra-temple.jpg" alt="Divine Andhra Yatra Shrine" id="tourismImg" class="tourism-stage-img" loading="eager" width="600" height="340">
+                        <div class="tourism-visual-overlay">
+                            <span class="tourism-badge-tag" id="tourismBadge">🌊 5D/4N • SPIRITUAL &amp; COASTAL</span>
+                            <span class="tourism-feeling-tag" id="tourismFeeling">Pithapuram • Annavaram • Draksharamam Shrines</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Details Box -->
+                    <div class="movement-details-box">
+                        <span class="tourism-mode-kicker" id="tourismKicker">CIRCUIT 01/05 • SACRED COASTAL PILGRIMAGE</span>
+                        <h3 class="tourism-mode-headline" id="tourismHeadline">Divine Andhra Yatra (5D / 4N)</h3>
+                        <p class="tourism-mode-statement" id="tourismStatement">
+                            Handcrafted pilgrimage covering Pithapuram Datta Peetham, Annavaram Satyanarayana Swami, Draksharamam Pancharama, and Antarvedi Godavari confluence.
+                        </p>
+                        
+                        <ul class="tourism-capabilities-list" id="tourismCaps">
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> AC Luxury Coach Fleet</li>
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> VIP Darshan Assistance</li>
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Pure Satvik Meals</li>
+                        </ul>
+
+                        <div>
+                            <a href="tours-travel.html#divine-andhra" class="tourism-cta-btn" id="tourismCta">
+                                View Divine Andhra Package →
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Embedded Vanilla Script for Datta Chaya Tourism Stage -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tourismData = {
+            andhra: {
+                kicker: 'CIRCUIT 01/05 • SACRED COASTAL PILGRIMAGE',
+                headline: 'Divine Andhra Yatra (5D / 4N)',
+                statement: 'Handcrafted pilgrimage covering Pithapuram Datta Peetham, Annavaram Satyanarayana Swami, Draksharamam Pancharama, and Antarvedi Godavari confluence.',
+                img: 'images/divya-andhra-temple.jpg',
+                objPos: 'center 25%',
+                badge: '🌊 5D/4N • SPIRITUAL & COASTAL',
+                feeling: 'Pithapuram • Annavaram • Draksharamam Shrines',
+                caps: ['AC Luxury Coach Fleet', 'VIP Darshan Assistance', 'Pure Satvik Meals'],
+                ctaText: 'View Divine Andhra Package →',
+                ctaUrl: 'tours-travel.html#divine-andhra'
+            },
+            karnataka: {
+                kicker: 'CIRCUIT 02/05 • UNESCO WORLD HERITAGE',
+                headline: 'Karnataka Heritage & Spiritual Tour (5D / 4N)',
+                statement: 'Explore Gol Gumbaz, Badami Cave Temples, UNESCO monuments at Hampi, Tungabhadra Dam, and sacred river sangams.',
+                img: 'images/karnataka-heritage-murudeshwar.jpg',
+                objPos: 'center 20%',
+                badge: '🏛️ 5D/4N • UNESCO HERITAGE',
+                feeling: 'Badami Caves • Hampi Monuments • Gol Gumbaz',
+                caps: ['Guided Heritage History', 'AC Coach Fleet', 'Handpicked Stays'],
+                ctaText: 'View Karnataka Heritage Tour →',
+                ctaUrl: 'tours-travel.html#karnataka-heritage'
+            },
+            vitthal: {
+                kicker: 'CIRCUIT 03/05 • SACRED MAHARASHTRA PILGRIMAGE',
+                headline: 'Divine Datta & Vitthal Pilgrimage (5D / 4N)',
+                statement: 'Swami Samarth Maharaj Math at Akkalkot, Gangapur Nirguna Paduka, Pandharpur Vitthal-Rukmini darshan, and Tuljapur Bhavani Mata.',
+                img: 'images/datta-vitthal-pandharpur.jpg',
+                objPos: 'center 30%',
+                badge: '🚩 5D/4N • SACRED YATRA',
+                feeling: 'Pandharpur Shri Vitthal • Gangapur Nirguna',
+                caps: ['Hassle-Free VIP Darshan Aid', 'AC Coach & Escort', 'Pure Satvik Meals'],
+                ctaText: 'View Datta & Vitthal Yatra →',
+                ctaUrl: 'tours-travel.html#datta-vitthal'
+            },
+            guru: {
+                kicker: 'CIRCUIT 04/05 • GURU PARAMPARA KSHETRA',
+                headline: 'Divine Dattatreya & Guru Pilgrimage (5D / 4N)',
+                statement: 'The ultimate Guru route: Sripada Srivallabha Kuravpur island temple, Raghavendra Swami Brindavan at Mantralaya & Gangapur.',
+                img: 'images/dattatreya-guru-kshetra.jpg',
+                objPos: 'center 25%',
+                badge: '🕉️ 5D/4N • GURU KSHETRA',
+                feeling: 'Kuravpur Island • Mantralaya Brindavan',
+                caps: ['Island Boat Transfers', 'Special Archana Pujas', 'Complete Yatra Escort'],
+                ctaText: 'View Guru Pilgrimage Tour →',
+                ctaUrl: 'tours-travel.html#dattatreya-guru'
+            },
+            irctc: {
+                kicker: 'SERVICE 05/05 • AUTHORISED IRCTC RAILWAY DESK',
+                headline: 'Confirmed Train Tickets & Tatkal Booking',
+                statement: 'Authorised IRCTC Agent managing instant confirmed rail tickets (1AC, 2AC, 3AC, Sleeper, Tatkal) with fast WhatsApp e-ticket delivery.',
+                img: 'images/irctc-vande-bharat.jpg',
+                objPos: 'center 35%',
+                badge: '🚆 AUTHORISED IRCTC DESK',
+                feeling: 'All-India Express Trains & Tatkal Assistance',
+                caps: ['Confirmed Rail Tickets', 'Tatkal & Group Support', 'WhatsApp E-Ticket Delivery'],
+                ctaText: 'Chat With Rail Desk on WhatsApp 💬',
+                ctaUrl: 'https://wa.me/919730004911?text=Hello%20AORR%20Travel%20Team%2C%20I%20want%20to%20book%20an%20IRCTC%20Train%20Ticket.'
+            }
+        };
+
+        const tTabs = document.querySelectorAll('.tourism-tab-btn');
+        const tVisualArea = document.getElementById('tourismVisualArea');
+        const tImgEl = document.getElementById('tourismImg');
+        const tBadgeEl = document.getElementById('tourismBadge');
+        const tFeelingEl = document.getElementById('tourismFeeling');
+        const tKickerEl = document.getElementById('tourismKicker');
+        const tHeadlineEl = document.getElementById('tourismHeadline');
+        const tStatementEl = document.getElementById('tourismStatement');
+        const tCapsEl = document.getElementById('tourismCaps');
+        const tCtaEl = document.getElementById('tourismCta');
+
+        function switchTourismMode(tourKey) {
+            const data = tourismData[tourKey];
+            if (!data) return;
+
+            tTabs.forEach(tab => {
+                if (tab.dataset.tour === tourKey) {
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+                } else {
+                    tab.classList.remove('active');
+                    tab.setAttribute('aria-selected', 'false');
+                }
+            });
+
+            tVisualArea.classList.add('transitioning');
+            setTimeout(() => {
+                tImgEl.src = data.img;
+                if (data.objPos) tImgEl.style.objectPosition = data.objPos;
+                tBadgeEl.textContent = data.badge;
+                tFeelingEl.textContent = data.feeling;
+                tKickerEl.textContent = data.kicker;
+                tHeadlineEl.textContent = data.headline;
+                tStatementEl.textContent = data.statement;
+
+                tCapsEl.innerHTML = data.caps.map(cap => 
+                    `<li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> ${cap}</li>`
+                ).join('');
+
+                tCtaEl.textContent = data.ctaText;
+                tCtaEl.href = data.ctaUrl;
+
+                tVisualArea.classList.remove('transitioning');
+            }, 150);
+        }
+
+        tTabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                switchTourismMode(this.dataset.tour);
+            });
+            tab.addEventListener('mouseenter', function () {
+                switchTourismMode(this.dataset.tour);
+            });
+        });
+    });
+    </script>
 
     <!-- ========================================================================= -->
     <!-- ENTERPRISE EXPERTISE & AUTHORITY SHOWCASE                                 -->
@@ -523,480 +1245,297 @@
         </div>
     </section>
 
-    <!-- Master 3 Core Business Pillars Overview -->
+    <!-- ========================================================================= -->
+    <!-- THE THREE DOORS OF AORR (SPECIALIZED ENTERPRISE DIVISIONS)                -->
+    <!-- ========================================================================= -->
+    <style>
+        .three-doors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        @media (max-width: 1024px) {
+            .three-doors-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+        .door-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .door-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(11, 60, 35, 0.12);
+            border-color: rgba(11, 60, 35, 0.3);
+        }
+        .door-image-wrapper {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        .door-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .door-card:hover .door-img {
+            transform: scale(1.06);
+        }
+        .door-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(11, 60, 35, 0.9);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            backdrop-filter: blur(6px);
+        }
+        .badge-travel { background: rgba(5, 150, 105, 0.9); }
+        .badge-medical { background: rgba(15, 118, 110, 0.9); }
+        .door-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .door-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .door-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            background: #F4F8F5;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #C8E6C9;
+            flex-shrink: 0;
+        }
+        .door-title {
+            font-family: var(--font-main);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0B3C23;
+            line-height: 1.2;
+        }
+        .door-subtitle {
+            font-size: 0.82rem;
+            color: #059669;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+        .door-desc {
+            font-size: 0.92rem;
+            color: #4B5563;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+        .door-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .door-chip {
+            background: #F4F8F5;
+            color: #0B3C23;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(11, 60, 35, 0.12);
+        }
+        .door-footer {
+            margin-top: auto;
+        }
+        .door-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .btn-trade {
+            background: #0B3C23;
+            color: #ffffff;
+        }
+        .btn-trade:hover {
+            background: #0E5A30;
+            box-shadow: 0 4px 14px rgba(11, 60, 35, 0.3);
+        }
+        .btn-travel {
+            background: #059669;
+            color: #ffffff;
+        }
+        .btn-travel:hover {
+            background: #047857;
+            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+        }
+        .btn-medical {
+            background: #0F766E;
+            color: #ffffff;
+        }
+        .btn-medical:hover {
+            background: #115E59;
+            box-shadow: 0 4px 14px rgba(15, 118, 110, 0.3);
+        }
+        .door-arrow {
+            transition: transform 0.25s ease;
+        }
+        .door-btn:hover .door-arrow {
+            transform: translateX(4px);
+        }
+    </style>
+
     <section class="divisions-section" id="three-pillars" style="padding: 90px 20px; background: #FFFFFF;">
         <div style="max-width: 1350px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: 45px;">
-                <span class="editorial-kicker">THREE CORE DIVISIONS</span>
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span class="editorial-kicker">ONE ENTERPRISE • THREE SPECIALISTS</span>
                 <h2 class="editorial-title" style="margin-top: 8px;">
-                    Built For Cross-Border Excellence
+                    Select Your Business Destination
                 </h2>
                 <p class="editorial-subtitle">
-                    A unified enterprise connecting international markets, bespoke travel management, and compassionate healthcare coordination under one trusted standard.
+                    AORR operates three distinct, specialized divisions. Choose the door relevant to your needs for direct access to expert catalogs, itineraries, and concierge services.
                 </p>
             </div>
 
-            <div class="three-pillars-grid">
-                <!-- Pillar 01: Global Trade -->
-                <div class="pillar-card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div class="pillar-icon-box">🚢</div>
-                            <span class="pillar-badge">Pillar 01</span>
-                        </div>
-                        <h3 class="pillar-title">Global Trade</h3>
-                        <p class="pillar-tagline">Import • Export • Sourcing</p>
-                        <p class="pillar-description">
-                            Government-recognized export operations supplying shipbuilding raw materials, industrial machinery & valves, garments, and agricultural exports across 50+ countries.
-                        </p>
-                        <ul class="pillar-features-list">
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>Marine Supplies, Resins & Timber</span>
-                            </li>
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>High-Pressure Industrial Valves</span>
-                            </li>
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>Agro Commodities & Garments</span>
-                            </li>
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>100% Customs & AEO Compliance</span>
-                            </li>
-                        </ul>
+            <!-- The 3 Immersive Doors Grid -->
+            <div class="three-doors-grid">
+                
+                <!-- DOOR 01: GLOBAL TRADE & LOGISTICS -->
+                <div class="door-card door-trade">
+                    <div class="door-image-wrapper">
+                        <picture>
+                            <source srcset="images/aorr-trade-port.webp" type="image/webp">
+                            <img src="images/aorr-trade-port.jpg" alt="AORR Global Trade Port Shipping" class="door-img" loading="lazy" decoding="async">
+                        </picture>
+                        <span class="door-badge badge-trade">DIVISION 01 • B2B TRADE</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
-                        <a href="products.html" class="pillar-action-btn primary">Explore Trade Catalog →</a>
-                        <a href="#vertical-trade" class="pillar-action-btn secondary">Learn More About Trade ↓</a>
-                    </div>
-                </div>
-
-                <!-- Pillar 02: Tours & Travels -->
-                <div class="pillar-card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div class="pillar-icon-box">✈️</div>
-                            <span class="pillar-badge">Pillar 02</span>
-                        </div>
-                        <h3 class="pillar-title">Tours & Travels</h3>
-                        <p class="pillar-tagline">Datta Chaya Tourism & IRCTC Desk</p>
-                        <p class="pillar-description">
-                            Specialized spiritual & heritage pilgrimages, Authorised IRCTC Railway Ticket Booking Desk, corporate travel itineraries, flight & hotel reservations, and 24/7 journey concierge.
-                        </p>
-                        <ul class="pillar-features-list">
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>Handcrafted Spiritual & Heritage Tours</span>
-                            </li>
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>Authorised IRCTC Rail Ticket Desk</span>
-                            </li>
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>Corporate Flight & Hotel Bookings</span>
-                            </li>
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>MICE & Group Expeditions</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
-                        <a href="tours-travel.html" class="pillar-action-btn primary">Explore Tours & Travel →</a>
-                        <a href="#vertical-travel" class="pillar-action-btn secondary">View Tour Packages & Rail Desk ↓</a>
-                    </div>
-                </div>
-
-                <!-- Pillar 03: Medical Tourism -->
-                <div class="pillar-card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div class="pillar-icon-box">🩺</div>
-                            <span class="pillar-badge">Pillar 03</span>
-                        </div>
-                        <h3 class="pillar-title">Medical Tourism</h3>
-                        <p class="pillar-tagline">Healthcare Without Borders</p>
-                        <p class="pillar-description">
-                            Ethical, compassionate cross-border healthcare coordination connecting international patients with India's accredited hospitals, super-specialists, visas, and dedicated concierge.
-                        </p>
-                        <ul class="pillar-features-list">
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>NABH & JCI Hospital Discovery</span>
-                            </li>
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>Doctor & Specialist Consultations</span>
-                            </li>
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>Medical Visa (VIL) Documentation</span>
-                            </li>
-                            <li class="pillar-feature-item">
-                                <span class="pillar-feature-check">✔</span>
-                                <span>Dedicated On-Ground Concierge</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
-                        <a href="medical-tourism.html" class="pillar-action-btn primary">Explore Medical Tourism →</a>
-                        <a href="#vertical-medical" class="pillar-action-btn secondary">Learn More About Healthcare ↓</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- DEEP-DIVE SECTION 01: GLOBAL TRADE & SOURCING                             -->
-    <!-- ========================================================================= -->
-    <section class="vertical-showcase-section" id="vertical-trade" style="background: #F8FAF9;">
-        <div style="max-width: 1300px; margin: 0 auto;">
-            <div class="vertical-showcase-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 25px;">
-                    <div>
-                        <span class="editorial-kicker">DIVISION 01 — GLOBAL COMMERCE</span>
-                        <h2 style="font-family: var(--font-main); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: #0B3B17; margin-top: 6px;">
-                            Global Trade, Marine Supplies & Industrial Sourcing
-                        </h2>
-                    </div>
-                    <a href="products.html" class="hero-btn primary" style="padding: 10px 24px; font-size: 0.85rem;">
-                        Open Product Catalog →
-                    </a>
-                </div>
-
-                <p style="font-size: 1.05rem; color: #4B5563; line-height: 1.7; max-width: 950px;">
-                    AORR operates as a premier Indian export house facilitating international supply chains across 50+ countries. 
-                    We engineer reliable export channels with pre-shipment laboratory inspections, ISO 9001 certified protocols, 
-                    and 100% customs compliance from major Indian ports (Nhava Sheva, Mundra, Chennai) to international destinations.
-                </p>
-
-                <!-- Division 01 Authentic Visual Storytelling Strip -->
-                <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; margin: 25px 0;">
-                    <div style="height: 220px; overflow: hidden; border-radius: 14px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
-                        <img src="images/aorr-trade-port.jpg" alt="Deep-sea container vessel and gantry cranes at Indian export port" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" width="600" height="220">
-                        <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(11,59,23,0.85); color: #ffffff; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; backdrop-filter: blur(6px);">⚓ Deep-Sea Port Logistics (Nhava Sheva / Mundra)</span>
-                    </div>
-                    <div style="height: 220px; overflow: hidden; border-radius: 14px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
-                        <img src="images/aorr-marine-supplies.jpg" alt="Shipbuilding raw materials, resins, and marine timber procurement" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" width="400" height="220">
-                        <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(11,59,23,0.85); color: #ffffff; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; backdrop-filter: blur(6px);">⚙️ Marine Raw Materials & Timber</span>
-                    </div>
-                </div>
-
-                <!-- 4 Key Trade Feature Boxes -->
-                <div class="vertical-grid-4">
-                    <div class="v-feature-box">
-                        <span class="v-feature-icon">⚓</span>
-                        <h4 class="v-feature-title">Marine & Shipbuilding</h4>
-                        <p class="v-feature-desc">Shipbuilding raw materials, resins, fiberglass sheets, marine timber, and replacement parts for dockyards worldwide.</p>
-                    </div>
-                    <div class="v-feature-box">
-                        <span class="v-feature-icon">⚙️</span>
-                        <h4 class="v-feature-title">Industrial Valves & Machinery</h4>
-                        <p class="v-feature-desc">High-grade industrial water pump valves, pipeline fittings, utility hardware, and mechanical components.</p>
-                    </div>
-                    <div class="v-feature-box">
-                        <span class="v-feature-icon">🌾</span>
-                        <h4 class="v-feature-title">Agro Commodities & Goods</h4>
-                        <p class="v-feature-desc">Premium agricultural products, spices, grains, and dedicated domestic perishable supply distribution networks.</p>
-                    </div>
-                    <div class="v-feature-box">
-                        <span class="v-feature-icon">🛡️</span>
-                        <h4 class="v-feature-title">Customs & AEO Compliance</h4>
-                        <p class="v-feature-desc">Zero-delay customs clearance, export documentation, certificate of origin, and comprehensive compliance handling.</p>
-                    </div>
-                </div>
-
-                <div style="background: #F0FDF4; border: 1px solid rgba(5,150,105,0.2); border-radius: 12px; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                    <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-                        <span style="font-weight: 700; color: #0B3B17; font-size: 0.95rem;">Key Capabilities:</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ Verified 500+ Suppliers</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ Ocean & Air Freight</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ Transparent Landed Cost Pricing</span>
-                    </div>
-                    <a href="contact.html" style="color: #0B3B17; font-weight: 700; text-decoration: none; font-size: 0.9rem;">
-                        Request Trade Quotation ↗
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- DEEP-DIVE SECTION 02: TOURS & TRAVEL (DATTA CHAYA TOURISM & IRCTC DESK)   -->
-    <!-- ========================================================================= -->
-    <section class="vertical-showcase-section" id="vertical-travel" style="background: #FFFFFF;">
-        <div style="max-width: 1300px; margin: 0 auto;">
-            <div class="vertical-showcase-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
-                    <div>
-                        <span class="editorial-kicker" style="background: #E8F5E9; color: #0B3B17; font-weight: 800; border: 1.5px solid #059669; padding: 4px 14px; border-radius: 20px; display: inline-block; margin-bottom: 8px;">
-                            ✨ DATTA CHAYA TOURISM & IRCTC DESK ✨
-                        </span>
-                        <h2 style="font-family: var(--font-main); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: #0B3B17; margin-top: 6px;">
-                            AORR Tours & Travel Services <span style="font-size: 1.35rem; color: #059669; font-weight: 700; display: block; margin-top: 4px;">(Datta Chaya Tourism)</span>
-                        </h2>
-                    </div>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <a href="tours-travel.html" class="hero-btn primary" style="padding: 10px 24px; font-size: 0.85rem;">
-                            View All Tour Itineraries →
-                        </a>
-                        <a href="tours-travel.html#irctc-desk" class="hero-btn secondary" style="padding: 10px 24px; font-size: 0.85rem;">
-                            IRCTC Rail Booking 🚆
-                        </a>
-                    </div>
-                </div>
-
-                <p style="font-size: 1.05rem; color: #4B5563; line-height: 1.7; max-width: 1050px;">
-                    <em>"Travel Beyond Boundaries… Experience Heritage, Nature & Divinity!"</em> — AORR (Datta Chaya Tourism) delivers authentic handcrafted spiritual journeys, UNESCO heritage expeditions, corporate executive travel desks, and an <strong>Authorised IRCTC Railway Ticket Booking Desk</strong> for hassle-free travel across India and global destinations.
-                </p>
-
-                <!-- 4 Handcrafted Tour Collections Mini Grid with Photography -->
-                <div style="margin-top: 30px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
-                        <h3 style="font-family: var(--font-main); font-size: 1.25rem; font-weight: 700; color: #0B3B17;">
-                            🌟 Featured Handcrafted Tour Packages
-                        </h3>
-                        <span style="font-size: 0.85rem; color: #059669; font-weight: 600;">Custom Group & Family Departures Available</span>
-                    </div>
-
-                    <div class="tour-mini-grid">
-                        <!-- Tour 1: Divine Andhra -->
-                        <div class="tour-mini-card">
-                            <div>
-                                <div style="height: 150px; border-radius: 10px; overflow: hidden; margin-bottom: 12px;">
-                                    <picture>
-                                        <source srcset="images/divya-andhra-temple.webp" type="image/webp">
-                                        <img src="images/divya-andhra-temple.jpg" alt="Sacred Coastal Temple Shrine in Andhra Pradesh" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%;" loading="lazy" decoding="async">
-                                    </picture>
+                    <div class="door-content">
+                        <div>
+                            <div class="door-header">
+                                <span class="door-icon">🚢</span>
+                                <div>
+                                    <h3 class="door-title">Global Trade &amp; Logistics</h3>
+                                    <p class="door-subtitle">Connecting Markets Across 50+ Countries</p>
                                 </div>
-                                <div class="tour-mini-header">
-                                    <span class="tour-mini-badge">🌊 Spiritual & Coastal</span>
-                                    <span class="tour-mini-duration">5D / 4N</span>
-                                </div>
-                                <h4 class="tour-mini-title">Divine Andhra Journey</h4>
-                                <div class="tour-mini-route">📍 Pithapuram • Annavaram • Kakinada • Draksharamam • Antarvedi • Rajamahendravaram</div>
-                                <p class="tour-mini-desc">
-                                    Sacred Datta Peetham, Annavaram Satyanarayana Swami, Godavari Confluence, mangrove backwaters & pristine coastal temples.
-                                </p>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E5E7EB; padding-top: 12px; margin-top: 8px;">
-                                <span style="font-size: 0.82rem; color: #059669; font-weight: 700;">AC Coach • Darshan • Meals</span>
-                                <a href="tours-travel.html#divine-andhra" style="color: #0B3B17; font-weight: 700; text-decoration: none; font-size: 0.85rem;">View Plan →</a>
-                            </div>
-                        </div>
-
-                        <!-- Tour 2: Karnataka Heritage -->
-                        <div class="tour-mini-card">
-                            <div>
-                                <div style="height: 150px; border-radius: 10px; overflow: hidden; margin-bottom: 12px;">
-                                    <picture>
-                                        <source srcset="images/karnataka-heritage-murudeshwar.webp" type="image/webp">
-                                        <img src="images/karnataka-heritage-murudeshwar.jpg" alt="UNESCO World Heritage Murudeshwar Shiva & Hampi Monuments" style="width: 100%; height: 100%; object-fit: cover; object-position: center 10%;" loading="lazy" decoding="async">
-                                    </picture>
-                                </div>
-                                <div class="tour-mini-header">
-                                    <span class="tour-mini-badge">🏛️ UNESCO Heritage</span>
-                                    <span class="tour-mini-duration">5D / 4N</span>
-                                </div>
-                                <h4 class="tour-mini-title">Karnataka Heritage & Spiritual Tour</h4>
-                                <div class="tour-mini-route">📍 Solapur • Bijapur • Badami • Banashankari • Pattadakal • Hampi • Kudalasangama</div>
-                                <p class="tour-mini-desc">
-                                    Gol Gumbaz, Badami Cave Temples, UNESCO World Heritage monuments at Hampi, Tungabhadra Dam, and sacred river sangam.
-                                </p>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E5E7EB; padding-top: 12px; margin-top: 8px;">
-                                <span style="font-size: 0.82rem; color: #059669; font-weight: 700;">Guided History • Heritage Stays</span>
-                                <a href="tours-travel.html#karnataka-heritage" style="color: #0B3B17; font-weight: 700; text-decoration: none; font-size: 0.85rem;">View Plan →</a>
-                            </div>
-                        </div>
-
-                        <!-- Tour 3: Datta & Vitthal -->
-                        <div class="tour-mini-card">
-                            <div>
-                                <div style="height: 150px; border-radius: 10px; overflow: hidden; margin-bottom: 12px;">
-                                    <picture>
-                                        <source srcset="images/datta-vitthal-pandharpur.webp" type="image/webp">
-                                        <img src="images/datta-vitthal-pandharpur.jpg" alt="Sacred Pandharpur Shri Vitthal Temple Shrine" style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%;" loading="lazy" decoding="async">
-                                    </picture>
-                                </div>
-                                <div class="tour-mini-header">
-                                    <span class="tour-mini-badge">🚩 Sacred Yatra</span>
-                                    <span class="tour-mini-duration">5D / 4N</span>
-                                </div>
-                                <h4 class="tour-mini-title">Divine Datta & Vitthal Pilgrimage</h4>
-                                <div class="tour-mini-route">📍 Solapur • Akkalkot • Gangapur • Pandharpur • Tuljapur • Solapur</div>
-                                <p class="tour-mini-desc">
-                                    Swami Samarth Maharaj Math, Gangapur Nirguna Paduka, Pandharpur Vitthal-Rukmini darshan, and Tuljapur Bhavani Mata blessings.
-                                </p>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E5E7EB; padding-top: 12px; margin-top: 8px;">
-                                <span style="font-size: 0.82rem; color: #059669; font-weight: 700;">Hassle-Free VIP Darshan Aid</span>
-                                <a href="tours-travel.html#datta-vitthal" style="color: #0B3B17; font-weight: 700; text-decoration: none; font-size: 0.85rem;">View Plan →</a>
-                            </div>
-                        </div>
-
-                        <!-- Tour 4: Guru Pilgrimage -->
-                        <div class="tour-mini-card">
-                            <div>
-                                <div style="height: 150px; border-radius: 10px; overflow: hidden; margin-bottom: 12px;">
-                                    <picture>
-                                        <source srcset="images/dattatreya-guru-kshetra.webp" type="image/webp">
-                                        <img src="images/dattatreya-guru-kshetra.jpg" alt="Sacred Dattatreya Nirguna Paduka Shrine at Ganagapur" style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%;" loading="lazy" decoding="async">
-                                    </picture>
-                                </div>
-                                <div class="tour-mini-header">
-                                    <span class="tour-mini-badge">🕉️ Guru Parampara</span>
-                                    <span class="tour-mini-duration">5D / 4N</span>
-                                </div>
-                                <h4 class="tour-mini-title">Divine Dattatreya & Guru Pilgrimage</h4>
-                                <div class="tour-mini-route">📍 Solapur • Akkalkot • Gangapur • Kuravpur • Mantralaya • Solapur</div>
-                                <p class="tour-mini-desc">
-                                    The ultimate Guru route: Sripada Srivallabha Kuravpur island temple, Raghavendra Swami Brindavan at Mantralaya & Gangapur.
-                                </p>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E5E7EB; padding-top: 12px; margin-top: 8px;">
-                                <span style="font-size: 0.82rem; color: #059669; font-weight: 700;">Island Boats • Sacred Pujas</span>
-                                <a href="tours-travel.html#dattatreya-guru" style="color: #0B3B17; font-weight: 700; text-decoration: none; font-size: 0.85rem;">View Plan →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- IRCTC Authorised Agent Standout Callout Banner -->
-                <div class="irctc-desk-banner">
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; position: relative; z-index: 2;">
-                        <div style="max-width: 780px;">
-                            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 12px;">
-                                <span>🚆</span> AUTHORISED IRCTC RAILWAY DESK
-                            </div>
-                            <h3 style="font-family: var(--font-main); font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">
-                                Confirmed All-India Train Tickets & Tatkal Assistance
-                            </h3>
-                            <p style="font-size: 0.92rem; color: #E8F5E9; line-height: 1.6; margin-bottom: 14px;">
-                                Skip the booking rush. Get instant confirmed train reservations for 1AC, 2AC, 3AC, Sleeper, and Chair Car classes. We manage Tatkal tickets, group bookings, cancellation assistance, and dispatch verified e-tickets directly to your WhatsApp and Email.
+                            <p class="door-desc">
+                                Government-recognized export operations supplying marine raw materials, shipbuilding resins, high-pressure industrial valves, agro commodities, and garments with 100% AEO customs compliance.
                             </p>
-                            <div style="display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.85rem; color: #A5D6A7; font-weight: 600;">
-                                <span>✓ All Express & Superfast Trains</span>
-                                <span>✓ Tatkal & Premium Tatkal Support</span>
-                                <span>✓ Fast WhatsApp E-Ticket Delivery</span>
+                            <div class="door-features">
+                                <span class="door-chip">⚓ Marine Supplies &amp; Timber</span>
+                                <span class="door-chip">⚙️ Industrial Valves &amp; Hardware</span>
+                                <span class="door-chip">🌾 Agro Commodities &amp; Textiles</span>
+                                <span class="door-chip">🛡️ ISO &amp; AEO Customs Compliant</span>
                             </div>
                         </div>
-                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                            <a href="https://wa.me/919730004911?text=Hello%20AORR%20Travel%20Team%2C%20I%20want%20to%20book%20an%20IRCTC%20Train%20Ticket." target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #ffffff; padding: 12px 24px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.9rem; text-align: center; box-shadow: 0 4px 15px rgba(37,211,102,0.4); display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
-                                💬 WhatsApp Rail Desk (+91 9730004911)
-                            </a>
-                            <a href="tours-travel.html#travel-inquiry" style="background: rgba(255,255,255,0.12); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 30px; font-weight: 600; text-decoration: none; font-size: 0.88rem; text-align: center;">
-                                Submit Online Inquiry ↗
+                        <div class="door-footer">
+                            <a href="products.html" class="door-btn btn-trade">
+                                <span>Explore Global Trade Portal</span>
+                                <span class="door-arrow">→</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Corporate & Global Leisure Strip -->
-                <div style="background: #F0FDF4; border: 1px solid rgba(5,150,105,0.2); border-radius: 12px; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-top: 30px;">
-                    <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-                        <span style="font-weight: 700; color: #0B3B17; font-size: 0.95rem;">Also Delivering:</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ Corporate Flight Management</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ MICE Group Delegations</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ International Visa Concierge</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ 24/7 Journey Support</span>
+                <!-- DOOR 02: DATTA CHAYA TOURISM -->
+                <div class="door-card door-travel">
+                    <div class="door-image-wrapper">
+                        <picture>
+                            <source srcset="images/divya-andhra-temple.webp" type="image/webp">
+                            <img src="images/divya-andhra-temple.jpg" alt="Datta Chaya Spiritual Tourism" class="door-img" loading="lazy" decoding="async">
+                        </picture>
+                        <span class="door-badge badge-travel">DIVISION 02 • TOURS &amp; RAIL</span>
                     </div>
-                    <a href="tours-travel.html" style="color: #0B3B17; font-weight: 700; text-decoration: none; font-size: 0.9rem;">
-                        Explore Complete Travel Division ↗
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- DEEP-DIVE SECTION 03: MEDICAL TOURISM & HEALTHCARE COORDINATION           -->
-    <!-- ========================================================================= -->
-    <section class="vertical-showcase-section" id="vertical-medical" style="background: #F8FAF9;">
-        <div style="max-width: 1300px; margin: 0 auto;">
-            <div class="vertical-showcase-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 25px;">
-                    <div>
-                        <span class="editorial-kicker">DIVISION 03 — GLOBAL HEALTHCARE</span>
-                        <h2 style="font-family: var(--font-main); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: #0B3B17; margin-top: 6px;">
-                            Ethical Cross-Border Healthcare Travel & Patient Concierge
-                        </h2>
-                    </div>
-                    <a href="medical-tourism.html" class="hero-btn primary" style="padding: 10px 24px; font-size: 0.85rem;">
-                        Explore Medical Desk →
-                    </a>
-                </div>
-
-                <p style="font-size: 1.05rem; color: #4B5563; line-height: 1.7; max-width: 950px;">
-                    AORR provides compassionate, transparent, and ethical healthcare travel coordination connecting international 
-                    patients with India’s foremost NABH and JCI-accredited super-specialty hospitals and veteran physicians. We handle 
-                    medical visa invitation letters, specialist appointments, airport medical transfers, and on-ground bilingual support.
-                </p>
-
-                <!-- Division 03 Authentic Hospital & Care Imagery Strip -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 25px 0;">
-                    <div style="height: 200px; overflow: hidden; border-radius: 14px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" alt="NABH and JCI Accredited Hospital Infrastructure in India" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" width="600" height="200">
-                        <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(11,59,23,0.85); color: #ffffff; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; backdrop-filter: blur(6px);">🏥 Accredited Hospital Facilities</span>
-                    </div>
-                    <div style="height: 200px; overflow: hidden; border-radius: 14px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
-                        <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=800&auto=format&fit=crop" alt="Compassionate Specialist Doctor Consultation" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" width="600" height="200">
-                        <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(11,59,23,0.85); color: #ffffff; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; backdrop-filter: blur(6px);">🩺 Dedicated Doctor Care & Concierge</span>
-                    </div>
-                </div>
-
-                <!-- 4 Key Medical Feature Boxes -->
-                <div class="vertical-grid-4">
-                    <div class="v-feature-box">
-                        <span class="v-feature-icon">🏥</span>
-                        <h4 class="v-feature-title">Accredited Hospital Matching</h4>
-                        <p class="v-feature-desc">Matching patients with top NABH & JCI accredited hospitals in Pune, Mumbai, and Delhi for specialized treatments.</p>
-                    </div>
-                    <div class="v-feature-box">
-                        <span class="v-feature-icon">🩺</span>
-                        <h4 class="v-feature-title">Second Opinions & Estimates</h4>
-                        <p class="v-feature-desc">Free medical case review by senior doctors, diagnostic evaluation, and transparent itemized treatment cost estimates.</p>
-                    </div>
-                    <div class="v-feature-box">
-                        <span class="v-feature-icon">📄</span>
-                        <h4 class="v-feature-title">Medical Visa (VIL) Letters</h4>
-                        <p class="v-feature-desc">Fast-track issuance of official Hospital Visa Invitation Letters for patients and accompanying medical attendants.</p>
-                    </div>
-                    <div class="v-feature-box">
-                        <span class="v-feature-icon">🤝</span>
-                        <h4 class="v-feature-title">Dedicated On-Ground Care</h4>
-                        <p class="v-feature-desc">Personal patient care manager, certified medical language translation, extended stay accommodations, and follow-up.</p>
-                    </div>
-                </div>
-
-                <!-- Ethics Disclaimer Box -->
-                <div class="ethics-callout-box" style="margin-top: 25px;">
-                    <div class="ethics-icon">🛡️</div>
-                    <div>
-                        <div class="ethics-title">Ethical Healthcare Coordination Standard</div>
-                        <div class="ethics-text">
-                            AORR operates strictly as an independent cross-border logistics and healthcare travel coordinator. We do not provide clinical medical diagnoses or treatments directly; all medical consultations and clinical procedures are performed exclusively by licensed physicians at accredited partner hospitals.
+                    <div class="door-content">
+                        <div>
+                            <div class="door-header">
+                                <span class="door-icon">✨</span>
+                                <div>
+                                    <h3 class="door-title">Datta Chaya Tourism &amp; IRCTC</h3>
+                                    <p class="door-subtitle">Connecting People With Places &amp; Shrines</p>
+                                </div>
+                            </div>
+                            <p class="door-desc">
+                                Handcrafted spiritual yatras across Andhra, Karnataka &amp; Maharashtra, UNESCO heritage circuits, corporate executive travel, and an Authorised IRCTC Rail Desk for instant confirmed train bookings.
+                            </p>
+                            <div class="door-features">
+                                <span class="door-chip">🚩 4 Handcrafted Yatra Circuits</span>
+                                <span class="door-chip">🚆 Authorised IRCTC Rail Agent</span>
+                                <span class="door-chip">✈️ Corporate Flights &amp; Hotels</span>
+                                <span class="door-chip">💬 Direct WhatsApp E-Tickets</span>
+                            </div>
+                        </div>
+                        <div class="door-footer">
+                            <a href="tours-travel.html" class="door-btn btn-travel">
+                                <span>Explore Tourism &amp; Travel Portal</span>
+                                <span class="door-arrow">→</span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div style="background: #F0FDF4; border: 1px solid rgba(5,150,105,0.2); border-radius: 12px; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-top: 25px;">
-                    <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-                        <span style="font-weight: 700; color: #0B3B17; font-size: 0.95rem;">Key Specialties:</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ Cardiology & Cardiac Surgery</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ Orthopedics & Joint Replacement</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ Oncology</span>
-                        <span style="color: #059669; font-size: 0.88rem; font-weight: 600;">✓ Organ Transplants</span>
+                <!-- DOOR 03: MEDICAL TOURISM -->
+                <div class="door-card door-medical">
+                    <div class="door-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" alt="AORR Medical Tourism Coordination" class="door-img" loading="lazy" decoding="async">
+                        <span class="door-badge badge-medical">DIVISION 03 • HEALTHCARE</span>
                     </div>
-                    <a href="medical-tourism.html#medical-inquiry" style="color: #0B3B17; font-weight: 700; text-decoration: none; font-size: 0.9rem;">
-                        Confidential Patient Consultation ↗
-                    </a>
+                    <div class="door-content">
+                        <div>
+                            <div class="door-header">
+                                <span class="door-icon">🩺</span>
+                                <div>
+                                    <h3 class="door-title">Medical Tourism Concierge</h3>
+                                    <p class="door-subtitle">Connecting Patients With Accredited Care</p>
+                                </div>
+                            </div>
+                            <p class="door-desc">
+                                Ethical, compassionate cross-border healthcare coordination connecting international patients with India's top NABH/JCI accredited super-specialty hospitals, medical visas, and 24/7 care managers.
+                            </p>
+                            <div class="door-features">
+                                <span class="door-chip">🏥 NABH &amp; JCI Accredited Network</span>
+                                <span class="door-chip">🩺 Free Specialist Case Evaluation</span>
+                                <span class="door-chip">📄 Fast Medical Visa (VIL) Letters</span>
+                                <span class="door-chip">🤝 Dedicated On-Ground Concierge</span>
+                            </div>
+                        </div>
+                        <div class="door-footer">
+                            <a href="medical-tourism.html" class="door-btn btn-medical">
+                                <span>Explore Healthcare Portal</span>
+                                <span class="door-arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1161,8 +1700,313 @@
         </div>
     </section>
 
+    <!-- ========================================================================= -->
+    <!-- OFFICIAL INSTAGRAM COMMUNITY SHOWCASE                                      -->
+    <!-- ========================================================================= -->
+    <style>
+        .instagram-section-wrapper {
+            background: linear-gradient(135deg, #F4F8F5 0%, #FFFFFF 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(11, 60, 35, 0.12);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+            padding: 55px 40px;
+            margin-top: 15px;
+        }
+        .insta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            margin-bottom: 35px;
+        }
+        @media (max-width: 900px) {
+            .insta-grid { grid-template-columns: repeat(2, 1fr); }
+            .instagram-section-wrapper { padding: 30px 20px; }
+        }
+        .insta-card {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 240px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .insta-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(11, 60, 35, 0.18);
+        }
+        .insta-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .insta-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(7, 35, 19, 0.9) 0%, rgba(7, 35, 19, 0.2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            color: #ffffff;
+        }
+        .insta-card-tag {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #C59B27;
+            margin-bottom: 4px;
+        }
+        .insta-card-caption {
+            font-size: 0.88rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .insta-follow-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #833AB4, #FD1D1D, #F56040);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 14px 34px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(245, 96, 64, 0.3);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .insta-follow-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 96, 64, 0.45);
+        }
+
+        /* FAQ Accordion Styles */
+        .faq-accordion {
+            max-width: 950px;
+            margin: 35px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .faq-item {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+        .faq-item[open] {
+            border-color: #059669;
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.1);
+        }
+        .faq-summary {
+            padding: 22px 26px;
+            font-family: var(--font-main);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0B3C23;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            user-select: none;
+        }
+        .faq-summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-icon {
+            font-size: 1.1rem;
+            color: #059669;
+            transition: transform 0.3s ease;
+            background: #F0FDF4;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .faq-item[open] .faq-icon {
+            transform: rotate(180deg);
+            background: #059669;
+            color: #ffffff;
+        }
+        .faq-answer {
+            padding: 0 26px 24px 26px;
+            font-size: 0.95rem;
+            color: #4B5563;
+            line-height: 1.65;
+            border-top: 1px solid #F3F4F6;
+            margin-top: 4px;
+            padding-top: 18px;
+        }
+    </style>
+
+    <section class="instagram-section" id="instagram-community" style="padding: 85px 20px; background: #FFFFFF;">
+        <div style="max-width: 1300px; margin: 0 auto;">
+            <div class="instagram-section-wrapper">
+                <div style="text-align: center;">
+                    <span class="editorial-kicker" style="background: #FFF1F2; color: #E11D48; border: 1.5px solid #FDA4AF; padding: 4px 16px; border-radius: 20px; display: inline-block; font-weight: 800;">
+                        📸 OFFICIAL INSTAGRAM COMMUNITY
+                    </span>
+                    <h2 class="editorial-title" style="margin-top: 10px;">
+                        Connect With @aorrservices On Instagram
+                    </h2>
+                    <p class="editorial-subtitle" style="max-width: 750px; margin: 0 auto;">
+                        Follow our active social channel for real-time trade shipping updates, Datta Chaya spiritual yatra glimpses, luxury travel highlights, and healthcare concierge stories.
+                    </p>
+                </div>
+
+                <!-- Instagram Image Grid -->
+                <div class="insta-grid">
+                    <!-- Post 1: Trade Port -->
+                    <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="insta-card">
+                        <picture>
+                            <source srcset="images/aorr-trade-port.webp" type="image/webp">
+                            <img src="images/aorr-trade-port.jpg" alt="AORR Global Trade Shipping Port" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="insta-overlay">
+                            <span class="insta-card-tag">#GlobalTrade</span>
+                            <span class="insta-card-caption">Export shipping dispatches across 50+ ports ⚓</span>
+                        </div>
+                    </a>
+
+                    <!-- Post 2: Datta Chaya Yatra -->
+                    <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="insta-card">
+                        <picture>
+                            <source srcset="images/divya-andhra-temple.webp" type="image/webp">
+                            <img src="images/divya-andhra-temple.jpg" alt="Datta Chaya Spiritual Yatra" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="insta-overlay">
+                            <span class="insta-card-tag">#DattaChayaTours</span>
+                            <span class="insta-card-caption">Handcrafted spiritual yatras & VIP darshan 🚩</span>
+                        </div>
+                    </a>
+
+                    <!-- Post 3: IRCTC Vande Bharat -->
+                    <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="insta-card">
+                        <picture>
+                            <source srcset="images/irctc-vande-bharat.webp" type="image/webp">
+                            <img src="images/irctc-vande-bharat.jpg" alt="Authorised IRCTC Rail Booking Desk" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="insta-overlay">
+                            <span class="insta-card-tag">#IRCTCDesk</span>
+                            <span class="insta-card-caption">Authorised train bookings & Tatkal desk 🚆</span>
+                        </div>
+                    </a>
+
+                    <!-- Post 4: Luxury Coach Fleet -->
+                    <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="insta-card">
+                        <picture>
+                            <source srcset="images/luxury-pushback-bus.webp" type="image/webp">
+                            <img src="images/luxury-pushback-bus.jpg" alt="AORR Luxury AC Coach Bus" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="insta-overlay">
+                            <span class="insta-card-tag">#AORRTravel</span>
+                            <span class="insta-card-caption">AC luxury pushback buses for group tours 🚌</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="insta-follow-btn">
+                        <span>Follow @aorrservices on Instagram 📸</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- FREQUENTLY ASKED QUESTIONS (FAQ SECTION)                                   -->
+    <!-- ========================================================================= -->
+    <section class="faq-section" id="faq-section" style="padding: 85px 20px; background: #F8FAF9;">
+        <div style="max-width: 1300px; margin: 0 auto;">
+            <div style="text-align: center;">
+                <span class="editorial-kicker">FREQUENTLY ASKED QUESTIONS</span>
+                <h2 class="editorial-title" style="margin-top: 8px;">
+                    Clear Answers For Global Enterprises &amp; Pilgrims
+                </h2>
+                <p class="editorial-subtitle">
+                    Quick guidance regarding our three specialized divisions: Global Trade &amp; Logistics, Datta Chaya Tourism &amp; IRCTC Rail Desk, and Medical Tourism Concierge.
+                </p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="faq-accordion">
+                
+                <!-- Q1 -->
+                <details class="faq-item" open>
+                    <summary class="faq-summary">
+                        <span>01. What verticals operate under AORR Global Enterprise?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-answer">
+                        AORR Global Enterprise operates as a premier master corporate umbrella based in Pune, Maharashtra, India. It unites three specialized, distinct business divisions: 
+                        <br><br>
+                        1. <strong>Global Trade &amp; Logistics:</strong> Exporting marine raw materials, shipbuilding resins, industrial valves, agro commodities, and garments to 50+ countries.
+                        <br>
+                        2. <strong>Datta Chaya Tourism &amp; IRCTC Desk:</strong> Handcrafted spiritual yatra circuits (Andhra, Karnataka, Pandharpur, Guru Parampara), corporate travel, and an Authorised IRCTC Rail Desk.
+                        <br>
+                        3. <strong>Medical Tourism Concierge:</strong> Connecting international patients with top NABH/JCI accredited super-specialty hospitals, medical visa letters (VIL), and 24/7 dedicated care managers.
+                    </div>
+                </details>
+
+                <!-- Q2 -->
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>02. How do I book confirmed train tickets with the IRCTC Rail Desk?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-answer">
+                        AORR is an official <strong>Authorised IRCTC Railway Agent</strong>. You can book confirmed 1AC, 2AC, 3AC, Sleeper, and Tatkal train tickets directly by contacting our travel desk via WhatsApp (+91 9730004911) or through our online contact form. We deliver instant e-tickets with complete travel assistance.
+                    </div>
+                </details>
+
+                <!-- Q3 -->
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>03. What makes Datta Chaya Tourism yatra packages special?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-answer">
+                        Our handcrafted 5D/4N spiritual yatra packages (Divine Andhra, Karnataka Heritage, Datta &amp; Vitthal, and Guru Parampara) include comfortable AC pushback tour coaches, pre-booked hotel accommodations, VIP temple darshan assistance, experienced Pune tour managers, and 100% pure Satvik meals throughout the circuit.
+                    </div>
+                </details>
+
+                <!-- Q4 -->
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>04. What quality standards and customs compliance does AORR Global Trade adhere to?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-answer">
+                        Our export operations strictly comply with 100% AEO (Authorized Economic Operator) customs standards and ISO quality protocols. All marine supplies, shipbuilding raw materials, marine timber, resins, and high-pressure industrial valves undergo rigorous pre-shipment lab quality testing and factory-to-port inspection prior to dispatch.
+                    </div>
+                </details>
+
+                <!-- Q5 -->
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>05. How does AORR assist international patients seeking medical treatment in India?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-answer">
+                        Our ethical medical tourism concierge provides end-to-end patient assistance: free doctor case evaluation from accredited NABH/JCI super-specialists, transparent treatment cost estimation, priority Medical Visa Invitation Letters (VIL), airport transfers, local accommodation, and a dedicated 24/7 on-ground care manager in Pune.
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Contact & Inquiry Hub -->
-    <section class="contact-section" id="contact" style="padding: 95px 20px; background: #F8FAF9;">
+    <section class="contact-section" id="contact" style="padding: 95px 20px; background: #FFFFFF;">
         <div class="contact-container" style="max-width: 1300px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 45px;">
                 <span class="editorial-kicker">START A CONVERSATION</span>
