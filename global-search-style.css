@@ -170,13 +170,14 @@
     /* 5. EXPANDED STATE (Focus) - Overlay Bar */
     .nav-search-input:focus {
         position: fixed; /* Break out of flow */
-        top: 70px; /* Below header */
-        left: 20px;
-        right: 20px;
-        width: calc(100% - 40px);
+        top: calc(70px + env(safe-area-inset-top, 0px)); /* Below header */
+        left: calc(15px + env(safe-area-inset-left, 0px));
+        right: calc(15px + env(safe-area-inset-right, 0px));
+        width: calc(100% - 30px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
         height: 50px;
         background: white;
         color: #333;
+        font-size: 16px; /* CRITICAL: prevents unwanted iOS Safari zoom */
         border-radius: 8px;
         padding: 0 20px;
         border: 1px solid #ddd;
@@ -193,17 +194,18 @@
     .nav-search-input:focus::placeholder {
         color: #999;
     }
-    
-    /* Hide the static icon when expanded (optional, but input covers it anyway because of Fixed positioning moving it away) */
 
     /* 6. Dropdown Position Mobile */
     .search-results-dropdown {
         position: fixed;
-        top: 130px; /* Below the fixed search bar */
-        left: 20px;
-        right: 20px;
-        width: calc(100% - 40px);
+        top: calc(130px + env(safe-area-inset-top, 0px)); /* Below the fixed search bar */
+        left: calc(15px + env(safe-area-inset-left, 0px));
+        right: calc(15px + env(safe-area-inset-right, 0px));
+        width: calc(100% - 30px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
         max-height: 50vh;
+        max-height: 50dvh;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
         z-index: 1002;
     }
 }

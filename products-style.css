@@ -93,7 +93,7 @@
     padding-right: 44px; /* Space for icon */
     border: 1px solid #e0e6ed;
     border-radius: 8px; 
-    font-size: 0.95rem; /* Readable size */
+    font-size: 16px; /* Prevents unwanted iOS auto-zoom */
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     background: #fdfdfd; 
     height: 48px; /* Taller, premium feel */
@@ -657,13 +657,17 @@ details[open] summary.card-drawer-trigger::after {
     left: 0;
     width: 100%;
     height: 100%;
+    height: 100dvh;
     background: rgba(0, 0, 0, 0.7);
     z-index: 2000;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     animation: fadeIn 0.3s ease;
 }
 
@@ -671,12 +675,16 @@ details[open] summary.card-drawer-trigger::after {
     background: white;
     width: 100%;
     max-width: 520px;
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding: 35px 30px;
     border-radius: 18px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.25);
     position: relative;
     border-top: 5px solid var(--accent-green);
     animation: slideUp 0.3s ease;
+    margin: auto;
 }
 
 .modal-close-btn {
@@ -690,6 +698,11 @@ details[open] summary.card-drawer-trigger::after {
     cursor: pointer;
     line-height: 1;
     transition: 0.2s;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-close-btn:hover {
@@ -724,23 +737,36 @@ details[open] summary.card-drawer-trigger::after {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 12px 14px;
     border: 1px solid #d1d5db;
     border-radius: 8px;
     font-family: var(--font-body, sans-serif);
-    font-size: 0.95rem;
+    font-size: 16px; /* CRITICAL: Prevents unwanted iOS Safari zoom */
     color: #111827;
     transition: 0.3s;
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     border-color: var(--accent-green);
     outline: none;
     background: #FFFFFF;
     box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+
+@media (max-width: 480px), (max-height: 600px) {
+    .modal-overlay {
+        align-items: flex-start;
+        padding: max(15px, env(safe-area-inset-top)) 15px max(15px, env(safe-area-inset-bottom)) 15px;
+    }
+    .modal-content {
+        padding: 24px 18px;
+        border-radius: 14px;
+    }
 }
 
 .submit-btn {

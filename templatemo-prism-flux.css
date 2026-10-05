@@ -86,14 +86,17 @@
 html {
 	scroll-behavior: smooth;
 	font-size: 16px;
-	overflow-x: hidden; /* Global horizontal scroll fix */
 	width: 100%;
+	max-width: 100%;
+	overflow-x: clip;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
 }
 
-/* Fluid Typography - Prevents awkward size jumps when zooming */
+/* Fluid Typography */
 @media (min-width: 320px) {
 	html {
-		font-size: calc(14px + 2 * ((100vw - 320px) / 1080));
+		font-size: clamp(14px, 0.875rem + 0.25vw, 16px);
 	}
 }
 
@@ -109,20 +112,28 @@ body {
 	font-family: var(--font-body);
 	font-size: 1rem;
 	line-height: 1.6;
-	overflow-x: hidden;
+	width: 100%;
+	max-width: 100%;
+	overflow-x: clip;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	min-height: 100vh;
+	min-height: 100dvh;
 	position: relative;
 }
 
+body.nav-open {
+	overflow: hidden !important;
+	touch-action: none;
+}
+
 /* Touch Target Minimum & Mobile Form Input Auto-Zoom Prevention */
-button, input, select, textarea, .btn, .nav-link, .hero-btn {
+button, input, select, textarea, .btn, .nav-link, .hero-btn, .menu-toggle {
 	min-height: 44px;
 }
 
 input, select, textarea {
-	font-size: 16px;
+	font-size: 16px !important; /* CRITICAL: Prevents unwanted iOS Safari zoom */
 }
 
 /* Global High Contrast Guard for Dark Containers & Sections */
@@ -3480,31 +3491,48 @@ img {
 
 @media (max-width: 768px) {
 	.footer {
-		padding: 60px 20px;
+		padding: 50px 20px calc(40px + env(safe-area-inset-bottom, 0px)) !important;
 	}
 
 	.footer-content-grid {
-		grid-template-columns: 1fr;
-		gap: 40px;
+		grid-template-columns: 1fr !important;
+		gap: 30px !important;
+		margin-bottom: 30px !important;
+		padding-bottom: 30px !important;
 	}
 
 	.footer-large-logo {
-		font-size: 20vw;
-		/* Even bigger on mobile relative to width */
+		font-size: clamp(2rem, 12vw, 3.5rem);
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 10px;
+		margin-bottom: 25px !important;
+	}
+
+	.footer-large-logo img {
+		height: 90px !important;
+		width: auto !important;
 	}
 
 	.footer-logo-icon {
-		width: 40px;
-		height: 40px;
+		width: 32px;
+		height: 32px;
 		border-width: 2px;
 	}
 
 	.footer-bottom-nav {
-		flex-direction: column;
-		gap: 15px;
+		flex-direction: column !important;
+		gap: 12px !important;
+		align-items: center;
+		text-align: center;
+	}
+
+	.footer-bottom-nav a,
+	.footer-contact a {
+		min-height: 44px;
+		display: inline-flex;
+		align-items: center;
+		padding: 4px 0;
 	}
 }
 
@@ -3643,29 +3671,108 @@ img {
 		margin: 0 15px 15px;
 	}
 
-	/* Navigation - Mobile Menu */
-	.menu-toggle {
+/* ==========================================================================
+   NAVIGATION — DESKTOP BASE & BURGER MENU TOGGLE
+   ========================================================================== */
+.menu-toggle {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	width: 44px;
+	height: 44px;
+	padding: 10px 8px;
+	cursor: pointer;
+	z-index: 1001;
+	background: transparent;
+	border: none;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle span {
+	display: block;
+	height: 3px;
+	width: 24px;
+	background-color: var(--primary-forest, #0B3C23);
+	border-radius: 3px;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, background-color 0.25s ease;
+	transform-origin: center;
+}
+
+.nav-backdrop {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	height: 100dvh;
+	background: rgba(0, 0, 0, 0.65);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	z-index: 999;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+	pointer-events: none;
+}
+
+/* Navigation - Mobile Breakpoint */
+@media (max-width: 768px) {
+	.nav-backdrop {
 		display: block;
-		/* Ensure toggle is visible if handled by JS/HTML */
-		cursor: pointer;
-		z-index: 1001;
+	}
+
+	.nav-backdrop.active {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+	}
+
+	.menu-toggle {
+		display: flex !important;
+	}
+
+	.menu-toggle.active span:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+		background-color: var(--accent-gold, #C59B27);
+	}
+
+	.menu-toggle.active span:nth-child(2) {
+		opacity: 0;
+		transform: scaleX(0);
+	}
+
+	.menu-toggle.active span:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+		background-color: var(--accent-gold, #C59B27);
 	}
 
 	.nav-menu {
 		position: fixed;
 		top: 0;
 		right: -100%;
-		width: 80%;
-		max-width: 300px;
+		width: 82%;
+		max-width: 320px;
 		height: 100vh;
+		height: 100dvh;
 		background: var(--primary-dark);
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		transition: 0.4s ease;
-		box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-		padding: 20px;
-		backdrop-filter: blur(10px);
+		justify-content: flex-start;
+		align-items: flex-start;
+		transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+		box-shadow: -8px 0 30px rgba(0, 0, 0, 0.45);
+		padding: max(75px, calc(60px + env(safe-area-inset-top, 0px))) 24px max(30px, env(safe-area-inset-bottom, 0px));
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		overscroll-behavior-y: contain;
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		z-index: 1000;
 	}
 
 	.nav-menu.active {
@@ -3673,49 +3780,31 @@ img {
 	}
 
 	.nav-menu li {
-		margin: 15px 0;
+		margin: 4px 0;
+		width: 100%;
 	}
 
 	.nav-link {
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		color: white;
+		display: block;
+		padding: 12px 0;
+		width: 100%;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+		min-height: 44px;
+		display: flex;
+		align-items: center;
 	}
 
 	/* Buttons */
 	.submit-btn,
 	.card-cta {
 		min-height: 48px;
-		/* Touch friendly */
 		width: 100%;
-		/* Full width buttons usually better on mobile */
 	}
 
 	.philosophy-section {
 		clip-path: none;
-	}
-}
-
-/* Burger Menu Styles (Default Desktop Hidden) */
-.menu-toggle {
-	display: none;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 30px;
-	height: 21px;
-}
-
-.menu-toggle span {
-	display: block;
-	height: 3px;
-	width: 100%;
-	background-color: var(--accent-gold);
-	border-radius: 3px;
-	transition: 0.3s;
-}
-
-@media (max-width: 768px) {
-	.menu-toggle {
-		display: flex;
 	}
 }
 
@@ -5350,23 +5439,26 @@ html {
     /* Modern glass effect */
 }
 
-/* 2. Horizontal Scroll Grid (The "App" Feal) */
+/* 2. Horizontal Scroll Grid (Isolated Horizontal Scroll) */
 .h-scroll-grid {
     display: flex;
-    /* Flexrow for horizontal scroll */
     gap: 20px;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
-    padding-bottom: 30px;
-    /* Space for scrollbar/shadow */
+    overflow-y: hidden;
+    padding-bottom: 24px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    /* Smooth scroll iOS */
-    margin: 0 -20px;
-    /* Bleed to edges on mobile */
-    padding-left: 20px;
-    /* Restore padding start */
-    padding-right: 20px;
-    /* Restore padding end */
+    overscroll-behavior-x: contain;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+.h-scroll-grid > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
 }
 
 /* Hide scrollbar for cleaner look if requested, but keep usability usually */
@@ -6066,7 +6158,7 @@ html {
     }
     
     .search-box input {
-        font-size: 15px;
+        font-size: 16px;
         padding: 12px;
     }
     
@@ -6123,6 +6215,7 @@ html {
         /* Scroll Properties */
         overflow-x: auto !important;
         overflow-y: hidden;
+        overscroll-behavior-x: contain;
         width: 100% !important;
         /* Padding calculation to center the active item: (100vw - CardWidth) / 2 */
         /* Card Width is 75vw. So Padding needs to be roughly 12.5vw on sides. */
@@ -6201,200 +6294,6 @@ html {
     }
 }
 
-/* Industries Check List Grid */
-.industries-check-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-    .industries-check-grid {
-        grid-template-columns: 1fr; /* Stack on mobile to prevent overflow */
-        font-size: 0.9rem;
-    }
-    
-    .help-btn {
-        padding: 12px 24px;
-        font-size: 0.9rem;
-        width: 100%;
-        text-align: center;
-    }
-    
-    /* Product Grid - Single column with better spacing */
-    .catalog-grid {
-        grid-template-columns: 1fr !important;
-        gap: 20px;
-    }
-    
-    .catalog-item {
-        max-width: 500px;
-        margin: 0 auto;
-    }
-    
-    .catalog-image-box {
-        height: 280px;
-    }
-}
-
-/* Small Mobile (≤480px) - Extra Small Screens */
-@media (max-width: 480px) {
-    .catalog-section {
-        padding: 50px 12px;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    .catalog-sidebar {
-        margin: 0 -5px;
-    }
-    
-    .sidebar-widget {
-        padding: 18px 12px;
-    }
-    
-    .widget-title {
-        font-size: 0.95rem;
-    }
-    
-    .search-box input {
-        font-size: 15px;
-        padding: 12px;
-    }
-    
-    .cat-link {
-        font-size: 0.9rem;
-        padding: 10px 0;
-    }
-    
-    .filter-check {
-        font-size: 0.9rem;
-    }
-    
-    .help-widget {
-        padding: 20px 15px;
-        margin: 10px;
-    }
-    
-    .catalog-image-box {
-        height: 240px;
-    }
-    
-    .catalog-title {
-        font-size: 1rem;
-    }
-    
-    .catalog-category {
-        font-size: 0.7rem;
-    }
-}
-
-
-
-/* Mobile Carousel Optimization - Native Smooth Scroll */
-@media (max-width: 768px) {
-    .carousel-container {
-        height: auto !important;
-        overflow: visible !important;
-        padding: 20px 0; /* Vertical padding */
-        margin-top: 10px;
-    }
-
-    .carousel {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        
-        /* Flex Layout for Horizontal Scroll */
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        justify-content: flex-start !important;
-        gap: 20px;
-        
-        /* Scroll Properties */
-        overflow-x: auto !important;
-        overflow-y: hidden;
-        width: 100% !important;
-        /* Padding calculation to center the active item: (100vw - CardWidth) / 2 */
-        /* Card Width is 75vw. So Padding needs to be roughly 12.5vw on sides. */
-        padding: 20px 12.5vw 50px 12.5vw !important; 
-        
-        /* Smooth Scroll & Snap */
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        
-        /* Reset 3D */
-        perspective: none !important;
-        transform-style: flat !important;
-    }
-    
-    /* Hide Scrollbar */
-    .carousel::-webkit-scrollbar {
-        display: none;
-    }
-    .carousel {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-    .carousel-item {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        z-index: 1 !important;
-        
-        /* Default State (Inactive) */
-        opacity: 0.5 !important;
-        transform: scale(0.9) !important;
-        transition: all 0.3s ease !important;
-        
-        /* Sizing - 75vw allows partial visibility of neighbors (approx 12.5vw each side) */
-        flex: 0 0 75vw !important;
-        width: 75vw !important;
-        max-width: 340px !important; /* Cap it for larger phones/tablets */
-        height: auto !important;
-        min-height: auto !important;
-        padding-bottom: 10px;
-        
-        /* Snap & Margin */
-        scroll-snap-align: center;
-        margin: 0 !important;
-        
-        /* Deep Shadow & Radius */
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
-        border-radius: 12px !important;
-        background: white !important;
-        border: 1px solid transparent; 
-    }
-    
-    /* Highlighted / Active Card State */
-    .carousel-item.active-card {
-        opacity: 1 !important;
-        transform: scale(1) !important;
-        z-index: 10 !important;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
-        border-color: var(--accent-gold) !important; /* Optional gold highlight */
-    }
-    
-    .carousel-item .card {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card-description {
-        flex-grow: 0 !important;
-        margin-bottom: 25px !important;
-    }
-}
 
 /* Industries Check List Grid */
 .industries-check-grid {
@@ -8092,6 +7991,54 @@ html {
 .card-img, .hero-bg, .tour-detail-header {
     transform: translateZ(0);
     backface-visibility: hidden;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS & SAFE-AREA REFINEMENTS (PORTRAIT & LANDSCAPE)
+   ========================================================================== */
+@media (max-width: 480px) {
+    h1, h2, h3, h4, .hero-title, .section-title, .about-hero-title {
+        overflow-wrap: break-word;
+        word-break: normal;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.65rem !important;
+        line-height: 1.2 !important;
+    }
+    .section-title {
+        font-size: 1.45rem !important;
+    }
+    .v-pill {
+        font-size: 0.72rem !important;
+        padding: 4px 8px !important;
+    }
+    .hero-btn, .submit-btn, .btn {
+        font-size: 0.85rem !important;
+        padding: 10px 14px !important;
+    }
+}
+
+/* Landscape Mode Safe Areas & Layout Adaptations */
+@media (max-height: 500px) and (orientation: landscape) {
+    .nav-menu {
+        padding-top: max(45px, calc(30px + env(safe-area-inset-top, 0px))) !important;
+        padding-bottom: max(20px, env(safe-area-inset-bottom, 0px)) !important;
+    }
+    .nav-menu li {
+        margin: 2px 0 !important;
+    }
+    .nav-link {
+        padding: 6px 0 !important;
+        font-size: 0.95rem !important;
+        min-height: 38px !important;
+    }
+    .hero-wrapper {
+        padding-top: 90px !important;
+        padding-bottom: 30px !important;
+    }
 }
 
 

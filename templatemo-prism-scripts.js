@@ -234,14 +234,83 @@ const statsSection = document.querySelector('.stats-section');
 if (statsSection) observer.observe(statsSection);
 
 
-// Mobile menu toggle
+// Mobile menu toggle & Native Mobile Navigation Experience
 const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
 
+let navBackdrop = document.querySelector('.nav-backdrop');
+if (!navBackdrop && navMenu) {
+    navBackdrop = document.createElement('div');
+    navBackdrop.className = 'nav-backdrop';
+    document.body.appendChild(navBackdrop);
+}
+
+function openMobileMenu() {
+    if (!navMenu || !menuToggle) return;
+    navMenu.classList.add('active');
+    menuToggle.classList.add('active');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
+    if (navBackdrop) navBackdrop.classList.add('active');
+}
+
+function closeMobileMenu() {
+    if (!navMenu || !menuToggle) return;
+    navMenu.classList.remove('active');
+    menuToggle.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+    if (navBackdrop) navBackdrop.classList.remove('active');
+}
+
 if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        menuToggle.classList.toggle('active');
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (navMenu.classList.contains('active')) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    });
+
+    menuToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        }
+    });
+
+    // Close when tapping backdrop
+    if (navBackdrop) {
+        navBackdrop.addEventListener('click', closeMobileMenu);
+        navBackdrop.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            closeMobileMenu();
+        }, { passive: false });
+    }
+
+    // Close when clicking any nav link
+    const navLinks = navMenu.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+
+    // Auto-close and restore body scrolling on orientation change or desktop resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+            closeMobileMenu();
+        }
     });
 }
 

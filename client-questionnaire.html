@@ -13,7 +13,7 @@
 </script>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>AORR - Client Onboarding Questionnaire</title>
     <meta name="description" content="Client requirement questionnaire and onboarding form for AORR Global Trading, Travel, and Healthcare services. Export to PDF included.">
     <link rel="canonical" href="https://www.aorr.in/client-questionnaire.html">
@@ -204,6 +204,49 @@
         .btn-action:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .questionnaire-container {
+                margin: 15px auto 90px;
+                padding: 24px 16px;
+                border-radius: 8px;
+            }
+            .q-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .q-title {
+                text-align: left;
+            }
+            .q-title h1 {
+                font-size: 1.3rem;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .form-group.full {
+                grid-column: span 1;
+            }
+            .form-control {
+                font-size: 16px !important; /* Prevents iOS auto-zoom */
+            }
+            .actions-panel {
+                bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+                right: 15px;
+                left: 15px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .btn-action {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+            }
         }
 
         /* Print Specifics */

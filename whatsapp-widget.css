@@ -38,14 +38,15 @@
 /* Pulse Animation usually looks "cheap" or spammy if overdone. 
    A subtle hover lift is more "Professional". */
 
-/* Mobile Adjustments */
+/* Mobile Adjustments with Safe Area Inset Support */
 @media screen and (max-width: 768px) {
     .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 25px;
+        width: 52px;
+        height: 52px;
+        bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+        right: calc(20px + env(safe-area-inset-right, 0px));
+        font-size: 26px;
+        touch-action: manipulation;
     }
     .whatsapp-icon {
         width: 28px;
