@@ -2021,55 +2021,79 @@
                 <!-- Contact Form -->
                 <div class="card" style="margin: 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06); background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 20px;">
                     <div class="card2" style="padding: 40px 35px;">
-                        <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec">
-                            <p id="heading" style="color: #0B3B17; font-size: 1.45rem; font-weight: 700; margin-bottom: 20px;">Submit An Enterprise Inquiry</p>
+                        <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec" novalidate>
+                            <p id="heading">Submit An Enterprise Inquiry</p>
+                            <p class="form-subtitle-text">Direct routing to our Global Trade, Datta Chaya Travel, or Medical Tourism coordination desks.</p>
 
-                            <!-- Name -->
-                            <div class="field" style="margin-bottom: 15px;">
-                                <input type="text" class="input-field" placeholder="Full Name *" name="name" required style="width: 100%; padding: 14px 18px; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body);" />
+                            <!-- Name & Email Row -->
+                            <div class="form-row-2">
+                                <div class="field">
+                                    <label class="form-label" for="home-contact-name">
+                                        <span>Full Name <span class="req-star">*</span></span>
+                                    </label>
+                                    <input type="text" class="input-field" id="home-contact-name" name="name" placeholder="e.g. Anand Kulkarni" autocomplete="name" required aria-required="true" />
+                                    <span class="field-error-msg" id="home-contact-name-error">Please enter your full name.</span>
+                                </div>
+
+                                <div class="field">
+                                    <label class="form-label" for="home-contact-email">
+                                        <span>Work / Personal Email <span class="req-star">*</span></span>
+                                    </label>
+                                    <input type="email" class="input-field" id="home-contact-email" name="email" placeholder="name@domain.com" autocomplete="email" inputmode="email" required aria-required="true" />
+                                    <span class="field-error-msg" id="home-contact-email-error">Please enter a valid email address.</span>
+                                </div>
                             </div>
 
-                            <!-- Email -->
-                            <div class="field" style="margin-bottom: 15px;">
-                                <input type="email" class="input-field" placeholder="Email Address *" name="email" required style="width: 100%; padding: 14px 18px; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body);" />
-                            </div>
+                            <!-- Phone & Division Row -->
+                            <div class="form-row-2">
+                                <div class="field">
+                                    <label class="form-label" for="home-contact-phone">
+                                        <span>Phone / WhatsApp <span class="req-star">*</span></span>
+                                    </label>
+                                    <input type="tel" class="input-field" id="home-contact-phone" name="phone" placeholder="+91 97300 04911" autocomplete="tel" inputmode="tel" required aria-required="true" />
+                                    <span class="field-error-msg" id="home-contact-phone-error">Please enter your phone number.</span>
+                                </div>
 
-                            <!-- Phone -->
-                            <div class="field" style="margin-bottom: 15px;">
-                                <input type="tel" class="input-field" placeholder="Phone Number / WhatsApp *" name="phone" required style="width: 100%; padding: 14px 18px; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body);" />
-                            </div>
-
-                            <!-- Service Division Selector -->
-                            <div class="field" style="margin-bottom: 15px;">
-                                <select class="input-field" required name="location" style="width: 100%; padding: 14px 18px; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body); color: #374151; background: #ffffff;">
-                                    <option value="" disabled selected>Select Service Division of Interest *</option>
-                                    <option>Global Trade — Marine & Industrial Supplies Export</option>
-                                    <option>Global Trade — Agro Commodities & Garments</option>
-                                    <option>Global Trade — Sourcing & Customs Compliance</option>
-                                    <option>Tours & Travel — Datta Chaya Spiritual & Heritage Tour Packages</option>
-                                    <option>Tours & Travel — Authorised IRCTC Railway Ticket Booking Desk</option>
-                                    <option>Tours & Travel — Corporate Travel & Flight Management Desk</option>
-                                    <option>Tours & Travel — Bespoke International Leisure Holidays</option>
-                                    <option>Medical Tourism — Healthcare Travel Coordination</option>
-                                    <option>General Strategic Enterprise Partnership</option>
-                                </select>
+                                <div class="field">
+                                    <label class="form-label" for="home-contact-service">
+                                        <span>Service Division of Interest <span class="req-star">*</span></span>
+                                    </label>
+                                    <select class="input-field" id="home-contact-service" name="location" required aria-required="true">
+                                        <option value="" disabled selected>Select Service Division</option>
+                                        <option value="Global Trade — Marine & Industrial Supplies Export">Global Trade — Marine & Industrial Supplies Export</option>
+                                        <option value="Global Trade — Agro Commodities & Garments">Global Trade — Agro Commodities & Garments</option>
+                                        <option value="Global Trade — Sourcing & Customs Compliance">Global Trade — Sourcing & Customs Compliance</option>
+                                        <option value="Tours & Travel — Datta Chaya Spiritual & Heritage Tour Packages">Tours & Travel — Datta Chaya Spiritual & Heritage Tour Packages</option>
+                                        <option value="Tours & Travel — Authorised IRCTC Railway Ticket Booking Desk">Tours & Travel — Authorised IRCTC Railway Ticket Booking Desk</option>
+                                        <option value="Tours & Travel — Corporate Travel & Flight Management Desk">Tours & Travel — Corporate Travel & Flight Management Desk</option>
+                                        <option value="Tours & Travel — Bespoke International Leisure Holidays">Tours & Travel — Bespoke International Leisure Holidays</option>
+                                        <option value="Medical Tourism — Healthcare Travel Coordination">Medical Tourism — Healthcare Travel Coordination</option>
+                                        <option value="General Strategic Enterprise Partnership">General Strategic Enterprise Partnership</option>
+                                    </select>
+                                    <span class="field-error-msg" id="home-contact-service-error">Please choose a service division.</span>
+                                </div>
                             </div>
 
                             <!-- Message -->
-                            <div class="field" style="margin-bottom: 20px;">
-                                <textarea class="input-field" placeholder="Briefly describe your requirement, destination, product, or timeline..." rows="4" name="message" required style="width: 100%; padding: 14px 18px; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body); resize: vertical;"></textarea>
+                            <div class="field">
+                                <label class="form-label" for="home-contact-message">
+                                    <span>Inquiry Details & Requirements <span class="req-star">*</span></span>
+                                </label>
+                                <textarea class="input-field" id="home-contact-message" name="message" placeholder="Briefly describe your requirements, cargo destination, travel dates, or patient inquiry..." rows="4" required aria-required="true"></textarea>
+                                <span class="field-error-msg" id="home-contact-message-error">Please provide details regarding your inquiry.</span>
                             </div>
 
                             <input type="hidden" name="page" value="index.html">
-                            <input type="text" name="company" style="display:none"> <!-- Honeypot -->
+                            <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off"> <!-- Honeypot -->
 
                             <!-- Button -->
-                            <div class="btn">
-                                <button class="button1" type="submit" style="background: var(--accent-green); color: #ffffff; padding: 15px 30px; font-weight: 700; border-radius: 8px; width: 100%; border: none; font-size: 1rem; cursor: pointer; transition: background 0.3s ease; box-shadow: 0 4px 15px rgba(5,150,105,0.3);">
-                                    Send Message →
+                            <div class="field" style="margin-top: 6px;">
+                                <button class="button1" id="homeContactSubmitBtn" type="submit">
+                                    <span class="btn-text">Send Message →</span>
                                 </button>
                             </div>
-                            <p id="formStatus" style="text-align: center; margin-top: 12px; color: var(--accent-green); font-weight: bold;"></p>
+
+                            <div class="form-status-banner" id="formStatus" role="status" aria-live="polite"></div>
                         </form>
                         <iframe name="hidden_iframe" style="display:none;"></iframe>
                     </div>

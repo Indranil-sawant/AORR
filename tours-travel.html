@@ -1520,56 +1520,81 @@
                 <!-- Form -->
                 <div class="card" style="margin: 0;">
                     <div class="card2">
-                        <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec">
+                        <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec" novalidate>
                             <p id="heading">Tour & Railway Inquiry Form</p>
+                            <p class="form-subtitle-text">Datta Chaya Tourism & Authorised IRCTC Rail Reservation Desk.</p>
 
-                            <!-- Name -->
-                            <div class="field">
-                                <input type="text" class="input-field" placeholder="Full Name" name="name" required />
+                            <!-- Name & Email Row -->
+                            <div class="form-row-2">
+                                <div class="field">
+                                    <label class="form-label" for="tour-name">
+                                        <span>Full Name <span class="req-star">*</span></span>
+                                    </label>
+                                    <input type="text" class="input-field" id="tour-name" name="name" placeholder="e.g. Indranil Sawant" autocomplete="name" required aria-required="true" />
+                                    <span class="field-error-msg" id="tour-name-error">Please enter your full name.</span>
+                                </div>
+
+                                <div class="field">
+                                    <label class="form-label" for="tour-email">
+                                        <span>Email Address <span class="req-star">*</span></span>
+                                    </label>
+                                    <input type="email" class="input-field" id="tour-email" name="email" placeholder="name@domain.com" autocomplete="email" inputmode="email" required aria-required="true" />
+                                    <span class="field-error-msg" id="tour-email-error">Please enter a valid email address.</span>
+                                </div>
                             </div>
 
-                            <!-- Email -->
-                            <div class="field">
-                                <input type="email" class="input-field" placeholder="Email Address" name="email" required />
-                            </div>
+                            <!-- Phone & Package Row -->
+                            <div class="form-row-2">
+                                <div class="field">
+                                    <label class="form-label" for="tour-phone">
+                                        <span>Phone Number / WhatsApp <span class="req-star">*</span></span>
+                                    </label>
+                                    <input type="tel" class="input-field" id="tour-phone" name="phone" placeholder="+91 97300 04911" autocomplete="tel" inputmode="tel" required aria-required="true" />
+                                    <span class="field-error-msg" id="tour-phone-error">Please enter a valid contact number.</span>
+                                </div>
 
-                            <!-- Phone -->
-                            <div class="field">
-                                <input type="tel" class="input-field" placeholder="Phone Number (e.g., +91 9730004911)" name="phone" required />
-                            </div>
-
-                            <!-- Selection -->
-                            <div class="field">
-                                <select class="input-field" required name="location">
-                                    <option value="" disabled selected>Select Tour Package or Service</option>
-                                    <option>Divya Andhra Tour - Economy Package (₹37,000/person)</option>
-                                    <option>Divya Andhra Tour - Business Package (₹44,000/person)</option>
-                                    <option>Divine Dattatreya & Guru Pilgrimage (5D/4N)</option>
-                                    <option>Divine Datta & Vitthal Pilgrimage (5D/4N)</option>
-                                    <option>Karnataka Heritage & Spiritual Expedition (5D/4N)</option>
-                                    <option>IRCTC Railway Ticket Booking (Tatkal / Group / General)</option>
-                                    <option>Corporate Business Travel & Flights</option>
-                                    <option>Customized Family Holiday Package</option>
-                                </select>
+                                <div class="field">
+                                    <label class="form-label" for="tour-service">
+                                        <span>Tour Package or Service <span class="req-star">*</span></span>
+                                    </label>
+                                    <select class="input-field" id="tour-service" name="location" required aria-required="true">
+                                        <option value="" disabled selected>Select Tour Package or Service</option>
+                                        <option value="Divya Andhra Tour - Economy Package (₹37,000/person)">Divya Andhra Tour - Economy Package (₹37,000/person)</option>
+                                        <option value="Divya Andhra Tour - Business Package (₹44,000/person)">Divya Andhra Tour - Business Package (₹44,000/person)</option>
+                                        <option value="Divine Dattatreya & Guru Pilgrimage (5D/4N)">Divine Dattatreya & Guru Pilgrimage (5D/4N)</option>
+                                        <option value="Divine Datta & Vitthal Pilgrimage (5D/4N)">Divine Datta & Vitthal Pilgrimage (5D/4N)</option>
+                                        <option value="Karnataka Heritage & Spiritual Expedition (5D/4N)">Karnataka Heritage & Spiritual Expedition (5D/4N)</option>
+                                        <option value="IRCTC Railway Ticket Booking (Tatkal / Group / General)">IRCTC Railway Ticket Booking (Tatkal / Group / General)</option>
+                                        <option value="Corporate Business Travel & Flights">Corporate Business Travel & Flights</option>
+                                        <option value="Customized Family Holiday Package">Customized Family Holiday Package</option>
+                                    </select>
+                                    <span class="field-error-msg" id="tour-service-error">Please select a tour package or rail service.</span>
+                                </div>
                             </div>
 
                             <!-- Message -->
                             <div class="field">
-                                <textarea class="input-field" placeholder="Preferred dates, number of travelers, origin/destination station, and special requests..." rows="4" name="message" required></textarea>
+                                <label class="form-label" for="tour-message">
+                                    <span>Travel Dates, Passenger Count & Special Requests <span class="req-star">*</span></span>
+                                </label>
+                                <textarea class="input-field" id="tour-message" name="message" placeholder="Preferred departure dates, number of travelers, boarding station/destination, or corporate requirements..." rows="4" required aria-required="true"></textarea>
+                                <span class="field-error-msg" id="tour-message-error">Please provide travel dates or special requests.</span>
                             </div>
 
                             <input type="hidden" name="product" value="Tours & Travel Inquiry (Datta Chaya)">
                             <input type="hidden" name="page" value="tours-travel.html">
                             
                             <!-- Honeypot -->
-                            <input type="text" name="company" style="display:none">
+                            <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
 
-                            <div class="btn">
-                                <button class="button1" type="submit">
-                                    Submit Travel Request →
+                            <!-- Button -->
+                            <div class="field" style="margin-top: 6px;">
+                                <button class="button1" id="tourSubmitBtn" type="submit">
+                                    <span class="btn-text">Submit Travel Request →</span>
                                 </button>
                             </div>
-                            <p id="formStatus" style="text-align: center; margin-top: 10px; color: green; font-weight: bold;"></p>
+
+                            <div class="form-status-banner" id="formStatus" role="status" aria-live="polite"></div>
                         </form>
                         <iframe name="hidden_iframe" style="display:none;"></iframe>
                     </div>

@@ -357,65 +357,206 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100); // Debounce resize
     });
 
-    // Contact form listener
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        // Email Template Logic
+    // ==========================================================================
+    // UNIFIED FORM CONTROLLER & INTERACTION SYSTEM
+    // ==========================================================================
+    function initFormsSystem() {
+        // Email Template Quick-Fill Listeners
         const emailButtons = document.querySelectorAll('.email-btn');
-        if (emailButtons.length > 0) {
+        const contactForm = document.getElementById('contactForm');
+        if (emailButtons.length > 0 && contactForm) {
             emailButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
                     const emailType = btn.dataset.email;
                     const messageField = contactForm.querySelector('textarea[name="message"]');
-                    
                     let templateMessage = "";
                     let targetEmail = "";
 
                     if (emailType === 'sales') {
                         targetEmail = "sales@aorr.in";
-                        templateMessage = "Hello Sales Team,\n\nI am interested in purchasing products from your catalog. specifically [Product Name].\n\nPlease provide pricing and availability.\n\nBest regards,";
+                        templateMessage = "Hello Sales Team,\n\nI am interested in purchasing products from your catalog, specifically [Product Name / Technical Grade].\n\nPlease provide pricing, MOQs, and delivery timelines.\n\nBest regards,";
                     } else if (emailType === 'purchase') {
                         targetEmail = "purchase@aorr.in";
-                        templateMessage = "Hello Purchase Team,\n\nI have a query regarding a recent order [Order ID].\n\nPlease assist.\n\nBest regards,";
+                        templateMessage = "Hello Purchase Team,\n\nI have a query regarding a recent order [Order ID / Port Destination].\n\nPlease assist.\n\nBest regards,";
                     } else if (emailType === 'general') {
                         targetEmail = "aorr@aorr.in";
-                        templateMessage = "Hello AORR Team,\n\nI would like to inquire about [Topic].\n\nBest regards,";
+                        templateMessage = "Hello AORR Team,\n\nI would like to inquire about [Topic / Strategic Partnership].\n\nBest regards,";
                     }
 
-                    // Scroll to form
                     contactForm.scrollIntoView({ behavior: 'smooth' });
-
-                    // Fill message
                     if (messageField) {
                         messageField.value = templateMessage;
+                        messageField.focus();
                     }
-                    
-                    // Store target email
                     contactForm.dataset.targetEmail = targetEmail;
                 });
             });
         }
 
-        const status = document.getElementById("formStatus");
-        if (contactForm.elements.page) {
-             contactForm.elements.page.value = window.location.href;
+        // Initialize All Forms
+        const forms = document.querySelectorAll('form.form, form#contactForm, form#medicalInquiryForm');
+        forms.forEach(form => {
+            // Set current URL to hidden page field
+            if (form.elements.page) {
+                form.elements.page.value = window.location.href;
+            }
+
+            // 1. Dynamic Select State Colors
+            const selects = form.querySelectorAll('select.input-field, select.form-control');
+            selects.forEach(sel => {
+                const updateSelectVisual = () => {
+                    if (sel.value && sel.value.trim() !== '') {
+                        sel.classList.add('has-value');
+                        sel.style.color = '#111827';
+                    } else {
+                        sel.classList.remove('has-value');
+                        sel.style.color = '#6B7280';
+                    }
+                };
+                updateSelectVisual();
+                sel.addEventListener('change', () => {
+                    updateSelectVisual();
+                    validateField(sel);
+                });
+            });
+
+            // 2. Real-Time Blur & Input Validation
+            const inputs = form.querySelectorAll('input:not([type="hidden"]), select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', () => {
+                    validateField(input);
+                });
+                input.addEventListener('input', () => {
+                    const parent = input.closest('.field') || input.parentElement;
+                    if (parent && parent.classList.contains('is-invalid')) {
+                        validateField(input);
+                    }
+                });
+            });
+
+            // 3. Form Submit Handler with Loading State & Validation
+            form.addEventListener('submit', (e) => {
+                let isFormValid = true;
+                let firstInvalidEl = null;
+
+                inputs.forEach(input => {
+                    if (!validateField(input)) {
+                        isFormValid = false;
+                        if (!firstInvalidEl) firstInvalidEl = input;
+                    }
+                });
+
+                if (!isFormValid) {
+                    e.preventDefault();
+                    if (firstInvalidEl) {
+                        firstInvalidEl.focus();
+                    }
+                    return;
+                }
+
+                // UI loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const statusBanner = form.querySelector('.form-status-banner') || form.querySelector('#formStatus') || form.querySelector('#medicalFormStatus');
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('is-loading');
+                    const textSpan = submitBtn.querySelector('.btn-text');
+                    submitBtn.dataset.origText = textSpan ? textSpan.textContent : submitBtn.textContent;
+                    submitBtn.innerHTML = '<span class="btn-spinner"></span> <span>Processing Request...</span>';
+                }
+
+                if (statusBanner) {
+                    statusBanner.className = 'form-status-banner';
+                    statusBanner.style.display = 'none';
+                }
+
+                // Google Apps Script iframe submission completes
+                setTimeout(() => {
+                    if (statusBanner) {
+                        statusBanner.className = 'form-status-banner success';
+                        statusBanner.innerHTML = '<span>✓</span> <span>Thank you! Your inquiry has been submitted successfully. Our team will contact you within 24 hours.</span>';
+                        statusBanner.style.display = 'flex';
+                    }
+
+                    if (submitBtn) {
+                        submitBtn.classList.remove('is-loading');
+                        submitBtn.innerHTML = '<span>✓ Request Submitted</span>';
+                    }
+
+                    form.reset();
+                    selects.forEach(s => {
+                        s.classList.remove('has-value');
+                        s.style.color = '#6B7280';
+                    });
+                    form.querySelectorAll('.field').forEach(f => f.classList.remove('is-valid', 'is-invalid'));
+
+                    // Re-enable submit button after 5 seconds
+                    setTimeout(() => {
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = submitBtn.dataset.origText || 'Submit Inquiry →';
+                        }
+                    }, 5000);
+                }, 1200);
+            });
+        });
+
+        function validateField(field) {
+            const parent = field.closest('.field') || field.parentElement;
+            if (!parent) return true;
+
+            const val = field.value ? field.value.trim() : '';
+            let valid = true;
+
+            if (field.hasAttribute('required') && (!val || val === '')) {
+                valid = false;
+            } else if (field.type === 'email' && val) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(val)) valid = false;
+            } else if (field.type === 'tel' && val) {
+                const digits = val.replace(/\D/g, '');
+                if (digits.length < 7) valid = false;
+            } else if (field.tagName === 'SELECT' && field.hasAttribute('required')) {
+                if (!val || val === '') valid = false;
+            }
+
+            if (!valid) {
+                parent.classList.add('is-invalid');
+                parent.classList.remove('is-valid');
+            } else {
+                parent.classList.remove('is-invalid');
+                if (val) parent.classList.add('is-valid');
+            }
+
+            return valid;
         }
 
-        contactForm.addEventListener('submit', () => {
-            // We do NOT prevent default here, so the form submits to the iframe
-            if (status) {
-                status.textContent = "Sending...";
-                status.style.color = "blue";
-                
-                setTimeout(() => {
-                    status.textContent = "Thank you! We will respond within 24 hours.";
-                    status.style.color = "green";
-                    contactForm.reset();
-                }, 1500);
-            }
+        // Newsletter forms
+        const newsletterForms = document.querySelectorAll('.newsletter-form');
+        newsletterForms.forEach(nf => {
+            nf.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const input = nf.querySelector('input[type="email"]');
+                const btn = nf.querySelector('button[type="submit"]');
+                if (input && input.value.trim()) {
+                    if (btn) {
+                        const orig = btn.textContent;
+                        btn.disabled = true;
+                        btn.textContent = 'Subscribed ✓';
+                        setTimeout(() => {
+                            input.value = '';
+                            btn.disabled = false;
+                            btn.textContent = orig;
+                        }, 3000);
+                    }
+                }
+            });
         });
     }
+
+    initFormsSystem();
 
     // Performance Chart Initialization
     function initPerformanceChart() {

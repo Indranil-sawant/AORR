@@ -368,71 +368,92 @@
 
             <div class="card" style="margin: 0 auto; max-width: 800px; box-shadow: 0 15px 40px rgba(27, 94, 32, 0.1);">
                 <div class="card2" style="padding: 40px 35px;">
-                    <form class="form" id="medicalInquiryForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec">
-                        <p id="heading" style="color: var(--primary-forest); font-size: 1.5rem; margin-bottom: 25px; text-align: center;">
-                            Patient & Medical Travel Inquiry
-                        </p>
+                    <form class="form" id="medicalInquiryForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec" novalidate>
+                        <p id="heading">Patient & Medical Travel Inquiry</p>
+                        <p class="form-subtitle-text">Connect with our dedicated medical concierge for hospital discovery, specialist consultations, and visa assistance.</p>
 
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
-                            <!-- Full Name -->
+                        <!-- Patient Name & Email Row -->
+                        <div class="form-row-2">
                             <div class="field">
-                                <input type="text" class="input-field" placeholder="Patient / Representative Name *" name="name" required />
+                                <label class="form-label" for="med-name">
+                                    <span>Patient / Representative Name <span class="req-star">*</span></span>
+                                </label>
+                                <input type="text" class="input-field" id="med-name" name="name" placeholder="e.g. John Doe / Family Member" autocomplete="name" required aria-required="true" />
+                                <span class="field-error-msg" id="med-name-error">Please enter the patient or representative name.</span>
                             </div>
 
-                            <!-- Email -->
                             <div class="field">
-                                <input type="email" class="input-field" placeholder="Email Address *" name="email" required />
+                                <label class="form-label" for="med-email">
+                                    <span>Email Address <span class="req-star">*</span></span>
+                                </label>
+                                <input type="email" class="input-field" id="med-email" name="email" placeholder="patient@domain.com" autocomplete="email" inputmode="email" required aria-required="true" />
+                                <span class="field-error-msg" id="med-email-error">Please enter a valid email address.</span>
                             </div>
                         </div>
 
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 10px;">
-                            <!-- Phone -->
+                        <!-- Phone & Country Row -->
+                        <div class="form-row-2">
                             <div class="field">
-                                <input type="tel" class="input-field" placeholder="Phone / WhatsApp Number *" name="phone" required />
+                                <label class="form-label" for="med-phone">
+                                    <span>Phone / WhatsApp Number <span class="req-star">*</span></span>
+                                </label>
+                                <input type="tel" class="input-field" id="med-phone" name="phone" placeholder="+1 234 567 8900" autocomplete="tel" inputmode="tel" required aria-required="true" />
+                                <span class="field-error-msg" id="med-phone-error">Please enter a valid phone or WhatsApp number.</span>
                             </div>
 
-                            <!-- Country of Residence -->
                             <div class="field">
-                                <input type="text" class="input-field" placeholder="Country of Residence *" name="location" required />
+                                <label class="form-label" for="med-location">
+                                    <span>Country / City of Residence <span class="req-star">*</span></span>
+                                </label>
+                                <input type="text" class="input-field" id="med-location" name="location" placeholder="e.g. Nairobi, Kenya / Dubai, UAE" required aria-required="true" />
+                                <span class="field-error-msg" id="med-location-error">Please enter your country or city of residence.</span>
                             </div>
                         </div>
 
                         <!-- Specialty of Interest -->
-                        <div class="field" style="margin-top: 10px;">
-                            <select class="input-field" required name="product">
-                                <option value="" disabled selected>Select Medical Specialty of Interest *</option>
-                                <option>Cardiology & Cardiac Surgery</option>
-                                <option>Orthopedics & Joint Replacement</option>
-                                <option>Oncology (Cancer Treatment & Surgery)</option>
-                                <option>Neurology & Neurosurgery</option>
-                                <option>Gastroenterology & Hepatology / Liver Transplant</option>
-                                <option>Organ Transplant Coordination</option>
-                                <option>Ophthalmology & Eye Surgery</option>
-                                <option>IVF & Reproductive Health</option>
-                                <option>Dental Care & Reconstruction</option>
-                                <option>Executive Full-Body Health Screening</option>
-                                <option>Other Specialized Medical Travel</option>
+                        <div class="field">
+                            <label class="form-label" for="med-specialty">
+                                <span>Medical Specialty of Interest <span class="req-star">*</span></span>
+                            </label>
+                            <select class="input-field" id="med-specialty" name="product" required aria-required="true">
+                                <option value="" disabled selected>Select Medical Specialty of Interest</option>
+                                <option value="Cardiology & Cardiac Surgery">Cardiology & Cardiac Surgery</option>
+                                <option value="Orthopedics & Joint Replacement">Orthopedics & Joint Replacement</option>
+                                <option value="Oncology (Cancer Treatment & Surgery)">Oncology (Cancer Treatment & Surgery)</option>
+                                <option value="Neurology & Neurosurgery">Neurology & Neurosurgery</option>
+                                <option value="Gastroenterology & Hepatology / Liver Transplant">Gastroenterology & Hepatology / Liver Transplant</option>
+                                <option value="Organ Transplant Coordination">Organ Transplant Coordination</option>
+                                <option value="Ophthalmology & Eye Surgery">Ophthalmology & Eye Surgery</option>
+                                <option value="IVF & Reproductive Health">IVF & Reproductive Health</option>
+                                <option value="Dental Care & Reconstruction">Dental Care & Reconstruction</option>
+                                <option value="Executive Full-Body Health Screening">Executive Full-Body Health Screening</option>
+                                <option value="Other Specialized Medical Travel">Other Specialized Medical Travel</option>
                             </select>
+                            <span class="field-error-msg" id="med-specialty-error">Please choose a medical specialty.</span>
                         </div>
 
                         <!-- Message -->
-                        <div class="field" style="margin-top: 10px;">
-                            <textarea class="input-field" placeholder="Brief description of medical requirement, current reports availability, preferred dates, or questions..." rows="4" name="message" required></textarea>
+                        <div class="field">
+                            <label class="form-label" for="med-message">
+                                <span>Medical Requirement & Report Summary <span class="req-star">*</span></span>
+                            </label>
+                            <textarea class="input-field" id="med-message" name="message" placeholder="Brief description of medical condition, available doctor reports, timeline, wheelchair assistance, or companion travel details..." rows="4" required aria-required="true"></textarea>
+                            <span class="field-error-msg" id="med-message-error">Please describe the medical requirement or symptoms.</span>
                         </div>
 
                         <input type="hidden" name="page" value="medical-tourism.html">
-                        <input type="text" name="company" style="display:none"> <!-- Honeypot -->
+                        <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off"> <!-- Honeypot -->
 
                         <!-- Submit Button -->
-                        <div class="btn" style="margin-top: 25px;">
-                            <button class="button1" type="submit" style="background: var(--primary-forest); color: #ffffff; padding: 14px 28px; font-weight: 700; border-radius: 8px; width: 100%;">
-                                Submit Confidential Request
+                        <div class="field" style="margin-top: 6px;">
+                            <button class="button1" id="medicalSubmitBtn" type="submit">
+                                <span class="btn-text">Submit Confidential Request →</span>
                             </button>
                         </div>
 
-                        <p id="medicalFormStatus" style="text-align: center; margin-top: 15px; color: var(--primary-forest); font-weight: bold;"></p>
-                        <p style="font-size: 0.8rem; color: #718096; text-align: center; margin-top: 10px;">
-                            🔒 Your medical information is handled with strict confidentiality and never shared with unauthorized parties.
+                        <div class="form-status-banner" id="medicalFormStatus" role="status" aria-live="polite"></div>
+                        <p style="font-size: 0.82rem; color: #6B7280; text-align: center; margin-top: 8px; line-height: 1.4;">
+                            🔒 Your medical information is handled with strict ethical confidentiality under international patient privacy standards.
                         </p>
                     </form>
                     <iframe name="hidden_iframe" style="display:none;"></iframe>

@@ -426,20 +426,65 @@ function setupEnquiryModal() {
         document.body.style.overflow = 'hidden'; // Lock scroll
     }
 
-    // 4. SUBMIT HANDLER (Hidden Iframe approach)
-    form.addEventListener('submit', () => {
+    // 4. SUBMIT HANDLER (Hidden Iframe approach with validation & loading state)
+    form.addEventListener('submit', (e) => {
+        const nameInput = form.querySelector('input[name="name"]');
+        const emailInput = form.querySelector('input[name="email"]');
+        const submitBtn = form.querySelector('#modal-submit-btn');
         const status = document.getElementById('enquiry-status');
-        status.textContent = "Sending Enquiry...";
-        status.style.color = "blue";
 
-        // Give it a second to "send" (since it goes to iframe invisible)
+        let hasError = false;
+
+        // Reset previous errors
+        form.querySelectorAll('.field').forEach(f => f.classList.remove('is-invalid'));
+
+        if (!nameInput.value.trim()) {
+            nameInput.closest('.field').classList.add('is-invalid');
+            hasError = true;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+            emailInput.closest('.field').classList.add('is-invalid');
+            hasError = true;
+        }
+
+        if (hasError) {
+            e.preventDefault();
+            const firstInvalid = form.querySelector('.field.is-invalid .input-field');
+            if (firstInvalid) firstInvalid.focus();
+            return;
+        }
+
+        // Apply loading state
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.classList.add('is-loading');
+            submitBtn.innerHTML = '<span class="btn-spinner"></span> <span>Sending Enquiry...</span>';
+        }
+
+        if (status) {
+            status.className = 'form-status-banner';
+            status.style.display = 'none';
+        }
+
+        // Submission handled by iframe
         setTimeout(() => {
-            status.textContent = "✓ Enquiry Sent Successfully!";
-            status.style.color = "green";
+            if (status) {
+                status.className = 'form-status-banner success';
+                status.innerHTML = '<span>✓</span> <span>Thank you! Your product enquiry has been received. Our sales team will get back to you shortly.</span>';
+                status.style.display = 'flex';
+            }
+
+            if (submitBtn) {
+                submitBtn.classList.remove('is-loading');
+                submitBtn.innerHTML = '<span>✓ Enquiry Sent</span>';
+            }
+
             form.reset();
             
-            // Close after success
-            setTimeout(closeModal, 2000);
-        }, 1500);
+            // Close after brief success feedback
+            setTimeout(closeModal, 2500);
+        }, 1200);
     });
 }

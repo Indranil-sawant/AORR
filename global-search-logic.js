@@ -59,19 +59,69 @@ function initGlobalSearch() {
         navContainer.appendChild(searchWrapper);
     }
 
+    input.setAttribute('aria-label', 'Search trade, travel, and medical services');
+    input.setAttribute('role', 'combobox');
+    input.setAttribute('aria-expanded', 'false');
+    input.setAttribute('aria-autocomplete', 'list');
+
     // 4. Index Data for Fast Search
     const searchIndex = buildSearchIndex();
+    let activeResultIndex = -1;
 
     // 5. Event Listeners
     input.addEventListener('input', (e) => {
         const term = e.target.value.trim().toLowerCase();
+        activeResultIndex = -1;
         handleSearch(term, dropdown, searchIndex);
+        input.setAttribute('aria-expanded', dropdown.classList.contains('active') ? 'true' : 'false');
     });
+
+    input.addEventListener('keydown', (e) => {
+        const items = dropdown.querySelectorAll('.search-result-item');
+        if (!dropdown.classList.contains('active') || items.length === 0) {
+            if (e.key === 'Escape') {
+                dropdown.classList.remove('active');
+                input.setAttribute('aria-expanded', 'false');
+            }
+            return;
+        }
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeResultIndex = (activeResultIndex + 1) % items.length;
+            updateActiveItem(items, activeResultIndex);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeResultIndex = (activeResultIndex - 1 + items.length) % items.length;
+            updateActiveItem(items, activeResultIndex);
+        } else if (e.key === 'Enter') {
+            if (activeResultIndex >= 0 && items[activeResultIndex]) {
+                e.preventDefault();
+                items[activeResultIndex].click();
+            }
+        } else if (e.key === 'Escape') {
+            dropdown.classList.remove('active');
+            input.setAttribute('aria-expanded', 'false');
+            input.blur();
+        }
+    });
+
+    function updateActiveItem(items, index) {
+        items.forEach((item, i) => {
+            if (i === index) {
+                item.classList.add('active-keyboard');
+                item.scrollIntoView({ block: 'nearest' });
+            } else {
+                item.classList.remove('active-keyboard');
+            }
+        });
+    }
 
     // Close on click outside
     document.addEventListener('click', (e) => {
         if (!searchWrapper.contains(e.target)) {
             dropdown.classList.remove('active');
+            input.setAttribute('aria-expanded', 'false');
         }
     });
 }

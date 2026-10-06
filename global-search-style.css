@@ -100,8 +100,9 @@
     color: inherit;
 }
 
-.search-result-item:hover {
-    background: #f0f4f8;
+.search-result-item:hover,
+.search-result-item.active-keyboard {
+    background: #E8F5E9;
     border-left: 3px solid var(--accent-gold);
     padding-left: 12px;
 }

@@ -171,30 +171,64 @@
                 <!-- Contact Form -->
                 <div class="card" style="margin: 0;">
                     <div class="card2">
-                        <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec">
+                        <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec" novalidate>
                             <p id="heading">Submit An Inquiry</p>
+                            <p class="form-subtitle-text">Connect directly with our specialized trade, travel, or healthcare divisions.</p>
 
-                            <!-- Name -->
-                            <div class="field">
-                                <input type="text" class="input-field" placeholder="Full Name *" name="name" required />
+                            <!-- Name & Email Row -->
+                            <div class="form-row-2">
+                                <div class="field">
+                                    <label class="form-label" for="contact-name">
+                                        <span>Full Name <span class="req-star">*</span></span>
+                                    </label>
+                                    <input type="text" class="input-field" id="contact-name" name="name" placeholder="e.g. Rahul Sharma" autocomplete="name" required aria-required="true" />
+                                    <span class="field-error-msg" id="contact-name-error">Please enter your full name.</span>
+                                </div>
+
+                                <div class="field">
+                                    <label class="form-label" for="contact-email">
+                                        <span>Email Address <span class="req-star">*</span></span>
+                                    </label>
+                                    <input type="email" class="input-field" id="contact-email" name="email" placeholder="name@company.com" autocomplete="email" inputmode="email" required aria-required="true" />
+                                    <span class="field-error-msg" id="contact-email-error">Please enter a valid email address.</span>
+                                </div>
                             </div>
 
-                            <!-- Email -->
-                            <div class="field">
-                                <input type="email" class="input-field" placeholder="Email Address *" name="email"
-                                    required />
-                            </div>
+                            <!-- Phone & Location Row -->
+                            <div class="form-row-2">
+                                <div class="field">
+                                    <label class="form-label" for="contact-phone">
+                                        <span>Phone Number / WhatsApp <span class="req-star">*</span></span>
+                                    </label>
+                                    <input type="tel" class="input-field" id="contact-phone" name="phone" placeholder="+91 97300 04911" autocomplete="tel" inputmode="tel" required aria-required="true" />
+                                    <span class="field-error-msg" id="contact-phone-error">Please enter a valid contact number.</span>
+                                </div>
 
-                            <!-- Phone -->
-                            <div class="field">
-                                <input type="tel" class="input-field" placeholder="Phone Number / WhatsApp *" name="phone"
-                                    required />
+                                <div class="field">
+                                    <label class="form-label" for="contact-location">
+                                        <span>Your Region / Country <span class="req-star">*</span></span>
+                                    </label>
+                                    <select class="input-field" id="contact-location" name="location" required aria-required="true">
+                                        <option value="" disabled selected>Select Your Region / Country</option>
+                                        <option value="India">India</option>
+                                        <option value="Middle East (GCC)">Middle East (GCC)</option>
+                                        <option value="Europe / UK">Europe / UK</option>
+                                        <option value="Southeast Asia / ASEAN">Southeast Asia / ASEAN</option>
+                                        <option value="Africa">Africa</option>
+                                        <option value="Americas">Americas</option>
+                                        <option value="Other International">Other International</option>
+                                    </select>
+                                    <span class="field-error-msg" id="contact-location-error">Please select your region or country.</span>
+                                </div>
                             </div>
 
                             <!-- Service / Division of Interest -->
                             <div class="field">
-                                <select class="input-field" required name="product">
-                                    <option value="" disabled selected>Select Service Division *</option>
+                                <label class="form-label" for="contact-product">
+                                    <span>Service Division of Interest <span class="req-star">*</span></span>
+                                </label>
+                                <select class="input-field" id="contact-product" name="product" required aria-required="true">
+                                    <option value="" disabled selected>Select Service Division</option>
                                     <option value="Global Trade — Marine & Industrial Supplies">Global Trade — Marine & Industrial Supplies</option>
                                     <option value="Global Trade — Agro Commodities & Garments">Global Trade — Agro Commodities & Garments</option>
                                     <option value="Global Trade — Sourcing & Customs Compliance">Global Trade — Sourcing & Customs Compliance</option>
@@ -205,40 +239,31 @@
                                     <option value="Medical Tourism — Healthcare Travel Coordination">Medical Tourism — Healthcare Travel Coordination</option>
                                     <option value="General Strategic Enterprise Partnership">General Strategic Enterprise Partnership</option>
                                 </select>
-                            </div>
-
-                            <!-- Location -->
-                            <div class="field">
-                                <select class="input-field" required name="location">
-                                    <option value="" disabled selected>Select Your Region / Country *</option>
-                                    <option>India</option>
-                                    <option>Middle East (GCC)</option>
-                                    <option>Europe / UK</option>
-                                    <option>Southeast Asia / ASEAN</option>
-                                    <option>Africa</option>
-                                    <option>Americas</option>
-                                    <option>Other International</option>
-                                </select>
+                                <span class="field-error-msg" id="contact-product-error">Please select a service division.</span>
                             </div>
 
                             <!-- Message -->
                             <div class="field">
-                                <textarea class="input-field" placeholder="Your Message or Specific Requirements..." rows="4" name="message"
-                                    required></textarea>
+                                <label class="form-label" for="contact-message">
+                                    <span>Your Message or Specific Requirements <span class="req-star">*</span></span>
+                                </label>
+                                <textarea class="input-field" id="contact-message" name="message" placeholder="Please describe your requirements, timeline, volume, or destination..." rows="4" required aria-required="true"></textarea>
+                                <span class="field-error-msg" id="contact-message-error">Please enter your message or inquiry details.</span>
                             </div>
 
                             <input type="hidden" name="page" value="contact.html">
                             
                             <!-- Honeypot (must stay hidden) -->
-                            <input type="text" name="company" style="display:none">
+                            <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
 
                             <!-- Button -->
-                            <div class="btn">
-                                <button class="button1" type="submit">
-                                    Send Inquiry →
+                            <div class="field" style="margin-top: 6px;">
+                                <button class="button1" id="contactSubmitBtn" type="submit">
+                                    <span class="btn-text">Send Inquiry →</span>
                                 </button>
                             </div>
-                            <p id="formStatus" style="text-align: center; margin-top: 10px; color: var(--primary-forest); font-weight: bold;"></p>
+
+                            <div class="form-status-banner" id="formStatus" role="status" aria-live="polite"></div>
                         </form>
                         <iframe name="hidden_iframe" style="display:none;"></iframe>
                     </div>
