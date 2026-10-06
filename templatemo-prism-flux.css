@@ -3007,7 +3007,7 @@ img {
 	padding: 120px 20px;
 	background:
 		linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)),
-		url('../images/AORR (3).webp') center/cover fixed;
+		url('images/AORR (3).webp') center/cover fixed;
 	background-attachment: scroll; /* Performance fix */
 	background-position: center;
 	background-repeat: no-repeat;
@@ -3221,22 +3221,22 @@ img {
 /* Gradient variations with background images for each card */
 .cards-grid .flip-card:nth-child(1) {
 	background: linear-gradient(rgba(27, 94, 32, 0.75), rgba(15, 56, 20, 0.85)),
-		url('../images/ChatGPT Image Jan 13, 2026, 05_14_11 PM.webp') center/cover;
+		url('images/ChatGPT Image Jan 13, 2026, 05_14_11 PM.webp') center/cover;
 }
 
 .cards-grid .flip-card:nth-child(2) {
 	background: linear-gradient(rgba(102, 187, 106, 0.75), rgba(27, 94, 32, 0.8)),
-		url('../images/global1.webp') center/cover;
+		url('images/global1.webp') center/cover;
 }
 
 .cards-grid .flip-card:nth-child(3) {
 	background: linear-gradient(rgba(27, 94, 32, 0.75), rgba(46, 125, 50, 0.8)),
-		url('../images/global2.webp') center/cover;
+		url('images/global2.webp') center/cover;
 }
 
 .cards-grid .flip-card:nth-child(4) {
 	background: linear-gradient(rgba(102, 187, 106, 0.75), rgba(15, 56, 20, 0.85)),
-		url('../images/global3.webp') center/cover;
+		url('images/global3.webp') center/cover;
 }
 
 /* Responsive Design */
@@ -3670,6 +3670,7 @@ img {
 		font-size: 0.85rem;
 		margin: 0 15px 15px;
 	}
+}
 
 /* ==========================================================================
    NAVIGATION — DESKTOP BASE & BURGER MENU TOGGLE

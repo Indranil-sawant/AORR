@@ -50,6 +50,7 @@ function handleRouting() {
     const parentKey = params.get('category');
     
     const root = document.getElementById('products-root');
+    if (!root) return;
     const header = document.querySelector('.section-header-left');
     
     // Clear Content
