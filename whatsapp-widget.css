@@ -1,80 +1,166 @@
-/* =========================================
-   AORR GLOBAL TRADE - WHATSAPP FLOATING WIDGET
-   ========================================= */
+/* ==========================================================================
+   AORR GLOBAL ENTERPRISE — SIDE-DOCKED QUICK-CONNECT SOCIAL RAIL
+   Flush Right-Edge Fixed Tab with Vibrant Hover Highlight Auras
+   ========================================================================== */
 
-.whatsapp-float {
+/* 1. Side-Docked Rail Container */
+.floating-social-dock {
     position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 30px;
-    right: 30px;
-    background-color: #25D366;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 10000; /* High z-index but below loader (which is 999999) */
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 7px 12px 10px;
+    background: rgba(7, 30, 15, 0.88);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-radius: 18px 0 0 18px;
+    border: 1px solid rgba(102, 187, 106, 0.25);
+    border-right: none;
+    box-shadow: -4px 6px 24px rgba(0, 0, 0, 0.35);
+    z-index: 99999;
+    pointer-events: auto;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.floating-social-dock:hover {
+    box-shadow: -6px 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* 2. Base Social Button */
+.social-dock-btn {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    transition: all 0.3s ease;
+    color: #FFFFFF;
+    transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
 }
 
-.whatsapp-float:hover {
-    background-color: #20BA5A;
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+.social-dock-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: #FFFFFF;
+    transition: transform 0.25s ease;
 }
 
-.whatsapp-icon {
-    width: 35px;
-    height: 35px;
-    fill: white;
+.social-dock-btn:hover svg {
+    transform: scale(1.08);
 }
 
-/* Pulse Animation usually looks "cheap" or spammy if overdone. 
-   A subtle hover lift is more "Professional". */
-
-/* Mobile Adjustments with Safe Area Inset Support */
-@media screen and (max-width: 768px) {
-    .whatsapp-float {
-        width: 52px;
-        height: 52px;
-        bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-        right: calc(20px + env(safe-area-inset-right, 0px));
-        font-size: 26px;
-        touch-action: manipulation;
-    }
-    .whatsapp-icon {
-        width: 28px;
-        height: 28px;
-    }
+/* 3. Facebook Button — Royal Blue & Glowing Highlight */
+.social-dock-btn.facebook-btn {
+    background: linear-gradient(135deg, #1877F2 0%, #0c63d4 100%);
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.35);
 }
 
-/* Tooltip (Desktop Only) */
-.whatsapp-float::after {
-    content: "Chat with us";
+.social-dock-btn.facebook-btn:hover,
+.social-dock-btn.facebook-btn:focus-visible {
+    transform: translateX(-4px) scale(1.1);
+    box-shadow: 0 0 22px 5px rgba(24, 119, 242, 0.8), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* 4. Instagram Button — Sunset Gradient & Radiant Magenta Highlight */
+.social-dock-btn.instagram-btn {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 12px rgba(220, 39, 67, 0.35);
+}
+
+.social-dock-btn.instagram-btn:hover,
+.social-dock-btn.instagram-btn:focus-visible {
+    transform: translateX(-4px) scale(1.1);
+    box-shadow: 0 0 22px 5px rgba(225, 48, 108, 0.85), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* 5. WhatsApp Button — Emerald Green & Radiant Mint Highlight */
+.social-dock-btn.whatsapp-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+}
+
+.social-dock-btn.whatsapp-btn:hover,
+.social-dock-btn.whatsapp-btn:focus-visible {
+    transform: translateX(-4px) scale(1.1);
+    box-shadow: 0 0 22px 5px rgba(37, 211, 102, 0.85), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* 6. Flyout Left-Side Tooltips */
+.social-dock-btn .dock-tooltip {
     position: absolute;
-    right: 70px; /* Left of the button */
-    background-color: #333;
-    color: #fff;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    background: #082211;
+    color: #FFFFFF;
     padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-family: 'Inter', sans-serif;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    letter-spacing: 0.3px;
     white-space: nowrap;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.3s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(102, 187, 106, 0.35);
 }
 
-@media screen and (min-width: 769px) {
-    .whatsapp-float:hover::after {
-        opacity: 1;
-        right: 75px; /* Slight movement animation */
+.social-dock-btn .dock-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 5px 0 5px 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #082211;
+}
+
+.social-dock-btn:hover .dock-tooltip,
+.social-dock-btn:focus-visible .dock-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* 7. Backward Compatibility / Fallback Class */
+.whatsapp-float {
+    display: none !important;
+}
+
+/* 8. Mobile & Tablet Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .floating-social-dock {
+        top: auto;
+        bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+        transform: none;
+        padding: 8px 5px 8px 8px;
+        gap: 8px;
+        border-radius: 14px 0 0 14px;
+    }
+
+    .social-dock-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .social-dock-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .social-dock-btn .dock-tooltip {
+        display: none !important;
     }
 }
