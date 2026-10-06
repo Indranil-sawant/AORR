@@ -457,38 +457,58 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+        <!-- Global Footer -->
+    <footer class="footer" style="background: #0A2411; color: #E5E7EB; padding: 70px 20px 30px;">
         <div class="footer-large-logo" style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
             <picture>
                 <source srcset="images/logo.png" type="image/png">
-                <img src="images/logo.png" alt="AORR Global Enterprise Logo" style="height: 140px; width: auto;" loading="lazy" decoding="async">
+                <img src="images/logo.png" alt="AORR Global Enterprise - Footer Logo" loading="lazy" decoding="async" style="height: 140px; width: auto;" width="140" height="140">
             </picture>
         </div>
 
-        <div class="footer-content-grid">
+        <div class="footer-content-grid" style="max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 40px;">
             <div class="footer-tagline">
-                <p style="font-weight: 700; font-size: 1.1rem; color: #ffffff; margin-bottom: 8px;">AORR Global Services</p>
-                Connecting people, businesses, and opportunities across borders through Global Trade, Tours & Travels, and Medical Tourism Coordination.
-            </div>
-
-            <div class="footer-contact">
-                <div class="footer-heading">Corporate Office</div>
-                <p>49/1/1, Shri Hari Krupa<br>Kothrud, Pune, MH 411038, India</p>
-                <br>
-                <p><a href="mailto:aorr@aorr.in">aorr@aorr.in</a></p>
-                <p>+91 9730004911 / +91 8975218910</p>
-            </div>
-
-            <div class="footer-newsletter">
-                <div class="footer-heading">Global Inquiries</div>
-                <p style="font-size: 0.9rem; color: #d8e2dc; margin-bottom: 15px;">
-                    Reach out directly for specialized trade supply chains, corporate itineraries, or confidential healthcare coordination.
+                <p style="font-weight: 700; font-size: 1.2rem; color: #ffffff; margin-bottom: 10px;">AORR Global Enterprise</p>
+                <p style="color: #D1D5DB; font-size: 0.92rem; line-height: 1.65; margin-bottom: 15px;">
+                    Connecting people, businesses, and opportunities across borders through Global Trade, Tours & Travels, and Medical Tourism Coordination.
                 </p>
-                <a href="contact.html" class="hero-btn primary" style="display: inline-block; padding: 10px 22px; font-size: 0.88rem; border-radius: 6px;">Contact All Divisions →</a>
+                <p style="color: #6EE7B7; font-size: 0.85rem; font-weight: 600;">One Global Partner. Multiple Possibilities.</p>
+            </div>
+
+            <!-- Division 1 -->
+            <div>
+                <div style="font-weight: 700; color: #A5D6A7; font-size: 0.95rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">01 Global Trade</div>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; padding: 0; margin: 0;">
+                    <li><a href="products.html" style="color: #E5E7EB; text-decoration: none;">Product Catalog</a></li>
+                    <li><a href="products.html?category=marine" style="color: #E5E7EB; text-decoration: none;">Marine Supplies</a></li>
+                    <li><a href="products.html?category=industrial" style="color: #E5E7EB; text-decoration: none;">Industrial Valves</a></li>
+                    <li><a href="services.html" style="color: #E5E7EB; text-decoration: none;">Export Operations</a></li>
+                </ul>
+            </div>
+
+            <!-- Division 2 & 3 -->
+            <div>
+                <div style="font-weight: 700; color: #A5D6A7; font-size: 0.95rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">02 & 03 Services</div>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; padding: 0; margin: 0;">
+                    <li><a href="tours-travel.html" style="color: #E5E7EB; text-decoration: none;">Corporate Travel Desk</a></li>
+                    <li><a href="tours-travel.html" style="color: #E5E7EB; text-decoration: none;">Holiday Packages</a></li>
+                    <li><a href="medical-tourism.html" style="color: #E5E7EB; text-decoration: none;">Medical Tourism</a></li>
+                    <li><a href="medical-tourism.html#medical-inquiry" style="color: #E5E7EB; text-decoration: none;">Patient Desk</a></li>
+                </ul>
+            </div>
+
+            <!-- Corporate Contact -->
+            <div class="footer-contact">
+                <div style="font-weight: 700; color: #A5D6A7; font-size: 0.95rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Corporate Office</div>
+                <p style="color: #E5E7EB; font-size: 0.88rem; line-height: 1.6; margin: 0 0 10px 0;">
+                    49/1/1, Shri Hari Krupa<br>Kothrud, Pune 411038, India
+                </p>
+                <p style="margin: 0 0 6px 0;"><a href="mailto:aorr@aorr.in" style="color: #6EE7B7; text-decoration: none; font-size: 0.88rem;">aorr@aorr.in</a></p>
+                <p style="color: #E5E7EB; font-size: 0.88rem; margin: 0;">+91 9730004911 / +91 8975218910</p>
             </div>
         </div>
 
-                <!-- Official Social Media Badges -->
+        <!-- Official Social Media Channels Ribbon -->
         <div class="footer-social-wrapper">
             <div class="footer-social-label">
                 <span class="pulse-dot" aria-hidden="true"></span>
@@ -513,15 +533,18 @@
             </div>
         </div>
 
+        <!-- Footer Bottom Navigation Bar -->
         <div class="footer-bottom-nav">
-            <a href="index.html" class="footer-nav-link">Home</a>
-            <a href="products.html" class="footer-nav-link">Global Trade</a>
-            <a href="tours-travel.html" class="footer-nav-link">Tours & Travel</a>
-            <a href="medical-tourism.html" class="footer-nav-link">Medical Tourism</a>
-            <a href="about-us.html" class="footer-nav-link">About Us</a>
-            <a href="market-insights.html" class="footer-nav-link">Global Network</a>
-            <a href="contact.html" class="footer-nav-link">Contact</a>
-            <span style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7);">&copy; 2026 AORR Global Enterprise. All rights reserved.</span>
+            <div class="footer-bottom-nav-links">
+                <a href="index.html" class="footer-nav-link">Home</a>
+                <a href="products.html" class="footer-nav-link">Global Trade</a>
+                <a href="tours-travel.html" class="footer-nav-link">Tours & Travel</a>
+                <a href="medical-tourism.html" class="footer-nav-link">Medical Tourism</a>
+                <a href="about-us.html" class="footer-nav-link">About Us</a>
+                <a href="market-insights.html" class="footer-nav-link">Global Network</a>
+                <a href="contact.html" class="footer-nav-link">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 AORR Global Enterprise. All rights reserved.</p>
         </div>
     </footer>
 

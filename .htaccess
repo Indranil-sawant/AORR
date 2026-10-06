@@ -11,9 +11,9 @@
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
     
-    # Redirect www to non-www (optional - choose one)
-    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+    # Redirect non-www to www (ensures 100% consistency with canonical URLs & sitemap)
+    RewriteCond %{HTTP_HOST} ^aorr\.in$ [NC]
+    RewriteRule ^(.*)$ https://www.aorr.in/$1 [R=301,L]
 </IfModule>
 
 # ============================================
