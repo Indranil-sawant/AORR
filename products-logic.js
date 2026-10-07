@@ -21,10 +21,70 @@ const CATEGORY_ICONS = {
     after_sales_frp: '🛠️'
 };
 
+const CATEGORY_INFO = {
+    machinery_mechanical: {
+        badge: 'B2B MACHINERY',
+        group: 'machinery',
+        image: 'images/industrial-flow-valves.webp',
+        desc: 'High-precision pressure regulators, industrial flow valves & compression fittings for critical industrial installations.',
+        chips: ['Pressure Regulators', 'Industrial Valves', 'Tube Fittings', 'Gas Cabinets']
+    },
+    artificial_jewellery: {
+        badge: 'FASHION EXPORT',
+        group: 'jewellery',
+        image: 'images/export-garments-textiles.webp',
+        desc: 'Export-grade imitation gold & silver fashion jewellery, stones, bangles, necklaces & pearl ornaments.',
+        chips: ['Gold & Silver Finish', 'Bangles & Necklaces', 'Earrings', 'Pearl & Stone Jewellery']
+    },
+    artificial_products: {
+        badge: 'COMMODITIES',
+        group: 'jewellery',
+        image: 'images/aorr-trade-port.webp',
+        desc: 'Decorative items, synthetic hair, artificial leatherware & high-durability plastic export commodities.',
+        chips: ['Artificial Flowers', 'Decorative Items', 'Synthetic Hair', 'Artificial Leather']
+    },
+    garments: {
+        badge: 'TEXTILE & APPAREL',
+        group: 'garments',
+        image: 'images/export-garments-textiles.webp',
+        desc: 'Knitted & woven export apparel including premium shirts, formal trousers, sweaters, leggings & activewear.',
+        chips: ['Knitted T-Shirts', 'Woven Shirts', 'Formal Wear', 'Track Suits']
+    },
+    agriculture: {
+        badge: 'AGRI COMMODITIES',
+        group: 'agriculture',
+        image: 'images/agri-spices-grains.webp',
+        desc: 'Certified spices, edible oils, cereals, processed agro-foods, dairy & farm-fresh commodities.',
+        chips: ['Spices & Herbs', 'Cereals & Grains', 'Edible Oils', 'Processed Foods']
+    },
+    fiberglass_boats: {
+        badge: 'MARINE ENGINEERING',
+        group: 'marine',
+        image: 'images/marine-resins-fiberglass.webp',
+        desc: 'Complete FRP boatbuilding ecosystem: resins, core materials, hardware, engines, electronics & finished yachts.',
+        chips: ['Resins & Gelcoats', 'Glass Fiber Mats', 'Marine Hardware', 'FRP Yachts']
+    },
+    ship_repairing: {
+        badge: 'MARITIME SPARES',
+        group: 'marine',
+        image: 'images/aorr-marine-supplies.webp',
+        desc: 'Commercial vessel maintenance spares, industrial valves, hull plates, antifouling paints & safety gear.',
+        chips: ['Marine Engines', 'Hull Steel Plates', 'Antifouling Paints', 'Safety Buoys']
+    },
+    after_sales_frp: {
+        badge: 'AFTER-SALES FRP',
+        group: 'marine',
+        image: 'images/marine-hardware-fasteners.webp',
+        desc: 'Fast-moving maintenance consumables: resins, MEKP hardeners, SS fasteners, bilge pumps & marine paints.',
+        chips: ['Polyester Resins', 'MEKP Hardener', 'Bilge Pumps', 'SS Fasteners']
+    }
+};
+
 const DEFAULT_ICON = '📦';
 
 document.addEventListener('DOMContentLoaded', () => {
     initCatalog();
+    setupFilters();
     setupSearch();
     setupEnquiryModal();
     
@@ -67,7 +127,7 @@ function handleRouting() {
         renderAllCards(root);
         updateSidebarActiveState(parentKey || null, null);
         
-        // If category param exists but no sub, maybe scroll to it?
+        // If category param exists but no sub, scroll to it
         if(parentKey) {
            setTimeout(() => {
                const el = document.querySelector(`[data-key="${parentKey}"].product-card`);
@@ -142,7 +202,20 @@ function navigateTo(category, sub) {
 }
 
 /**
- * 2. Render Main Catalog (Default State - Category Cards)
+ * Helper to calculate total count of items in a category
+ */
+function getItemCount(data) {
+    if (data.items) return data.items.length;
+    if (data.fast_moving_items) return data.fast_moving_items.length;
+    const nested = data.subcategories || data.sections;
+    if (nested) {
+        return Object.values(nested).reduce((acc, arr) => acc + (Array.isArray(arr) ? arr.length : 0), 0);
+    }
+    return 0;
+}
+
+/**
+ * 2. Render Main Catalog (Default State - Rich Category Cards)
  */
 function renderAllCards(root) {
     Object.entries(PRODUCTS_CATALOG).forEach(([key, data]) => {
@@ -153,7 +226,6 @@ function renderAllCards(root) {
 
 /**
  * 3. RENDER SUBCATEGORY LANDING PAGE
- * New View Logic
  */
 function renderSubcategoryPage(root, parentKey, subKey) {
     const parentData = PRODUCTS_CATALOG[parentKey];
@@ -182,8 +254,11 @@ function renderSubcategoryPage(root, parentKey, subKey) {
     // 1. Back Button
     const backBtn = document.createElement('a');
     backBtn.className = 'back-btn';
-    backBtn.innerHTML = '← Back to Catalog';
-    backBtn.onclick = () => { navigateTo(parentKey, null); }; // Go to parent
+    backBtn.innerHTML = '← Back to All Divisions';
+    backBtn.onclick = (e) => { 
+        e.preventDefault();
+        navigateTo(parentKey, null); 
+    };
     container.appendChild(backBtn);
 
     // 2. Hero Banner
@@ -193,6 +268,7 @@ function renderSubcategoryPage(root, parentKey, subKey) {
     hero.innerHTML = `
         <div class="sub-hero-overlay"></div>
         <div class="sub-hero-content">
+            <span class="sub-hero-pill">${parentData.title}</span>
             <h1 class="sub-hero-title">${formatTitle(subKey)}</h1>
             <p class="sub-hero-desc">${meta.description}</p>
         </div>
@@ -227,51 +303,109 @@ function createItemCard(name, categoryName) {
     el.className = 'item-card';
     el.innerHTML = `
         <div class="item-card-image-placeholder">
-            ${DEFAULT_ICON}
+            <span class="item-card-icon">📦</span>
+            <span class="item-tag-badge">Export Grade</span>
         </div>
         <div class="item-card-body">
             <div class="item-card-category">${categoryName}</div>
             <h3 class="item-card-title">${name}</h3>
-            <button class="item-card-btn enquiry-trigger" data-product="${name}">Enquire Now</button>
+            <p class="item-card-meta">Standard Packaging • Bulk / FCL / LCL Available</p>
+            <button class="item-card-btn enquiry-trigger" data-product="${name}" type="button">
+                <span>Request Quotation</span>
+                <span class="btn-arrow">💬</span>
+            </button>
         </div>
     `;
     return el;
 }
 
 /**
- * Create CATEGORY Card (For Main Page) - Preserved Logic
+ * Create CATEGORY Card (For Main Page) - Rich Enterprise Presentation
  */
 function createCategoryCard(key, data) {
-    // Determine if we should show this card based on logic (reuse v3 logic if needed, but here simple)
     const card = document.createElement('div');
     card.className = 'product-card';
     card.dataset.key = key;
 
+    const info = CATEGORY_INFO[key] || {
+        badge: 'EXPORT DIVISION',
+        group: 'all',
+        image: 'images/aorr-trade-hero.webp',
+        desc: 'High-quality export commodities and materials with strict global compliance.',
+        chips: []
+    };
+    card.dataset.group = info.group;
+
     const icon = CATEGORY_ICONS[key] || DEFAULT_ICON;
+    const totalCount = getItemCount(data);
+    const nested = data.subcategories || data.sections;
+    const firstSubKey = nested ? Object.keys(nested)[0] : null;
+
+    const chipsHtml = (info.chips || []).map(chip => `<span class="card-chip">${chip}</span>`).join('');
+
     card.innerHTML = `
         <div class="card-header-visual">
-            <div class="card-icon-large">${icon}</div>
+            <picture>
+                <source srcset="${info.image}" type="image/webp">
+                <img src="${info.image}" alt="${data.title}" class="card-bg-img" loading="lazy" width="360" height="165">
+            </picture>
+            <div class="card-visual-overlay"></div>
+            <div class="card-category-badge">${info.badge}</div>
+            <div class="card-count-badge">${totalCount}+ Specs</div>
+            <div class="card-icon-badge">${icon}</div>
         </div>
         <div class="card-body">
             <h3 class="card-title">${data.title}</h3>
+            <p class="card-desc">${info.desc}</p>
+            <div class="card-chips-wrapper">
+                ${chipsHtml}
+            </div>
+            <div class="card-actions-bar">
+                <button class="btn-card-explore" type="button" data-key="${key}" data-first-sub="${firstSubKey || ''}">
+                    <span>${nested ? 'Browse Subcategories' : 'View Full Specs'}</span>
+                    <span>→</span>
+                </button>
+                <button class="btn-card-rfq enquiry-trigger" data-product="${data.title}" type="button">
+                    <span>RFQ 💬</span>
+                </button>
+            </div>
             <details class="card-details-drawer">
-                <summary class="card-drawer-trigger">View Inventory</summary>
+                <summary class="card-drawer-trigger">
+                    <span>Quick Spec Preview</span>
+                    <span class="drawer-indicator">▾</span>
+                </summary>
                 <div class="hidden-list"></div>
             </details>
         </div>
     `;
 
-    // Populate the list for the drawer
+    // Populate drawer inventory
     const container = card.querySelector('.hidden-list');
-    
-    // Quick populate logic (simplified from v3 since we focus on routing now)
     if(data.items) appendList(container, null, data.items);
-    if(data.fast_moving_items) appendList(container, 'Stock Items', data.fast_moving_items);
+    if(data.fast_moving_items) appendList(container, 'Fast Moving Consumables', data.fast_moving_items);
     
-    const nested = data.subcategories || data.sections;
     if(nested) {
         Object.entries(nested).forEach(([subKey, items]) => {
              appendList(container, formatTitle(subKey), items);
+        });
+    }
+
+    // Attach click handler for Browse / Explore button
+    const exploreBtn = card.querySelector('.btn-card-explore');
+    if (exploreBtn) {
+        exploreBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (firstSubKey) {
+                navigateTo(key, firstSubKey);
+            } else {
+                const drawer = card.querySelector('.card-details-drawer');
+                if (drawer) {
+                    drawer.open = !drawer.open;
+                    if (drawer.open) {
+                        drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                }
+            }
         });
     }
 
@@ -318,6 +452,43 @@ function updateSidebarActiveState(parentKey, subKey) {
         const sLink = document.querySelector(`.nav-link-child[data-parent="${parentKey}"][data-sub="${subKey}"]`);
         if(sLink) sLink.classList.add('active');
     }
+}
+
+/**
+ * 4. Quick Category Filter Bar
+ */
+function setupFilters() {
+    const filterBar = document.getElementById('catalog-filter-bar') || document.getElementById('category-filter-bar');
+    if (!filterBar) return;
+
+    filterBar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-pill');
+        if (!btn) return;
+
+        filterBar.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        const currentParams = new URLSearchParams(window.location.search);
+
+        // If on subcategory page and user clicks filter, go back to catalog view
+        if (currentParams.get('sub')) {
+            window.history.pushState({}, '', window.location.pathname);
+            handleRouting();
+        }
+
+        const root = document.getElementById('products-root');
+        if (!root) return;
+
+        const cards = root.querySelectorAll('.product-card');
+        cards.forEach(card => {
+            if (filter === 'all' || card.dataset.group === filter) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
 }
 
 /**

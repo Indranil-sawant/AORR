@@ -186,9 +186,9 @@ function buildSearchIndex() {
         }
     });
 
-    // Add Tours & Travel Services to Search Index
+    // Add Datta Chaya Tourism Services to Search Index
     const travelServices = [
-        { title: 'Tours & Travel Division', category: 'Tours & Travel', url: 'tours-travel.html', icon: '✈️' },
+        { title: 'Datta Chaya Tourism (Tours & Travel)', category: 'Datta Chaya Tourism', url: 'tours-travel.html', icon: '✈️' },
         { title: 'Corporate & Business Travel Management', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '💼' },
         { title: 'Bespoke Leisure & Luxury Holiday Packages', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏖️' },
         { title: 'Global Flight & Luxury Hotel Bookings', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏨' },

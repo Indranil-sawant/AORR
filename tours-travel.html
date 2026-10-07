@@ -15,24 +15,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     
-    <title>Tours & Travel Services | Datta Chaya Tourism — AORR Global Enterprise</title>
-    <meta name="description" content="Explore spiritual pilgrimage packages, heritage tours, IRCTC railway bookings, and corporate travel management by AORR Tours & Travel (Datta Chaya Tourism).">
-    <meta name="keywords" content="AORR travel, Datta Chaya Tourism, Divine Andhra tour, Dattatreya pilgrimage, Akkalkot Gangapur tour, Pandharpur Tuljapur yatra, IRCTC railway booking agent Pune, corporate travel management, spiritual tours India">
+    <title>Tours, Travel & Rail Services | AORR Global Enterprise</title>
+    <meta name="description" content="Explore Datta Chaya spiritual pilgrimage yatras, AORR Authorised IRCTC railway booking desk, and corporate travel management by AORR Global Enterprise.">
+    <meta name="keywords" content="AORR travel, Datta Chaya Tourism, Divine Andhra tour, Dattatreya pilgrimage, Akkalkot Gangapur tour, Pandharpur Tuljapur yatra, IRCTC railway booking agent Pune, IRCTC tatkal booking Pune, corporate travel management, spiritual tours India">
     <meta name="author" content="AORR Global Enterprise">
     
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.aorr.in/tours-travel.html">
-    <meta property="og:title" content="AORR Tours & Travel | Datta Chaya Tourism — A Journey of Devotion & Discovery">
-    <meta property="og:description" content="Curated spiritual pilgrimage yatras, UNESCO heritage tours, IRCTC railway desk, and corporate travel management backed by AORR.">
+    <meta property="og:title" content="AORR Tours, Travel & Rail Services | Spiritual Yatras & IRCTC Desk">
+    <meta property="og:description" content="Curated spiritual pilgrimage yatras by Datta Chaya, Authorised IRCTC railway desk, and corporate travel management backed by AORR.">
     <meta property="og:image" content="https://www.aorr.in/images/divine-andhra-poster-en.jpg">
     <meta property="og:site_name" content="AORR Global Enterprise">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://www.aorr.in/tours-travel.html">
-    <meta name="twitter:title" content="Tours & Travel Services | Datta Chaya Tourism — AORR">
-    <meta name="twitter:description" content="Curated spiritual pilgrimage tours, UNESCO heritage journeys, IRCTC railway desk, and corporate travel by AORR.">
+    <meta name="twitter:title" content="Tours, Travel & Rail Services | AORR Global Enterprise">
+    <meta name="twitter:description" content="Curated spiritual pilgrimage tours by Datta Chaya, Authorised IRCTC railway desk, and corporate travel by AORR.">
     <meta name="twitter:image" content="https://www.aorr.in/images/divine-andhra-poster-en.jpg">
     
     <!-- Canonical URL -->
@@ -178,117 +178,80 @@
             stroke-linejoin: round;
         }
 
-        /* Modern Glassmorphic Tour Quick Navigation Bar */
-        .tour-nav-bar {
-            background: rgba(15, 56, 20, 0.95);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 10px 16px;
+        /* Sacred Datta Mantra Moving Marquee Bar */
+        .datta-mantra-bar {
+            background: linear-gradient(90deg, #09260F 0%, #0F3814 50%, #09260F 100%);
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            border-bottom: 2.5px solid #66BB6A;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            padding: 12px 0;
             position: sticky;
             top: 75px;
             z-index: 90;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 2.5px solid #66BB6A;
+            overflow: hidden;
+            white-space: nowrap;
+            user-select: none;
         }
 
-        .tour-nav-container {
-            max-width: 1320px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            padding: 2px 4px;
+        .mantra-track {
+            display: inline-flex;
+            white-space: nowrap;
+            will-change: transform;
+            animation: mantraMarquee 30s linear infinite;
         }
 
-        .tour-nav-btn {
-            background: rgba(255, 255, 255, 0.08);
-            color: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 7px 14px;
-            border-radius: 30px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            text-decoration: none;
+        .datta-mantra-bar:hover .mantra-track {
+            animation-play-state: paused;
+        }
+
+        .mantra-item {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-            flex-shrink: 0;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 0.1px;
-        }
-
-        .tour-nav-btn .nav-btn-icon {
-            width: 14px;
-            height: 14px;
-            flex-shrink: 0;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            transition: transform 0.25s ease;
-        }
-
-        .tour-nav-btn:hover {
-            background: rgba(255, 255, 255, 0.18);
-            color: #FFFFFF;
-            border-color: #66BB6A;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 14px rgba(102, 187, 106, 0.25);
-        }
-
-        .tour-nav-btn:hover .nav-btn-icon {
-            transform: scale(1.15);
-        }
-
-        .tour-nav-btn.active {
-            background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
-            color: #FFFFFF;
-            border: 1.5px solid #66BB6A;
-            box-shadow: 0 4px 16px rgba(102, 187, 106, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            gap: 18px;
+            padding: 0 28px;
+            color: #FFD54F;
+            font-size: 1.05rem;
             font-weight: 700;
+            letter-spacing: 1.8px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 213, 79, 0.35);
+            font-family: 'Poppins', sans-serif;
         }
 
-        .tour-nav-btn.active .nav-btn-icon {
-            stroke: #A5D6A7;
+        .mantra-symbol {
+            color: #66BB6A;
+            font-size: 0.95rem;
+            text-shadow: 0 0 10px rgba(102, 187, 106, 0.7);
         }
 
-        /* Distinct Primary CTA Button Styling for Book Now */
-        .tour-nav-btn.tour-nav-cta {
-            background: linear-gradient(135deg, #66BB6A 0%, #4CAF50 100%);
-            color: #0F3814;
-            border: 1.5px solid #A5D6A7;
-            font-weight: 800;
-            box-shadow: 0 4px 14px rgba(102, 187, 106, 0.4);
-        }
-
-        .tour-nav-btn.tour-nav-cta .nav-btn-icon {
-            stroke: #0F3814;
-        }
-
-        .tour-nav-btn.tour-nav-cta:hover {
-            background: linear-gradient(135deg, #81C784 0%, #66BB6A 100%);
-            color: #0F3814;
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 20px rgba(102, 187, 106, 0.55);
-        }
-
-        /* Mobile & Tablet Responsive Scroll Track */
-        @media (max-width: 1024px) {
-            .tour-nav-container {
-                justify-content: flex-start;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                padding: 4px 12px;
+        @keyframes mantraMarquee {
+            0% {
+                transform: translate3d(0, 0, 0);
             }
-            .tour-nav-container::-webkit-scrollbar {
-                display: none;
+            100% {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .datta-mantra-bar {
+                padding: 10px 0;
+                top: 65px;
+            }
+            .mantra-item {
+                font-size: 0.92rem;
+                letter-spacing: 1.2px;
+                padding: 0 20px;
+                gap: 14px;
+            }
+            .mantra-track {
+                animation-duration: 22s;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .mantra-track {
+                animation: none;
+                transform: none;
             }
         }
 
@@ -837,7 +800,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="products.html" class="nav-link">Global Trade</a></li>
-                <li><a href="tours-travel.html" class="nav-link active">Tours & Travel</a></li>
+                <li><a href="tours-travel.html" class="nav-link active">Datta Chaya Tourism</a></li>
                 <li><a href="medical-tourism.html" class="nav-link">Medical Tourism</a></li>
                 <li><a href="about-us.html" class="nav-link">About Us</a></li>
                 <li><a href="market-insights.html" class="nav-link">Global Network</a></li>
@@ -854,74 +817,70 @@
     <section class="travel-hero">
         <div>
             <div class="hero-badge-pill">
-                DATTA CHAYA TOURISM
+                AORR TOURS, TRAVEL &amp; RAIL SERVICES
             </div>
             <h1 class="hero-title-main">
                 Travel Beyond Boundaries…<br>
-                <span class="hero-title-accent">Experience Heritage, Nature & Divinity!</span>
+                <span class="hero-title-accent">Experience Heritage, Nature &amp; Divinity!</span>
             </h1>
             <p class="hero-subdesc">
-                Welcome to <strong>Datta Chaya Tourism</strong> — AORR's dedicated travel division. We specialize in curated Spiritual Pilgrimages, UNESCO Heritage Expeditions, Authorised <strong>IRCTC Railway Reservations</strong>, and Bespoke Corporate Travel Management from Pune & Mumbai.
+                Welcome to AORR's travel division featuring <strong>Datta Chaya Tourism</strong> for curated Spiritual Pilgrimages &amp; Heritage Expeditions, alongside <strong>AORR's Authorised IRCTC Railway Reservation Desk</strong> and Bespoke Corporate Travel Management from Pune &amp; Mumbai.
             </p>
 
             <div class="hero-cta-group">
                 <a href="#tour-packages" class="hero-btn primary">Explore Tour Yatras ↓</a>
-                <a href="#irctc-railway" class="hero-btn secondary">IRCTC Railway Desk 🚆</a>
+                <a href="#irctc-railway" class="hero-btn secondary">AORR IRCTC Desk 🚆</a>
             </div>
 
-            <!-- Trust Badges Strip -->
+            <!-- Signature Datta Chaya Yatras Highlight Strip -->
             <div class="travel-trust-strip">
-                <div class="trust-badge-item">
-                    <svg class="trust-badge-icon" viewBox="0 0 24 24"><path d="M12 3L2 9h20L12 3zm-6 8v9h12v-9H6zm3 3h6v6H9v-6z"/></svg>
-                    <span>Dedicated Temple Darshan</span>
-                </div>
-                <div class="trust-badge-item">
-                    <svg class="trust-badge-icon" viewBox="0 0 24 24"><path d="M12 2c-4 0-8 1.5-8 5v9c0 1.5 1 2.5 2.5 3L5 21v1h2l1.5-2h7L17 22h2v-1l-1.5-2c1.5-.5 2.5-1.5 2.5-3V7c0-3.5-4-5-8-5zm-5 5h10v4H7V7zm1.5 9c-.8 0-1.5-.7-1.5-1.5S7.7 13 8.5 13s1.5.7 1.5 1.5S9.3 16 8.5 16zm7 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"/></svg>
-                    <span>Verified IRCTC Train Tickets</span>
-                </div>
-                <div class="trust-badge-item">
-                    <svg class="trust-badge-icon" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-11-7V6h13v4H5.5z"/></svg>
-                    <span>AC Pushback Coaches & Sedans</span>
-                </div>
-                <div class="trust-badge-item">
-                    <svg class="trust-badge-icon" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 19c0 1.1.89 2 1.99 2H17c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
-                    <span>Hygienic Pure-Veg / Satvik Meals</span>
-                </div>
-                <div class="trust-badge-item">
-                    <svg class="trust-badge-icon" viewBox="0 0 24 24"><path d="M19 7h-8v8H3V4H1v17h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4zm-9 6H3V7h7v6z"/><circle cx="7" cy="9.5" r="1.5"/></svg>
-                    <span>Handpicked 3★/4★ Accommodations</span>
-                </div>
+                <a href="#divine-andhra" class="trust-badge-item" style="text-decoration: none; color: #0B3C23;">
+                    <span style="font-size: 1.1rem;">🚩</span>
+                    <strong>Divya Andhra Yatra (5D/4N)</strong>
+                </a>
+                <a href="#dattatreya-guru" class="trust-badge-item" style="text-decoration: none; color: #0B3C23;">
+                    <span style="font-size: 1.1rem;">🛕</span>
+                    <strong>Datta &amp; Guru Pilgrimage (5D/4N)</strong>
+                </a>
+                <a href="#datta-vitthal" class="trust-badge-item" style="text-decoration: none; color: #0B3C23;">
+                    <span style="font-size: 1.1rem;">🕉️</span>
+                    <strong>Datta &amp; Vitthal Yatra (5D/4N)</strong>
+                </a>
+                <a href="#karnataka-heritage" class="trust-badge-item" style="text-decoration: none; color: #0B3C23;">
+                    <span style="font-size: 1.1rem;">🏛️</span>
+                    <strong>Karnataka Heritage (5D/4N)</strong>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Sticky Navigation Bar for Quick Jump -->
-    <div class="tour-nav-bar">
-        <div class="tour-nav-container">
-            <a href="#divine-andhra" class="tour-nav-btn active">
-                <svg class="nav-btn-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                <span>Divya Andhra Yatra (5D/4N)</span>
-            </a>
-            <a href="#dattatreya-guru" class="tour-nav-btn">
-                <svg class="nav-btn-icon" viewBox="0 0 24 24"><path d="M12 2c-1.5 3-4 5.5-4 9a6 6 0 0 0 12 0c0-3.5-2.5-6-4-9zm0 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-                <span>Datta & Guru Pilgrimage (5D/4N)</span>
-            </a>
-            <a href="#datta-vitthal" class="tour-nav-btn">
-                <svg class="nav-btn-icon" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.5 5.5l13 13M18.5 5.5l-13 13"/></svg>
-                <span>Datta & Vitthal Yatra (5D/4N)</span>
-            </a>
-            <a href="#karnataka-heritage" class="tour-nav-btn">
-                <svg class="nav-btn-icon" viewBox="0 0 24 24"><path d="M4 21h16M4 7h16M6 7v14M10 7v14M14 7v14M18 7v14M12 3L2 7h20L12 3z"/></svg>
-                <span>Karnataka Heritage (5D/4N)</span>
-            </a>
-            <a href="#irctc-railway" class="tour-nav-btn">
-                <svg class="nav-btn-icon" viewBox="0 0 24 24"><path d="M12 2c-4 0-8 1.5-8 5v9c0 1.5 1 2.5 2.5 3L5 21v1h2l1.5-2h7L17 22h2v-1l-1.5-2c1.5-.5 2.5-1.5 2.5-3V7c0-3.5-4-5-8-5zm-5 5h10v4H7V7z"/></svg>
-                <span>IRCTC Railway Desk</span>
-            </a>
-            <a href="#travel-inquiry" class="tour-nav-btn tour-nav-cta">
-                <svg class="nav-btn-icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
-                <span>Book Now</span>
-            </a>
+    <!-- Sticky Sacred Datta Mantra Moving Marquee Bar -->
+    <div class="datta-mantra-bar" role="region" aria-label="Sacred Datta Mantra">
+        <div class="mantra-track">
+            <div class="mantra-item">
+                <span class="mantra-symbol">✨ 🕉️ ✨</span>
+                <span>॥ ॐ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ ॐ श्री गुरुदेव दत्त ॥</span>
+                <span class="mantra-symbol">✨ 🚩 ✨</span>
+                <span>॥ ॐ द्रां दत्तात्रेयाय नमः ॥</span>
+            </div>
+            <div class="mantra-item">
+                <span class="mantra-symbol">✨ 🕉️ ✨</span>
+                <span>॥ ॐ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ ॐ श्री गुरुदेव दत्त ॥</span>
+                <span class="mantra-symbol">✨ 🚩 ✨</span>
+                <span>॥ ॐ द्रां दत्तात्रेयाय नमः ॥</span>
+            </div>
+            <div class="mantra-item">
+                <span class="mantra-symbol">✨ 🕉️ ✨</span>
+                <span>॥ ॐ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ ॐ श्री गुरुदेव दत्त ॥</span>
+                <span class="mantra-symbol">✨ 🚩 ✨</span>
+                <span>॥ ॐ द्रां दत्तात्रेयाय नमः ॥</span>
+            </div>
+            <div class="mantra-item">
+                <span class="mantra-symbol">✨ 🕉️ ✨</span>
+                <span>॥ ॐ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ ॐ श्री गुरुदेव दत्त ॥</span>
+                <span class="mantra-symbol">✨ 🚩 ✨</span>
+                <span>॥ ॐ द्रां दत्तात्रेयाय नमः ॥</span>
+            </div>
         </div>
     </div>
 
@@ -931,13 +890,13 @@
             
             <div class="section-header-about" style="text-align: center; margin-bottom: 50px;">
                 <span class="section-tag-about" style="background: #E8F5E9; color: #0B3C23; font-weight: 800; border: 1.5px solid #0E5A30; padding: 6px 22px;">
-                    ✨ FEATURED SPIRITUAL & HERITAGE EXPEDITIONS ✨
+                    ✨ DATTA CHAYA TOURISM — SPIRITUAL &amp; HERITAGE EXPEDITIONS ✨
                 </span>
                 <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: #0B3C23; margin: 15px 0 10px;">
                     Curated Signature Tour Yatras
                 </h2>
                 <p style="font-size: 1.05rem; color: #4B5563; max-width: 840px; margin: 0 auto; line-height: 1.65;">
-                    Each Datta Chaya pilgrimage is crafted with care to offer peaceful darshan, comfortable private transportation, hygienic dining, and complete on-ground assistance.
+                    Handcrafted sacred pilgrimage packages curated exclusively under <strong>Datta Chaya Tourism</strong> with peaceful darshan, comfortable private transportation, hygienic dining, and complete on-ground assistance.
                 </p>
             </div>
 
@@ -1349,40 +1308,45 @@
         </div>
     </section>
 
-    <!-- AUTHORISED IRCTC RAILWAY TICKET BOOKING DESK -->
+    <!-- AORR AUTHORISED IRCTC RAILWAY RESERVATION DESK (DEDICATED SECTION) -->
     <section class="rail-section" id="irctc-railway">
         <div id="irctc-desk" style="position: relative; top: -80px; visibility: hidden;"></div>
         <div class="rail-container">
             <div class="rail-grid">
                 
                 <div>
-                    <span style="background: rgba(197, 155, 39, 0.25); color: #C59B27; font-weight: 800; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid #C59B27;">
-                        🚆 AUTHORISED IRCTC TICKETING DESK
-                    </span>
-                    <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 3.5vw, 2.7rem); font-weight: 800; color: #FFFFFF; margin-top: 15px; line-height: 1.25;">
-                        Railway Ticket Booking<br><span style="color: #C59B27;">All Over India 🇮🇳</span>
+                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap;">
+                        <span style="background: rgba(197, 155, 39, 0.25); color: #C59B27; font-weight: 800; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid #C59B27;">
+                            🚆 AORR RAIL TICKETING WING
+                        </span>
+                        <span style="background: rgba(255, 255, 255, 0.15); color: #FFFFFF; font-weight: 700; padding: 5px 14px; border-radius: 18px; font-size: 0.8rem; letter-spacing: 0.5px;">
+                            Official IRCTC Authorised Partner
+                        </span>
+                    </div>
+                    <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 3.5vw, 2.7rem); font-weight: 800; color: #FFFFFF; margin-top: 10px; line-height: 1.25;">
+                        All-India Railway Reservation Desk<br><span style="color: #C59B27;">Direct &amp; Hassle-Free E-Ticketing 🇮🇳</span>
                     </h2>
                     <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.05rem; line-height: 1.65; margin-top: 15px;">
                         <em>"From Kashmir to Kanyakumari – Let AORR take you closer to India!"</em><br>
-                        Skip the hassle of long online queues and failed payment portals. Get instant, verified railway reservations directly through our Pune office desk.
+                        Skip the stress of server queues and complex quotas. AORR’s dedicated rail ticketing desk provides authorized booking assistance, route optimization, and fast official PDF e-ticket dispatch to your phone.
                     </p>
 
                     <div class="rail-features-grid">
                         <div class="rail-feat-card">
-                            <h4>⚡ Tatkal Reservations</h4>
-                            <p>Fast emergency Tatkal booking assistance for urgent personal and business travel.</p>
+                            <h4>⚡ Tatkal &amp; Premium Tatkal</h4>
+                            <p>Fast emergency booking assistance with opening-minute submission for urgent travel needs.</p>
                         </div>
                         <div class="rail-feat-card">
-                            <h4>👨‍👩‍👧‍👦 Group Block Bookings</h4>
-                            <p>Seamless block reservations for pilgrimage yatras, wedding parties, and corporate delegates.</p>
+                            <h4>👨‍👩‍👧‍👦 Group &amp; Delegate Bookings</h4>
+                            <p>Coordinated block reservations for large families, wedding groups, corporate teams, and delegates.</p>
                         </div>
                         <div class="rail-feat-card">
-                            <h4>📅 Confirmed Berths</h4>
-                            <p>Route planning advice and proactive status tracking for maximum seat confirmation.</p>
+                            <h4>📊 Route Planning &amp; PNR Tracking</h4>
+                            <p>Smart route alternatives, quota selection advice, and live PNR confirmation probability monitoring.</p>
                         </div>
                         <div class="rail-feat-card">
-                            <h4>📱 Instant E-Tickets</h4>
-                            <p>Official PDF train tickets delivered directly to your WhatsApp and Email.</p>
+                            <h4>📱 Instant Official E-Tickets</h4>
+                            <p>Official IRCTC electronic tickets delivered promptly as authentic PDFs via WhatsApp and Email.</p>
                         </div>
                     </div>
                 </div>
@@ -1392,26 +1356,28 @@
                     <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
                         <span style="font-size: 2.4rem;">🎫</span>
                         <div>
-                            <span style="font-size: 0.8rem; font-weight: 800; color: #0E5A30; text-transform: uppercase; letter-spacing: 0.5px;">IRCTC Verified Agent</span>
-                            <h3 style="margin: 0; font-size: 1.4rem; color: #0B3C23; font-weight: 800;">Book Train Tickets Now</h3>
+                            <span style="font-size: 0.8rem; font-weight: 800; color: #0E5A30; text-transform: uppercase; letter-spacing: 0.5px;">AORR Rail Services Desk</span>
+                            <h3 style="margin: 0; font-size: 1.4rem; color: #0B3C23; font-weight: 800;">Book Railway Tickets</h3>
                         </div>
                     </div>
 
                     <p style="font-size: 0.92rem; color: #4B5563; line-height: 1.55;">
-                        We handle bookings across all Indian Railways train categories with transparent service fees:
+                        Reservation assistance across all Indian Railways classes and premium express trains:
                     </p>
 
                     <div class="rail-classes-pill">
                         <span class="class-pill">1AC (First AC)</span>
                         <span class="class-pill">2AC (2-Tier AC)</span>
                         <span class="class-pill">3AC (3-Tier AC)</span>
+                        <span class="class-pill">3E (3 AC Economy)</span>
                         <span class="class-pill">Sleeper Class</span>
                         <span class="class-pill">Vande Bharat Express</span>
-                        <span class="class-pill">Rajdhani & Shatabdi</span>
+                        <span class="class-pill">Rajdhani &amp; Shatabdi</span>
+                        <span class="class-pill">Tejas &amp; Duronto</span>
                     </div>
 
-                    <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20would%20like%20to%20book%20Railway%20Tickets.%20Please%20assist%20me." target="_blank" rel="noopener noreferrer" class="btn-book-primary" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; font-size: 0.95rem; text-decoration: none;">
-                        <span>Book on WhatsApp 📲</span>
+                    <a href="https://wa.me/919730004911?text=Hello%20AORR%20Rail%20Desk%2C%20I%20would%20like%20assistance%20with%20an%20IRCTC%20Railway%20Ticket%20booking." target="_blank" rel="noopener noreferrer" class="btn-book-primary" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; font-size: 0.95rem; text-decoration: none;">
+                        <span>Inquire on WhatsApp 📲</span>
                     </a>
                     <a href="#travel-inquiry" style="display: block; text-align: center; margin-top: 14px; color: #0B3C23; font-weight: 700; font-size: 0.88rem; text-decoration: underline;">
                         Or Submit Online Ticket Request ↓
@@ -1529,8 +1495,8 @@
                 <div class="card" style="margin: 0;">
                     <div class="card2">
                         <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec" novalidate>
-                            <p id="heading">Tour & Railway Inquiry Form</p>
-                            <p class="form-subtitle-text">Datta Chaya Tourism & Authorised IRCTC Rail Reservation Desk.</p>
+                            <p id="heading">Tour & Rail Inquiry Form</p>
+                            <p class="form-subtitle-text">Datta Chaya Spiritual Yatras &amp; AORR IRCTC Railway Desk.</p>
 
                             <!-- Name & Email Row -->
                             <div class="form-row-2">
@@ -1567,14 +1533,14 @@
                                     </label>
                                     <select class="input-field" id="tour-service" name="location" required aria-required="true">
                                         <option value="" disabled selected>Select Tour Package or Service</option>
-                                        <option value="Divya Andhra Tour - Economy Package (₹37,000/person)">Divya Andhra Tour - Economy Package (₹37,000/person)</option>
-                                        <option value="Divya Andhra Tour - Business Package (₹44,000/person)">Divya Andhra Tour - Business Package (₹44,000/person)</option>
-                                        <option value="Divine Dattatreya & Guru Pilgrimage (5D/4N)">Divine Dattatreya & Guru Pilgrimage (5D/4N)</option>
-                                        <option value="Divine Datta & Vitthal Pilgrimage (5D/4N)">Divine Datta & Vitthal Pilgrimage (5D/4N)</option>
-                                        <option value="Karnataka Heritage & Spiritual Expedition (5D/4N)">Karnataka Heritage & Spiritual Expedition (5D/4N)</option>
-                                        <option value="IRCTC Railway Ticket Booking (Tatkal / Group / General)">IRCTC Railway Ticket Booking (Tatkal / Group / General)</option>
-                                        <option value="Corporate Business Travel & Flights">Corporate Business Travel & Flights</option>
-                                        <option value="Customized Family Holiday Package">Customized Family Holiday Package</option>
+                                        <option value="Datta Chaya — Divya Andhra Tour (5D/4N Economy ₹37,000)">Datta Chaya — Divya Andhra Tour (5D/4N Economy ₹37,000)</option>
+                                        <option value="Datta Chaya — Divya Andhra Tour (5D/4N Business ₹44,000)">Datta Chaya — Divya Andhra Tour (5D/4N Business ₹44,000)</option>
+                                        <option value="Datta Chaya — Divine Dattatreya & Guru Pilgrimage (5D/4N)">Datta Chaya — Divine Dattatreya & Guru Pilgrimage (5D/4N)</option>
+                                        <option value="Datta Chaya — Divine Datta & Vitthal Pilgrimage (5D/4N)">Datta Chaya — Divine Datta & Vitthal Pilgrimage (5D/4N)</option>
+                                        <option value="Datta Chaya — Karnataka Heritage & Spiritual Expedition (5D/4N)">Datta Chaya — Karnataka Heritage & Spiritual Expedition (5D/4N)</option>
+                                        <option value="AORR IRCTC Desk — Railway Ticket Booking Assistance (Tatkal / Group / General)">AORR IRCTC Desk — Railway Ticket Booking Assistance (Tatkal / Group / General)</option>
+                                        <option value="AORR Travel Desk — Corporate Business Travel & Flights">AORR Travel Desk — Corporate Business Travel & Flights</option>
+                                        <option value="AORR Travel Desk — Customized Family Holiday Package">AORR Travel Desk — Customized Family Holiday Package</option>
                                     </select>
                                     <span class="field-error-msg" id="tour-service-error">Please select a tour package or rail service.</span>
                                 </div>
@@ -1589,7 +1555,7 @@
                                 <span class="field-error-msg" id="tour-message-error">Please provide travel dates or special requests.</span>
                             </div>
 
-                            <input type="hidden" name="product" value="Tours & Travel Inquiry (Datta Chaya)">
+                            <input type="hidden" name="product" value="Tours, Yatras & Rail Inquiry">
                             <input type="hidden" name="page" value="tours-travel.html">
                             
                             <!-- Honeypot -->
@@ -1612,13 +1578,13 @@
                 <div style="background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(6,19,11,0.06); border: 1.5px solid rgba(14,90,48,0.2); display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <span style="background: #E8F5E9; color: #0B3C23; font-weight: 800; font-size: 0.82rem; padding: 6px 14px; border-radius: 20px; text-transform: uppercase; border: 1px solid rgba(14,90,48,0.25);">
-                            DATTA CHAYA TOURISM (AORR)
+                            AORR TRAVEL &amp; RAIL SERVICES
                         </span>
                         <h3 style="font-family: 'Poppins', sans-serif; color: #0B3C23; font-size: 1.5rem; margin-top: 15px; margin-bottom: 15px; font-weight: 800;">
-                            AORR Tours & Travel Services
+                            Tours, Yatras &amp; Rail Ticketing Desk
                         </h3>
                         <p style="color: #4B5563; font-size: 0.95rem; line-height: 1.65; margin-bottom: 25px;">
-                            One Travel Partner • Endless Sacred Experiences! Whether you are planning a spiritual pilgrimage, a heritage tour with family, or need verified IRCTC train reservations, our team is ready to serve you.
+                            One Travel Partner • Endless Experiences! Whether you are planning a spiritual pilgrimage with Datta Chaya Tourism, require authorized IRCTC railway booking assistance from AORR, or need corporate travel management, our team is ready to serve you.
                         </p>
                         
                         <div style="display: flex; flex-direction: column; gap: 16px; color: #374151; font-size: 0.94rem;">
@@ -1687,10 +1653,10 @@
 
             <!-- Division 2 & 3 -->
             <div>
-                <div style="font-weight: 700; color: #A5D6A7; font-size: 0.95rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">02 & 03 Services</div>
+                <div style="font-weight: 700; color: #A5D6A7; font-size: 0.95rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">02 &amp; 03 Services</div>
                 <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; padding: 0; margin: 0;">
-                    <li><a href="tours-travel.html" style="color: #E5E7EB; text-decoration: none;">Corporate Travel Desk</a></li>
-                    <li><a href="tours-travel.html" style="color: #E5E7EB; text-decoration: none;">Holiday Packages</a></li>
+                    <li><a href="tours-travel.html" style="color: #E5E7EB; text-decoration: none;">Datta Chaya Tourism</a></li>
+                    <li><a href="tours-travel.html#irctc-railway" style="color: #E5E7EB; text-decoration: none;">IRCTC Railway Desk</a></li>
                     <li><a href="medical-tourism.html" style="color: #E5E7EB; text-decoration: none;">Medical Tourism</a></li>
                     <li><a href="medical-tourism.html#medical-inquiry" style="color: #E5E7EB; text-decoration: none;">Patient Desk</a></li>
                 </ul>
@@ -1737,7 +1703,7 @@
             <div class="footer-bottom-nav-links">
                 <a href="index.html" class="footer-nav-link">Home</a>
                 <a href="products.html" class="footer-nav-link">Global Trade</a>
-                <a href="tours-travel.html" class="footer-nav-link">Tours & Travel</a>
+                <a href="tours-travel.html" class="footer-nav-link">Datta Chaya Tourism</a>
                 <a href="medical-tourism.html" class="footer-nav-link">Medical Tourism</a>
                 <a href="about-us.html" class="footer-nav-link">About Us</a>
                 <a href="market-insights.html" class="footer-nav-link">Global Network</a>
