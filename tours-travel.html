@@ -235,7 +235,7 @@
         @media (max-width: 768px) {
             .datta-mantra-bar {
                 padding: 10px 0;
-                top: 65px;
+                top: 74px;
             }
             .mantra-item {
                 font-size: 0.92rem;
@@ -631,6 +631,464 @@
             box-shadow: 0 8px 22px rgba(37, 211, 102, 0.4);
         }
 
+        /* ========================================================================= */
+        /* PREMIUM PILGRIMAGE JOURNEY TIMELINE & DAY ACCORDION                       */
+        /* ========================================================================= */
+        .sacred-itinerary-section {
+            padding: 85px 20px;
+            background: #FFFDF9;
+            border-top: 1.5px solid rgba(197, 155, 39, 0.25);
+            border-bottom: 1.5px solid rgba(197, 155, 39, 0.25);
+            position: relative;
+        }
+
+        .itinerary-container {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        /* Section Header */
+        .itinerary-header {
+            text-align: center;
+            max-width: 840px;
+            margin: 0 auto 35px;
+        }
+
+        .itinerary-eyebrow {
+            display: inline-block;
+            background: #FFF9E6;
+            color: #92400E;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 20px;
+            border: 1px solid #C59B27;
+            margin-bottom: 14px;
+        }
+
+        .itinerary-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            font-weight: 800;
+            color: #0B3C23;
+            margin: 0 0 10px;
+            line-height: 1.25;
+        }
+
+        .itinerary-subheading {
+            font-size: 1.05rem;
+            color: #4B5563;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 1. Journey Route Overview */
+        .journey-route-nav {
+            background: #FFFFFF;
+            border: 1.5px solid rgba(197, 155, 39, 0.35);
+            border-radius: 20px;
+            padding: 24px 30px;
+            box-shadow: 0 8px 24px rgba(11, 60, 35, 0.04);
+            margin-bottom: 25px;
+        }
+
+        .route-stops-track {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            gap: 15px;
+        }
+
+        .route-stop-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .route-node-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #0B3C23;
+            color: #FFD54F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 3px solid #FFF9E6;
+            box-shadow: 0 4px 10px rgba(11, 60, 35, 0.2);
+            margin-bottom: 8px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .route-stop-node:hover .route-node-circle {
+            transform: scale(1.1);
+            background: #C59B27;
+            color: #0B3C23;
+        }
+
+        .route-node-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #0B3C23;
+            letter-spacing: 0.5px;
+        }
+
+        .route-node-desc {
+            font-size: 0.8rem;
+            color: #6B7280;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .route-connector-line {
+            position: absolute;
+            top: 22px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: linear-gradient(90deg, #C59B27 0%, #66BB6A 50%, #C59B27 100%);
+            z-index: 1;
+        }
+
+        /* 2. Trip Summary Strip */
+        .trip-summary-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 45px;
+        }
+
+        .summary-pill {
+            background: #FFFFFF;
+            border: 1px solid rgba(14, 90, 48, 0.18);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #0B3C23;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .summary-pill-icon {
+            font-size: 1rem;
+        }
+
+        /* 3. Vertical Timeline & Accordions */
+        .timeline-accordion-flow {
+            position: relative;
+            margin-top: 20px;
+            padding-left: 0;
+        }
+
+        .timeline-track-spine {
+            position: absolute;
+            left: 28px;
+            top: 20px;
+            bottom: 20px;
+            width: 3px;
+            background: linear-gradient(180deg, #C59B27 0%, #0E5A30 50%, #C59B27 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-day-block {
+            position: relative;
+            margin-bottom: 24px;
+            padding-left: 70px;
+        }
+
+        .timeline-day-node {
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #0B3C23;
+            color: #FFD54F;
+            border: 3px solid #FFFDF9;
+            box-shadow: 0 4px 12px rgba(11, 60, 35, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-day-block.is-open .timeline-day-node {
+            background: #C59B27;
+            color: #0B3C23;
+            transform: scale(1.08);
+        }
+
+        /* Accordion Card */
+        .timeline-accordion-card {
+            background: #FFFFFF;
+            border: 1.5px solid rgba(14, 90, 48, 0.15);
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-day-block.is-open .timeline-accordion-card {
+            border-color: #C59B27;
+            box-shadow: 0 12px 30px rgba(197, 155, 39, 0.12);
+        }
+
+        /* Accordion Trigger Button */
+        .timeline-accordion-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 22px 26px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            outline: none;
+            transition: background 0.25s ease;
+        }
+
+        .timeline-accordion-trigger:hover {
+            background: #FFFDF5;
+        }
+
+        .timeline-accordion-trigger:focus-visible {
+            outline: 2px solid #C59B27;
+            outline-offset: -2px;
+        }
+
+        .trigger-day-badge {
+            display: inline-block;
+            background: #E8F5E9;
+            color: #0E5A30;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 3px 12px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .trigger-dest-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0B3C23;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .trigger-day-summary {
+            font-size: 0.9rem;
+            color: #6B7280;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .accordion-toggle-icon {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 50%;
+            background: #F3F4F6;
+            color: #0B3C23;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, color 0.3s ease;
+        }
+
+        .timeline-day-block.is-open .accordion-toggle-icon {
+            transform: rotate(180deg);
+            background: #0B3C23;
+            color: #FFD54F;
+        }
+
+        /* Accordion Content Panel */
+        .timeline-accordion-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+            padding: 0 26px;
+        }
+
+        .timeline-day-block.is-open .timeline-accordion-panel {
+            max-height: 1200px;
+            padding: 0 26px 26px;
+        }
+
+        /* Activity Items Inside Accordion */
+        .activity-timeline-list {
+            border-top: 1px dashed rgba(197, 155, 39, 0.4);
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .activity-slot {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .activity-time-badge {
+            background: #FFF9E6;
+            color: #92400E;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            min-width: 110px;
+            border: 1px solid rgba(197, 155, 39, 0.3);
+        }
+
+        .activity-desc-text {
+            font-size: 0.94rem;
+            color: #374151;
+            line-height: 1.6;
+            margin: 0;
+            flex: 1;
+        }
+
+        /* Travel Transition Pill */
+        .travel-transition-row {
+            margin: 16px 0 16px 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .transition-pill {
+            background: linear-gradient(135deg, #09260F 0%, #0F3814 100%);
+            color: #FFD54F;
+            border: 1px solid #C59B27;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* 4. CTA Box */
+        .itinerary-cta-card {
+            background: linear-gradient(135deg, #0B3C23 0%, #0E5A30 100%);
+            color: #FFFFFF;
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            border: 2px solid #C59B27;
+            box-shadow: 0 15px 35px rgba(11, 60, 35, 0.2);
+            margin-top: 45px;
+        }
+
+        .itinerary-cta-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin: 0 0 8px;
+        }
+
+        .itinerary-cta-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 650px;
+            margin: 0 auto 24px;
+            line-height: 1.6;
+        }
+
+        .itinerary-cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            .sacred-itinerary-section {
+                padding: 60px 16px;
+            }
+            .timeline-track-spine {
+                left: 18px;
+            }
+            .timeline-day-block {
+                padding-left: 48px;
+            }
+            .timeline-day-node {
+                left: 2px;
+                width: 32px;
+                height: 32px;
+                font-size: 0.85rem;
+                top: 18px;
+            }
+            .travel-transition-row {
+                margin-left: 48px;
+            }
+            .timeline-accordion-trigger {
+                padding: 18px 16px;
+                gap: 12px;
+            }
+            .timeline-day-block.is-open .timeline-accordion-panel {
+                padding: 0 16px 20px;
+            }
+            .activity-slot {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .activity-time-badge {
+                min-width: auto;
+            }
+            .route-stops-track {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .route-connector-line {
+                display: none;
+            }
+            .route-stop-node {
+                width: 100%;
+                flex-direction: row;
+                text-align: left;
+                gap: 14px;
+            }
+            .route-node-circle {
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+        }
+
         /* IRCTC Rail Section */
         .rail-section {
             padding: 90px 20px;
@@ -758,7 +1216,7 @@
                 grid-template-columns: 1fr;
             }
             .tour-nav-bar {
-                top: 65px;
+                top: 74px;
             }
         }
     </style>
@@ -832,23 +1290,23 @@
                 <a href="#irctc-railway" class="hero-btn secondary">AORR IRCTC Desk 🚆</a>
             </div>
 
-            <!-- Signature Datta Chaya Yatras Highlight Strip -->
+            <!-- Signature Datta Chhaya Yatras Highlight Strip -->
             <div class="travel-trust-strip">
-                <a href="#divine-andhra" class="trust-badge-item" style="text-decoration: none; color: #0B3C23;">
-                    <span style="font-size: 1.1rem;">🚩</span>
-                    <strong>Divya Andhra Yatra (5D/4N)</strong>
-                </a>
                 <a href="#dattatreya-guru" class="trust-badge-item" style="text-decoration: none; color: #0B3C23;">
-                    <span style="font-size: 1.1rem;">🛕</span>
-                    <strong>Datta &amp; Guru Pilgrimage (5D/4N)</strong>
+                    <span style="font-size: 1.1rem;">🪔</span>
+                    <strong>Divine Dattatreya &amp; Guru Pilgrimage (5D/4N)</strong>
+                </a>
+                <a href="#divine-andhra" class="trust-badge-item" style="text-decoration: none; color: #0B3C23;">
+                    <span style="font-size: 1.1rem;">🌊</span>
+                    <strong>Divine Andhra (5D/4N)</strong>
                 </a>
                 <a href="#datta-vitthal" class="trust-badge-item" style="text-decoration: none; color: #0B3C23;">
-                    <span style="font-size: 1.1rem;">🕉️</span>
-                    <strong>Datta &amp; Vitthal Yatra (5D/4N)</strong>
+                    <span style="font-size: 1.1rem;">🚩</span>
+                    <strong>Divine Datta &amp; Vitthal Pilgrimage (2D/3N)</strong>
                 </a>
                 <a href="#karnataka-heritage" class="trust-badge-item" style="text-decoration: none; color: #0B3C23;">
                     <span style="font-size: 1.1rem;">🏛️</span>
-                    <strong>Karnataka Heritage (5D/4N)</strong>
+                    <strong>Karnataka Heritage Tour (4N/5D)</strong>
                 </a>
             </div>
         </div>
@@ -859,25 +1317,25 @@
         <div class="mantra-track">
             <div class="mantra-item">
                 <span class="mantra-symbol">✨ 🕉️ ✨</span>
-                <span>॥ ॐ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ ॐ श्री गुरुदेव दत्त ॥</span>
+                <span>॥ श्री गुरुदेव दत्त ॥ • ॥ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ • ॥ अवधूत चिंतन श्री गुरुदेव दत्त ॥</span>
                 <span class="mantra-symbol">✨ 🚩 ✨</span>
                 <span>॥ ॐ द्रां दत्तात्रेयाय नमः ॥</span>
             </div>
             <div class="mantra-item">
                 <span class="mantra-symbol">✨ 🕉️ ✨</span>
-                <span>॥ ॐ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ ॐ श्री गुरुदेव दत्त ॥</span>
+                <span>॥ श्री गुरुदेव दत्त ॥ • ॥ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ • ॥ अवधूत चिंतन श्री गुरुदेव दत्त ॥</span>
                 <span class="mantra-symbol">✨ 🚩 ✨</span>
                 <span>॥ ॐ द्रां दत्तात्रेयाय नमः ॥</span>
             </div>
             <div class="mantra-item">
                 <span class="mantra-symbol">✨ 🕉️ ✨</span>
-                <span>॥ ॐ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ ॐ श्री गुरुदेव दत्त ॥</span>
+                <span>॥ श्री गुरुदेव दत्त ॥ • ॥ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ • ॥ अवधूत चिंतन श्री गुरुदेव दत्त ॥</span>
                 <span class="mantra-symbol">✨ 🚩 ✨</span>
                 <span>॥ ॐ द्रां दत्तात्रेयाय नमः ॥</span>
             </div>
             <div class="mantra-item">
                 <span class="mantra-symbol">✨ 🕉️ ✨</span>
-                <span>॥ ॐ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ ॐ श्री गुरुदेव दत्त ॥</span>
+                <span>॥ श्री गुरुदेव दत्त ॥ • ॥ दिगंबरा दिगंबरा श्रीपाद वल्लभ दिगंबरा ॥ • ॥ अवधूत चिंतन श्री गुरुदेव दत्त ॥</span>
                 <span class="mantra-symbol">✨ 🚩 ✨</span>
                 <span>॥ ॐ द्रां दत्तात्रेयाय नमः ॥</span>
             </div>
@@ -890,25 +1348,25 @@
             
             <div class="section-header-about" style="text-align: center; margin-bottom: 50px;">
                 <span class="section-tag-about" style="background: #E8F5E9; color: #0B3C23; font-weight: 800; border: 1.5px solid #0E5A30; padding: 6px 22px;">
-                    ✨ DATTA CHAYA TOURISM — SPIRITUAL &amp; HERITAGE EXPEDITIONS ✨
+                    ✨ DATTA CHHAYA TOURISM — SPIRITUAL &amp; HERITAGE EXPEDITIONS ✨
                 </span>
                 <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: #0B3C23; margin: 15px 0 10px;">
                     Curated Signature Tour Yatras
                 </h2>
                 <p style="font-size: 1.05rem; color: #4B5563; max-width: 840px; margin: 0 auto; line-height: 1.65;">
-                    Handcrafted sacred pilgrimage packages curated exclusively under <strong>Datta Chaya Tourism</strong> with peaceful darshan, comfortable private transportation, hygienic dining, and complete on-ground assistance.
+                    Handcrafted sacred pilgrimage packages curated exclusively under <strong>Datta Chhaya Tourism</strong> (Powered by AORR Tours &amp; Travel Services) with peaceful darshan, comfortable private transportation, verified accommodations, and complete on-ground assistance.
                 </p>
             </div>
 
-            <!-- PACKAGE 1: DIVYA ANDHRA -->
-            <div class="tour-detail-card" id="divine-andhra">
+            <!-- PACKAGE 1: DIVINE DATTATREYA & GURU PILGRIMAGE -->
+            <div class="tour-detail-card" id="dattatreya-guru">
                 <div class="tour-detail-header">
                     <div>
                         <span style="background: rgba(255,255,255,0.15); color: #A5D6A7; font-size: 0.85rem; font-weight: 800; padding: 4px 14px; border-radius: 15px; letter-spacing: 1px; text-transform: uppercase;">
-                            🌊 SIGNATURE TOUR YATRA 01
+                            🪔 5 SACRED DESTINATIONS • YATRA 01
                         </span>
-                        <h3 class="tour-title-large">DIVYA ANDHRA — 5 DAYS / 4 NIGHTS</h3>
-                        <div class="tour-subtitle">Spiritual & Coastal Andhra Journey (दिव्य आंध्र - आध्यात्मिक आणि किनारपट्टी यात्रा)</div>
+                        <h3 class="tour-title-large">DIVINE DATTATREYA &amp; GURU PILGRIMAGE — 5 DAYS / 4 NIGHTS</h3>
+                        <div class="tour-subtitle">A Journey of Devotion &amp; Discovery • Kuravpur • Mantralaya • Gangapur • Akkalkot • Solapur</div>
                     </div>
                     <div>
                         <span class="tour-duration-badge">⏱️ 5 Days / 4 Nights</span>
@@ -916,10 +1374,51 @@
                 </div>
 
                 <div class="tour-detail-body">
-                    <!-- Detailed Route -->
-                    <div class="route-timeline-bar">
-                        <strong>📍 Curated Tour Route & Circuit:</strong>
-                        Pithapuram → Annavaram → Kakinada → Draksharamam → Kotipalli → Sarpavaram → Coringa Mangroves → Antarvedi → Rajamahendravaram (Rajahmundry)
+                    <!-- 1. Visual Journey Route Overview -->
+                    <div class="journey-route-nav" role="navigation" aria-label="Tour 1 Journey Route">
+                        <div class="route-stops-track">
+                            <div class="route-connector-line" aria-hidden="true"></div>
+                            
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🛕</div>
+                                <div class="route-node-name">KURAVPUR</div>
+                                <div class="route-node-desc">Sri Pada Srivallabha</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🌿</div>
+                                <div class="route-node-name">MANTRALAYA</div>
+                                <div class="route-node-desc">Shri Raghavendra Swamy</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">✨</div>
+                                <div class="route-node-name">GANGAPUR</div>
+                                <div class="route-node-desc">Nirgun Paduka Math</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🌸</div>
+                                <div class="route-node-name">AKKALKOT</div>
+                                <div class="route-node-desc">Swami Samarth Maharaj</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🚩</div>
+                                <div class="route-node-name">SOLAPUR</div>
+                                <div class="route-node-desc">Siddheshwar Temple</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Trip Summary Strip -->
+                    <div class="trip-summary-strip" aria-label="Trip Summary Highlights">
+                        <div class="summary-pill"><span class="summary-pill-icon">⏱️</span> 5 Days</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🌙</span> 4 Nights</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">📍</span> 5 Sacred Kshetras</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🛕</span> Holy Darshan &amp; Puja</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🌊</span> Sangam Snan</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🌸</span> Swami Samarth Palkhi Seva</div>
                     </div>
 
                     <!-- Pricing Tiers Grid -->
@@ -928,146 +1427,280 @@
                         <div class="price-card">
                             <div>
                                 <span class="price-tier-tag economy">🌱 Economy Package</span>
-                                <div class="price-amount">₹ 37,000/-</div>
-                                <div class="price-per-person">Per Person (Min 4 Persons / Single Occupancy Basis)</div>
+                                <div style="font-size: 0.85rem; color: #0E5A30; font-weight: 700; margin-top: 4px;">Comfortable &amp; Affordable Pilgrimage</div>
+                                <div class="price-amount">₹ 14,500/-</div>
+                                <div class="price-per-person">Per Person (Single Occupancy)</div>
                                 <ul class="price-features-list">
                                     <li><span>✓</span> <strong>Transport:</strong> Private Sedan for full 5 Days (as per itinerary)</li>
-                                    <li><span>✓</span> <strong>Stay:</strong> 4 Nights Clean & Comfortable Economy Accommodation</li>
-                                    <li><span>✓</span> <strong>Transfers:</strong> Pithapuram Railway Station Pickup & Rajahmundry Airport Drop</li>
-                                    <li><span>✓</span> <strong>Meals:</strong> Daily Breakfast Included</li>
-                                    <li><span>✓</span> <strong>Sightseeing:</strong> Complete guided temple & coastal sightseeing</li>
-                                    <li><span>✓</span> <strong>Support:</strong> Dedicated AORR Tour Coordination</li>
+                                    <li><span>✓</span> <strong>Stay:</strong> 4 Nights Accommodation (Standard Category)</li>
+                                    <li><span>✓</span> <strong>Darshan:</strong> All Places Darshan &amp; Local Sightseeing</li>
+                                    <li><span>✓</span> <strong>Driver &amp; Tolls:</strong> Chauffeur, Fuel, Tolls &amp; Parking Included</li>
+                                    <li><span>✓</span> <strong>Support:</strong> Dedicated Tour Coordination &amp; Helpline</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary">Book Economy (₹37,000) →</a>
+                            <a href="#travel-inquiry" class="btn-book-primary">Book Economy (₹14,500) →</a>
                         </div>
 
                         <!-- Business Tier -->
                         <div class="price-card featured">
                             <div>
-                                <span class="price-tier-tag business">👑 Business / Premium Package</span>
-                                <div class="price-amount">₹ 44,000/-</div>
-                                <div class="price-per-person">Per Person (Min 4 Persons / Luxury Accommodation)</div>
+                                <span class="price-tier-tag business">👑 Business Package</span>
+                                <div style="font-size: 0.85rem; color: #92400E; font-weight: 700; margin-top: 4px;">Premium &amp; Comfortable Pilgrimage</div>
+                                <div class="price-amount">₹ 18,999/-</div>
+                                <div class="price-per-person">Per Person (Single Occupancy)</div>
                                 <ul class="price-features-list">
-                                    <li><span>✓</span> <strong>Transport:</strong> Private Luxury Sedan for full 5 Days</li>
-                                    <li><span>✓</span> <strong>Stay:</strong> 4 Nights Premium Luxury Hotel / Resort Stay</li>
-                                    <li><span>✓</span> <strong>Transfers:</strong> Pithapuram Railway Station Pickup & Rajahmundry Airport Drop</li>
-                                    <li><span>✓</span> <strong>Meals:</strong> Daily Premium Breakfast Included</li>
-                                    <li><span>✓</span> <strong>Sightseeing:</strong> Priority temple access guidance & coastal tour</li>
-                                    <li><span>✓</span> <strong>Support:</strong> Enhanced Travel Comfort & Dedicated Concierge</li>
+                                    <li><span>✓</span> <strong>Transport:</strong> Private SUV for full 5 Days (as per itinerary)</li>
+                                    <li><span>✓</span> <strong>Stay:</strong> 4 Nights Accommodation (Deluxe / Premium)</li>
+                                    <li><span>✓</span> <strong>Darshan:</strong> All Places Darshan &amp; Local Sightseeing</li>
+                                    <li><span>✓</span> <strong>Comfort:</strong> Premium Chauffeur-Driven SUV &amp; Priority Coordination</li>
+                                    <li><span>✓</span> <strong>Support:</strong> Enhanced Travel Comfort &amp; Dedicated Concierge</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">Book Business (₹44,000) →</a>
+                            <a href="#travel-inquiry" class="btn-book-primary" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">Book Business (₹18,999) →</a>
                         </div>
                     </div>
 
-                    <!-- Day wise Itinerary Grid -->
+                    <!-- 3. Vertical Timeline & Expandable Day Accordions -->
                     <h4 style="font-family: 'Poppins', sans-serif; color: #0B3C23; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;">
                         🗓️ Day-by-Day Sacred Itinerary
                     </h4>
-                    
-                    <div class="itinerary-days-grid">
-                        <div class="day-box">
-                            <span class="day-number">DAY 1</span>
-                            <h5 class="day-title">Pithapuram — Spiritual Immersion</h5>
-                            <ul class="day-activities">
-                                <li>Pickup at Pithapuram Railway Station</li>
-                                <li>Sri Pada Sri Vallabha Temple Darshan (First Incarnation of Lord Dattatreya)</li>
-                                <li>Rudrabhisheka Puja (subject to availability)</li>
-                                <li>Kukuteswara (Shiva) & Kunti Madhava (Vishnu) Temples</li>
-                                <li>Evening Palkhi Seva Procession</li>
-                                <li>Overnight stay in Pithapuram / Kakinada</li>
-                            </ul>
+
+                    <div class="timeline-accordion-flow">
+                        <div class="timeline-track-spine" aria-hidden="true"></div>
+
+                        <!-- DAY 01 — KURAVPUR (Default Open) -->
+                        <article class="timeline-day-block is-open" id="pkg1-day-1">
+                            <div class="timeline-day-node" aria-hidden="true">01</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="true" aria-controls="pkg1-panel-1" id="pkg1-header-1">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 01 • KURAVPUR</span>
+                                        <h5 class="trigger-dest-name">Kuravpur — Sri Pada Shri Vallabha Darshan</h5>
+                                        <div class="trigger-day-summary">Scenic Drive • Krishna River Boat Transfer • Tapobhoomi Darshan</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg1-panel-1" role="region" aria-labelledby="pkg1-header-1">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Arrival in Solapur / Raichur &amp; scenic drive towards the holy Krishna River banks.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Peaceful boat transfer across Krishna River to Kuravpur Island; seek divine blessings at Sri Pada Shri Vallabha Birthplace &amp; Holy Tapobhoomi.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🪔 EVENING</span>
+                                            <p class="activity-desc-text">Audumbar Tree circumambulation (Pradakshina), peaceful river sangam meditation and evening prayers; overnight stay in Kuravpur / Raichur.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Kuravpur to Mantralaya -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Kuravpur → Mantralaya</strong> • Approx. 2.5 hours</span>
+                            </div>
                         </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 2</span>
-                            <h5 class="day-title">Annavaram & Kakinada — Sacred Shrines</h5>
-                            <ul class="day-activities">
-                                <li>Sri Satyanarayana Swamy Temple, Annavaram Darshan</li>
-                                <li>Satyanarayana Vratham / Pooja (advance booking)</li>
-                                <li>Optional visit to Samalkota Kumararama Bheemeshwara Temple</li>
-                                <li>Explore famous Uppada Handloom Saree weavers</li>
-                                <li>Overnight stay in Kakinada</li>
-                            </ul>
+                        <!-- DAY 02 — MANTRALAYA (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg1-day-2">
+                            <div class="timeline-day-node" aria-hidden="true">02</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg1-panel-2" id="pkg1-header-2">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 02 • MANTRALAYA</span>
+                                        <h5 class="trigger-dest-name">Mantralaya — Shri Raghavendra Swamy Darshan</h5>
+                                        <div class="trigger-day-summary">Moola Brindavanam • Panchamukhi Hanuman • Tungabhadra Aarti</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg1-panel-2" role="region" aria-labelledby="pkg1-header-2">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Scenic drive to holy Mantralaya on the sacred banks of Tungabhadra River.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Sacred Moola Brindavanam Darshan of revered saint Shri Guru Raghavendra Swamy.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🪔 EVENING</span>
+                                            <p class="activity-desc-text">Panchamukhi Hanuman Temple visit and serene Tungabhadra River evening Aarti; overnight stay in Mantralaya.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Mantralaya to Gangapur -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Mantralaya → Gangapur</strong> • Approx. 4 hours</span>
+                            </div>
                         </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 3</span>
-                            <h5 class="day-title">Pancharama Temples & Coastal Nature</h5>
-                            <ul class="day-activities">
-                                <li>Draksharamam Pancharama Temple, Kotipalli & Sarpavaram Shrines</li>
-                                <li>Coringa Mangrove Ecosystem (optional boating*)</li>
-                                <li>Sunset experience at Kakinada Beach</li>
-                                <li>Overnight stay in Kakinada</li>
-                            </ul>
+                        <!-- DAY 03 — GANGAPUR (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg1-day-3">
+                            <div class="timeline-day-node" aria-hidden="true">03</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg1-panel-3" id="pkg1-header-3">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 03 • GANGAPUR</span>
+                                        <h5 class="trigger-dest-name">Gangapur — Shri Dattatreya Nirgun Paduka Darshan</h5>
+                                        <div class="trigger-day-summary">Nirgun Math Darshan • Bhima-Amarja Sangam Snan • Audumbar Puja</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg1-panel-3" role="region" aria-labelledby="pkg1-header-3">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Proceed to sacred Kshetra Gangapur, the sanctified seat of Shri Narasimha Saraswati.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Nirgun Math Darshan of Lord Dattatreya Holy Nirguna Paduka and temple complex prayers.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌊 EVENING</span>
+                                            <p class="activity-desc-text">Sacred Sangam Snan at Bhima - Amarja river confluence &amp; Audumbar Puja; overnight stay in Gangapur.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Gangapur to Akkalkot -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Gangapur → Akkalkot</strong> • Approx. 1.5 hours</span>
+                            </div>
                         </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 4</span>
-                            <h5 class="day-title">Antarvedi & Sacred Godavari Confluence</h5>
-                            <ul class="day-activities">
-                                <li>Sri Lakshmi Narasimha Swamy Temple Darshan at Antarvedi</li>
-                                <li>Prayers & Snan at Godavari River - Bay of Bengal Confluence</li>
-                                <li>Scenic photography and serene nature walk</li>
-                                <li>Proceed to Rajamahendravaram (Rajahmundry)</li>
-                                <li>Overnight stay in Rajamahendravaram</li>
-                            </ul>
+                        <!-- DAY 04 — AKKALKOT (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg1-day-4">
+                            <div class="timeline-day-node" aria-hidden="true">04</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg1-panel-4" id="pkg1-header-4">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 04 • AKKALKOT</span>
+                                        <h5 class="trigger-dest-name">Akkalkot — Shri Swami Samarth Darshan</h5>
+                                        <div class="trigger-day-summary">Vatavruksha Mandir • Samadhi Shrine • Annachhatra Mahaprasad • Palkhi Seva</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg1-panel-4" role="region" aria-labelledby="pkg1-header-4">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Drive to the divine pilgrimage town of Akkalkot.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Shri Swami Samarth Maharaj Vatavruksha Mandir Darshan and Samadhi shrine prayers.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🪔 EVENING</span>
+                                            <p class="activity-desc-text">Partake in Annachhatra Mahaprasad and witness the evening Palkhi Seva procession; overnight stay in Akkalkot.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Akkalkot to Solapur -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Akkalkot → Solapur</strong> • Approx. 1 hour</span>
+                            </div>
                         </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 5</span>
-                            <h5 class="day-title">Rajamahendravaram & Departure</h5>
-                            <ul class="day-activities">
-                                <li>Local sightseeing along Godavari River Ghats</li>
-                                <li>Shopping for authentic local souvenirs & prasadam</li>
-                                <li>Drop to Rajahmundry Airport / Railway Station with divine memories</li>
-                            </ul>
-                        </div>
+                        <!-- DAY 05 — SOLAPUR (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg1-day-5">
+                            <div class="timeline-day-node" aria-hidden="true">05</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg1-panel-5" id="pkg1-header-5">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 05 • SOLAPUR</span>
+                                        <h5 class="trigger-dest-name">Solapur — Siddheshwar Temple &amp; Departure</h5>
+                                        <div class="trigger-day-summary">Siddheshwar Mandir • Lake View • Textile Shopping • Drop</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg1-panel-5" role="region" aria-labelledby="pkg1-header-5">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Proceed to Solapur (known as the Pandhari of the South).</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Ancient Shri Siddheshwar Temple Darshan and serene lake visit.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛍️ EVENING</span>
+                                            <p class="activity-desc-text">Explore world-famous Solapur handloom textile &amp; chaddar market; tour concludes with drop at Solapur Railway Station / Bus Stand.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
                     </div>
 
                     <!-- Inclusions & Exclusions Grid -->
-                    <div class="inc-exc-grid">
+                    <div class="inc-exc-grid" style="margin-top: 30px;">
                         <div class="inc-box">
                             <h4>✅ Package Inclusions</h4>
                             <ul class="inc-exc-list">
-                                <li>• Private AC Sedan for 5 Days (as per itinerary)</li>
-                                <li>• 4 Nights Hotel Accommodation (Economy / Business Category)</li>
-                                <li>• Daily Breakfast throughout the trip</li>
-                                <li>• Driver allowance, fuel, toll, and parking charges</li>
-                                <li>• Pithapuram Railway Station pickup & Rajahmundry Drop</li>
-                                <li>• AORR Tour Coordination & 24/7 Helpline Support</li>
+                                <li>• Private AC Vehicle for full 5 Days (Sedan for Economy / SUV for Business)</li>
+                                <li>• 4 Nights Accommodation (Standard for Economy / Deluxe-Premium for Business)</li>
+                                <li>• All Places Darshan &amp; Local Sightseeing as per itinerary</li>
+                                <li>• Driver allowance, fuel, toll taxes, and parking fees included</li>
+                                <li>• Dedicated AORR Tour Coordination &amp; 24/7 Helpline Support</li>
                             </ul>
                         </div>
                         <div class="exc-box">
                             <h4>❌ Package Exclusions</h4>
                             <ul class="inc-exc-list">
-                                <li>• Lunch & Dinner meals (unless specified)</li>
-                                <li>• Train / Flight tickets from Pune/Mumbai to Andhra Pradesh</li>
-                                <li>• Special VIP Darshan, Puja, or Seva fees</li>
-                                <li>• Boating charges at Coringa Mangroves</li>
-                                <li>• Personal expenses (laundry, room service, tips, GST)</li>
+                                <li>• Lunch &amp; Dinner meals</li>
+                                <li>• Train / Flight tickets to and from Solapur</li>
+                                <li>• Special VIP Darshan, Puja, or Seva passes</li>
+                                <li>• Kuravpur local boat transfer fee &amp; personal expenses</li>
+                                <li>• GST or applicable taxes</li>
                             </ul>
                         </div>
                     </div>
 
                     <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20am%20interested%20in%20booking%20the%20Divya%20Andhra%20Tour%20(5D%2F4N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp">
-                            <span>Inquire via WhatsApp 💬</span>
-                        </a>
+                        <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Dattatreya &amp; Guru Tour →</a>
+                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20want%20to%20inquire%20about%20the%20Divine%20Dattatreya%20%26%20Guru%20Pilgrimage%20(5D%2F4N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
                     </div>
                 </div>
             </div>
 
-            <!-- PACKAGE 2: DIVINE DATTATREYA & GURU PILGRIMAGE -->
-            <div class="tour-detail-card" id="dattatreya-guru">
+            <!-- PACKAGE 2: DIVINE ANDHRA -->
+            <div class="tour-detail-card" id="divine-andhra">
                 <div class="tour-detail-header">
                     <div>
                         <span style="background: rgba(255,255,255,0.15); color: #A5D6A7; font-size: 0.85rem; font-weight: 800; padding: 4px 14px; border-radius: 15px; letter-spacing: 1px; text-transform: uppercase;">
-                            🪔 GURU PARAMPARA TOUR 02
+                            🌊 SPIRITUAL &amp; COASTAL ANDHRA • YATRA 02
                         </span>
-                        <h3 class="tour-title-large">DIVINE DATTATREYA & GURU PILGRIMAGE — 5 DAYS / 4 NIGHTS</h3>
-                        <div class="tour-subtitle">Solapur • Akkalkot • Gangapur • Kuravpur • Mantralaya • Solapur</div>
+                        <h3 class="tour-title-large">DIVINE ANDHRA — 5 DAYS / 4 NIGHTS</h3>
+                        <div class="tour-subtitle">Spiritual &amp; Coastal Andhra Journey • Ancient Temples · Sacred Rivers · Coastal Beauty</div>
                     </div>
                     <div>
                         <span class="tour-duration-badge">⏱️ 5 Days / 4 Nights</span>
@@ -1075,90 +1708,322 @@
                 </div>
 
                 <div class="tour-detail-body">
-                    <!-- Detailed Route -->
-                    <div class="route-timeline-bar">
-                        <strong>📍 Curated Tour Route & Circuit:</strong>
-                        Solapur → Akkalkot → Gangapur → Kuravpur (Island Shrine) → Mantralaya → Solapur
+                    <!-- 1. Visual Journey Route Overview -->
+                    <div class="journey-route-nav" role="navigation" aria-label="Tour 2 Journey Route">
+                        <div class="route-stops-track">
+                            <div class="route-connector-line" aria-hidden="true"></div>
+                            
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🛕</div>
+                                <div class="route-node-name">PITHAPURAM</div>
+                                <div class="route-node-desc">Sri Pada Srivallabha</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🚩</div>
+                                <div class="route-node-name">ANNAVARAM</div>
+                                <div class="route-node-desc">Satyanarayana Swamy</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🏛️</div>
+                                <div class="route-node-name">DRAKSHARAMAM</div>
+                                <div class="route-node-desc">Pancharama Kshetra</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🌊</div>
+                                <div class="route-node-name">ANTARVEDI</div>
+                                <div class="route-node-desc">Godavari Sagara Sangam</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">✈️</div>
+                                <div class="route-node-name">RAJAHMUNDRY</div>
+                                <div class="route-node-desc">Godavari Holy Ghats</div>
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- 2. Trip Summary Strip -->
+                    <div class="trip-summary-strip" aria-label="Trip Summary Highlights">
+                        <div class="summary-pill"><span class="summary-pill-icon">⏱️</span> 5 Days</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🌙</span> 4 Nights</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">📍</span> 6+ Sacred Shrines</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🛕</span> Sri Pada Paduka Darshan</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🪔</span> Satyanarayana Vratham</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🌊</span> Godavari Confluence Snan</div>
+                    </div>
+
+                    <!-- Pricing Tiers Grid -->
+                    <div class="pricing-tiers-grid">
+                        <!-- Economy Tier -->
+                        <div class="price-card">
+                            <div>
+                                <span class="price-tier-tag economy">🌱 Economy Package</span>
+                                <div style="font-size: 0.85rem; color: #0E5A30; font-weight: 700; margin-top: 4px;">Spiritual &amp; Coastal Andhra Journey</div>
+                                <div class="price-amount">₹ 17,999/-</div>
+                                <div class="price-per-person">Per Person (Single Occupancy)</div>
+                                <ul class="price-features-list">
+                                    <li><span>✓</span> <strong>Transport:</strong> Private Sedan for full 5 Days (as per itinerary)</li>
+                                    <li><span>✓</span> <strong>Stay:</strong> 4 Nights Accommodation (Economy Category)</li>
+                                    <li><span>✓</span> <strong>Meals:</strong> Breakfast (Daily) Included</li>
+                                    <li><span>✓</span> <strong>Transfers:</strong> Pithapuram Station Pickup &amp; Rajahmundry Airport/Station Drop</li>
+                                    <li><span>✓</span> <strong>Sightseeing:</strong> Complete guided temple &amp; coastal sightseeing</li>
+                                    <li><span>✓</span> <strong>Support:</strong> Tour Coordination &amp; Dedicated Support</li>
+                                </ul>
+                            </div>
+                            <a href="#travel-inquiry" class="btn-book-primary">Book Economy (₹17,999) →</a>
+                        </div>
+
+                        <!-- Best Offer Tier -->
+                        <div class="price-card featured">
+                            <div>
+                                <span class="price-tier-tag business">👑 Best Offer For You!</span>
+                                <div style="font-size: 0.85rem; color: #92400E; font-weight: 700; margin-top: 4px;">Customised for Families, Groups &amp; Corporate</div>
+                                <div class="price-amount" style="font-size: 1.8rem;">Best Offer</div>
+                                <div class="price-per-person">Tailored as per your group size &amp; requirements</div>
+                                <ul class="price-features-list">
+                                    <li><span>✓</span> <strong>Custom Itinerary:</strong> Flexible departure dates &amp; personalized pacing</li>
+                                    <li><span>✓</span> <strong>Upgraded Stays:</strong> Deluxe &amp; Premium hotel/resort options</li>
+                                    <li><span>✓</span> <strong>Vehicle Choices:</strong> Private Sedan, SUV, or Luxury Tempo Traveller</li>
+                                    <li><span>✓</span> <strong>Special Darshan:</strong> Support for Satyanarayana Vratham &amp; Sevas</li>
+                                    <li><span>✓</span> <strong>Dedicated Concierge:</strong> 24/7 personal trip coordinator</li>
+                                </ul>
+                            </div>
+                            <a href="#travel-inquiry" class="btn-book-primary" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">Get Custom Offer Quote →</a>
+                        </div>
+                    </div>
+
+                    <!-- 3. Vertical Timeline & Expandable Day Accordions -->
                     <h4 style="font-family: 'Poppins', sans-serif; color: #0B3C23; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;">
-                        🗓️ Day-by-Day Guru Kshetra Itinerary
+                        🗓️ Day-by-Day Sacred Itinerary
                     </h4>
+                    
+                    <div class="timeline-accordion-flow">
+                        <div class="timeline-track-spine" aria-hidden="true"></div>
 
-                    <div class="itinerary-days-grid">
-                        <div class="day-box">
-                            <span class="day-number">DAY 1</span>
-                            <h5 class="day-title">Solapur → Akkalkot → Gangapur</h5>
-                            <ul class="day-activities">
-                                <li>Morning pickup at Solapur</li>
-                                <li>Akkalkot (40 km): Shri Swami Samarth Maharaj Vatavruksha Mandir & Samadhi</li>
-                                <li>Proceed to Gangapur (110 km)</li>
-                                <li>Evening Darshan at Shri Kshetra Gangapur</li>
-                                <li>Overnight stay in Gangapur</li>
-                            </ul>
+                        <!-- DAY 01 — PITHAPURAM (Default Open) -->
+                        <article class="timeline-day-block is-open" id="pkg2-day-1">
+                            <div class="timeline-day-node" aria-hidden="true">01</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="true" aria-controls="pkg2-panel-1" id="pkg2-header-1">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 01 • PITHAPURAM</span>
+                                        <h5 class="trigger-dest-name">Pithapuram: Divine Beginning &amp; Sri Pada Srivallabha</h5>
+                                        <div class="trigger-day-summary">Station Pickup • Mahasansthanam Darshan • Rudrabhisheka • Palkhi Seva</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg2-panel-1" role="region" aria-labelledby="pkg2-header-1">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Pithapuram Railway Station pickup and comfortable hotel check-in.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Darshan at Sri Pada Sri Vallabha Mahasansthanam (1st Incarnation of Lord Dattatreya) &amp; Rudrabhisheka Puja.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🪔 EVENING</span>
+                                            <p class="activity-desc-text">Visit ancient Kukuteswara (Shiva) &amp; Kunti Madhava (Vishnu) Temples; participate in evening Palkhi Seva procession and overnight stay.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Pithapuram to Annavaram & Kakinada -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Pithapuram → Annavaram → Uppada → Kakinada</strong> • Approx. 1.5–2 hours</span>
+                            </div>
                         </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 2</span>
-                            <h5 class="day-title">Gangapur → Kuravpur</h5>
-                            <ul class="day-activities">
-                                <li>Pre-dawn Nirgun Math Darshan & Audumbar Tree Puja</li>
-                                <li>Sangam Snan at Bhima - Amarja River Confluence</li>
-                                <li>Proceed to Kuravpur via local boat transfer across Krishna River</li>
-                                <li>Darshan at Shri Pada Shri Vallabha Birthplace & Tapobhoomi</li>
-                                <li>Overnight stay in Kuravpur / Raichur</li>
-                            </ul>
+                        <!-- DAY 02 — ANNAVARAM & SAMALKOTA (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg2-day-2">
+                            <div class="timeline-day-node" aria-hidden="true">02</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg2-panel-2" id="pkg2-header-2">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 02 • ANNAVARAM &amp; SAMALKOTA</span>
+                                        <h5 class="trigger-dest-name">Annavaram – Uppada – Samalkota – Kakinada</h5>
+                                        <div class="trigger-day-summary">Ratnagiri Darshan • Satyanarayana Vratham • Uppada Sarees • Pancharama Temple</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg2-panel-2" role="region" aria-labelledby="pkg2-header-2">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Sri Veera Venkata Satyanarayana Swamy Temple Darshan atop Ratnagiri Hill, Annavaram.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Perform holy Satyanarayana Vratham Pooja; explore the world-renowned Uppada Jamdani handloom weavers.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🏛️ EVENING</span>
+                                            <p class="activity-desc-text">Visit Samalkota Kumararama Bheemeshwara Swamy (Pancharama) Temple; transfer to Kakinada for overnight stay.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Kakinada to Draksharamam -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Kakinada → Draksharamam → Kotipalli</strong> • Approx. 1 hour</span>
+                            </div>
                         </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 3</span>
-                            <h5 class="day-title">Kuravpur / Raichur → Mantralaya</h5>
-                            <ul class="day-activities">
-                                <li>Morning prayers and check-out</li>
-                                <li>Scenic drive to Mantralaya (150 km)</li>
-                                <li>Arrival at Mantralaya — holy abode of Shri Raghavendra Swamy</li>
-                                <li>Evening Moola Brindavanam Darshan & Temple illuminations</li>
-                                <li>Overnight stay in Mantralaya</li>
-                            </ul>
+                        <!-- DAY 03 — DRAKSHARAMAM & KOTIPALLI (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg2-day-3">
+                            <div class="timeline-day-node" aria-hidden="true">03</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg2-panel-3" id="pkg2-header-3">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 03 • DRAKSHARAMAM &amp; KOTIPALLI</span>
+                                        <h5 class="trigger-dest-name">Draksharamam – Kotipalli – Kakinada Coast</h5>
+                                        <div class="trigger-day-summary">Pancharama Bhimeswara • Someswara Temple • Coringa Mangroves • Beach</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg2-panel-3" role="region" aria-labelledby="pkg2-header-3">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Draksharamam Pancharama Bhimeswara Swamy Temple Darshan (revered as Daksha Vatika).</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Kotipalli Someswara Swamy Temple on the sacred Godavari river &amp; Sarpavaram Bhavanarayana Swamy Temple.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌊 EVENING</span>
+                                            <p class="activity-desc-text">Visit Coringa Mangrove Nature Reserve (optional boating) and enjoy sunset relaxation at Kakinada Beach; overnight stay in Kakinada.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Kakinada to Antarvedi & Rajahmundry -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Kakinada → Ainavilli → Antarvedi → Rajahmundry</strong> • Approx. 2.5 hours</span>
+                            </div>
                         </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 4</span>
-                            <h5 class="day-title">Mantralaya Local Darshan & Seva</h5>
-                            <ul class="day-activities">
-                                <li>Full day dedicated to Brindavanam Darshan, Pooja & Seva</li>
-                                <li>Panchamukhi Hanuman Temple visit</li>
-                                <li>Sacred Snan & Aarti at Tungabhadra River Ghats</li>
-                                <li>Overnight stay in Mantralaya</li>
-                            </ul>
+                        <!-- DAY 04 — AINAVILLI & ANTARVEDI (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg2-day-4">
+                            <div class="timeline-day-node" aria-hidden="true">04</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg2-panel-4" id="pkg2-header-4">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 04 • AINAVILLI &amp; ANTARVEDI</span>
+                                        <h5 class="trigger-dest-name">Ainavilli – Antarvedi &amp; Godavari Sagara Sangam</h5>
+                                        <div class="trigger-day-summary">Siddhi Vinayaka • Lakshmi Narasimha • Sea Confluence Snan • Rajahmundry</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg2-panel-4" role="region" aria-labelledby="pkg2-header-4">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Ainavilli Sri Siddhi Vinayaka Swamy Temple Darshan for divine blessings.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Sri Lakshmi Narasimha Swamy Temple Darshan at sacred Antarvedi.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌊 EVENING</span>
+                                            <p class="activity-desc-text">Prayers &amp; holy snan at the sacred Godavari River - Bay of Bengal confluence (Sagara Sangam); proceed to Rajahmundry for overnight stay.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Antarvedi to Rajahmundry -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Antarvedi → Rajamahendravaram (Rajahmundry)</strong> • Approx. 2 hours</span>
+                            </div>
                         </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 5</span>
-                            <h5 class="day-title">Mantralaya → Solapur Sightseeing → Drop</h5>
-                            <ul class="day-activities">
-                                <li>Return drive towards Solapur</li>
-                                <li>Solapur Sightseeing: Ancient Siddheshwar Temple & Lake</li>
-                                <li>Bhuikot Fort & Hutatma Smarak memorial</li>
-                                <li>Solapur Handloom & Textile Market shopping</li>
-                                <li>Final drop at Solapur Station / Bus Stand</li>
+                        <!-- DAY 05 — RAJAHMUNDRY (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg2-day-5">
+                            <div class="timeline-day-node" aria-hidden="true">05</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg2-panel-5" id="pkg2-header-5">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 05 • RAJAHMUNDRY</span>
+                                        <h5 class="trigger-dest-name">Rajahmundry Spiritual Circuit &amp; Departure</h5>
+                                        <div class="trigger-day-summary">Godavari Ghats • Kotilingeshwara Mandir • Pootharekulu Shopping • Departure</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg2-panel-5" role="region" aria-labelledby="pkg2-header-5">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Visit sacred Godavari River Ghats (Pushkar Ghat) and ancient Kotilingeshwara Temple Darshan.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛍️ AFTERNOON</span>
+                                            <p class="activity-desc-text">Leisure time for shopping authentic Rajahmundry sweets (Pootharekulu) and local cultural souvenirs.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">✈️ EVENING</span>
+                                            <p class="activity-desc-text">Transfer drop to Rajahmundry Airport / Railway Station with divine memories and spiritual blessings.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Inclusions & Exclusions Grid -->
+                    <div class="inc-exc-grid" style="margin-top: 30px;">
+                        <div class="inc-box">
+                            <h4>✅ Package Inclusions</h4>
+                            <ul class="inc-exc-list">
+                                <li>• Private Sedan for 5 Days (as per itinerary)</li>
+                                <li>• 4 Nights Accommodation (Economy Category)</li>
+                                <li>• Breakfast (Daily) Included</li>
+                                <li>• Pithapuram Railway Station Pickup</li>
+                                <li>• Rajahmundry Airport Pickup &amp; Railway Station Drop / Airport Drop</li>
+                                <li>• Sightseeing as per itinerary &amp; Tour Coordination Support</li>
+                            </ul>
+                        </div>
+                        <div class="exc-box">
+                            <h4>❌ Package Exclusions</h4>
+                            <ul class="inc-exc-list">
+                                <li>• Meals (Lunch, Dinner)</li>
+                                <li>• Train / Flight Tickets to and from Andhra Pradesh</li>
+                                <li>• Special VIP Darshan, Puja, or Temple Seva Fees</li>
+                                <li>• Boating charges at Coringa Mangroves</li>
+                                <li>• GST or other applicable charges</li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Vehicle Options Strip -->
-                    <div style="background: #E8F5E9; border-radius: 14px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(14, 90, 48, 0.2);">
-                        <strong style="color: #0B3C23; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;">🚘 Available Vehicle Options:</strong>
-                        <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap; font-size: 0.9rem; color: #1F2937;">
-                            <span>• <strong>Option 1 (Sedan):</strong> Suitable for small families (1-4 Passengers)</span>
-                            <span>• <strong>Option 2 (SUV):</strong> Suitable for families & small groups (5-7 Passengers)</span>
-                            <span>• <strong>Option 3 (Tempo Traveller):</strong> Suitable for larger groups (9-17 Passengers)</span>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Dattatreya & Guru Tour →</a>
-                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20want%20to%20inquire%20about%20the%20Divine%20Dattatreya%20%26%20Guru%20Pilgrimage%20(5D%2F4N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
+                    <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Divine Andhra Package →</a>
+                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20am%20interested%20in%20booking%20the%20Divine%20Andhra%20Tour%20(5D%2F4N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
                     </div>
                 </div>
             </div>
@@ -1168,139 +2033,583 @@
                 <div class="tour-detail-header">
                     <div>
                         <span style="background: rgba(255,255,255,0.15); color: #A5D6A7; font-size: 0.85rem; font-weight: 800; padding: 4px 14px; border-radius: 15px; letter-spacing: 1px; text-transform: uppercase;">
-                            🕉️ MAHARASHTRA & KARNATAKA YATRA 03
+                            🚩 DEVOTIONAL PILGRIMAGE • YATRA 03
                         </span>
-                        <h3 class="tour-title-large">DIVINE DATTA & VITTHAL PILGRIMAGE — 5 DAYS / 4 NIGHTS</h3>
-                        <div class="tour-subtitle">Solapur • Akkalkot • Gangapur • Pandharpur • Tuljapur • Solapur (दिव्य दत्त आणि विठ्ठल तीर्थयात्रा)</div>
+                        <h3 class="tour-title-large">DIVINE DATTA &amp; VITTHAL PILGRIMAGE — 2 DAYS / 3 NIGHTS</h3>
+                        <div class="tour-subtitle">A Spiritual Journey of Blessings (श्री दत्त कृपा व विठ्ठलाची भक्ती — एक दिव्य यात्रा)</div>
                     </div>
                     <div>
-                        <span class="tour-duration-badge">⏱️ 5 Days / 4 Nights</span>
+                        <span class="tour-duration-badge">⏱️ 2 Days / 3 Nights</span>
                     </div>
                 </div>
 
                 <div class="tour-detail-body">
-                    <div class="route-timeline-bar">
-                        <strong>📍 Sacred Route:</strong>
-                        Solapur → Akkalkot → Gangapur → Pandharpur → Tuljapur → Solapur
-                    </div>
+                    <!-- 1. Visual Journey Route Overview -->
+                    <div class="journey-route-nav" role="navigation" aria-label="Tour 3 Journey Route">
+                        <div class="route-stops-track">
+                            <div class="route-connector-line" aria-hidden="true"></div>
+                            
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🌸</div>
+                                <div class="route-node-name">AKKALKOT</div>
+                                <div class="route-node-desc">Swami Samarth</div>
+                            </div>
 
-                    <div class="itinerary-days-grid">
-                        <div class="day-box">
-                            <span class="day-number">DAY 1</span>
-                            <h5 class="day-title">Solapur → Akkalkot (40 km)</h5>
-                            <ul class="day-activities">
-                                <li>Arrival in Solapur and drive to Akkalkot</li>
-                                <li>Shri Swami Samarth Maharaj Vatavruksha Mandir Darshan</li>
-                                <li>Swami Samarth Samadhi Shrine & Annachhatra</li>
-                                <li>Evening Aarti & Palkhi Darshan</li>
-                                <li>Overnight stay in Akkalkot</li>
-                            </ul>
-                        </div>
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">✨</div>
+                                <div class="route-node-name">GANGAPUR</div>
+                                <div class="route-node-desc">Nirgun Paduka</div>
+                            </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 2</span>
-                            <h5 class="day-title">Akkalkot → Gangapur (110 km)</h5>
-                            <ul class="day-activities">
-                                <li>Proceed to Shri Kshetra Gangapur</li>
-                                <li>Nirgun Math & Shri Dattatreya Nirguna Paduka Darshan</li>
-                                <li>Audumbar Tree Puja & Bhima - Amarja Sangam Snan</li>
-                                <li>Overnight stay in Gangapur</li>
-                            </ul>
-                        </div>
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🚩</div>
+                                <div class="route-node-name">PANDHARPUR</div>
+                                <div class="route-node-desc">Vitthal Rukmini</div>
+                            </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 3</span>
-                            <h5 class="day-title">Gangapur → Pandharpur (200+ km)</h5>
-                            <ul class="day-activities">
-                                <li>Drive to the holy Warkari center of Pandharpur</li>
-                                <li>Shri Vitthal - Rukmini Temple Darshan</li>
-                                <li>Chandrabhaga River Snan & Pundalik Temple</li>
-                                <li>Namdev Payari & local saint shrines</li>
-                                <li>Overnight stay in Pandharpur</li>
-                            </ul>
-                        </div>
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🔱</div>
+                                <div class="route-node-name">TULJAPUR</div>
+                                <div class="route-node-desc">Tuljabhavani Mata</div>
+                            </div>
 
-                        <div class="day-box">
-                            <span class="day-number">DAY 4</span>
-                            <h5 class="day-title">Pandharpur → Tuljapur (110 km)</h5>
-                            <ul class="day-activities">
-                                <li>Morning drive to Tuljapur Shaktipeeth</li>
-                                <li>Kulswamini Shri Tulja Bhavani Mata Darshan</li>
-                                <li>Explore ancient temple complex & Ghatila Darshan</li>
-                                <li>Evening Aarti & Special Seva</li>
-                                <li>Overnight stay in Tuljapur</li>
-                            </ul>
-                        </div>
-
-                        <div class="day-box">
-                            <span class="day-number">DAY 5</span>
-                            <h5 class="day-title">Tuljapur → Solapur (45 km)</h5>
-                            <ul class="day-activities">
-                                <li>Early morning Tulja Bhavani Darshan & Check-out</li>
-                                <li>Proceed to Solapur for Shri Siddheshwar Temple & Lake</li>
-                                <li>Shopping for Solapur famous Chaddars & Handlooms</li>
-                                <li>Tour concludes with final drop at Solapur</li>
-                            </ul>
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🛕</div>
+                                <div class="route-node-name">SOLAPUR</div>
+                                <div class="route-node-desc">Siddheshwar Mandir</div>
+                            </div>
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Datta & Vitthal Pilgrimage →</a>
-                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20would%20like%20to%20book%20the%20Divine%20Datta%20%26%20Vitthal%20Pilgrimage%20(5D%2F4N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
+                    <!-- 2. Trip Summary Strip -->
+                    <div class="trip-summary-strip" aria-label="Trip Summary Highlights">
+                        <div class="summary-pill"><span class="summary-pill-icon">⏱️</span> 2 Days</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🌙</span> 3 Nights</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">📍</span> 5 Iconic Maharashtra Shrines</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🌸</span> Swami Samarth Darshan</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🚩</span> Pandharpur Vitthal Darshan</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🔱</span> Tuljabhavani Shaktipeeth</div>
+                    </div>
+
+                    <!-- Pricing Tiers Grid -->
+                    <div class="pricing-tiers-grid">
+                        <!-- Economy Tier -->
+                        <div class="price-card">
+                            <div>
+                                <span class="price-tier-tag economy">🌱 Economy Package</span>
+                                <div style="font-size: 0.85rem; color: #0E5A30; font-weight: 700; margin-top: 4px;">Comfortable &amp; Affordable Pilgrimage</div>
+                                <div class="price-amount">₹ 8,999/-</div>
+                                <div class="price-per-person">Per Person (Single Occupancy)</div>
+                                <ul class="price-features-list">
+                                    <li><span>✓</span> <strong>Transport:</strong> Private Sedan for 3 Days (as per itinerary)</li>
+                                    <li><span>✓</span> <strong>Stay:</strong> 2 Nights Accommodation (Standard Category)</li>
+                                    <li><span>✓</span> <strong>Darshan:</strong> All Places Darshan &amp; Local Sightseeing</li>
+                                    <li><span>✓</span> <strong>Driver &amp; Tolls:</strong> Chauffeur, Fuel, Tolls &amp; Parking Included</li>
+                                    <li><span>✓</span> <strong>Support:</strong> Experienced Tour Coordinator Support</li>
+                                </ul>
+                            </div>
+                            <a href="#travel-inquiry" class="btn-book-primary">Book Economy (₹8,999) →</a>
+                        </div>
+
+                        <!-- Business Tier -->
+                        <div class="price-card featured">
+                            <div>
+                                <span class="price-tier-tag business">👑 Business Package</span>
+                                <div style="font-size: 0.85rem; color: #92400E; font-weight: 700; margin-top: 4px;">Premium &amp; Comfortable Pilgrimage</div>
+                                <div class="price-amount">₹ 11,999/-</div>
+                                <div class="price-per-person">Per Person (Single Occupancy)</div>
+                                <ul class="price-features-list">
+                                    <li><span>✓</span> <strong>Transport:</strong> Private SUV for 3 Days (as per itinerary)</li>
+                                    <li><span>✓</span> <strong>Stay:</strong> 2 Nights Accommodation (Deluxe / Premium)</li>
+                                    <li><span>✓</span> <strong>Darshan:</strong> All Places Darshan &amp; Local Sightseeing</li>
+                                    <li><span>✓</span> <strong>Comfort:</strong> Premium SUV &amp; Priority Tour Guidance</li>
+                                    <li><span>✓</span> <strong>Support:</strong> Dedicated 24/7 Journey Concierge</li>
+                                </ul>
+                            </div>
+                            <a href="#travel-inquiry" class="btn-book-primary" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">Book Business (₹11,999) →</a>
+                        </div>
+                    </div>
+
+                    <!-- 3. Vertical Timeline & Expandable Day Accordions -->
+                    <h4 style="font-family: 'Poppins', sans-serif; color: #0B3C23; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;">
+                        🗓️ Tour Itinerary
+                    </h4>
+
+                    <div class="timeline-accordion-flow">
+                        <div class="timeline-track-spine" aria-hidden="true"></div>
+
+                        <!-- DAY 01 — AKKALKOT & GANGAPUR (Default Open) -->
+                        <article class="timeline-day-block is-open" id="pkg3-day-1">
+                            <div class="timeline-day-node" aria-hidden="true">01</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="true" aria-controls="pkg3-panel-1" id="pkg3-header-1">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 01 • AKKALKOT &amp; GANGAPUR</span>
+                                        <h5 class="trigger-dest-name">Akkalkot &amp; Gangapur — The Holy Datta Guru Seats</h5>
+                                        <div class="trigger-day-summary">Swami Samarth Vatavruksha Mandir • Nirgun Paduka Darshan • Sangam Snan</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg3-panel-1" role="region" aria-labelledby="pkg3-header-1">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Arrival in Solapur/Akkalkot; Shri Swami Samarth Maharaj Vatavruksha Mandir &amp; Samadhi Shrine Darshan, Annachhatra Mahaprasad.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Drive to sacred Kshetra Gangapur; Darshan of Lord Dattatreya Nirguna Paduka at Nirgun Math.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌊 EVENING</span>
+                                            <p class="activity-desc-text">Sangam Snan at sacred Bhima - Amarja river confluence &amp; Audumbar tree worship; overnight stay in Gangapur.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Gangapur to Pandharpur -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Gangapur → Pandharpur</strong> • Approx. 3.5 hours</span>
+                            </div>
+                        </div>
+
+                        <!-- DAY 02 — PANDHARPUR (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg3-day-2">
+                            <div class="timeline-day-node" aria-hidden="true">02</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg3-panel-2" id="pkg3-header-2">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 02 • PANDHARPUR</span>
+                                        <h5 class="trigger-dest-name">Pandharpur — Shri Vitthal Rukmini Bhakti</h5>
+                                        <div class="trigger-day-summary">Vitthal Rukmini Darshan • Chandrabhaga Snan • Sant Pundalik • Haripath Aarti</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg3-panel-2" role="region" aria-labelledby="pkg3-header-2">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Scenic drive to the holy Warkari pilgrimage capital of Pandharpur.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Sacred Darshan of Shri Vitthal &amp; Rukmini Mata; holy snan at Chandrabhaga River, Sant Pundalik Temple &amp; Namdev Payari.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🪔 EVENING</span>
+                                            <p class="activity-desc-text">Experience divine evening Aarti &amp; Haripath Bhajana; transfer to Solapur / Pandharpur for overnight stay.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Pandharpur to Tuljapur & Solapur -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Pandharpur → Tuljapur → Solapur</strong> • Approx. 1.5 hours</span>
+                            </div>
+                        </div>
+
+                        <!-- DAY 03 — TULJAPUR & SOLAPUR (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg3-day-3">
+                            <div class="timeline-day-node" aria-hidden="true">03</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg3-panel-3" id="pkg3-header-3">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 03 • TULJAPUR &amp; SOLAPUR</span>
+                                        <h5 class="trigger-dest-name">Tuljapur &amp; Solapur — Devi Blessings &amp; Siddheshwar</h5>
+                                        <div class="trigger-day-summary">Tuljabhavani Shaktipeeth • Siddheshwar Mandir • Chaddar Shopping • Drop</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg3-panel-3" role="region" aria-labelledby="pkg3-header-3">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Early morning drive to sacred Tuljapur; Kulswamini Shri Tuljabhavani Mata Shaktipeeth Darshan &amp; Gomukh Tirtha.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Proceed to Solapur; ancient Shri Siddheshwar Temple Darshan and sacred lake visit.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛍️ EVENING</span>
+                                            <p class="activity-desc-text">Free time for world-famous Solapur handloom chaddars &amp; towels shopping; tour concludes with drop at Solapur Railway Station / Bus Stand.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Inclusions & Exclusions Grid -->
+                    <div class="inc-exc-grid" style="margin-top: 30px;">
+                        <div class="inc-box">
+                            <h4>✅ Package Inclusions</h4>
+                            <ul class="inc-exc-list">
+                                <li>• Private Vehicle for full 3 Days (Sedan for Economy / SUV for Business)</li>
+                                <li>• 2 Nights Accommodation (Standard for Economy / Deluxe-Premium for Business)</li>
+                                <li>• All Places Darshan &amp; Local Sightseeing as per itinerary</li>
+                                <li>• Experienced Tour Coordinator &amp; Professional Chauffeur</li>
+                                <li>• Fuel, toll taxes, parking charges, and 24/7 helpline support</li>
+                            </ul>
+                        </div>
+                        <div class="exc-box">
+                            <h4>❌ Package Exclusions</h4>
+                            <ul class="inc-exc-list">
+                                <li>• Meals (Lunch &amp; Dinner)</li>
+                                <li>• Train / Flight tickets to and from starting point</li>
+                                <li>• Special VIP Darshan passes &amp; individual Puja/Seva fees</li>
+                                <li>• Personal expenses &amp; GST</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Datta &amp; Vitthal Pilgrimage →</a>
+                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20would%20like%20to%20book%20the%20Divine%20Datta%20%26%20Vitthal%20Pilgrimage%20(2D%2F3N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
                     </div>
                 </div>
             </div>
 
-            <!-- PACKAGE 4: KARNATAKA HERITAGE & SPIRITUAL -->
+            <!-- PACKAGE 4: KARNATAKA HERITAGE TOUR -->
             <div class="tour-detail-card" id="karnataka-heritage">
                 <div class="tour-detail-header">
                     <div>
                         <span style="background: rgba(255,255,255,0.15); color: #A5D6A7; font-size: 0.85rem; font-weight: 800; padding: 4px 14px; border-radius: 15px; letter-spacing: 1px; text-transform: uppercase;">
-                            🏛️ UNESCO HERITAGE TOUR 04
+                            🏛️ UNESCO HERITAGE &amp; CULTURE • TOUR 04
                         </span>
-                        <h3 class="tour-title-large">KARNATAKA HERITAGE & SPIRITUAL EXPEDITION — 5 DAYS / 4 NIGHTS</h3>
-                        <div class="tour-subtitle">History • UNESCO Architecture • Nature • Temples</div>
+                        <h3 class="tour-title-large">KARNATAKA HERITAGE TOUR — 4 NIGHTS / 5 DAYS</h3>
+                        <div class="tour-subtitle">Explore the Timeless Beauty of Karnataka • Temples · Monuments · Dams · Heritage Sites · Culture &amp; Nature</div>
                     </div>
                     <div>
-                        <span class="tour-duration-badge">⏱️ 5 Days / 4 Nights</span>
+                        <span class="tour-duration-badge">⏱️ 4 Nights / 5 Days</span>
                     </div>
                 </div>
 
                 <div class="tour-detail-body">
-                    <div class="route-timeline-bar">
-                        <strong>📍 Heritage Route:</strong>
-                        Solapur → Bijapur → Shiv Giri → Almatti → Badami → Banashankari → Pattadakal → Hampi → Kudalasangama
+                    <!-- 1. Visual Journey Route Overview -->
+                    <div class="journey-route-nav" role="navigation" aria-label="Tour 4 Journey Route">
+                        <div class="route-stops-track">
+                            <div class="route-connector-line" aria-hidden="true"></div>
+                            
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🏛️</div>
+                                <div class="route-node-name">BIJAPUR</div>
+                                <div class="route-node-desc">Gol Gumbaz &amp; Adil Shahi</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🌊</div>
+                                <div class="route-node-name">ALMATTI &amp; SHIV GIRI</div>
+                                <div class="route-node-desc">Krishna Reservoir &amp; Statue</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🛕</div>
+                                <div class="route-node-name">KUDALSANGAMA</div>
+                                <div class="route-node-desc">Holy River Confluence</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">👑</div>
+                                <div class="route-node-name">HAMPI</div>
+                                <div class="route-node-desc">UNESCO World Heritage</div>
+                            </div>
+
+                            <div class="route-stop-node">
+                                <div class="route-node-circle" aria-hidden="true">🪨</div>
+                                <div class="route-node-name">AIHOLE &amp; BADAMI</div>
+                                <div class="route-node-desc">Rock-Cut Cave Temples</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="itinerary-days-grid">
-                        <div class="day-box">
-                            <span class="day-number">HIGHLIGHT 1</span>
-                            <h5 class="day-title">Hampi & Pattadakal UNESCO Monuments</h5>
-                            <p style="font-size: 0.88rem; color: #4B5563; line-height: 1.5;">Marvel at the grand Vijayanagara Empire stone chariot, Virupaksha temple, and 7th-century Pattadakal structural temples.</p>
+                    <!-- 2. Trip Summary Strip -->
+                    <div class="trip-summary-strip" aria-label="Trip Summary Highlights">
+                        <div class="summary-pill"><span class="summary-pill-icon">⏱️</span> 4 Nights</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🌙</span> 5 Days</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">📍</span> 9 Historic Destinations</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🏛️</span> UNESCO World Heritage</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">🛕</span> Chalukyan Architecture</div>
+                        <div class="summary-pill"><span class="summary-pill-icon">👑</span> Vijayanagara Empire</div>
+                    </div>
+
+                    <!-- Pricing Tiers Grid -->
+                    <div class="pricing-tiers-grid">
+                        <!-- Economy Tier -->
+                        <div class="price-card">
+                            <div>
+                                <span class="price-tier-tag economy">🌱 Economy Package</span>
+                                <div style="font-size: 0.85rem; color: #0E5A30; font-weight: 700; margin-top: 4px;">Explore Ancient Heritage in Comfort</div>
+                                <div class="price-amount">₹ 18,999/-</div>
+                                <div class="price-per-person">Per Person (Twin Sharing)</div>
+                                <ul class="price-features-list">
+                                    <li><span>✓</span> <strong>Stay:</strong> 4 Nights Luxurious Stay</li>
+                                    <li><span>✓</span> <strong>Meals:</strong> Daily Breakfast Included</li>
+                                    <li><span>✓</span> <strong>Transport:</strong> AC Transportation for full 5 Days (as per itinerary)</li>
+                                    <li><span>✓</span> <strong>Sightseeing:</strong> Complete Sightseeing across all 9 destinations</li>
+                                    <li><span>✓</span> <strong>Support:</strong> Tour Coordinator &amp; Dedicated Support</li>
+                                </ul>
+                            </div>
+                            <a href="#travel-inquiry" class="btn-book-primary">Book Economy (₹18,999) →</a>
                         </div>
 
-                        <div class="day-box">
-                            <span class="day-number">HIGHLIGHT 2</span>
-                            <h5 class="day-title">Badami Caves & Banashankari</h5>
-                            <p style="font-size: 0.88rem; color: #4B5563; line-height: 1.5;">6th-century Chalukyan rock-cut cave temples cut into sandstone cliffs overlooking Agastya Lake.</p>
-                        </div>
-
-                        <div class="day-box">
-                            <span class="day-number">HIGHLIGHT 3</span>
-                            <h5 class="day-title">Bijapur Gol Gumbaz & Shiv Giri</h5>
-                            <p style="font-size: 0.88rem; color: #4B5563; line-height: 1.5;">Acoustic whispering gallery of Gol Gumbaz dome and giant 85-foot Lord Shiva statue at Shiv Giri.</p>
-                        </div>
-
-                        <div class="day-box">
-                            <span class="day-number">HIGHLIGHT 4</span>
-                            <h5 class="day-title">Almatti Gardens & Kudalasangama</h5>
-                            <p style="font-size: 0.88rem; color: #4B5563; line-height: 1.5;">Beautiful Mughal-style Almatti Dam gardens and sacred river confluence of Krishna & Malaprabha.</p>
+                        <!-- Business Tier -->
+                        <div class="price-card featured">
+                            <div>
+                                <span class="price-tier-tag business">👑 Business Package</span>
+                                <div style="font-size: 0.85rem; color: #92400E; font-weight: 700; margin-top: 4px;">Premium Heritage &amp; Cultural Experience</div>
+                                <div class="price-amount">₹ 27,999/-</div>
+                                <div class="price-per-person">Per Person (Twin Sharing)</div>
+                                <ul class="price-features-list">
+                                    <li><span>✓</span> <strong>Stay:</strong> 4 Nights Premium Stay (Upgraded Hotels)</li>
+                                    <li><span>✓</span> <strong>Meals:</strong> Daily Breakfast Included</li>
+                                    <li><span>✓</span> <strong>Transport:</strong> AC Transportation (Higher Category SUV/Executive)</li>
+                                    <li><span>✓</span> <strong>Sightseeing:</strong> Complete Sightseeing across all 9 destinations</li>
+                                    <li><span>✓</span> <strong>Support:</strong> Dedicated Tour Coordinator &amp; Concierge Support</li>
+                                </ul>
+                            </div>
+                            <a href="#travel-inquiry" class="btn-book-primary" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">Book Business (₹27,999) →</a>
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <!-- 3. Vertical Timeline & Expandable Day Accordions -->
+                    <h4 style="font-family: 'Poppins', sans-serif; color: #0B3C23; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;">
+                        🗓️ Day-by-Day Sacred &amp; Historic Itinerary
+                    </h4>
+
+                    <div class="timeline-accordion-flow">
+                        <div class="timeline-track-spine" aria-hidden="true"></div>
+
+                        <!-- DAY 01 — BIJAPUR & SHIV GIRI (Default Open) -->
+                        <article class="timeline-day-block is-open" id="pkg4-day-1">
+                            <div class="timeline-day-node" aria-hidden="true">01</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="true" aria-controls="pkg4-panel-1" id="pkg4-header-1">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 01 • BIJAPUR &amp; SHIV GIRI</span>
+                                        <h5 class="trigger-dest-name">Bijapur &amp; Shiv Giri — Architectural Marvels of Deccan</h5>
+                                        <div class="trigger-day-summary">Gol Gumbaz Whispering Gallery • Ibrahim Rouza • 85ft Shiva Statue</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg4-panel-1" role="region" aria-labelledby="pkg4-header-1">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Arrival in Bijapur; visit the magnificent Gol Gumbaz with its world-famous acoustic Whispering Gallery.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🏛️ AFTERNOON</span>
+                                            <p class="activity-desc-text">Explore the historic Ibrahim Rouza and ancient Adil Shahi architectural landmarks.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 EVENING</span>
+                                            <p class="activity-desc-text">Darshan at Shiv Giri with its awe-inspiring 85-foot giant Lord Shiva statue; overnight stay in Bijapur.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Bijapur to Almatti & Kudalsangama -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Bijapur → Almatti Dam → Kudalsangama → Hospet/Hampi</strong> • Approx. 3 hours</span>
+                            </div>
+                        </div>
+
+                        <!-- DAY 02 — ALMATTI DAM & KUDALSANGAMA (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg4-day-2">
+                            <div class="timeline-day-node" aria-hidden="true">02</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg4-panel-2" id="pkg4-header-2">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 02 • ALMATTI &amp; KUDALSANGAMA</span>
+                                        <h5 class="trigger-dest-name">Almatti Dam &amp; Kudalsangama River Confluence</h5>
+                                        <div class="trigger-day-summary">Krishna Reservoir Gardens • Kudalsangama Sangam Snan • Aikya Mantapa</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg4-panel-2" role="region" aria-labelledby="pkg4-header-2">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Visit massive Almatti Dam on Krishna River, featuring Mughal-style landscaped gardens and musical fountains.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Visit Kudalsangama, the sacred confluence of Krishna &amp; Malaprabha rivers, and the holy Aikya Mantapa of Saint Basaveshwara.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🏨 EVENING</span>
+                                            <p class="activity-desc-text">Drive to Hospet / Hampi and complete hotel check-in; overnight stay in Hampi / Hospet.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Hospet to Hampi Heritage Circuit -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Hospet → Hampi Heritage Circuit</strong> • UNESCO World Heritage Site</span>
+                            </div>
+                        </div>
+
+                        <!-- DAY 03 — HAMPI UNESCO HERITAGE (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg4-day-3">
+                            <div class="timeline-day-node" aria-hidden="true">03</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg4-panel-3" id="pkg4-header-3">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 03 • HAMPI (UNESCO HERITAGE)</span>
+                                        <h5 class="trigger-dest-name">Hampi — The Golden Vijayanagara Empire</h5>
+                                        <div class="trigger-day-summary">Virupaksha Mandir • Iconic Stone Chariot • Vittala Temple • Lotus Mahal</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg4-panel-3" role="region" aria-labelledby="pkg4-header-3">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Explore the grand Virupaksha Temple on Hemakuta Hill and the holy Tungabhadra riverfront.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🏛️ AFTERNOON</span>
+                                            <p class="activity-desc-text">Visit the world-famous Stone Chariot, musical pillars of Vijaya Vittala Temple complex, and King's Balance.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 EVENING</span>
+                                            <p class="activity-desc-text">Tour Lotus Mahal, Elephant Stables, Queen's Bath, and enjoy a magnificent sunset over boulder landscapes; overnight in Hampi / Hospet.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Hampi to Tungabhadra & Aihole -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Hampi → Tungabhadra Dam → Aihole → Badami</strong> • Approx. 2.5 hours</span>
+                            </div>
+                        </div>
+
+                        <!-- DAY 04 — TUNGABHADRA DAM & AIHOLE (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg4-day-4">
+                            <div class="timeline-day-node" aria-hidden="true">04</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg4-panel-4" id="pkg4-header-4">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 04 • TUNGABHADRA &amp; AIHOLE</span>
+                                        <h5 class="trigger-dest-name">Tungabhadra Dam &amp; Aihole Architecture</h5>
+                                        <div class="trigger-day-summary">Tungabhadra Reservoir • Japanese Gardens • 125+ Stone Temples of Aihole</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg4-panel-4" role="region" aria-labelledby="pkg4-header-4">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Visit Tungabhadra Dam reservoir viewpoints, lush Japanese landscaped gardens, and deer park.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🏛️ AFTERNOON</span>
+                                            <p class="activity-desc-text">Drive to Aihole, the cradle of Hindu rock architecture, showcasing 125+ 6th-century stone temples (Durga Temple &amp; Lad Khan).</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🏨 EVENING</span>
+                                            <p class="activity-desc-text">Transfer to Badami for hotel check-in and relaxing evening; overnight stay in Badami.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Travel Transition: Badami to Pattadakal -->
+                        <div class="travel-transition-row" aria-label="Travel Route Transition">
+                            <div class="transition-pill">
+                                <span>🚐</span>
+                                <span><strong>Badami → Pattadakal &amp; Badami Caves</strong> • Approx. 30 mins</span>
+                            </div>
+                        </div>
+
+                        <!-- DAY 05 — PATTADAKAL & BADAMI CAVES (Collapsed) -->
+                        <article class="timeline-day-block" id="pkg4-day-5">
+                            <div class="timeline-day-node" aria-hidden="true">05</div>
+                            <div class="timeline-accordion-card">
+                                <button class="timeline-accordion-trigger" type="button" aria-expanded="false" aria-controls="pkg4-panel-5" id="pkg4-header-5">
+                                    <div>
+                                        <span class="trigger-day-badge">DAY 05 • PATTADAKAL &amp; BADAMI</span>
+                                        <h5 class="trigger-dest-name">Pattadakal UNESCO Monuments &amp; Badami Cave Temples</h5>
+                                        <div class="trigger-day-summary">UNESCO Temples on Malaprabha • Rock-Cut Caves • Bhutanatha Lake • Drop</div>
+                                    </div>
+                                    <div class="accordion-toggle-icon" aria-hidden="true">▼</div>
+                                </button>
+
+                                <div class="timeline-accordion-panel" id="pkg4-panel-5" role="region" aria-labelledby="pkg4-header-5">
+                                    <div class="activity-timeline-list">
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🌅 MORNING</span>
+                                            <p class="activity-desc-text">Visit Pattadakal (UNESCO World Heritage Site), featuring 7th &amp; 8th-century Chalukyan Rekha-Nagara and Dravidian temples along the Malaprabha River.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">🛕 AFTERNOON</span>
+                                            <p class="activity-desc-text">Explore the 6th-century rock-cut cave temples of Badami and Bhutanatha Temple overlooking sacred Agastya Lake.</p>
+                                        </div>
+                                        <div class="activity-slot">
+                                            <span class="activity-time-badge">✈️ EVENING</span>
+                                            <p class="activity-desc-text">Transfer drop to Hubli / Belgaum / Bijapur Railway Station or Airport with unforgettable golden heritage memories.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Inclusions & Exclusions Grid -->
+                    <div class="inc-exc-grid" style="margin-top: 30px;">
+                        <div class="inc-box">
+                            <h4>✅ Package Inclusions</h4>
+                            <ul class="inc-exc-list">
+                                <li>• 4 Nights Luxurious Hotel Stay (Economy) / Upgraded Premium Hotels (Business)</li>
+                                <li>• Daily Breakfast throughout the trip</li>
+                                <li>• AC Transportation for entire 5 Days (as per itinerary)</li>
+                                <li>• Complete Sightseeing across all 9 destinations as per itinerary</li>
+                                <li>• Dedicated Tour Coordinator &amp; 24/7 Helpline Support</li>
+                            </ul>
+                        </div>
+                        <div class="exc-box">
+                            <h4>❌ Package Exclusions</h4>
+                            <ul class="inc-exc-list">
+                                <li>• Lunch &amp; Dinner meals</li>
+                                <li>• Monument entry tickets &amp; camera fees</li>
+                                <li>• Train / Flight tickets to and from starting point</li>
+                                <li>• Personal expenses, tips, and GST</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
                         <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Karnataka Heritage Tour →</a>
-                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20am%20interested%20in%20the%20Karnataka%20Heritage%20%26%20Spiritual%20Tour%20(5D%2F4N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
+                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20am%20interested%20in%20the%20Karnataka%20Heritage%20Tour%20(4N%2F5D)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
                     </div>
                 </div>
             </div>
@@ -1533,11 +2842,14 @@
                                     </label>
                                     <select class="input-field" id="tour-service" name="location" required aria-required="true">
                                         <option value="" disabled selected>Select Tour Package or Service</option>
-                                        <option value="Datta Chaya — Divya Andhra Tour (5D/4N Economy ₹37,000)">Datta Chaya — Divya Andhra Tour (5D/4N Economy ₹37,000)</option>
-                                        <option value="Datta Chaya — Divya Andhra Tour (5D/4N Business ₹44,000)">Datta Chaya — Divya Andhra Tour (5D/4N Business ₹44,000)</option>
-                                        <option value="Datta Chaya — Divine Dattatreya & Guru Pilgrimage (5D/4N)">Datta Chaya — Divine Dattatreya & Guru Pilgrimage (5D/4N)</option>
-                                        <option value="Datta Chaya — Divine Datta & Vitthal Pilgrimage (5D/4N)">Datta Chaya — Divine Datta & Vitthal Pilgrimage (5D/4N)</option>
-                                        <option value="Datta Chaya — Karnataka Heritage & Spiritual Expedition (5D/4N)">Datta Chaya — Karnataka Heritage & Spiritual Expedition (5D/4N)</option>
+                                        <option value="Datta Chhaya — Divine Dattatreya & Guru Pilgrimage (5D/4N Economy ₹14,500)">Datta Chhaya — Divine Dattatreya &amp; Guru Pilgrimage (5D/4N Economy ₹14,500)</option>
+                                        <option value="Datta Chhaya — Divine Dattatreya & Guru Pilgrimage (5D/4N Business ₹18,999)">Datta Chhaya — Divine Dattatreya &amp; Guru Pilgrimage (5D/4N Business ₹18,999)</option>
+                                        <option value="Datta Chhaya — Divine Andhra (5D/4N Economy ₹17,999)">Datta Chhaya — Divine Andhra (5D/4N Economy ₹17,999)</option>
+                                        <option value="Datta Chhaya — Divine Andhra (5D/4N Custom / Group Offer)">Datta Chhaya — Divine Andhra (5D/4N Custom / Group Offer)</option>
+                                        <option value="Datta Chhaya — Divine Datta & Vitthal Pilgrimage (2D/3N Economy ₹8,999)">Datta Chhaya — Divine Datta &amp; Vitthal Pilgrimage (2D/3N Economy ₹8,999)</option>
+                                        <option value="Datta Chhaya — Divine Datta & Vitthal Pilgrimage (2D/3N Business ₹11,999)">Datta Chhaya — Divine Datta &amp; Vitthal Pilgrimage (2D/3N Business ₹11,999)</option>
+                                        <option value="Datta Chhaya — Karnataka Heritage Tour (4N/5D Economy ₹18,999)">Datta Chhaya — Karnataka Heritage Tour (4N/5D Economy ₹18,999)</option>
+                                        <option value="Datta Chhaya — Karnataka Heritage Tour (4N/5D Business ₹27,999)">Datta Chhaya — Karnataka Heritage Tour (4N/5D Business ₹27,999)</option>
                                         <option value="AORR IRCTC Desk — Railway Ticket Booking Assistance (Tatkal / Group / General)">AORR IRCTC Desk — Railway Ticket Booking Assistance (Tatkal / Group / General)</option>
                                         <option value="AORR Travel Desk — Corporate Business Travel & Flights">AORR Travel Desk — Corporate Business Travel & Flights</option>
                                         <option value="AORR Travel Desk — Customized Family Holiday Package">AORR Travel Desk — Customized Family Holiday Package</option>
@@ -1731,6 +3043,25 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Master Itinerary Day Accordions
+            const dayBlocks = document.querySelectorAll('.timeline-day-block');
+            dayBlocks.forEach(block => {
+                const trigger = block.querySelector('.timeline-accordion-trigger');
+                if (!trigger) return;
+
+                trigger.addEventListener('click', () => {
+                    const isOpen = block.classList.contains('is-open');
+                    if (isOpen) {
+                        block.classList.remove('is-open');
+                        trigger.setAttribute('aria-expanded', 'false');
+                    } else {
+                        block.classList.add('is-open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            // Section Observer for Navigation
             const navBtns = document.querySelectorAll('.tour-nav-btn');
             const targetIds = ['divine-andhra', 'dattatreya-guru', 'datta-vitthal', 'karnataka-heritage', 'irctc-railway', 'travel-inquiry'];
             const sections = targetIds.map(id => document.getElementById(id)).filter(Boolean);

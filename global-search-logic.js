@@ -37,8 +37,9 @@ function initGlobalSearch() {
     
     const input = document.createElement('input');
     input.type = 'text';
-    input.placeholder = 'Search trade, travel, medical services...';
+    input.placeholder = 'Search...';
     input.className = 'nav-search-input';
+    input.setAttribute('aria-label', 'Search AORR Global Enterprise');
     
     const icon = document.createElement('span');
     icon.innerHTML = '🔍';
@@ -186,16 +187,18 @@ function buildSearchIndex() {
         }
     });
 
-    // Add Datta Chaya Tourism Services to Search Index
+    // Add Datta Chhaya Tourism Services to Search Index
     const travelServices = [
-        { title: 'Datta Chaya Tourism (Tours & Travel)', category: 'Datta Chaya Tourism', url: 'tours-travel.html', icon: '✈️' },
-        { title: 'Corporate & Business Travel Management', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '💼' },
-        { title: 'Bespoke Leisure & Luxury Holiday Packages', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏖️' },
-        { title: 'Global Flight & Luxury Hotel Bookings', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏨' },
-        { title: 'Visa Assistance & Travel Documentation', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🛂' },
-        { title: 'Luxury Cruises & Private Yacht Charters', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🛳️' },
-        { title: 'MICE & Corporate Group Expeditions', category: 'Tours & Travel', url: 'tours-travel.html#travel-services', icon: '🏛️' },
-        { title: 'Custom Travel Itinerary Planning', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '🗺️' }
+        { title: 'Datta Chhaya Tourism (Spiritual & Heritage Yatras)', category: 'Datta Chhaya Tourism', url: 'tours-travel.html', icon: '🪔' },
+        { title: 'Divine Dattatreya & Guru Pilgrimage (5D/4N - Kuravpur, Mantralaya, Gangapur, Akkalkot, Solapur)', category: 'Datta Chhaya Tourism', url: 'tours-travel.html#dattatreya-guru', icon: '🪔' },
+        { title: 'Divine Andhra (5D/4N - Pithapuram, Annavaram, Draksharamam, Antarvedi, Rajahmundry)', category: 'Datta Chhaya Tourism', url: 'tours-travel.html#divine-andhra', icon: '🌊' },
+        { title: 'Divine Datta & Vitthal Pilgrimage (2D/3N - Akkalkot, Gangapur, Pandharpur, Tuljapur, Solapur)', category: 'Datta Chhaya Tourism', url: 'tours-travel.html#datta-vitthal', icon: '🚩' },
+        { title: 'Karnataka Heritage Tour (4N/5D - Hampi, Badami, Aihole, Pattadakal, Bijapur)', category: 'Datta Chhaya Tourism', url: 'tours-travel.html#karnataka-heritage', icon: '🏛️' },
+        { title: 'AORR Authorised IRCTC Railway Ticket Reservation Desk', category: 'Rail Services', url: 'tours-travel.html#irctc-railway', icon: '🚆' },
+        { title: 'Corporate & Business Travel Management', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '💼' },
+        { title: 'Bespoke Leisure & Luxury Holiday Packages', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '🏖️' },
+        { title: 'Global Flight & Luxury Hotel Bookings', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '🏨' },
+        { title: 'Visa Assistance & Travel Documentation', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '🛂' }
     ];
 
     travelServices.forEach(item => {

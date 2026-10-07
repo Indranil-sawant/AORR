@@ -1,7 +1,7 @@
 /* Global Search Bar Styles - Desktop Defaults (Light Theme) */
 .nav-search-container {
     position: relative;
-    margin-right: 20px;
+    margin-left: auto;
     display: flex;
     align-items: center;
     z-index: 100;
@@ -9,60 +9,63 @@
 
 .nav-search-input {
     background: #F8FAF7;
-    border: 1.5px solid rgba(197, 155, 39, 0.35);
-    border-radius: 25px;
-    padding: 8px 18px;
-    padding-right: 36px;
-    color: var(--color-deep-forest);
-    font-size: 0.85rem;
-    font-family: var(--font-body);
-    width: 180px;
+    border: 1px solid rgba(11, 60, 35, 0.15);
+    border-radius: 20px;
+    padding: 7px 16px;
+    padding-right: 34px;
+    color: var(--color-deep-forest, #0B3C23);
+    font-size: 0.82rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-weight: 500;
+    width: 130px;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    height: 40px;
-    box-shadow: 0 2px 8px rgba(11, 60, 35, 0.04);
+    height: 36px;
+    box-shadow: 0 1px 4px rgba(11, 60, 35, 0.03);
 }
 
 .nav-search-input:focus {
-    width: 260px;
+    width: 210px;
     background: #ffffff;
     outline: none;
-    border-color: var(--accent-gold);
-    box-shadow: 0 4px 15px rgba(197, 155, 39, 0.25);
+    border-color: var(--accent-gold, #C59B27);
+    box-shadow: 0 2px 12px rgba(197, 155, 39, 0.2);
 }
 
 .nav-search-input::placeholder {
-    color: #889488;
+    color: #7A8B7E;
+    font-weight: 400;
 }
 
 .nav-search-icon {
     position: absolute;
-    right: 14px;
-    color: var(--accent-gold);
+    right: 12px;
+    color: var(--accent-gold, #C59B27);
     pointer-events: none;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     top: 0;
+    transition: color 0.25s ease;
 }
 
 /* Dropdown Styles */
 .search-results-dropdown {
     position: absolute;
-    top: 130%;
+    top: calc(100% + 8px);
     right: 0;
     width: 320px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 12px 36px rgba(11, 60, 35, 0.14);
     overflow: hidden;
     z-index: 2000;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-8px);
-    transition: all 0.2s ease;
-    border: 1px solid rgba(0,0,0,0.08); /* Subtle border */
+    transform: translateY(-6px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(11, 60, 35, 0.08);
 }
 
 .search-results-dropdown.active {
@@ -72,56 +75,57 @@
 }
 
 .search-result-header {
-    padding: 10px 15px;
-    background: #f8f9fa;
-    font-size: 0.7rem;
+    padding: 10px 16px;
+    background: #F5F9F6;
+    font-size: 0.68rem;
     font-weight: 700;
-    color: #888;
+    color: #55705E;
     text-transform: uppercase;
-    border-bottom: 1px solid #eee;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(11, 60, 35, 0.06);
 }
 
 .search-results-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: 350px;
+    max-height: 340px;
     overflow-y: auto;
 }
 
 .search-result-item {
     display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    border-bottom: 1px solid #f9f9f9;
+    flex-direction: column;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(11, 60, 35, 0.04);
     cursor: pointer;
-    transition: background 0.1s;
+    transition: all 0.15s ease;
     text-decoration: none;
     color: inherit;
 }
 
 .search-result-item:hover,
 .search-result-item.active-keyboard {
-    background: #E8F5E9;
-    border-left: 3px solid var(--accent-gold);
-    padding-left: 12px;
+    background: #F0FDF4;
+    border-left: 3px solid var(--accent-gold, #C59B27);
+    padding-left: 14px;
 }
 
 .result-title {
     font-weight: 600;
     font-size: 0.85rem;
-    color: var(--primary-navy);
+    color: var(--primary-forest, #0B3C23);
     display: block;
 }
 
 .result-category {
     font-size: 0.7rem;
-    color: #999;
+    color: #6B7C70;
+    margin-top: 2px;
 }
 
-/* ~~~~~ MOBILE OPTIMIZED LAYOUT (Reason: Fixed Collision Issues) ~~~~~ */
+/* ~~~~~ MOBILE OPTIMIZED LAYOUT ~~~~~ */
 @media (max-width: 992px) {
-    /* 1. Reset Container Layout to handle 3 items cleanly */
     .nav-container {
         display: flex;
         justify-content: space-between;
@@ -129,34 +133,31 @@
         position: relative;
     }
 
-    /* 2. Position the Search Container nicely next to Toggle */
     .nav-search-container {
-        margin-right: 15px; /* Space between Search Icon and Menu Toggle */
-        margin-left: auto;  /* Push to the right, next to toggle */
-        width: 40px;        /* Fixed small square for touch target */
-        height: 40px;
+        margin-right: 12px;
+        margin-left: auto;
+        width: 38px;
+        height: 38px;
         justify-content: center;
     }
 
-    /* 3. The Input acts as the invisible trigger button */
     .nav-search-input {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         padding: 0;
-        border-radius: 50%; /* Circle */
-        background: transparent;
-        border: 1px solid rgba(255,255,255,0.1); /* Subtle outline */
-        color: transparent; /* Hide placeholder text */
+        border-radius: 50%;
+        background: #F5F9F6;
+        border: 1px solid rgba(11, 60, 35, 0.1);
+        color: transparent;
         cursor: pointer;
         position: relative;
-        z-index: 5; /* On top of icon */
+        z-index: 5;
     }
 
     .nav-search-input::placeholder {
         color: transparent;
     }
 
-    /* 4. The Loop Icon (Visible Center) */
     .nav-search-icon {
         right: 0;
         left: 0;
@@ -164,45 +165,39 @@
         bottom: 0;
         width: 100%;
         margin: auto;
-        font-size: 1.2rem;
-        color: white; /* Visible icon color */
+        font-size: 1rem;
+        color: var(--primary-forest, #0B3C23);
     }
 
-    /* 5. EXPANDED STATE (Focus) - Overlay Bar */
+    /* EXPANDED STATE (Focus) - Mobile Top Overlay Bar */
     .nav-search-input:focus {
-        position: fixed; /* Break out of flow */
-        top: calc(70px + env(safe-area-inset-top, 0px)); /* Below header */
-        left: calc(15px + env(safe-area-inset-left, 0px));
-        right: calc(15px + env(safe-area-inset-right, 0px));
-        width: calc(100% - 30px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
-        height: 50px;
-        background: white;
-        color: #333;
-        font-size: 16px; /* CRITICAL: prevents unwanted iOS Safari zoom */
+        position: fixed;
+        top: calc(74px + env(safe-area-inset-top, 0px));
+        left: calc(14px + env(safe-area-inset-left, 0px));
+        right: calc(14px + env(safe-area-inset-right, 0px));
+        width: calc(100% - 28px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        height: 46px;
+        background: #FFFFFF;
+        color: #123315;
+        font-size: 16px; /* Prevents iOS auto-zoom */
         border-radius: 8px;
-        padding: 0 20px;
-        border: 1px solid #ddd;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        z-index: 1001; /* High z-index */
+        padding: 0 16px;
+        border: 1.5px solid var(--accent-gold, #C59B27);
+        box-shadow: 0 10px 30px rgba(11, 60, 35, 0.15);
+        z-index: 1001;
         opacity: 1;
     }
     
-    /* Reveal text color on focus */
-    .nav-search-input:focus {
-        color: #333;
-    }
-
     .nav-search-input:focus::placeholder {
-        color: #999;
+        color: #889488;
     }
 
-    /* 6. Dropdown Position Mobile */
     .search-results-dropdown {
         position: fixed;
-        top: calc(130px + env(safe-area-inset-top, 0px)); /* Below the fixed search bar */
-        left: calc(15px + env(safe-area-inset-left, 0px));
-        right: calc(15px + env(safe-area-inset-right, 0px));
-        width: calc(100% - 30px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        top: calc(128px + env(safe-area-inset-top, 0px));
+        left: calc(14px + env(safe-area-inset-left, 0px));
+        right: calc(14px + env(safe-area-inset-right, 0px));
+        width: calc(100% - 28px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
         max-height: 50vh;
         max-height: 50dvh;
         -webkit-overflow-scrolling: touch;

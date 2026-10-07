@@ -70,14 +70,14 @@
         html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; width: 100%; }
         body { background-color: #FFFFFF; color: #1F2937; font-family: var(--font-body); font-size: 1rem; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-height: 100vh; }
         img { max-width: 100%; height: auto; display: block; }
-        .header { position: fixed; top: 0; left: 0; width: 100%; padding: clamp(10px, 2vh, 15px) clamp(15px, 5vw, 50px); z-index: 1000; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(197, 155, 39, 0.2); box-shadow: 0 4px 20px rgba(11, 60, 35, 0.05); transition: all .3s ease; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
-        .logo { font-family: var(--font-main); font-weight: 700; font-size: clamp(18px, 4vw, 24px); color: #0B3C23; text-decoration: none; display: flex; align-items: center; transition: transform .3s ease; }
-        .nav-logo-img { height: 90px; margin-right: 0; width: auto; transition: height .3s ease; filter: drop-shadow(0 2px 8px rgba(11, 60, 35, 0.1)); }
-        @media (max-width: 768px) { .nav-logo-img { height: 48px; } }
-        .nav-menu { display: flex; list-style: none; gap: clamp(12px, 2vw, 24px); align-items: center; }
-        .nav-link { color: #0B3C23; text-decoration: none; font-family: var(--font-body); font-weight: 600; text-transform: uppercase; font-size: clamp(.82rem, 1vw, .92rem); letter-spacing: .8px; transition: all .25s ease; padding: 8px 12px; border-radius: 6px; position: relative; }
-        .nav-link:hover, .nav-link.active { color: var(--accent-gold); }
+        .header { position: fixed; top: 0; left: 0; width: 100%; padding: 0 clamp(16px, 3vw, 40px); height: 74px; z-index: 1000; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(11, 60, 35, 0.08); box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03); transition: all .3s ease; display: flex; align-items: center; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1440px; width: 100%; margin: 0 auto; height: 100%; gap: clamp(12px, 2vw, 28px); }
+        .logo { text-decoration: none; display: flex; align-items: center; padding-right: clamp(14px, 1.8vw, 24px); position: relative; flex-shrink: 0; }
+        .nav-logo-img { height: 50px; width: auto; max-width: 100%; object-fit: contain; }
+        @media (max-width: 992px) { .nav-logo-img { height: 42px; } }
+        .nav-menu { display: flex; list-style: none; gap: clamp(8px, 1.2vw, 20px); align-items: center; margin: 0; padding: 0; flex: 1; justify-content: center; }
+        .nav-link { color: #123315; text-decoration: none; font-family: var(--font-body); font-weight: 600; text-transform: uppercase; font-size: clamp(.78rem, .86vw, .85rem); letter-spacing: .5px; transition: color .25s ease; padding: 8px 4px; position: relative; }
+        .nav-link.active { color: var(--primary-forest); font-weight: 700; }
     </style>
     
     <!-- Preload critical fonts -->
@@ -987,17 +987,17 @@
             <div class="tourism-system-wrapper">
                 <!-- Mode Navigation Control Tabs Bar -->
                 <div class="tourism-nav-bar" role="tablist" aria-label="Datta Chaya Tourism and IRCTC Railway Desk">
-                    <button class="tourism-tab-btn active" data-tour="andhra" role="tab" aria-selected="true">
+                    <button class="tourism-tab-btn active" data-tour="guru" role="tab" aria-selected="true">
+                        🪔 DIVINE DATTATREYA &amp; GURU
+                    </button>
+                    <button class="tourism-tab-btn" data-tour="andhra" role="tab" aria-selected="false">
                         🌊 DIVINE ANDHRA
+                    </button>
+                    <button class="tourism-tab-btn" data-tour="vitthal" role="tab" aria-selected="false">
+                        🚩 DIVINE DATTA &amp; VITTHAL
                     </button>
                     <button class="tourism-tab-btn" data-tour="karnataka" role="tab" aria-selected="false">
                         🏛️ KARNATAKA HERITAGE
-                    </button>
-                    <button class="tourism-tab-btn" data-tour="vitthal" role="tab" aria-selected="false">
-                        🚩 DATTA &amp; VITTHAL
-                    </button>
-                    <button class="tourism-tab-btn" data-tour="guru" role="tab" aria-selected="false">
-                        🕉️ GURU PARAMPARA
                     </button>
                     <button class="tourism-tab-btn" data-tour="irctc" role="tab" aria-selected="false">
                         🚆 IRCTC RAILWAY DESK
@@ -1009,30 +1009,30 @@
                     
                     <!-- Left Column: Real HD Photography Visual Card -->
                     <div class="tourism-visual-area" id="tourismVisualArea">
-                        <img src="images/divya-andhra-temple.jpg" alt="Divine Andhra Yatra Shrine" id="tourismImg" class="tourism-stage-img" loading="eager" width="600" height="340">
+                        <img src="images/dattatreya-guru-kshetra.jpg" alt="Divine Dattatreya & Guru Pilgrimage Shrine" id="tourismImg" class="tourism-stage-img" loading="eager" width="600" height="340">
                         <div class="tourism-visual-overlay">
-                            <span class="tourism-badge-tag" id="tourismBadge">🌊 5D/4N • DATTA CHAYA TOURISM</span>
-                            <span class="tourism-feeling-tag" id="tourismFeeling">Pithapuram • Annavaram • Draksharamam Shrines</span>
+                            <span class="tourism-badge-tag" id="tourismBadge">🪔 5D/4N • DATTA CHHAYA TOURISM</span>
+                            <span class="tourism-feeling-tag" id="tourismFeeling">Kuravpur • Mantralaya • Gangapur • Akkalkot • Solapur</span>
                         </div>
                     </div>
 
                     <!-- Right Column: Details Box -->
                     <div class="movement-details-box">
-                        <span class="tourism-mode-kicker" id="tourismKicker">DATTA CHAYA TOURISM • PILGRIMAGE CIRCUIT</span>
-                        <h3 class="tourism-mode-headline" id="tourismHeadline">Divine Andhra Yatra (5D / 4N)</h3>
+                        <span class="tourism-mode-kicker" id="tourismKicker">DATTA CHHAYA TOURISM • 5 SACRED DESTINATIONS</span>
+                        <h3 class="tourism-mode-headline" id="tourismHeadline">Divine Dattatreya &amp; Guru Pilgrimage (5D / 4N)</h3>
                         <p class="tourism-mode-statement" id="tourismStatement">
-                            Handcrafted pilgrimage covering Pithapuram Datta Peetham, Annavaram Satyanarayana Swami, Draksharamam Pancharama, and Antarvedi Godavari confluence.
+                            A Journey of Devotion &amp; Discovery across 5 sacred destinations: Kuravpur (Sri Pada Shri Vallabha), Mantralaya (Shri Raghavendra Swamy), Gangapur (Shri Dattatreya Nirgun Paduka), Akkalkot (Shri Swami Samarth), and Solapur (Siddheshwar Temple).
                         </p>
                         
                         <ul class="tourism-capabilities-list" id="tourismCaps">
-                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> AC Luxury Coach Fleet</li>
-                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> VIP Darshan Assistance</li>
-                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Pure Satvik Meals</li>
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Economy ₹14,500/- | Business ₹18,999/-</li>
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Private Sedan / SUV for 5 Days</li>
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> 4 Nights Accommodation &amp; Sightseeing</li>
                         </ul>
 
                         <div>
-                            <a href="tours-travel.html#divine-andhra" class="tourism-cta-btn" id="tourismCta">
-                                View Divine Andhra Package →
+                            <a href="tours-travel.html#dattatreya-guru" class="tourism-cta-btn" id="tourismCta">
+                                View Guru Pilgrimage Package →
                             </a>
                         </div>
                     </div>
@@ -1046,53 +1046,53 @@
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         const tourismData = {
+            guru: {
+                kicker: 'DATTA CHHAYA TOURISM • 5 SACRED DESTINATIONS',
+                headline: 'Divine Dattatreya & Guru Pilgrimage (5D / 4N)',
+                statement: 'A Journey of Devotion & Discovery across 5 sacred destinations: Kuravpur (Sri Pada Shri Vallabha), Mantralaya (Shri Raghavendra Swamy), Gangapur (Shri Dattatreya Nirgun Paduka), Akkalkot (Shri Swami Samarth), and Solapur (Siddheshwar Temple).',
+                img: 'images/dattatreya-guru-kshetra.jpg',
+                objPos: 'center 25%',
+                badge: '🪔 5D/4N • DATTA CHHAYA TOURISM',
+                feeling: 'Kuravpur • Mantralaya • Gangapur • Akkalkot • Solapur',
+                caps: ['Economy ₹14,500/- | Business ₹18,999/-', 'Private Sedan / SUV for 5 Days', '4 Nights Accommodation & Sightseeing'],
+                ctaText: 'View Guru Pilgrimage Package →',
+                ctaUrl: 'tours-travel.html#dattatreya-guru'
+            },
             andhra: {
-                kicker: 'DATTA CHAYA TOURISM • PILGRIMAGE CIRCUIT',
-                headline: 'Divine Andhra Yatra (5D / 4N)',
-                statement: 'Handcrafted pilgrimage covering Pithapuram Datta Peetham, Annavaram Satyanarayana Swami, Draksharamam Pancharama, and Antarvedi Godavari confluence.',
+                kicker: 'DATTA CHHAYA TOURISM • SPIRITUAL & COASTAL ANDHRA',
+                headline: 'Divine Andhra (5D / 4N)',
+                statement: 'Spiritual & Coastal Andhra Journey covering Pithapuram (Sri Pada Sri Vallabha), Annavaram (Satyanarayana Swamy), Draksharamam, Kotipalli, Coringa Mangroves, Antarvedi Confluence, and Rajamahendravaram.',
                 img: 'images/divya-andhra-temple.jpg',
                 objPos: 'center 25%',
-                badge: '🌊 5D/4N • DATTA CHAYA TOURISM',
-                feeling: 'Pithapuram • Annavaram • Draksharamam Shrines',
-                caps: ['AC Luxury Coach Fleet', 'VIP Darshan Assistance', 'Pure Satvik Meals'],
+                badge: '🌊 5D/4N • DATTA CHHAYA TOURISM',
+                feeling: 'Pithapuram • Annavaram • Draksharamam • Antarvedi • Rajahmundry',
+                caps: ['Economy Package: ₹17,999/- Per Person', 'Private Sedan for 5 Days', 'Daily Breakfast & All Transfers Included'],
                 ctaText: 'View Divine Andhra Package →',
                 ctaUrl: 'tours-travel.html#divine-andhra'
             },
-            karnataka: {
-                kicker: 'DATTA CHAYA TOURISM • UNESCO HERITAGE',
-                headline: 'Karnataka Heritage & Spiritual Tour (5D / 4N)',
-                statement: 'Explore Gol Gumbaz, Badami Cave Temples, UNESCO monuments at Hampi, Tungabhadra Dam, and sacred river sangams.',
-                img: 'images/karnataka-heritage-murudeshwar.jpg',
-                objPos: 'center 20%',
-                badge: '🏛️ 5D/4N • DATTA CHAYA TOURISM',
-                feeling: 'Badami Caves • Hampi Monuments • Gol Gumbaz',
-                caps: ['Guided Heritage History', 'AC Coach Fleet', 'Handpicked Stays'],
-                ctaText: 'View Karnataka Heritage Tour →',
-                ctaUrl: 'tours-travel.html#karnataka-heritage'
-            },
             vitthal: {
-                kicker: 'DATTA CHAYA TOURISM • SACRED YATRA',
-                headline: 'Divine Datta & Vitthal Pilgrimage (5D / 4N)',
-                statement: 'Swami Samarth Maharaj Math at Akkalkot, Gangapur Nirguna Paduka, Pandharpur Vitthal-Rukmini darshan, and Tuljapur Bhavani Mata.',
+                kicker: 'DATTA CHHAYA TOURISM • DEVOTIONAL PILGRIMAGE',
+                headline: 'Divine Datta & Vitthal Pilgrimage (2D / 3N)',
+                statement: 'A Spiritual Journey of Blessings (श्री दत्त कृपा व विठ्ठलाची भक्ती): Akkalkot (Swami Samarth), Gangapur (Dattatreya Nirgun Paduka), Pandharpur (Vitthal-Rukmini), Tuljapur (Tuljabhavani), and Solapur (Siddheshwar).',
                 img: 'images/datta-vitthal-pandharpur.jpg',
                 objPos: 'center 30%',
-                badge: '🚩 5D/4N • DATTA CHAYA TOURISM',
-                feeling: 'Pandharpur Shri Vitthal • Gangapur Nirguna',
-                caps: ['Hassle-Free VIP Darshan Aid', 'AC Coach & Escort', 'Pure Satvik Meals'],
-                ctaText: 'View Datta & Vitthal Yatra →',
+                badge: '🚩 2D/3N • DATTA CHHAYA TOURISM',
+                feeling: 'Akkalkot • Gangapur • Pandharpur • Tuljapur • Solapur',
+                caps: ['Economy ₹8,999/- | Business ₹11,999/-', 'Private Sedan / SUV for 3 Days', '2 Nights Accommodation & Darshan'],
+                ctaText: 'View Datta & Vitthal Pilgrimage →',
                 ctaUrl: 'tours-travel.html#datta-vitthal'
             },
-            guru: {
-                kicker: 'DATTA CHAYA TOURISM • GURU KSHETRA',
-                headline: 'Divine Dattatreya & Guru Pilgrimage (5D / 4N)',
-                statement: 'The ultimate Guru route: Sripada Srivallabha Kuravpur island temple, Raghavendra Swami Brindavan at Mantralaya & Gangapur.',
-                img: 'images/dattatreya-guru-kshetra.jpg',
-                objPos: 'center 25%',
-                badge: '🕉️ 5D/4N • DATTA CHAYA TOURISM',
-                feeling: 'Kuravpur Island • Mantralaya Brindavan',
-                caps: ['Island Boat Transfers', 'Special Archana Pujas', 'Complete Yatra Escort'],
-                ctaText: 'View Guru Pilgrimage Tour →',
-                ctaUrl: 'tours-travel.html#dattatreya-guru'
+            karnataka: {
+                kicker: 'DATTA CHHAYA TOURISM • TIMELESS HERITAGE',
+                headline: 'Karnataka Heritage Tour (4N / 5D)',
+                statement: 'Explore the Timeless Beauty of Karnataka across 9 destinations: Bijapur (Gol Gumat), Shiv Giri, Almatti Dam, Kudalsangama, Hampi (UNESCO Heritage), Tungabhadra Dam, Aihole, Pattadakkal, and Badami.',
+                img: 'images/karnataka-heritage-murudeshwar.jpg',
+                objPos: 'center 20%',
+                badge: '🏛️ 4N/5D • DATTA CHHAYA TOURISM',
+                feeling: 'Bijapur • Almatti • Kudalsangama • Hampi • Badami',
+                caps: ['Economy ₹18,999/- | Business ₹27,999/- (Twin Sharing)', 'Luxurious / Premium Stays & Daily Breakfast', 'AC Transportation & Sightseeing across 9 Sites'],
+                ctaText: 'View Karnataka Heritage Tour →',
+                ctaUrl: 'tours-travel.html#karnataka-heritage'
             },
             irctc: {
                 kicker: 'SEPARATE SERVICE • IRCTC RAILWAY DESK',
@@ -2030,11 +2030,11 @@
                 <!-- Q3 -->
                 <details class="faq-item">
                     <summary class="faq-summary">
-                        <span>03. What makes Datta Chaya Tourism yatra packages special?</span>
+                        <span>03. What makes Datta Chhaya Tourism pilgrimage packages special?</span>
                         <span class="faq-icon">▼</span>
                     </summary>
                     <div class="faq-answer">
-                        Our handcrafted 5D/4N spiritual yatra packages (Divine Andhra, Karnataka Heritage, Datta &amp; Vitthal, and Guru Parampara) include comfortable AC pushback tour coaches, pre-booked hotel accommodations, VIP temple darshan assistance, experienced Pune tour managers, and 100% pure Satvik meals throughout the circuit.
+                        Our 4 signature pilgrimage and heritage tour packages — <strong>Divine Dattatreya &amp; Guru Pilgrimage (5D/4N)</strong>, <strong>Divine Andhra (5D/4N)</strong>, <strong>Divine Datta &amp; Vitthal Pilgrimage (2D/3N)</strong>, and <strong>Karnataka Heritage Tour (4N/5D)</strong> — include comfortable private AC vehicles (Sedan / SUV), verified hotel accommodations, all-places temple darshan &amp; sightseeing coordination, daily breakfast (as per package), and dedicated support throughout your journey.
                     </div>
                 </details>
 
