@@ -70,7 +70,7 @@ function createCarouselItem(data, index) {
         <div class="card">
             <div class="card-number">0${data.id}</div>
             <div class="card-image">
-                <img src="${data.image}" alt="${data.title}">
+                <img src="${data.image}" alt="${data.title}" loading="lazy" width="300" height="200" decoding="async">
             </div>
             <h3 class="card-title">${data.title}</h3>
             <p class="card-description">${data.description}</p>
@@ -197,22 +197,24 @@ function animateCounter(element) {
     const target = parseFloat(element.dataset.target);
     const suffix = element.dataset.suffix || '';
     const duration = 2000;
-    const step = target / (duration / 16);
-    let current = 0;
+    const start = performance.now();
 
-    const counter = setInterval(() => {
-        current += step;
-        if (current >= target) {
-            element.textContent = target + suffix;
-            clearInterval(counter);
+    function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const current = progress * target;
+        if (Number.isInteger(target)) {
+            element.textContent = Math.floor(current) + suffix;
         } else {
-            if (Number.isInteger(target)) {
-                element.textContent = Math.floor(current) + suffix;
-            } else {
-                element.textContent = current.toFixed(1) + suffix;
-            }
+            element.textContent = current.toFixed(1) + suffix;
         }
-    }, 16);
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            element.textContent = target + suffix;
+        }
+    }
+    requestAnimationFrame(step);
 }
 
 // Observer for stats
@@ -344,10 +346,17 @@ if (header) {
 
 // Initialize everything on load
 document.addEventListener('DOMContentLoaded', () => {
-    // Init components
+    // Critical visual component for immediate view
     initCarousel();
-    initParticles();
-    initMobileSocialDock();
+
+    // Chunk non-critical initializations to yield main thread (<50ms task slices)
+    setTimeout(() => {
+        initParticles();
+        initMobileSocialDock();
+        initFormsSystem();
+        initPerformanceChart();
+        initCatalogFilters();
+    }, 0);
 
     // Handle Resize for Carousel to switch between 3D and Scroll modes
     let resizeTimer;
@@ -557,8 +566,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    initFormsSystem();
-
     // Performance Chart Initialization
     function initPerformanceChart() {
         const canvas = document.getElementById('performanceChart');
@@ -694,16 +701,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
-    // Initialize chart when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPerformanceChart);
-    } else {
-        initPerformanceChart();
-    }
-    
-    // Initialize Catalog Filters
-    initCatalogFilters();
 });
 
 // Catalog Filter Functionality

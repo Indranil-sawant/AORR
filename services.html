@@ -2,14 +2,35 @@
 <html lang="en">
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MF3X4BWLJ0"></script>
+<!-- Google tag (gtag.js) - High Performance Deferred Loading -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-MF3X4BWLJ0');
+
+  (function() {
+    var gaLoaded = false;
+    function loadGA() {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      var el = document.createElement('script');
+      el.async = true;
+      el.src = 'https://www.googletagmanager.com/gtag/js?id=G-MF3X4BWLJ0';
+      document.head.appendChild(el);
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function(evt) {
+        window.removeEventListener(evt, loadGA, { passive: true });
+      });
+    }
+    ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function(evt) {
+      window.addEventListener(evt, loadGA, { once: true, passive: true });
+    });
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGA, { timeout: 3000 });
+    } else {
+      setTimeout(loadGA, 3000);
+    }
+  })();
 </script>
 
     <meta charset="UTF-8">
@@ -66,7 +87,7 @@
             <div class="loader-logo-wrapper">
                 <picture>
                     <source srcset="images/logo.webp" type="image/webp">
-                    <img loading="eager" decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img">
+                    <img loading="eager" decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img" width="105" height="105">
                 </picture>
             </div>
             <div class="loader-ring-1"></div>
@@ -100,6 +121,12 @@
                 <li><a href="market-insights.html" class="nav-link">Global Network</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
+
+            <div class="nav-search-container">
+                <input type="text" placeholder="Search..." class="nav-search-input" aria-label="Search trade, travel, and medical services" role="combobox" aria-expanded="false" aria-autocomplete="list">
+                <span class="nav-search-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+                <div class="search-results-dropdown"></div>
+            </div>
 
             <div class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu" role="button" tabindex="0" aria-expanded="false">
                 <span></span><span></span><span></span>

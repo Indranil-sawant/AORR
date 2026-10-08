@@ -2,14 +2,35 @@
 <html lang="en">
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MF3X4BWLJ0"></script>
+<!-- Google tag (gtag.js) - High Performance Deferred Loading -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-MF3X4BWLJ0');
+
+  (function() {
+    var gaLoaded = false;
+    function loadGA() {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      var el = document.createElement('script');
+      el.async = true;
+      el.src = 'https://www.googletagmanager.com/gtag/js?id=G-MF3X4BWLJ0';
+      document.head.appendChild(el);
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function(evt) {
+        window.removeEventListener(evt, loadGA, { passive: true });
+      });
+    }
+    ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function(evt) {
+      window.addEventListener(evt, loadGA, { once: true, passive: true });
+    });
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGA, { timeout: 3000 });
+    } else {
+      setTimeout(loadGA, 3000);
+    }
+  })();
 </script>
 
     <meta charset="UTF-8">
@@ -44,9 +65,6 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/logo.png">
     
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    
     <!-- Critical CSS - Inline for FCP (First Contentful Paint) - Light Luxury Theme -->
     <style>
         :root {
@@ -65,7 +83,7 @@
             --font-body: 'Inter', sans-serif;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; width: 100%; }
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; width: 100%; scrollbar-gutter: stable; }
         body { background-color: #FFFFFF; color: #1F2937; font-family: var(--font-body); font-size: 1rem; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; min-height: 100vh; }
         img { max-width: 100%; height: auto; display: block; }
         .header { position: fixed; top: 0; left: 0; width: 100%; padding: 0 clamp(16px, 3vw, 40px); height: 74px; z-index: 1000; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(11, 60, 35, 0.08); box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03); transition: all .3s ease; display: flex; align-items: center; }
@@ -82,7 +100,7 @@
     <!-- Preload critical fonts -->
     
     <!-- Core Stylesheets -->
-        <link rel="preload" href="images/hero_section.webp" as="image" type="image/webp" fetchpriority="high">
+        <link rel="preload" href="images/aorr-trade-hero.webp" as="image" type="image/webp" fetchpriority="high">
     <!-- Preconnect & High-Performance Font Delivery -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -148,7 +166,7 @@
             <div class="loader-logo-wrapper">
                 <picture>
                     <source srcset="images/logo.webp" type="image/webp">
-                    <img loading="eager" decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img">
+                    <img loading="eager" decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img" width="105" height="105">
                 </picture>
             </div>
             <div class="loader-ring-1"></div>
@@ -182,6 +200,12 @@
                 <li><a href="market-insights.html" class="nav-link">Global Network</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
+
+            <div class="nav-search-container">
+                <input type="text" placeholder="Search..." class="nav-search-input" aria-label="Search trade, travel, and medical services" role="combobox" aria-expanded="false" aria-autocomplete="list">
+                <span class="nav-search-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+                <div class="search-results-dropdown"></div>
+            </div>
 
             <div class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu" role="button" tabindex="0" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -618,7 +642,7 @@
                     
                     <!-- Left Column: Real HD Photography Visual Card -->
                     <div class="movement-visual-area" id="movementVisualArea">
-                        <img decoding="async" src="images/tours-hero-banner.jpg" alt="AIR Movement System Aviation" id="movementImg" class="movement-stage-img" loading="eager" width="600" height="340">
+                        <img decoding="async" src="images/tours-hero-banner.webp" alt="AIR Movement System Aviation" id="movementImg" class="movement-stage-img" loading="lazy" width="600" height="340">
                         <div class="movement-visual-overlay">
                             <span class="movement-badge-tag" id="movementBadge">⚡ FAST • GLOBAL • ELEVATED</span>
                             <span class="movement-feeling-tag" id="movementFeeling">Rapid Air Logistics &amp; Executive Flight Desks</span>
@@ -659,7 +683,7 @@
                 kicker: 'MODE 01/04 • AVIATION & PRIORITY TRANSIT',
                 headline: 'AIR — Aviation & Priority Freight',
                 statement: 'Fast international connectivity for corporate travel, priority air freight, executive itineraries, and urgent sample dispatches.',
-                img: 'images/tours-hero-banner.jpg',
+                img: 'images/tours-hero-banner.webp',
                 objPos: 'center 40%',
                 badge: '⚡ FAST • GLOBAL • ELEVATED',
                 feeling: 'Rapid Air Logistics & Executive Flight Desks',
@@ -671,7 +695,7 @@
                 kicker: 'MODE 02/04 • MARITIME & GLOBAL SHIPPING',
                 headline: 'OCEAN — Maritime Supply Chains',
                 statement: 'High-capacity ocean freight moving marine raw materials, industrial valves, and bulk cargo from Indian ports to 50+ countries.',
-                img: 'images/aorr-trade-port.jpg',
+                img: 'images/aorr-trade-port.webp',
                 objPos: 'center center',
                 badge: '🌊 GLOBAL • MASSIVE • CONNECTED',
                 feeling: '50+ Global Export Ports & Deep-Sea Shipping',
@@ -683,7 +707,7 @@
                 kicker: 'MODE 03/04 • AUTHORISED IRCTC RAILWAY DESK',
                 headline: 'RAIL — Nationwide Train Logistics',
                 statement: 'Authorised IRCTC Railway Desk delivering expert ticketing assistance, Tatkal booking advisory, group reservations, and nationwide rail transit.',
-                img: 'images/irctc-vande-bharat.jpg',
+                img: 'images/irctc-vande-bharat.webp',
                 objPos: 'center 35%',
                 badge: '🚆 CONNECTED • RELIABLE • NATIONWIDE',
                 feeling: 'Authorised IRCTC Agent & Tatkal Advisory Desk',
@@ -695,7 +719,7 @@
                 kicker: 'MODE 04/04 • DOMESTIC FLEET & GROUND CARE',
                 headline: 'ROAD — Fleet & Ground Logistics',
                 statement: 'Multi-axle container road logistics, AC luxury coach fleets for spiritual yatras, and 24/7 dedicated medical patient transfers.',
-                img: 'images/luxury-pushback-bus.jpg',
+                img: 'images/luxury-pushback-bus.webp',
                 objPos: 'center 45%',
                 badge: '🚛 FLEXIBLE • DOMESTIC • ACCESSIBLE',
                 feeling: 'Luxury Tour Coaches & Container Freight',
@@ -1009,7 +1033,7 @@
                     
                     <!-- Left Column: Real HD Photography Visual Card -->
                     <div class="tourism-visual-area" id="tourismVisualArea">
-                        <img decoding="async" src="images/dattatreya-guru-kshetra.jpg" alt="Divine Dattatreya & Guru Pilgrimage Shrine" id="tourismImg" class="tourism-stage-img" loading="eager" width="600" height="340">
+                        <img decoding="async" src="images/dattatreya-guru-kshetra.webp" alt="Divine Dattatreya & Guru Pilgrimage Shrine" id="tourismImg" class="tourism-stage-img" loading="lazy" width="600" height="340">
                         <div class="tourism-visual-overlay">
                             <span class="tourism-badge-tag" id="tourismBadge">🪔 5D/4N • DATTA CHHAYA TOURISM</span>
                             <span class="tourism-feeling-tag" id="tourismFeeling">Kuravpur • Mantralaya • Gangapur • Akkalkot • Solapur</span>
@@ -1050,7 +1074,7 @@
                 kicker: 'DATTA CHHAYA TOURISM • 5 SACRED DESTINATIONS',
                 headline: 'Divine Dattatreya & Guru Pilgrimage (5D / 4N)',
                 statement: 'A Journey of Devotion & Discovery across 5 sacred destinations: Kuravpur (Sri Pada Shri Vallabha), Mantralaya (Shri Raghavendra Swamy), Gangapur (Shri Dattatreya Nirgun Paduka), Akkalkot (Shri Swami Samarth), and Solapur (Siddheshwar Temple).',
-                img: 'images/dattatreya-guru-kshetra.jpg',
+                img: 'images/dattatreya-guru-kshetra.webp',
                 objPos: 'center 25%',
                 badge: '🪔 5D/4N • DATTA CHHAYA TOURISM',
                 feeling: 'Kuravpur • Mantralaya • Gangapur • Akkalkot • Solapur',
@@ -1062,7 +1086,7 @@
                 kicker: 'DATTA CHHAYA TOURISM • SPIRITUAL & COASTAL ANDHRA',
                 headline: 'Divine Andhra (5D / 4N)',
                 statement: 'Spiritual & Coastal Andhra Journey covering Pithapuram (Sri Pada Sri Vallabha), Annavaram (Satyanarayana Swamy), Draksharamam, Kotipalli, Coringa Mangroves, Antarvedi Confluence, and Rajamahendravaram.',
-                img: 'images/divya-andhra-temple.jpg',
+                img: 'images/divya-andhra-temple.webp',
                 objPos: 'center 25%',
                 badge: '🌊 5D/4N • DATTA CHHAYA TOURISM',
                 feeling: 'Pithapuram • Annavaram • Draksharamam • Antarvedi • Rajahmundry',
@@ -1074,7 +1098,7 @@
                 kicker: 'DATTA CHHAYA TOURISM • DEVOTIONAL PILGRIMAGE',
                 headline: 'Divine Datta & Vitthal Pilgrimage (2D / 3N)',
                 statement: 'A Spiritual Journey of Blessings (श्री दत्त कृपा व विठ्ठलाची भक्ती): Akkalkot (Swami Samarth), Gangapur (Dattatreya Nirgun Paduka), Pandharpur (Vitthal-Rukmini), Tuljapur (Tuljabhavani), and Solapur (Siddheshwar).',
-                img: 'images/datta-vitthal-pandharpur.jpg',
+                img: 'images/datta-vitthal-pandharpur.webp',
                 objPos: 'center 30%',
                 badge: '🚩 2D/3N • DATTA CHHAYA TOURISM',
                 feeling: 'Akkalkot • Gangapur • Pandharpur • Tuljapur • Solapur',
@@ -1086,7 +1110,7 @@
                 kicker: 'DATTA CHHAYA TOURISM • TIMELESS HERITAGE',
                 headline: 'Karnataka Heritage Tour (4N / 5D)',
                 statement: 'Explore the Timeless Beauty of Karnataka across 9 destinations: Bijapur (Gol Gumat), Shiv Giri, Almatti Dam, Kudalsangama, Hampi (UNESCO Heritage), Tungabhadra Dam, Aihole, Pattadakkal, and Badami.',
-                img: 'images/karnataka-heritage-murudeshwar.jpg',
+                img: 'images/karnataka-heritage-murudeshwar.webp',
                 objPos: 'center 20%',
                 badge: '🏛️ 4N/5D • DATTA CHHAYA TOURISM',
                 feeling: 'Bijapur • Almatti • Kudalsangama • Hampi • Badami',
@@ -1098,7 +1122,7 @@
                 kicker: 'SEPARATE SERVICE • IRCTC RAILWAY DESK',
                 headline: 'Railway Ticket Booking & Tatkal Assistance',
                 statement: 'Official IRCTC Railway Desk providing train ticket booking, Tatkal assistance, group travel planning, and fast WhatsApp e-ticket delivery across India.',
-                img: 'images/irctc-vande-bharat.jpg',
+                img: 'images/irctc-vande-bharat.webp',
                 objPos: 'center 35%',
                 badge: '🚆 IRCTC RAILWAY DESK',
                 feeling: 'Railway Ticket Booking & Tatkal Assistance',
@@ -1446,7 +1470,7 @@
                     <div class="door-image-wrapper">
                         <picture>
                             <source srcset="images/aorr-trade-port.webp" type="image/webp">
-                            <img src="images/aorr-trade-port.jpg" alt="AORR Global Trade Port Shipping" class="door-img" loading="lazy" decoding="async">
+                            <img src="images/aorr-trade-port.jpg" alt="AORR Global Trade Port Shipping" class="door-img" loading="lazy" decoding="async" width="400" height="200">
                         </picture>
                         <span class="door-badge badge-trade">DIVISION 01 • B2B TRADE</span>
                     </div>
@@ -1483,7 +1507,7 @@
                     <div class="door-image-wrapper">
                         <picture>
                             <source srcset="images/divya-andhra-temple.webp" type="image/webp">
-                            <img src="images/divya-andhra-temple.jpg" alt="Datta Chaya Spiritual Tourism" class="door-img" loading="lazy" decoding="async">
+                            <img src="images/divya-andhra-temple.jpg" alt="Datta Chaya Spiritual Tourism" class="door-img" loading="lazy" decoding="async" width="400" height="200">
                         </picture>
                         <span class="door-badge badge-travel">DIVISION 02 • TOURS &amp; TRAVEL</span>
                     </div>
@@ -1518,7 +1542,7 @@
                 <!-- DOOR 03: MEDICAL TOURISM -->
                 <div class="door-card door-medical">
                     <div class="door-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" alt="AORR Medical Tourism Coordination" class="door-img" loading="lazy" decoding="async">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" alt="AORR Medical Tourism Coordination" class="door-img" loading="lazy" decoding="async" width="400" height="200">
                         <span class="door-badge badge-medical">DIVISION 03 • HEALTHCARE</span>
                     </div>
                     <div class="door-content">
@@ -1618,7 +1642,7 @@
                     <div style="height: 160px; border-radius: 12px; overflow: hidden; margin-bottom: 16px;">
                         <picture>
                             <source srcset="images/aorr-trade-port.webp" type="image/webp">
-                            <img src="images/aorr-trade-port.jpg" alt="Dubai and GCC maritime logistics hub" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                            <img src="images/aorr-trade-port.jpg" alt="Dubai and GCC maritime logistics hub" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" width="380" height="160">
                         </picture>
                     </div>
                     <span class="corridor-badge">Middle East Hub</span>
@@ -1633,7 +1657,7 @@
                     <div style="height: 160px; border-radius: 12px; overflow: hidden; margin-bottom: 16px;">
                         <picture>
                             <source srcset="images/rotterdam.webp" type="image/webp">
-                            <img src="images/rotterdam.jpg" alt="Rotterdam and European container shipping gateway" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                            <img src="images/rotterdam.jpg" alt="Rotterdam and European container shipping gateway" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" width="380" height="160">
                         </picture>
                     </div>
                     <span class="corridor-badge">European Hub</span>
@@ -1648,7 +1672,7 @@
                     <div style="height: 160px; border-radius: 12px; overflow: hidden; margin-bottom: 16px;">
                         <picture>
                             <source srcset="images/john-simmons-N7_NUUtCkDU-unsplash.webp" type="image/webp">
-                            <img src="images/john-simmons-N7_NUUtCkDU-unsplash.jpg" alt="Singapore and ASEAN logistics maritime corridor" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+                            <img src="images/john-simmons-N7_NUUtCkDU-unsplash.jpg" alt="Singapore and ASEAN logistics maritime corridor" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" width="380" height="160">
                         </picture>
                     </div>
                     <span class="corridor-badge">Asia-Pacific Hub</span>
@@ -1926,7 +1950,7 @@
                     <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="insta-card">
                         <picture>
                             <source srcset="images/aorr-trade-port.webp" type="image/webp">
-                            <img src="images/aorr-trade-port.jpg" alt="AORR Global Trade Shipping Port" loading="lazy" decoding="async">
+                            <img src="images/aorr-trade-port.jpg" alt="AORR Global Trade Shipping Port" loading="lazy" decoding="async" width="300" height="240">
                         </picture>
                         <div class="insta-overlay">
                             <span class="insta-card-tag">#GlobalTrade</span>
@@ -1938,7 +1962,7 @@
                     <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="insta-card">
                         <picture>
                             <source srcset="images/divya-andhra-temple.webp" type="image/webp">
-                            <img src="images/divya-andhra-temple.jpg" alt="Datta Chaya Spiritual Yatra" loading="lazy" decoding="async">
+                            <img src="images/divya-andhra-temple.jpg" alt="Datta Chaya Spiritual Yatra" loading="lazy" decoding="async" width="300" height="240">
                         </picture>
                         <div class="insta-overlay">
                             <span class="insta-card-tag">#DattaChayaTours</span>
@@ -1950,7 +1974,7 @@
                     <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="insta-card">
                         <picture>
                             <source srcset="images/irctc-vande-bharat.webp" type="image/webp">
-                            <img src="images/irctc-vande-bharat.jpg" alt="Authorised IRCTC Rail Booking Desk" loading="lazy" decoding="async">
+                            <img src="images/irctc-vande-bharat.jpg" alt="Authorised IRCTC Rail Booking Desk" loading="lazy" decoding="async" width="300" height="240">
                         </picture>
                         <div class="insta-overlay">
                             <span class="insta-card-tag">#IRCTCDesk</span>
@@ -1962,7 +1986,7 @@
                     <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="insta-card">
                         <picture>
                             <source srcset="images/luxury-pushback-bus.webp" type="image/webp">
-                            <img src="images/luxury-pushback-bus.jpg" alt="AORR Luxury AC Coach Bus" loading="lazy" decoding="async">
+                            <img src="images/luxury-pushback-bus.jpg" alt="AORR Luxury AC Coach Bus" loading="lazy" decoding="async" width="300" height="240">
                         </picture>
                         <div class="insta-overlay">
                             <span class="insta-card-tag">#AORRTravel</span>

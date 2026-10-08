@@ -1,9 +1,8 @@
-import PRODUCTS_CATALOG from './products-data.js';
-
 /**
- * GLOBAL SEARCH LOGIC
+ * GLOBAL SEARCH LOGIC (High-Performance Zero-CLS & Lazy Indexed)
  * Features:
- * - Injects search input into Navbar (if not present)
+ * - Detects static navbar search container or injects fallback
+ * - Lazy asynchronous index loading on idle or focus (no main-thread blocking)
  * - Auto-suggestion dropdown
  * - Navigation to products page
  */
@@ -20,6 +19,31 @@ const CATEGORY_ICONS = {
     default: '📦'
 };
 
+let searchIndex = null;
+let isIndexing = false;
+
+async function getSearchIndex() {
+    if (searchIndex) return searchIndex;
+    if (isIndexing) {
+        while (isIndexing) {
+            await new Promise(r => setTimeout(r, 40));
+        }
+        return searchIndex || [];
+    }
+    isIndexing = true;
+    try {
+        const module = await import('./products-data.js');
+        const catalog = module.default || module;
+        searchIndex = buildSearchIndex(catalog);
+    } catch (err) {
+        console.warn('Deferred search index load:', err);
+        searchIndex = buildSearchIndex({});
+    } finally {
+        isIndexing = false;
+    }
+    return searchIndex;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initGlobalSearch();
 });
@@ -27,53 +51,73 @@ document.addEventListener('DOMContentLoaded', () => {
 function initGlobalSearch() {
     // 1. Locate Navbar
     const navContainer = document.querySelector('.nav-container');
-    const navMenu = document.querySelector('.nav-menu');
-    
     if (!navContainer) return;
 
-    // 2. Create Search UI
-    const searchWrapper = document.createElement('div');
-    searchWrapper.className = 'nav-search-container';
-    
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.placeholder = 'Search...';
-    input.className = 'nav-search-input';
-    input.setAttribute('aria-label', 'Search AORR Global Enterprise');
-    
-    const icon = document.createElement('span');
-    icon.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>';
-    icon.className = 'nav-search-icon';
-    
-    const dropdown = document.createElement('div');
-    dropdown.className = 'search-results-dropdown';
-    
-    searchWrapper.appendChild(input);
-    searchWrapper.appendChild(icon);
-    searchWrapper.appendChild(dropdown);
-    
-    // 3. Insert into Navbar (Before Menu Toggle)
-    const toggle = document.getElementById('menuToggle');
-    if (toggle) {
-        navContainer.insertBefore(searchWrapper, toggle);
+    // 2. Check for existing static Search UI or create fallback
+    let searchWrapper = navContainer.querySelector('.nav-search-container');
+    let input, dropdown;
+
+    if (!searchWrapper) {
+        searchWrapper = document.createElement('div');
+        searchWrapper.className = 'nav-search-container';
+        
+        input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'Search...';
+        input.className = 'nav-search-input';
+        input.setAttribute('aria-label', 'Search trade, travel, and medical services');
+        input.setAttribute('role', 'combobox');
+        input.setAttribute('aria-expanded', 'false');
+        input.setAttribute('aria-autocomplete', 'list');
+        
+        const icon = document.createElement('span');
+        icon.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>';
+        icon.className = 'nav-search-icon';
+        
+        dropdown = document.createElement('div');
+        dropdown.className = 'search-results-dropdown';
+        
+        searchWrapper.appendChild(input);
+        searchWrapper.appendChild(icon);
+        searchWrapper.appendChild(dropdown);
+        
+        const toggle = document.getElementById('menuToggle');
+        if (toggle) {
+            navContainer.insertBefore(searchWrapper, toggle);
+        } else {
+            navContainer.appendChild(searchWrapper);
+        }
     } else {
-        navContainer.appendChild(searchWrapper);
+        input = searchWrapper.querySelector('.nav-search-input');
+        dropdown = searchWrapper.querySelector('.search-results-dropdown');
+        if (!dropdown) {
+            dropdown = document.createElement('div');
+            dropdown.className = 'search-results-dropdown';
+            searchWrapper.appendChild(dropdown);
+        }
     }
 
-    input.setAttribute('aria-label', 'Search trade, travel, and medical services');
-    input.setAttribute('role', 'combobox');
-    input.setAttribute('aria-expanded', 'false');
-    input.setAttribute('aria-autocomplete', 'list');
+    if (!input || !dropdown) return;
 
-    // 4. Index Data for Fast Search
-    const searchIndex = buildSearchIndex();
+    // Pre-warm index during browser idle time or on first focus
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => { getSearchIndex(); }, { timeout: 4000 });
+    } else {
+        setTimeout(() => { getSearchIndex(); }, 2500);
+    }
+
+    input.addEventListener('focus', () => {
+        getSearchIndex();
+    }, { once: true });
+
     let activeResultIndex = -1;
 
-    // 5. Event Listeners
-    input.addEventListener('input', (e) => {
+    // 3. Event Listeners
+    input.addEventListener('input', async (e) => {
         const term = e.target.value.trim().toLowerCase();
         activeResultIndex = -1;
-        handleSearch(term, dropdown, searchIndex);
+        const index = await getSearchIndex();
+        handleSearch(term, dropdown, index);
         input.setAttribute('aria-expanded', dropdown.classList.contains('active') ? 'true' : 'false');
     });
 
@@ -130,10 +174,10 @@ function initGlobalSearch() {
 /**
  * Flattens products data into a searchable array
  */
-function buildSearchIndex() {
+function buildSearchIndex(catalog = {}) {
     const index = [];
 
-    Object.entries(PRODUCTS_CATALOG).forEach(([catKey, data]) => {
+    Object.entries(catalog).forEach(([catKey, data]) => {
         const icon = CATEGORY_ICONS[catKey] || CATEGORY_ICONS.default;
         
         // Add Category itself

@@ -9,27 +9,10 @@
     let renderStart = Date.now();
     let hidden = false;
 
-    // Lock scrolling immediately when loader initializes
-    function lockScroll() {
-        if (document.documentElement) document.documentElement.style.overflow = 'hidden';
-        if (document.body) document.body.style.overflow = 'hidden';
-    }
-
-    function unlockScroll() {
-        if (document.documentElement) document.documentElement.style.overflow = '';
-        if (document.body) document.body.style.overflow = '';
-    }
-
-    lockScroll();
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', lockScroll);
-    }
-
     function hideLoader() {
         if (hidden) return;
         const loader = document.getElementById('aorr-loader');
         if (!loader) {
-            unlockScroll();
             return;
         }
         
@@ -39,7 +22,6 @@
         
         setTimeout(() => {
             loader.classList.add('loader-hidden');
-            unlockScroll();
 
             // Remove element from DOM after fade-out transition completes
             setTimeout(() => {
