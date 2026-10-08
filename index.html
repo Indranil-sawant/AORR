@@ -45,8 +45,6 @@
     <link rel="icon" type="image/png" href="images/logo.png">
     
     <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     
     <!-- Critical CSS - Inline for FCP (First Contentful Paint) - Light Luxury Theme -->
@@ -82,12 +80,13 @@
     </style>
     
     <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"></noscript>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap"></noscript>
     
     <!-- Core Stylesheets -->
+        <link rel="preload" href="images/hero_section.webp" as="image" type="image/webp" fetchpriority="high">
+    <!-- Preconnect & High-Performance Font Delivery -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&family=Poppins:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap">
     <link rel="stylesheet" href="templatemo-prism-flux.css">
     <link rel="stylesheet" href="global-search-style.css">
     <link rel="stylesheet" href="loader.css">
@@ -149,7 +148,7 @@
             <div class="loader-logo-wrapper">
                 <picture>
                     <source srcset="images/logo.webp" type="image/webp">
-                    <img src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img">
+                    <img loading="eager" decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img">
                 </picture>
             </div>
             <div class="loader-ring-1"></div>
@@ -170,7 +169,7 @@
             <a href="index.html" class="logo">
                 <picture>
                     <source srcset="images/logo.webp" type="image/webp">
-                    <img src="images/logo.png" alt="AORR Global Enterprise Logo" class="nav-logo-img" loading="eager" width="90" height="90">
+                    <img decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="nav-logo-img" loading="eager" width="90" height="90">
                 </picture>
             </a>
 
@@ -259,7 +258,7 @@
                     <div class="emblem-disc">
                         <picture>
                             <source srcset="images/logo.png" type="image/png">
-                            <img src="images/logo.png" alt="AORR Global Enterprise Official Emblem" width="68" height="68">
+                            <img decoding="async" src="images/logo.png" alt="AORR Global Enterprise Official Emblem" width="68" height="68">
                         </picture>
                     </div>
                     <div>
@@ -619,7 +618,7 @@
                     
                     <!-- Left Column: Real HD Photography Visual Card -->
                     <div class="movement-visual-area" id="movementVisualArea">
-                        <img src="images/tours-hero-banner.jpg" alt="AIR Movement System Aviation" id="movementImg" class="movement-stage-img" loading="eager" width="600" height="340">
+                        <img decoding="async" src="images/tours-hero-banner.jpg" alt="AIR Movement System Aviation" id="movementImg" class="movement-stage-img" loading="eager" width="600" height="340">
                         <div class="movement-visual-overlay">
                             <span class="movement-badge-tag" id="movementBadge">⚡ FAST • GLOBAL • ELEVATED</span>
                             <span class="movement-feeling-tag" id="movementFeeling">Rapid Air Logistics &amp; Executive Flight Desks</span>
@@ -1010,7 +1009,7 @@
                     
                     <!-- Left Column: Real HD Photography Visual Card -->
                     <div class="tourism-visual-area" id="tourismVisualArea">
-                        <img src="images/dattatreya-guru-kshetra.jpg" alt="Divine Dattatreya & Guru Pilgrimage Shrine" id="tourismImg" class="tourism-stage-img" loading="eager" width="600" height="340">
+                        <img decoding="async" src="images/dattatreya-guru-kshetra.jpg" alt="Divine Dattatreya & Guru Pilgrimage Shrine" id="tourismImg" class="tourism-stage-img" loading="eager" width="600" height="340">
                         <div class="tourism-visual-overlay">
                             <span class="tourism-badge-tag" id="tourismBadge">🪔 5D/4N • DATTA CHHAYA TOURISM</span>
                             <span class="tourism-feeling-tag" id="tourismFeeling">Kuravpur • Mantralaya • Gangapur • Akkalkot • Solapur</span>

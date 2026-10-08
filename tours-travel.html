@@ -58,12 +58,13 @@
     </script>
     
     <!-- Fonts & Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
+    <!-- Preconnect & High-Performance Font Delivery -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&family=Poppins:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap">
+    <link rel="preload" href="images/tours-hero-banner.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="templatemo-prism-flux.css">
     <link rel="stylesheet" href="global-search-style.css">
     <link rel="stylesheet" href="loader.css">
@@ -1455,7 +1456,7 @@
 
         /* IRCTC Rail Section */
         .rail-section {
-            padding: 90px 20px;
+            padding: clamp(44px, 7vw, 90px) 20px;
             background: linear-gradient(135deg, rgba(11, 60, 35, 0.90) 0%, rgba(14, 90, 48, 0.94) 100%), url('images/irctc-vande-bharat.webp') center/cover no-repeat;
             color: #FFFFFF;
             position: relative;
@@ -1478,27 +1479,102 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
+            width: 100%;
         }
 
         .rail-grid {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 50px;
+            gap: clamp(24px, 4vw, 50px);
             align-items: center;
+        }
+
+        .rail-badge-wrap {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .rail-wing-tag {
+            background: rgba(197, 155, 39, 0.25);
+            color: #C59B27;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            border: 1px solid #C59B27;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rail-partner-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 18px;
+            font-size: 0.78rem;
+            letter-spacing: 0.4px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .irctc-official-badge {
+            background: #FFFFFF;
+            padding: 3px 12px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            height: 30px;
+            border: 1px solid rgba(197, 155, 39, 0.45);
+        }
+
+        .irctc-badge-logo {
+            height: 18px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .rail-title-main {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.45rem, 3.8vw, 2.7rem);
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-top: 8px;
+            line-height: 1.25;
+        }
+
+        .rail-title-accent {
+            color: #C59B27;
+        }
+
+        .rail-desc-text {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: clamp(0.88rem, 1.8vw, 1.05rem);
+            line-height: 1.6;
+            margin-top: 14px;
         }
 
         .rail-features-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin-top: 30px;
+            gap: 16px;
+            margin-top: 24px;
         }
 
         .rail-feat-card {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(197, 155, 39, 0.3);
-            border-radius: 16px;
-            padding: 22px;
+            border-radius: 14px;
+            padding: clamp(14px, 2.5vw, 22px) !important;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
@@ -1511,42 +1587,170 @@
 
         .rail-feat-card h4 {
             color: #C59B27;
-            font-size: 1.1rem;
-            margin-bottom: 6px;
+            font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+            margin-bottom: 5px;
             font-weight: 800;
         }
 
         .rail-feat-card p {
             color: rgba(255, 255, 255, 0.95);
-            font-size: 0.88rem;
+            font-size: clamp(0.82rem, 1.5vw, 0.88rem);
             line-height: 1.5;
             margin: 0;
         }
 
         .rail-action-box {
             background: #FFFFFF;
-            border-radius: 24px;
-            padding: 40px 35px;
+            border-radius: 20px;
+            padding: clamp(20px, 3.5vw, 38px);
             color: #111827;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
             border: 2px solid #C59B27;
+        }
+
+        .rail-action-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .rail-action-icon {
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            line-height: 1;
+        }
+
+        .rail-action-subtitle {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #0E5A30;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .rail-action-title {
+            margin: 2px 0 0;
+            font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+            color: #0B3C23;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .rail-action-desc {
+            font-size: clamp(0.84rem, 1.6vw, 0.92rem);
+            color: #4B5563;
+            line-height: 1.55;
+            margin: 0;
         }
 
         .rail-classes-pill {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
-            margin: 18px 0 25px;
+            margin: 14px 0 20px;
         }
 
         .class-pill {
             background: #E8F5E9;
             color: #0B3C23;
             font-weight: 800;
-            font-size: 0.85rem;
-            padding: 6px 14px;
-            border-radius: 20px;
+            font-size: clamp(0.74rem, 1.4vw, 0.85rem);
+            padding: 5px 11px;
+            border-radius: 18px;
             border: 1px solid rgba(14, 90, 48, 0.25);
+            transition: all .2s ease;
+        }
+
+        .rail-cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .rail-sublink {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            color: #0B3C23;
+            font-weight: 700;
+            font-size: 0.86rem;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .rail-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .rail-section {
+                padding: 42px 14px;
+            }
+            .rail-features-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-top: 18px;
+            }
+            .rail-feat-card {
+                padding: 14px 14px !important;
+                border-radius: 12px;
+            }
+            .rail-action-box {
+                padding: 20px 14px;
+                border-radius: 16px;
+            }
+            .rail-classes-pill {
+                gap: 5px;
+                margin: 12px 0 16px;
+            }
+            .class-pill {
+                font-size: 0.75rem;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rail-section {
+                padding: 34px 10px;
+            }
+            .rail-wing-tag {
+                font-size: 0.72rem;
+                letter-spacing: 0.6px;
+                padding: 4px 9px;
+            }
+            .rail-partner-tag {
+                font-size: 0.72rem;
+                padding: 4px 8px;
+            }
+            .rail-title-main {
+                font-size: 1.3rem;
+            }
+            .rail-feat-card {
+                padding: 12px 10px !important;
+            }
+            .rail-feat-card h4 {
+                font-size: 0.9rem;
+            }
+            .rail-feat-card p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+            .rail-action-box {
+                padding: 16px 12px;
+            }
+            .class-pill {
+                font-size: 0.7rem;
+                padding: 3px 7px;
+            }
         }
 
         /* Travel Inquiry Form Section */
@@ -1959,7 +2163,7 @@
             <div class="loader-logo-wrapper">
                 <picture>
                     <source srcset="images/logo.webp" type="image/webp">
-                    <img src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img">
+                    <img loading="eager" decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img">
                 </picture>
             </div>
             <div class="loader-ring-1"></div>
@@ -1980,7 +2184,7 @@
             <a href="index.html" class="logo">
                 <picture>
                     <source srcset="images/logo.webp" type="image/webp">
-                    <img src="images/logo.png" alt="AORR Global Enterprise Logo" class="nav-logo-img" loading="eager" width="90" height="90">
+                    <img decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="nav-logo-img" loading="eager" width="90" height="90">
                 </picture>
             </a>
 
@@ -2002,7 +2206,7 @@
 
     <!-- Travel Hero Section -->
     <section class="travel-hero">
-        <img src="images/datta_maharaj.png" alt="Lord Dattatreya" class="hero-datta-watermark" loading="eager" width="140" height="172">
+        <img decoding="async" src="images/datta_maharaj.png" alt="Lord Dattatreya" class="hero-datta-watermark" loading="eager" width="140" height="172">
         <div class="travel-hero-content">
             <div class="hero-badge-pill">
                 DATTA CHAYA TOURISM
@@ -3340,18 +3544,24 @@
             <div class="rail-grid">
                 
                 <div>
-                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap;">
-                        <span style="background: rgba(197, 155, 39, 0.25); color: #C59B27; font-weight: 800; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid #C59B27;">
+                    <div class="rail-badge-wrap">
+                        <span class="rail-wing-tag">
                             🚆 AORR RAIL TICKETING WING
                         </span>
-                        <span style="background: rgba(255, 255, 255, 0.15); color: #FFFFFF; font-weight: 700; padding: 5px 14px; border-radius: 18px; font-size: 0.8rem; letter-spacing: 0.5px;">
+                        <span class="rail-partner-tag">
                             Official IRCTC Authorised Partner
                         </span>
+                        <div class="irctc-official-badge" title="IRCTC Authorised Partner">
+                            <picture>
+                                <source srcset="images/irctc-logo.webp" type="image/webp">
+                                <img src="images/irctc-logo.png" alt="IRCTC Logo" class="irctc-badge-logo" width="70" height="23" loading="lazy" decoding="async">
+                            </picture>
+                        </div>
                     </div>
-                    <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 3.5vw, 2.7rem); font-weight: 800; color: #FFFFFF; margin-top: 10px; line-height: 1.25;">
-                        All-India Railway Reservation Desk<br><span style="color: #C59B27;">Direct &amp; Hassle-Free E-Ticketing 🇮🇳</span>
+                    <h2 class="rail-title-main">
+                        All-India Railway Reservation Desk<br><span class="rail-title-accent">Direct &amp; Hassle-Free E-Ticketing 🇮🇳</span>
                     </h2>
-                    <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.05rem; line-height: 1.65; margin-top: 15px;">
+                    <p class="rail-desc-text">
                         <em>"From Kashmir to Kanyakumari – Let AORR take you closer to India!"</em><br>
                         Skip the stress of server queues and complex quotas. AORR’s dedicated rail ticketing desk provides authorized booking assistance, route optimization, and fast official PDF e-ticket dispatch to your phone.
                     </p>
@@ -3378,15 +3588,15 @@
 
                 <!-- Right Action Box -->
                 <div class="rail-action-box">
-                    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
-                        <span style="font-size: 2.4rem;">🎫</span>
+                    <div class="rail-action-header">
+                        <span class="rail-action-icon">🎫</span>
                         <div>
-                            <span style="font-size: 0.8rem; font-weight: 800; color: #0E5A30; text-transform: uppercase; letter-spacing: 0.5px;">AORR Rail Services Desk</span>
-                            <h3 style="margin: 0; font-size: 1.4rem; color: #0B3C23; font-weight: 800;">Book Railway Tickets</h3>
+                            <span class="rail-action-subtitle">AORR Rail Services Desk</span>
+                            <h3 class="rail-action-title">Book Railway Tickets</h3>
                         </div>
                     </div>
 
-                    <p style="font-size: 0.92rem; color: #4B5563; line-height: 1.55;">
+                    <p class="rail-action-desc">
                         Reservation assistance across all Indian Railways classes and premium express trains:
                     </p>
 
@@ -3401,10 +3611,10 @@
                         <span class="class-pill">Tejas &amp; Duronto</span>
                     </div>
 
-                    <a href="https://wa.me/919730004911?text=Hello%20AORR%20Rail%20Desk%2C%20I%20would%20like%20assistance%20with%20an%20IRCTC%20Railway%20Ticket%20booking." target="_blank" rel="noopener noreferrer" class="btn-book-primary" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; font-size: 0.95rem; text-decoration: none;">
+                    <a href="https://wa.me/919730004911?text=Hello%20AORR%20Rail%20Desk%2C%20I%20would%20like%20assistance%20with%20an%20IRCTC%20Railway%20Ticket%20booking." target="_blank" rel="noopener noreferrer" class="btn-book-primary rail-cta-btn">
                         <span>Inquire on WhatsApp 📲</span>
                     </a>
-                    <a href="#travel-inquiry" style="display: block; text-align: center; margin-top: 14px; color: #0B3C23; font-weight: 700; font-size: 0.88rem; text-decoration: underline;">
+                    <a href="#travel-inquiry" class="rail-sublink">
                         Or Submit Online Ticket Request ↓
                     </a>
                 </div>
@@ -3431,10 +3641,10 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
                 <!-- Fleet Card 1: Executive Sedan -->
                 <div style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(14, 90, 48, 0.15); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);">
-                    <div style="height: 220px; overflow: hidden; position: relative;">
+                    <div style="height: clamp(210px, 25vw, 250px); overflow: hidden; position: relative;">
                         <picture>
                             <source srcset="images/executive-travel-sedan.webp" type="image/webp">
-                            <img src="images/executive-travel-sedan.jpg" alt="Executive Sedan Chauffeur Fleet" loading="lazy" decoding="async" width="600" height="350" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="images/executive-travel-sedan.jpg" alt="Executive Sedan Chauffeur Fleet" loading="lazy" decoding="async" width="600" height="350" style="width: 100%; height: 100%; object-fit: cover; object-position: 45% center;">
                         </picture>
                     </div>
                     <div style="padding: 24px;">
@@ -3446,10 +3656,10 @@
 
                 <!-- Fleet Card 2: Luxury Pushback Bus -->
                 <div style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(14, 90, 48, 0.15); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);">
-                    <div style="height: 220px; overflow: hidden; position: relative;">
+                    <div style="height: clamp(210px, 25vw, 250px); overflow: hidden; position: relative;">
                         <picture>
                             <source srcset="images/luxury-pushback-bus.webp" type="image/webp">
-                            <img src="images/luxury-pushback-bus.jpg" alt="Luxury Pushback Coach Bus" loading="lazy" decoding="async" width="600" height="350" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="images/luxury-pushback-bus.jpg" alt="Luxury Pushback Coach Bus" loading="lazy" decoding="async" width="600" height="350" style="width: 100%; height: 100%; object-fit: cover; object-position: 15% center;">
                         </picture>
                     </div>
                     <div style="padding: 24px;">

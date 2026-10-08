@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "pdf2json": "^3.1.4"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
   }
 }
