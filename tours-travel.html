@@ -75,6 +75,7 @@
             min-height: 75vh;
             width: 100%;
             position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -82,6 +83,47 @@
             padding: 160px 20px 80px;
             text-align: center;
             background: linear-gradient(180deg, rgba(244, 248, 245, 0.86) 0%, rgba(255, 255, 255, 0.95) 100%), url('images/tours-hero-banner.webp') center/cover no-repeat;
+        }
+
+        .travel-hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-datta-watermark {
+            position: absolute;
+            top: clamp(95px, 12vh, 115px);
+            left: clamp(28px, 3.5vw, 48px);
+            width: clamp(120px, 9.5vw, 145px);
+            height: auto;
+            object-fit: contain;
+            opacity: 0.88;
+            pointer-events: none;
+            user-select: none;
+            z-index: 1;
+            border: none;
+            background: none;
+            box-shadow: none;
+            filter: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-datta-watermark {
+                top: 86px;
+                left: 18px;
+                width: clamp(68px, 17vw, 85px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-datta-watermark {
+                top: 84px;
+                left: 14px;
+                width: clamp(60px, 16vw, 75px);
+            }
         }
 
         .hero-badge-pill {
@@ -175,8 +217,9 @@
             stroke: #1B5E20;
             stroke-width: 2;
             stroke-linecap: round;
-            stroke-linejoin: round;
         }
+
+
 
         /* Sacred Datta Mantra Moving Marquee Bar */
         .datta-mantra-bar {
@@ -1936,7 +1979,7 @@
         <nav class="nav-container">
             <a href="index.html" class="logo">
                 <picture>
-                    <source srcset="images/logo.png" type="image/png">
+                    <source srcset="images/logo.webp" type="image/webp">
                     <img src="images/logo.png" alt="AORR Global Enterprise Logo" class="nav-logo-img" loading="eager" width="90" height="90">
                 </picture>
             </a>
@@ -1959,9 +2002,10 @@
 
     <!-- Travel Hero Section -->
     <section class="travel-hero">
-        <div>
+        <img src="images/datta_maharaj.png" alt="Lord Dattatreya" class="hero-datta-watermark" loading="eager" width="140" height="172">
+        <div class="travel-hero-content">
             <div class="hero-badge-pill">
-                AORR TOURS, TRAVEL &amp; RAIL SERVICES
+                DATTA CHAYA TOURISM
             </div>
             <h1 class="hero-title-main">
                 Travel Beyond Boundaries…<br>

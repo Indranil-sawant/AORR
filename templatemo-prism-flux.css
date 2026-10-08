@@ -279,11 +279,9 @@ img {
 	max-width: 100%;
 	object-fit: contain;
 	transition: transform 0.25s ease;
-	image-rendering: auto !important;
-	image-rendering: smooth !important;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	transform: translateZ(0);
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: crisp-edges;
+	image-rendering: high-quality;
 }
 
 .logo:hover .nav-logo-img {
@@ -8839,11 +8837,18 @@ img, picture, svg, video, iframe {
     }
 
     /* Section Spacing Rhythm */
-    section, .hero, .hero-wrapper, .catalog-section, .corridor-section,
+    section, .hero, .catalog-section, .corridor-section,
     .expert-authority-section, .values-section, .travel-services-section,
     .sacred-itinerary-section, .rail-section, .reach-section, .philosophy-section {
         padding-top: clamp(48px, 8vw, 68px);
         padding-bottom: clamp(48px, 8vw, 68px);
+    }
+
+    /* Index Hero Wrapper Dedicated Mobile Clearance (Prevents cutting under 74px navbar) */
+    .hero-wrapper {
+        padding-top: clamp(112px, 15vw, 136px) !important;
+        padding-bottom: clamp(35px, 6vw, 50px) !important;
+        min-height: auto;
     }
 
     /* Responsive Typography Clamping */

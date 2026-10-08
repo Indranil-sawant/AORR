@@ -42,7 +42,7 @@ function initGlobalSearch() {
     input.setAttribute('aria-label', 'Search AORR Global Enterprise');
     
     const icon = document.createElement('span');
-    icon.innerHTML = '🔍';
+    icon.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>';
     icon.className = 'nav-search-icon';
     
     const dropdown = document.createElement('div');
