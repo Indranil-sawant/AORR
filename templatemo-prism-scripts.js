@@ -347,6 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Init components
     initCarousel();
     initParticles();
+    initMobileSocialDock();
 
     // Handle Resize for Carousel to switch between 3D and Scroll modes
     let resizeTimer;
@@ -859,3 +860,98 @@ function initMobileScrollHighlight() {
 
     items.forEach(item => observer.observe(item));
 }
+
+// ==========================================================================
+// MOBILE COLLAPSIBLE QUICK-CONNECT SOCIAL DOCK
+// ==========================================================================
+function initMobileSocialDock() {
+    const dock = document.querySelector('.floating-social-dock');
+    if (!dock) return;
+
+    // Check if links wrapper already exists
+    let linksWrap = dock.querySelector('.social-dock-links');
+    if (!linksWrap) {
+        linksWrap = document.createElement('div');
+        linksWrap.className = 'social-dock-links';
+        const buttons = Array.from(dock.querySelectorAll('.social-dock-btn'));
+        buttons.forEach(btn => linksWrap.appendChild(btn));
+        dock.appendChild(linksWrap);
+    }
+
+    // Check if toggle button already exists
+    let toggleBtn = dock.querySelector('.social-dock-toggle');
+    if (!toggleBtn) {
+        toggleBtn = document.createElement('button');
+        toggleBtn.type = 'button';
+        toggleBtn.className = 'social-dock-toggle';
+        toggleBtn.setAttribute('aria-label', 'Toggle social channels');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.setAttribute('title', 'Connect with AORR');
+        toggleBtn.innerHTML = `
+            <svg class="icon-toggle-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <svg class="icon-toggle-close" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        `;
+        dock.insertBefore(toggleBtn, linksWrap);
+    }
+
+    // Sync state based on screen width
+    const updateDockState = () => {
+        if (window.innerWidth <= 768) {
+            if (!dock.classList.contains('is-expanded')) {
+                dock.classList.add('is-collapsed');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+            }
+        } else {
+            dock.classList.remove('is-collapsed');
+            dock.classList.remove('is-expanded');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+        }
+    };
+
+    updateDockState();
+
+    // Toggle button click handler
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isCollapsed = dock.classList.contains('is-collapsed');
+        if (isCollapsed) {
+            dock.classList.remove('is-collapsed');
+            dock.classList.add('is-expanded');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+        } else {
+            dock.classList.add('is-collapsed');
+            dock.classList.remove('is-expanded');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Auto-collapse when tapping outside on mobile
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && !dock.contains(e.target)) {
+            if (dock.classList.contains('is-expanded')) {
+                dock.classList.add('is-collapsed');
+                dock.classList.remove('is-expanded');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
+
+    // Auto-collapse when scrolling on mobile if expanded
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768 && dock.classList.contains('is-expanded')) {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                dock.classList.add('is-collapsed');
+                dock.classList.remove('is-expanded');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+            }, 150);
+        }
+    }, { passive: true });
+}
+

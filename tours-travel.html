@@ -1035,44 +1035,96 @@
             flex-wrap: wrap;
         }
 
-        /* Responsive Media Queries */
+        /* ========================================================================= */
+        /* MOBILE & TABLET TOUR & ITINERARY TIMELINE OPTIMIZATIONS                   */
+        /* ========================================================================= */
+        @media (max-width: 992px) {
+            .rail-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .inc-exc-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .travel-hero {
+                padding-top: 130px;
+                padding-bottom: 50px;
+            }
+            .tour-nav-bar {
+                top: 74px;
+            }
+            .rail-features-grid {
+                grid-template-columns: 1fr;
+            }
             .sacred-itinerary-section {
-                padding: 60px 16px;
+                padding: 50px 14px;
             }
-            .timeline-track-spine {
-                left: 18px;
+
+            /* 1. Tour Section & Card Containers */
+            .tour-section {
+                padding: 48px 12px;
+                overflow-x: clip;
             }
-            .timeline-day-block {
-                padding-left: 48px;
+            .tour-container {
+                width: 100%;
+                max-width: 100%;
+                padding: 0;
+                box-sizing: border-box;
             }
-            .timeline-day-node {
-                left: 2px;
-                width: 32px;
-                height: 32px;
-                font-size: 0.85rem;
-                top: 18px;
+            .tour-detail-card {
+                border-radius: 18px;
+                margin-bottom: 36px;
+                border-width: 1.5px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                overflow: hidden;
             }
-            .travel-transition-row {
-                margin-left: 48px;
-            }
-            .timeline-accordion-trigger {
-                padding: 18px 16px;
+            .tour-detail-header {
+                padding: 24px 18px;
+                min-height: auto;
+                flex-direction: column;
+                align-items: flex-start;
                 gap: 12px;
             }
-            .timeline-day-block.is-open .timeline-accordion-panel {
-                padding: 0 16px 20px;
+            .tour-title-large {
+                font-size: clamp(1.25rem, 4.5vw, 1.55rem);
+                margin: 6px 0 2px;
+                line-height: 1.3;
             }
-            .activity-slot {
-                flex-direction: column;
-                gap: 6px;
+            .tour-subtitle {
+                font-size: 0.88rem;
+                line-height: 1.45;
             }
-            .activity-time-badge {
-                min-width: auto;
+            .tour-duration-badge {
+                font-size: 0.82rem;
+                padding: 5px 14px;
+                border-radius: 20px;
+                align-self: flex-start;
+            }
+            .tour-detail-body {
+                padding: 18px 14px !important;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* 2. Journey Route Overview (Clean Vertical Sequence) */
+            .journey-route-nav {
+                padding: 16px 14px;
+                border-radius: 14px;
+                margin-bottom: 20px;
+                width: 100%;
+                box-sizing: border-box;
             }
             .route-stops-track {
                 flex-direction: column;
-                gap: 16px;
+                gap: 10px;
+                width: 100%;
             }
             .route-connector-line {
                 display: none;
@@ -1080,12 +1132,281 @@
             .route-stop-node {
                 width: 100%;
                 flex-direction: row;
+                align-items: center;
                 text-align: left;
-                gap: 14px;
+                gap: 12px;
+                padding: 8px 12px;
+                background: #F8FAF9;
+                border-radius: 10px;
+                border: 1px solid rgba(14, 90, 48, 0.08);
+                box-sizing: border-box;
             }
             .route-node-circle {
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                font-size: 0.95rem;
+                border-width: 2px;
                 margin-bottom: 0;
                 flex-shrink: 0;
+            }
+            .route-node-name {
+                font-size: 0.88rem;
+                font-weight: 800;
+                color: #0B3C23;
+            }
+            .route-node-desc {
+                font-size: 0.76rem;
+                color: #6B7280;
+                margin-top: 1px;
+            }
+
+            /* 3. Trip Summary Highlights Strip */
+            .trip-summary-strip {
+                gap: 8px;
+                margin-bottom: 24px;
+                justify-content: flex-start;
+            }
+            .summary-pill {
+                padding: 6px 12px;
+                font-size: 0.78rem;
+                gap: 6px;
+                border-radius: 16px;
+            }
+
+            /* 4. Pricing Tiers Grid */
+            .pricing-tiers-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-bottom: 26px;
+                width: 100%;
+            }
+            .price-card {
+                padding: 22px 18px;
+                border-radius: 16px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .price-amount {
+                font-size: 1.9rem;
+                margin: 6px 0 2px;
+            }
+            .price-per-person {
+                font-size: 0.82rem;
+                margin-bottom: 14px;
+            }
+            .price-features-list {
+                gap: 8px;
+                margin-bottom: 18px;
+            }
+            .price-features-list li {
+                font-size: 0.85rem;
+                line-height: 1.45;
+                gap: 8px;
+            }
+
+            /* 5. Mobile Itinerary & Single-Column Architecture */
+            .timeline-accordion-flow {
+                position: relative;
+                margin-top: 14px;
+                padding-left: 0;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .timeline-track-spine {
+                display: none; /* Replaces large left rail with 100% full-width mobile card */
+            }
+            .timeline-day-block {
+                position: relative;
+                padding-left: 0;
+                margin-bottom: 14px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .timeline-day-node {
+                display: none; /* Day number cleanly integrated into trigger badge */
+            }
+            .timeline-accordion-card {
+                width: 100%;
+                max-width: 100%;
+                border-radius: 14px;
+                border: 1.5px solid rgba(14, 90, 48, 0.16);
+                border-left: 4px solid #0E5A30;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+                box-sizing: border-box;
+                overflow: hidden;
+                transition: all 0.25s ease;
+            }
+            .timeline-day-block.is-open .timeline-accordion-card {
+                border-color: #C59B27;
+                border-left-color: #C59B27;
+                box-shadow: 0 6px 22px rgba(197, 155, 39, 0.12);
+            }
+            .timeline-accordion-trigger {
+                padding: 16px 14px;
+                gap: 10px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                box-sizing: border-box;
+            }
+            .trigger-day-badge {
+                display: inline-block;
+                background: #E8F5E9;
+                color: #0E5A30;
+                font-size: 0.74rem;
+                font-weight: 800;
+                padding: 3px 8px;
+                border-radius: 6px;
+                letter-spacing: 0.5px;
+                border: 1px solid rgba(14, 90, 48, 0.2);
+                margin-bottom: 5px;
+            }
+            .trigger-dest-name {
+                font-size: clamp(0.98rem, 3.8vw, 1.1rem);
+                font-weight: 700;
+                color: #0B3C23;
+                line-height: 1.35;
+                margin: 0;
+            }
+            .trigger-day-summary {
+                font-size: 0.8rem;
+                color: #6B7280;
+                margin-top: 4px;
+                line-height: 1.4;
+            }
+            .accordion-toggle-icon {
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                font-size: 0.9rem;
+                border-radius: 50%;
+            }
+            .timeline-accordion-panel {
+                padding: 0 14px;
+                box-sizing: border-box;
+            }
+            .timeline-day-block.is-open .timeline-accordion-panel {
+                padding: 0 14px 16px;
+            }
+            .activity-timeline-list {
+                border-top: 1px dashed rgba(197, 155, 39, 0.35);
+                padding-top: 12px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .activity-slot {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                background: #F8FAF9;
+                padding: 10px 12px;
+                border-radius: 10px;
+                border: 1px solid rgba(14, 90, 48, 0.08);
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .activity-time-badge {
+                font-size: 0.72rem;
+                font-weight: 800;
+                padding: 2px 7px;
+                border-radius: 5px;
+                letter-spacing: 0.5px;
+                background: #FFF9E6;
+                color: #92400E;
+                border: 1px solid rgba(197, 155, 39, 0.3);
+                align-self: flex-start;
+                min-width: auto;
+            }
+            .activity-desc-text {
+                font-size: 0.86rem;
+                color: #374151;
+                line-height: 1.52;
+                margin: 0;
+                width: 100%;
+            }
+
+            /* 6. Travel Transition Pills */
+            .travel-transition-row {
+                margin: 8px 0 12px 0;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .transition-pill {
+                font-size: 0.76rem;
+                padding: 6px 14px;
+                border-radius: 18px;
+                gap: 6px;
+                max-width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+                line-height: 1.35;
+                white-space: normal;
+            }
+
+            /* 7. Inclusions & Exclusions */
+            .inc-exc-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                padding: 18px 14px;
+                border-radius: 14px;
+                margin-top: 22px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .inc-box h4, .exc-box h4 {
+                font-size: 0.94rem;
+                margin-bottom: 8px;
+            }
+            .inc-exc-list {
+                gap: 6px;
+                font-size: 0.83rem;
+                line-height: 1.45;
+            }
+        }
+
+        /* Small Screen Smartphones (≤ 480px) */
+        @media (max-width: 480px) {
+            .tour-section {
+                padding: 36px 8px;
+            }
+            .tour-detail-header {
+                padding: 20px 14px;
+            }
+            .tour-detail-body {
+                padding: 14px 10px !important;
+            }
+            .journey-route-nav {
+                padding: 12px 10px;
+            }
+            .price-card {
+                padding: 18px 14px;
+            }
+            .price-amount {
+                font-size: 1.7rem;
+            }
+            .timeline-accordion-trigger {
+                padding: 14px 10px;
+                gap: 8px;
+            }
+            .timeline-day-block.is-open .timeline-accordion-panel {
+                padding: 0 10px 14px;
+            }
+            .activity-slot {
+                padding: 8px 10px;
+            }
+            .activity-desc-text {
+                font-size: 0.83rem;
+                line-height: 1.48;
+            }
+            .inc-exc-grid {
+                padding: 14px 10px;
             }
         }
 
@@ -1191,32 +1512,397 @@
             background: #FFFFFF;
         }
 
-        @media (max-width: 992px) {
-            .rail-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .inc-exc-grid {
-                grid-template-columns: 1fr;
-            }
+        /* ========================================================================= */
+        /* TOUR PRICE ENQUIRY MODAL STYLES                                          */
+        /* ========================================================================= */
+        .tour-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(7, 30, 15, 0.78);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 16px;
+            box-sizing: border-box;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .travel-hero {
-                padding-top: 130px;
-                padding-bottom: 50px;
+        .tour-modal-overlay.is-active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .tour-modal-container {
+            background: #FFFFFF;
+            width: 100%;
+            max-width: 520px;
+            max-height: calc(100vh - 40px);
+            border-radius: 22px;
+            border: 2px solid #C59B27;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            padding: 28px 26px;
+            position: relative;
+            overflow-y: auto;
+            box-sizing: border-box;
+            transform: translateY(20px) scale(0.97);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .tour-modal-overlay.is-active .tour-modal-container {
+            transform: translateY(0) scale(1);
+        }
+
+        .tour-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: #F3F4F6;
+            color: #374151;
+            font-size: 1.5rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .tour-modal-close:hover,
+        .tour-modal-close:focus-visible {
+            background: #DC2626;
+            color: #FFFFFF;
+            outline: none;
+            transform: rotate(90deg);
+        }
+
+        .tour-modal-header {
+            text-align: center;
+            margin-bottom: 18px;
+            padding-right: 20px;
+        }
+
+        .tour-modal-eyebrow {
+            display: inline-block;
+            background: #FFF9E6;
+            color: #92400E;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 3px 12px;
+            border-radius: 14px;
+            border: 1px solid #C59B27;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .tour-modal-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #0B3C23;
+            margin: 4px 0;
+            line-height: 1.3;
+        }
+
+        .tour-modal-subtitle {
+            font-size: 0.86rem;
+            color: #4B5563;
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* Selected Tour Summary Context Card */
+        .tour-modal-selection-card {
+            background: linear-gradient(135deg, #F4FBF6 0%, #FFFDF5 100%);
+            border: 1.5px solid rgba(14, 90, 48, 0.2);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .selection-row {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .selection-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            color: #0E5A30;
+            text-transform: uppercase;
+        }
+
+        .selection-val {
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: #0B3C23;
+            line-height: 1.35;
+        }
+
+        .selection-val.plan-highlight {
+            color: #92400E;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 800;
+        }
+
+        /* WhatsApp Action Box */
+        .tour-modal-whatsapp-box {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .btn-modal-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 13px 20px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #FFFFFF;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.94rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+            transition: all 0.25s ease;
+            box-sizing: border-box;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-modal-whatsapp:hover,
+        .btn-modal-whatsapp:focus-visible {
+            background: linear-gradient(135deg, #1EBE5D 0%, #0E7065 100%);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+            outline: none;
+        }
+
+        .wa-subhint {
+            font-size: 0.78rem;
+            color: #6B7280;
+            margin: 6px 0 0;
+            font-weight: 600;
+        }
+
+        /* Divider */
+        .tour-modal-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 16px 0 18px;
+            color: #9CA3AF;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .tour-modal-divider::before,
+        .tour-modal-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .tour-modal-divider span {
+            padding: 0 12px;
+        }
+
+        /* Form Layout */
+        .tour-modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .modal-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 12px;
+        }
+
+        .modal-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #0B3C23;
+        }
+
+        .modal-label .req {
+            color: #DC2626;
+            font-weight: bold;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #D1D5DB;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #111827;
+            background: #FFFFFF;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: #0E5A30;
+            box-shadow: 0 0 0 3px rgba(14, 90, 48, 0.15);
+        }
+
+        .modal-input.is-invalid {
+            border-color: #DC2626;
+            background: #FFF5F5;
+        }
+
+        .modal-error-text {
+            font-size: 0.76rem;
+            color: #DC2626;
+            font-weight: 600;
+            display: none;
+            margin-top: 2px;
+        }
+
+        .modal-input.is-invalid + .modal-error-text {
+            display: block;
+        }
+
+        .modal-textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .modal-status-banner {
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.86rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .modal-status-banner.error {
+            background: #FEF2F2;
+            color: #991B1B;
+            border: 1px solid #F87171;
+        }
+
+        .btn-modal-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #0B3C23 0%, #0E5A30 100%);
+            color: #FFFFFF;
+            border: 1px solid #C59B27;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 14px rgba(11, 60, 35, 0.25);
+            margin-top: 4px;
+        }
+
+        .btn-modal-submit:hover:not(:disabled),
+        .btn-modal-submit:focus-visible:not(:disabled) {
+            background: linear-gradient(135deg, #0E5A30 0%, #15803D 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(11, 60, 35, 0.35);
+            outline: none;
+        }
+
+        .btn-modal-submit:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success View inside Modal */
+        .modal-success-view {
+            text-align: center;
+            padding: 16px 8px;
+        }
+
+        .modal-success-view .success-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #E8F5E9;
+            color: #0E5A30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 auto 12px;
+            border: 2px solid #0E5A30;
+        }
+
+        .modal-success-view h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0B3C23;
+            margin: 0 0 8px;
+        }
+
+        .modal-success-view p {
+            font-size: 0.9rem;
+            color: #374151;
+            line-height: 1.55;
+            margin: 0 0 16px;
+        }
+
+        @media (max-width: 480px) {
+            .tour-modal-container {
+                padding: 22px 16px;
+                border-radius: 18px;
             }
-            .tour-detail-header {
-                padding: 25px 20px;
+            .tour-modal-title {
+                font-size: 1.15rem;
             }
-            .tour-detail-body {
-                padding: 25px 20px;
-            }
-            .rail-features-grid {
+            .modal-form-row {
                 grid-template-columns: 1fr;
+                gap: 10px;
             }
-            .tour-nav-bar {
-                top: 74px;
+            .btn-modal-whatsapp, .btn-modal-submit {
+                font-size: 0.88rem;
+                padding: 12px 16px;
             }
         }
     </style>
@@ -1428,9 +2114,7 @@
                             <div>
                                 <span class="price-tier-tag economy">🌱 Economy Package</span>
                                 <div style="font-size: 0.85rem; color: #0E5A30; font-weight: 700; margin-top: 4px;">Comfortable &amp; Affordable Pilgrimage</div>
-                                <div class="price-amount">₹ 14,500/-</div>
-                                <div class="price-per-person">Per Person (Single Occupancy)</div>
-                                <ul class="price-features-list">
+                                <ul class="price-features-list" style="margin-top: 14px;">
                                     <li><span>✓</span> <strong>Transport:</strong> Private Sedan for full 5 Days (as per itinerary)</li>
                                     <li><span>✓</span> <strong>Stay:</strong> 4 Nights Accommodation (Standard Category)</li>
                                     <li><span>✓</span> <strong>Darshan:</strong> All Places Darshan &amp; Local Sightseeing</li>
@@ -1438,7 +2122,7 @@
                                     <li><span>✓</span> <strong>Support:</strong> Dedicated Tour Coordination &amp; Helpline</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary">Book Economy (₹14,500) →</a>
+                            <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="dattatreya-guru" data-itinerary-name="Divine Dattatreya &amp; Guru Pilgrimage (5D/4N)" data-package-type="Economy" data-package-name="Economy Package">GET ECONOMY PRICE →</button>
                         </div>
 
                         <!-- Business Tier -->
@@ -1446,9 +2130,7 @@
                             <div>
                                 <span class="price-tier-tag business">👑 Business Package</span>
                                 <div style="font-size: 0.85rem; color: #92400E; font-weight: 700; margin-top: 4px;">Premium &amp; Comfortable Pilgrimage</div>
-                                <div class="price-amount">₹ 18,999/-</div>
-                                <div class="price-per-person">Per Person (Single Occupancy)</div>
-                                <ul class="price-features-list">
+                                <ul class="price-features-list" style="margin-top: 14px;">
                                     <li><span>✓</span> <strong>Transport:</strong> Private SUV for full 5 Days (as per itinerary)</li>
                                     <li><span>✓</span> <strong>Stay:</strong> 4 Nights Accommodation (Deluxe / Premium)</li>
                                     <li><span>✓</span> <strong>Darshan:</strong> All Places Darshan &amp; Local Sightseeing</li>
@@ -1456,7 +2138,7 @@
                                     <li><span>✓</span> <strong>Support:</strong> Enhanced Travel Comfort &amp; Dedicated Concierge</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">Book Business (₹18,999) →</a>
+                            <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="dattatreya-guru" data-itinerary-name="Divine Dattatreya &amp; Guru Pilgrimage (5D/4N)" data-package-type="Business" data-package-name="Business Package" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">GET BUSINESS PRICE →</button>
                         </div>
                     </div>
 
@@ -1686,7 +2368,7 @@
                     </div>
 
                     <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Dattatreya &amp; Guru Tour →</a>
+                        <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="dattatreya-guru" data-itinerary-name="Divine Dattatreya &amp; Guru Pilgrimage (5D/4N)" data-package-type="All Plans" data-package-name="All Plans / Custom" style="flex: 1; min-width: min(250px, 100%);">Get Tour Price &amp; Details →</button>
                         <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20want%20to%20inquire%20about%20the%20Divine%20Dattatreya%20%26%20Guru%20Pilgrimage%20(5D%2F4N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
                     </div>
                 </div>
@@ -1762,9 +2444,7 @@
                             <div>
                                 <span class="price-tier-tag economy">🌱 Economy Package</span>
                                 <div style="font-size: 0.85rem; color: #0E5A30; font-weight: 700; margin-top: 4px;">Spiritual &amp; Coastal Andhra Journey</div>
-                                <div class="price-amount">₹ 17,999/-</div>
-                                <div class="price-per-person">Per Person (Single Occupancy)</div>
-                                <ul class="price-features-list">
+                                <ul class="price-features-list" style="margin-top: 14px;">
                                     <li><span>✓</span> <strong>Transport:</strong> Private Sedan for full 5 Days (as per itinerary)</li>
                                     <li><span>✓</span> <strong>Stay:</strong> 4 Nights Accommodation (Economy Category)</li>
                                     <li><span>✓</span> <strong>Meals:</strong> Breakfast (Daily) Included</li>
@@ -1773,17 +2453,15 @@
                                     <li><span>✓</span> <strong>Support:</strong> Tour Coordination &amp; Dedicated Support</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary">Book Economy (₹17,999) →</a>
+                            <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="divine-andhra" data-itinerary-name="Divine Andhra (5D/4N)" data-package-type="Economy" data-package-name="Economy Package">GET ECONOMY PRICE →</button>
                         </div>
 
                         <!-- Best Offer Tier -->
                         <div class="price-card featured">
                             <div>
-                                <span class="price-tier-tag business">👑 Best Offer For You!</span>
+                                <span class="price-tier-tag business">👑 Best Offer / Custom Package</span>
                                 <div style="font-size: 0.85rem; color: #92400E; font-weight: 700; margin-top: 4px;">Customised for Families, Groups &amp; Corporate</div>
-                                <div class="price-amount" style="font-size: 1.8rem;">Best Offer</div>
-                                <div class="price-per-person">Tailored as per your group size &amp; requirements</div>
-                                <ul class="price-features-list">
+                                <ul class="price-features-list" style="margin-top: 14px;">
                                     <li><span>✓</span> <strong>Custom Itinerary:</strong> Flexible departure dates &amp; personalized pacing</li>
                                     <li><span>✓</span> <strong>Upgraded Stays:</strong> Deluxe &amp; Premium hotel/resort options</li>
                                     <li><span>✓</span> <strong>Vehicle Choices:</strong> Private Sedan, SUV, or Luxury Tempo Traveller</li>
@@ -1791,7 +2469,7 @@
                                     <li><span>✓</span> <strong>Dedicated Concierge:</strong> 24/7 personal trip coordinator</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">Get Custom Offer Quote →</a>
+                            <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="divine-andhra" data-itinerary-name="Divine Andhra (5D/4N)" data-package-type="Business" data-package-name="Best Offer / Custom Package" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">GET CUSTOM OFFER PRICE →</button>
                         </div>
                     </div>
 
@@ -2022,7 +2700,7 @@
                     </div>
 
                     <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Divine Andhra Package →</a>
+                        <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="divine-andhra" data-itinerary-name="Divine Andhra (5D/4N)" data-package-type="All Plans" data-package-name="All Plans / Custom" style="flex: 1; min-width: min(250px, 100%);">Get Tour Price &amp; Details →</button>
                         <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20am%20interested%20in%20booking%20the%20Divine%20Andhra%20Tour%20(5D%2F4N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
                     </div>
                 </div>
@@ -2098,9 +2776,7 @@
                             <div>
                                 <span class="price-tier-tag economy">🌱 Economy Package</span>
                                 <div style="font-size: 0.85rem; color: #0E5A30; font-weight: 700; margin-top: 4px;">Comfortable &amp; Affordable Pilgrimage</div>
-                                <div class="price-amount">₹ 8,999/-</div>
-                                <div class="price-per-person">Per Person (Single Occupancy)</div>
-                                <ul class="price-features-list">
+                                <ul class="price-features-list" style="margin-top: 14px;">
                                     <li><span>✓</span> <strong>Transport:</strong> Private Sedan for 3 Days (as per itinerary)</li>
                                     <li><span>✓</span> <strong>Stay:</strong> 2 Nights Accommodation (Standard Category)</li>
                                     <li><span>✓</span> <strong>Darshan:</strong> All Places Darshan &amp; Local Sightseeing</li>
@@ -2108,7 +2784,7 @@
                                     <li><span>✓</span> <strong>Support:</strong> Experienced Tour Coordinator Support</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary">Book Economy (₹8,999) →</a>
+                            <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="datta-vitthal" data-itinerary-name="Divine Datta &amp; Vitthal Pilgrimage (2D/3N)" data-package-type="Economy" data-package-name="Economy Package">GET ECONOMY PRICE →</button>
                         </div>
 
                         <!-- Business Tier -->
@@ -2116,9 +2792,7 @@
                             <div>
                                 <span class="price-tier-tag business">👑 Business Package</span>
                                 <div style="font-size: 0.85rem; color: #92400E; font-weight: 700; margin-top: 4px;">Premium &amp; Comfortable Pilgrimage</div>
-                                <div class="price-amount">₹ 11,999/-</div>
-                                <div class="price-per-person">Per Person (Single Occupancy)</div>
-                                <ul class="price-features-list">
+                                <ul class="price-features-list" style="margin-top: 14px;">
                                     <li><span>✓</span> <strong>Transport:</strong> Private SUV for 3 Days (as per itinerary)</li>
                                     <li><span>✓</span> <strong>Stay:</strong> 2 Nights Accommodation (Deluxe / Premium)</li>
                                     <li><span>✓</span> <strong>Darshan:</strong> All Places Darshan &amp; Local Sightseeing</li>
@@ -2126,7 +2800,7 @@
                                     <li><span>✓</span> <strong>Support:</strong> Dedicated 24/7 Journey Concierge</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">Book Business (₹11,999) →</a>
+                            <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="datta-vitthal" data-itinerary-name="Divine Datta &amp; Vitthal Pilgrimage (2D/3N)" data-package-type="Business" data-package-name="Business Package" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">GET BUSINESS PRICE →</button>
                         </div>
                     </div>
 
@@ -2275,7 +2949,7 @@
                     </div>
 
                     <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Datta &amp; Vitthal Pilgrimage →</a>
+                        <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="datta-vitthal" data-itinerary-name="Divine Datta &amp; Vitthal Pilgrimage (2D/3N)" data-package-type="All Plans" data-package-name="All Plans / Custom" style="flex: 1; min-width: min(250px, 100%);">Get Tour Price &amp; Details →</button>
                         <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20would%20like%20to%20book%20the%20Divine%20Datta%20%26%20Vitthal%20Pilgrimage%20(2D%2F3N)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
                     </div>
                 </div>
@@ -2351,8 +3025,7 @@
                             <div>
                                 <span class="price-tier-tag economy">🌱 Economy Package</span>
                                 <div style="font-size: 0.85rem; color: #0E5A30; font-weight: 700; margin-top: 4px;">Explore Ancient Heritage in Comfort</div>
-                                <div class="price-amount">₹ 18,999/-</div>
-                                <div class="price-per-person">Per Person (Twin Sharing)</div>
+                                <div style="font-size: 0.88rem; color: #4B5563; margin-top: 10px; line-height: 1.45;">Twin Sharing • Complete Sightseeing &amp; AC Transportation</div>
                                 <ul class="price-features-list">
                                     <li><span>✓</span> <strong>Stay:</strong> 4 Nights Luxurious Stay</li>
                                     <li><span>✓</span> <strong>Meals:</strong> Daily Breakfast Included</li>
@@ -2361,7 +3034,7 @@
                                     <li><span>✓</span> <strong>Support:</strong> Tour Coordinator &amp; Dedicated Support</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary">Book Economy (₹18,999) →</a>
+                            <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="karnataka-heritage" data-itinerary-name="Karnataka Heritage Tour (4N/5D)" data-package-type="Economy" data-package-name="Economy Package">GET ECONOMY PRICE →</button>
                         </div>
 
                         <!-- Business Tier -->
@@ -2369,8 +3042,7 @@
                             <div>
                                 <span class="price-tier-tag business">👑 Business Package</span>
                                 <div style="font-size: 0.85rem; color: #92400E; font-weight: 700; margin-top: 4px;">Premium Heritage &amp; Cultural Experience</div>
-                                <div class="price-amount">₹ 27,999/-</div>
-                                <div class="price-per-person">Per Person (Twin Sharing)</div>
+                                <div style="font-size: 0.88rem; color: #92400E; margin-top: 10px; line-height: 1.45;">Upgraded Hotels • Executive SUV/Vehicle • Dedicated Concierge</div>
                                 <ul class="price-features-list">
                                     <li><span>✓</span> <strong>Stay:</strong> 4 Nights Premium Stay (Upgraded Hotels)</li>
                                     <li><span>✓</span> <strong>Meals:</strong> Daily Breakfast Included</li>
@@ -2379,7 +3051,7 @@
                                     <li><span>✓</span> <strong>Support:</strong> Dedicated Tour Coordinator &amp; Concierge Support</li>
                                 </ul>
                             </div>
-                            <a href="#travel-inquiry" class="btn-book-primary" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">Book Business (₹27,999) →</a>
+                            <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="karnataka-heritage" data-itinerary-name="Karnataka Heritage Tour (4N/5D)" data-package-type="Business" data-package-name="Business Package" style="background: linear-gradient(135deg, #C59B27 0%, #92400E 100%); border-color: #FFFFFF;">GET BUSINESS PRICE →</button>
                         </div>
                     </div>
 
@@ -2608,8 +3280,8 @@
                     </div>
 
                     <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="#travel-inquiry" class="btn-book-primary" style="flex: 1; min-width: min(250px, 100%);">Book Karnataka Heritage Tour →</a>
-                        <a href="https://wa.me/919730004911?text=Hello%20AORR%20Team%2C%20I%20am%20interested%20in%20the%20Karnataka%20Heritage%20Tour%20(4N%2F5D)." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
+                        <button type="button" class="btn-book-primary btn-get-price" data-itinerary-id="karnataka-heritage" data-itinerary-name="Karnataka Heritage Tour (4N/5D)" data-package-type="All Plans" data-package-name="Economy &amp; Business Packages" style="flex: 1; min-width: min(250px, 100%);">Get Tour Price &amp; Details →</button>
+                        <a href="https://wa.me/919730004911?text=Hello%20Datta%20Chaya%20Tourism%2C%20I%20am%20interested%20in%20the%20Karnataka%20Heritage%20Tour%20(4N%2F5D).%20Please%20share%20package%20pricing%20and%20details." target="_blank" rel="noopener noreferrer" class="btn-book-whatsapp" style="flex: 1; min-width: min(250px, 100%); margin-top: 0;">Inquire via WhatsApp 💬</a>
                     </div>
                 </div>
             </div>
@@ -2842,14 +3514,14 @@
                                     </label>
                                     <select class="input-field" id="tour-service" name="location" required aria-required="true">
                                         <option value="" disabled selected>Select Tour Package or Service</option>
-                                        <option value="Datta Chhaya — Divine Dattatreya & Guru Pilgrimage (5D/4N Economy ₹14,500)">Datta Chhaya — Divine Dattatreya &amp; Guru Pilgrimage (5D/4N Economy ₹14,500)</option>
-                                        <option value="Datta Chhaya — Divine Dattatreya & Guru Pilgrimage (5D/4N Business ₹18,999)">Datta Chhaya — Divine Dattatreya &amp; Guru Pilgrimage (5D/4N Business ₹18,999)</option>
-                                        <option value="Datta Chhaya — Divine Andhra (5D/4N Economy ₹17,999)">Datta Chhaya — Divine Andhra (5D/4N Economy ₹17,999)</option>
-                                        <option value="Datta Chhaya — Divine Andhra (5D/4N Custom / Group Offer)">Datta Chhaya — Divine Andhra (5D/4N Custom / Group Offer)</option>
-                                        <option value="Datta Chhaya — Divine Datta & Vitthal Pilgrimage (2D/3N Economy ₹8,999)">Datta Chhaya — Divine Datta &amp; Vitthal Pilgrimage (2D/3N Economy ₹8,999)</option>
-                                        <option value="Datta Chhaya — Divine Datta & Vitthal Pilgrimage (2D/3N Business ₹11,999)">Datta Chhaya — Divine Datta &amp; Vitthal Pilgrimage (2D/3N Business ₹11,999)</option>
-                                        <option value="Datta Chhaya — Karnataka Heritage Tour (4N/5D Economy ₹18,999)">Datta Chhaya — Karnataka Heritage Tour (4N/5D Economy ₹18,999)</option>
-                                        <option value="Datta Chhaya — Karnataka Heritage Tour (4N/5D Business ₹27,999)">Datta Chhaya — Karnataka Heritage Tour (4N/5D Business ₹27,999)</option>
+                                        <option value="Datta Chhaya — Divine Dattatreya & Guru Pilgrimage (5D/4N Economy Package)">Datta Chhaya — Divine Dattatreya &amp; Guru Pilgrimage (5D/4N Economy Package)</option>
+                                        <option value="Datta Chhaya — Divine Dattatreya & Guru Pilgrimage (5D/4N Business Package)">Datta Chhaya — Divine Dattatreya &amp; Guru Pilgrimage (5D/4N Business Package)</option>
+                                        <option value="Datta Chhaya — Divine Andhra (5D/4N Economy Package)">Datta Chhaya — Divine Andhra (5D/4N Economy Package)</option>
+                                        <option value="Datta Chhaya — Divine Andhra (5D/4N Custom / Group Plan)">Datta Chhaya — Divine Andhra (5D/4N Custom / Group Plan)</option>
+                                        <option value="Datta Chhaya — Divine Datta & Vitthal Pilgrimage (2D/3N Economy Package)">Datta Chhaya — Divine Datta &amp; Vitthal Pilgrimage (2D/3N Economy Package)</option>
+                                        <option value="Datta Chhaya — Divine Datta & Vitthal Pilgrimage (2D/3N Business Package)">Datta Chhaya — Divine Datta &amp; Vitthal Pilgrimage (2D/3N Business Package)</option>
+                                        <option value="Datta Chhaya — Karnataka Heritage Tour (4N/5D Economy Package)">Datta Chhaya — Karnataka Heritage Tour (4N/5D Economy Package)</option>
+                                        <option value="Datta Chhaya — Karnataka Heritage Tour (4N/5D Business Package)">Datta Chhaya — Karnataka Heritage Tour (4N/5D Business Package)</option>
                                         <option value="AORR IRCTC Desk — Railway Ticket Booking Assistance (Tatkal / Group / General)">AORR IRCTC Desk — Railway Ticket Booking Assistance (Tatkal / Group / General)</option>
                                         <option value="AORR Travel Desk — Corporate Business Travel & Flights">AORR Travel Desk — Corporate Business Travel & Flights</option>
                                         <option value="AORR Travel Desk — Customized Family Holiday Package">AORR Travel Desk — Customized Family Holiday Package</option>
@@ -3026,19 +3698,150 @@
     </footer>
 
         <!-- Side-Docked Quick-Connect Social Rail -->
-    <div class="floating-social-dock" role="region" aria-label="Official Social Channels">
-        <a href="https://www.facebook.com/share/1DsTNK6vMH/?mibextid=wwXIfr" class="social-dock-btn facebook-btn" target="_blank" rel="noopener noreferrer" aria-label="Connect with AORR on Facebook">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            <span class="dock-tooltip">Facebook</span>
-        </a>
-        <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" class="social-dock-btn instagram-btn" target="_blank" rel="noopener noreferrer" aria-label="Follow AORR on Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            <span class="dock-tooltip">Instagram</span>
-        </a>
-        <a href="https://wa.me/919730004911?text=Hello%20AORR%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="social-dock-btn whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with AORR on WhatsApp">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            <span class="dock-tooltip">WhatsApp</span>
-        </a>
+    <div class="floating-social-dock is-collapsed" role="region" aria-label="Official Social Channels">
+        <button type="button" class="social-dock-toggle" aria-label="Toggle social channels" aria-expanded="false" title="Connect with AORR">
+            <svg class="icon-toggle-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <svg class="icon-toggle-close" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="social-dock-links">
+            <a href="https://www.facebook.com/share/1DsTNK6vMH/?mibextid=wwXIfr" class="social-dock-btn facebook-btn" target="_blank" rel="noopener noreferrer" aria-label="Connect with AORR on Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span class="dock-tooltip">Facebook</span>
+            </a>
+            <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" class="social-dock-btn instagram-btn" target="_blank" rel="noopener noreferrer" aria-label="Follow AORR on Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <span class="dock-tooltip">Instagram</span>
+            </a>
+            <a href="https://wa.me/919730004911?text=Hello%20AORR%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="social-dock-btn whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with AORR on WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                <span class="dock-tooltip">WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- TOUR PACKAGE PRICE ENQUIRY MODAL (NO PUBLIC PRICE LEAK)                   -->
+    <!-- ========================================================================= -->
+    <div id="tour-price-modal" class="tour-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-tour-title">
+        <div class="tour-modal-container" role="document">
+            <button type="button" class="tour-modal-close" id="tourModalCloseBtn" aria-label="Close Price Enquiry Window">&times;</button>
+            
+            <!-- Modal Header -->
+            <div class="tour-modal-header">
+                <span class="tour-modal-eyebrow">AORR • Datta Chaya Tourism</span>
+                <h3 class="tour-modal-title" id="modal-tour-title">Get Package Pricing &amp; Details</h3>
+                <p class="tour-modal-subtitle">Connect instantly via WhatsApp or receive official quotation and availability details.</p>
+            </div>
+
+            <!-- Modal Selection Context Card -->
+            <div class="tour-modal-selection-card" aria-label="Selected Tour Details">
+                <div class="selection-row">
+                    <span class="selection-label">Selected Tour</span>
+                    <span class="selection-val" id="modal-itinerary-display">Divine Dattatreya &amp; Guru Pilgrimage</span>
+                </div>
+                <div class="selection-row">
+                    <span class="selection-label">Package Plan</span>
+                    <span class="selection-val plan-highlight" id="modal-package-display">🌱 Economy Package</span>
+                </div>
+            </div>
+
+            <!-- Option 1: Instant WhatsApp Price Request -->
+            <div class="tour-modal-whatsapp-box">
+                <a href="#" id="modal-whatsapp-cta" target="_blank" rel="noopener noreferrer" class="btn-modal-whatsapp" aria-label="Request Tour Pricing via WhatsApp">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <span>Get Price on WhatsApp 💬</span>
+                </a>
+                <p class="wa-subhint">⚡ Fast response • Official Helpline: +91 97300 04911</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="tour-modal-divider" aria-hidden="true">
+                <span>OR REQUEST DETAILS VIA FORM</span>
+            </div>
+
+            <!-- Option 2: Short Quote Form -->
+            <div id="modal-form-view">
+                <form class="tour-modal-form" id="tourPriceForm" method="POST" target="modal_hidden_iframe" action="https://script.google.com/macros/s/AKfycbyk-ZFtQmf5JVsWPtF9frHqLfYRWXLadaWyXF_0xvnzGyMgLqRDHPN9-LYoKxDbNyv25A/exec" novalidate>
+                    <!-- Hidden Tracking Fields -->
+                    <input type="hidden" name="itinerary" id="modal-input-itinerary" value="">
+                    <input type="hidden" name="package" id="modal-input-package" value="">
+                    <input type="hidden" name="location" id="modal-input-location" value="">
+                    <input type="hidden" name="product" value="Tour Package Price Request">
+                    <input type="hidden" name="page" value="tours-travel.html">
+                    <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
+
+                    <!-- Full Name -->
+                    <div class="modal-field">
+                        <label class="modal-label" for="modal-user-name">Your Full Name <span class="req">*</span></label>
+                        <input type="text" class="modal-input" id="modal-user-name" name="name" placeholder="e.g. Ramesh Kulkarni" required autocomplete="name">
+                        <span class="modal-error-text" id="modal-name-err">Please enter your full name.</span>
+                    </div>
+
+                    <!-- Phone / WhatsApp & Number of Travellers -->
+                    <div class="modal-form-row">
+                        <div class="modal-field">
+                            <label class="modal-label" for="modal-user-phone">Phone / WhatsApp <span class="req">*</span></label>
+                            <input type="tel" class="modal-input" id="modal-user-phone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel" inputmode="tel">
+                            <span class="modal-error-text" id="modal-phone-err">Enter a valid 10-digit number.</span>
+                        </div>
+                        <div class="modal-field">
+                            <label class="modal-label" for="modal-user-count">Travellers <span class="req">*</span></label>
+                            <select class="modal-input" id="modal-user-count" name="travellers_count" required>
+                                <option value="2 Adults (Twin Sharing)" selected>2 Adults (Twin)</option>
+                                <option value="1 Adult (Single)">1 Adult (Single)</option>
+                                <option value="3-5 Persons (Family)">3-5 Persons (Family)</option>
+                                <option value="6+ Persons (Group / Custom)">6+ Persons (Group)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Travel Date & Email -->
+                    <div class="modal-form-row">
+                        <div class="modal-field">
+                            <label class="modal-label" for="modal-user-date">Preferred Date <span class="req">*</span></label>
+                            <input type="date" class="modal-input" id="modal-user-date" name="travel_date" required>
+                            <span class="modal-error-text" id="modal-date-err">Please select a preferred date.</span>
+                        </div>
+                        <div class="modal-field">
+                            <label class="modal-label" for="modal-user-email">Email (Optional)</label>
+                            <input type="email" class="modal-input" id="modal-user-email" name="email" placeholder="name@email.com" autocomplete="email" inputmode="email">
+                            <span class="modal-error-text" id="modal-email-err">Enter a valid email.</span>
+                        </div>
+                    </div>
+
+                    <!-- Special Requests / Notes (Hidden in message payload) -->
+                    <input type="hidden" name="message" id="modal-input-message" value="">
+
+                    <div id="modal-status-msg" class="modal-status-banner" style="display:none;" role="alert"></div>
+
+                    <button type="submit" class="btn-modal-submit" id="modalSubmitBtn">
+                        <span>Send Price &amp; Itinerary Request →</span>
+                    </button>
+                </form>
+                <iframe name="modal_hidden_iframe" style="display:none;"></iframe>
+            </div>
+
+            <!-- Success State View -->
+            <div id="modal-success-view" class="modal-success-view" style="display:none;" role="region" aria-live="polite">
+                <div class="success-icon" aria-hidden="true">✓</div>
+                <h4>Request Received Successfully!</h4>
+                <p>Thank you, <strong id="success-user-name">Traveller</strong>! Our Datta Chaya tour coordinator will contact you via WhatsApp / Phone with customized pricing and date availability within 2 hours.</p>
+                <div style="display: flex; gap: 10px; flex-direction: column;">
+                    <a href="#" id="modal-success-wa-btn" target="_blank" rel="noopener noreferrer" class="btn-modal-whatsapp" style="margin-top: 0;">
+                        <span>Chat Directly on WhatsApp 💬</span>
+                    </a>
+                    <button type="button" class="btn-modal-submit" id="modalSuccessCloseBtn" style="background: #F3F4F6; color: #374151; border: 1px solid #D1D5DB; box-shadow: none;">
+                        Close Window
+                    </button>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <script>
@@ -3066,31 +3869,216 @@
             const targetIds = ['divine-andhra', 'dattatreya-guru', 'datta-vitthal', 'karnataka-heritage', 'irctc-railway', 'travel-inquiry'];
             const sections = targetIds.map(id => document.getElementById(id)).filter(Boolean);
 
-            if (!sections.length || !navBtns.length) return;
+            if (sections.length && navBtns.length) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '-100px 0px -50% 0px',
+                    threshold: 0.1
+                };
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '-100px 0px -50% 0px',
-                threshold: 0.1
-            };
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+                            navBtns.forEach(btn => {
+                                const isMatch = btn.getAttribute('href') === `#${id}`;
+                                if (isMatch) {
+                                    btn.classList.add('active');
+                                } else if (!btn.classList.contains('tour-nav-cta')) {
+                                    btn.classList.remove('active');
+                                }
+                            });
+                        }
+                    });
+                }, observerOptions);
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
-                        navBtns.forEach(btn => {
-                            const isMatch = btn.getAttribute('href') === `#${id}`;
-                            if (isMatch) {
-                                btn.classList.add('active');
-                            } else if (!btn.classList.contains('tour-nav-cta')) {
-                                btn.classList.remove('active');
-                            }
-                        });
-                    }
+                sections.forEach(sec => observer.observe(sec));
+            }
+
+            // =========================================================================
+            // DYNAMIC TOUR PRICE ENQUIRY MODAL CONTROLLER
+            // =========================================================================
+            const modal = document.getElementById('tour-price-modal');
+            const modalCloseBtn = document.getElementById('tourModalCloseBtn');
+            const modalSuccessCloseBtn = document.getElementById('modalSuccessCloseBtn');
+            const modalItineraryDisplay = document.getElementById('modal-itinerary-display');
+            const modalPackageDisplay = document.getElementById('modal-package-display');
+            const modalWhatsappCta = document.getElementById('modal-whatsapp-cta');
+            const modalSuccessWaBtn = document.getElementById('modal-success-wa-btn');
+            const modalInputItinerary = document.getElementById('modal-input-itinerary');
+            const modalInputPackage = document.getElementById('modal-input-package');
+            const modalInputLocation = document.getElementById('modal-input-location');
+            const modalInputMessage = document.getElementById('modal-input-message');
+            const modalFormView = document.getElementById('modal-form-view');
+            const modalSuccessView = document.getElementById('modal-success-view');
+            const tourPriceForm = document.getElementById('tourPriceForm');
+            const modalSubmitBtn = document.getElementById('modalSubmitBtn');
+            const dateInput = document.getElementById('modal-user-date');
+
+            if (dateInput) {
+                // Set minimum selectable date to today
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+
+            let activeItineraryName = 'Datta Chaya Spiritual Tour';
+            let activePackageName = 'Economy Package';
+
+            // Open Modal Handler
+            function openPriceModal(btn) {
+                const itinName = btn.dataset.itineraryName || 'Datta Chaya Spiritual Tour';
+                const pkgName = btn.dataset.packageName || btn.dataset.packageType || 'Economy Package';
+                const pkgType = btn.dataset.packageType || 'Economy';
+
+                activeItineraryName = itinName;
+                activePackageName = pkgName;
+
+                if (modalItineraryDisplay) modalItineraryDisplay.textContent = itinName;
+                if (modalPackageDisplay) {
+                    const icon = pkgType.toLowerCase().includes('business') ? '👑 ' : (pkgType.toLowerCase().includes('all') ? '✨ ' : '🌱 ');
+                    modalPackageDisplay.textContent = icon + pkgName;
+                }
+
+                if (modalInputItinerary) modalInputItinerary.value = itinName;
+                if (modalInputPackage) modalInputPackage.value = pkgName;
+                if (modalInputLocation) modalInputLocation.value = `${itinName} (${pkgName})`;
+
+                // Build Dynamic WhatsApp URL
+                const waMessage = `Hello Datta Chaya Tourism,\n\nI would like to know the package pricing and availability for:\n• Tour: ${itinName}\n• Plan: ${pkgName}\n\nPlease share details and available departure dates.\nThank you!`;
+                const waUrl = `https://wa.me/919730004911?text=${encodeURIComponent(waMessage)}`;
+
+                if (modalWhatsappCta) modalWhatsappCta.href = waUrl;
+                if (modalSuccessWaBtn) modalSuccessWaBtn.href = waUrl;
+
+                // Reset Form View State
+                if (modalFormView) modalFormView.style.display = 'block';
+                if (modalSuccessView) modalSuccessView.style.display = 'none';
+                if (modalSubmitBtn) {
+                    modalSubmitBtn.disabled = false;
+                    modalSubmitBtn.innerHTML = '<span>Send Price &amp; Itinerary Request →</span>';
+                }
+
+                // Show Modal
+                if (modal) {
+                    modal.classList.add('is-active');
+                    modal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                    const firstInput = modal.querySelector('#modal-user-name');
+                    if (firstInput) setTimeout(() => firstInput.focus(), 100);
+                }
+            }
+
+            // Close Modal Handler
+            function closePriceModal() {
+                if (modal) {
+                    modal.classList.remove('is-active');
+                    modal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            // Bind to all Get Price CTA buttons
+            document.querySelectorAll('.btn-get-price').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openPriceModal(btn);
                 });
-            }, observerOptions);
+            });
 
-            sections.forEach(sec => observer.observe(sec));
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closePriceModal);
+            if (modalSuccessCloseBtn) modalSuccessCloseBtn.addEventListener('click', closePriceModal);
+
+            // Close on overlay backdrop click
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closePriceModal();
+                });
+            }
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
+                    closePriceModal();
+                }
+            });
+
+            // Form Field Validation Utility
+            function validateModalField(input, errorId) {
+                const val = input.value.trim();
+                const errSpan = document.getElementById(errorId);
+                let isValid = true;
+
+                if (input.hasAttribute('required') && !val) {
+                    isValid = false;
+                } else if (input.type === 'tel') {
+                    const digits = val.replace(/\D/g, '');
+                    if (digits.length < 7) isValid = false;
+                } else if (input.type === 'email' && val) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(val)) isValid = false;
+                }
+
+                if (!isValid) {
+                    input.classList.add('is-invalid');
+                    if (errSpan) errSpan.style.display = 'block';
+                } else {
+                    input.classList.remove('is-invalid');
+                    if (errSpan) errSpan.style.display = 'none';
+                }
+                return isValid;
+            }
+
+            // Inline live validation
+            const nameInp = document.getElementById('modal-user-name');
+            const phoneInp = document.getElementById('modal-user-phone');
+            const dateInp = document.getElementById('modal-user-date');
+            const emailInp = document.getElementById('modal-user-email');
+
+            if (nameInp) nameInp.addEventListener('input', () => validateModalField(nameInp, 'modal-name-err'));
+            if (phoneInp) phoneInp.addEventListener('input', () => validateModalField(phoneInp, 'modal-phone-err'));
+            if (dateInp) dateInp.addEventListener('change', () => validateModalField(dateInp, 'modal-date-err'));
+            if (emailInp) emailInp.addEventListener('input', () => validateModalField(emailInp, 'modal-email-err'));
+
+            // Handle Modal Form Submit
+            if (tourPriceForm) {
+                tourPriceForm.addEventListener('submit', (e) => {
+                    const vName = validateModalField(nameInp, 'modal-name-err');
+                    const vPhone = validateModalField(phoneInp, 'modal-phone-err');
+                    const vDate = validateModalField(dateInp, 'modal-date-err');
+                    const vEmail = validateModalField(emailInp, 'modal-email-err');
+
+                    if (!vName || !vPhone || !vDate || !vEmail) {
+                        e.preventDefault();
+                        return;
+                    }
+
+                    // Populate synthesized message payload
+                    const countVal = document.getElementById('modal-user-count') ? document.getElementById('modal-user-count').value : '2 Adults';
+                    const dateVal = dateInp ? dateInp.value : 'Not specified';
+                    const emailVal = (emailInp && emailInp.value.trim()) ? emailInp.value.trim() : 'N/A';
+                    
+                    if (modalInputMessage) {
+                        modalInputMessage.value = `[Price Enquiry] Tour: ${activeItineraryName} | Plan: ${activePackageName} | Travellers: ${countVal} | Preferred Date: ${dateVal} | Contact: ${phoneInp.value.trim()} | Email: ${emailVal}`;
+                    }
+
+                    // Show loading state
+                    if (modalSubmitBtn) {
+                        modalSubmitBtn.disabled = true;
+                        modalSubmitBtn.innerHTML = '<span>Processing Request... ⏳</span>';
+                    }
+
+                    // Transition smoothly to success view
+                    setTimeout(() => {
+                        const successName = document.getElementById('success-user-name');
+                        if (successName && nameInp) {
+                            successName.textContent = nameInp.value.trim().split(' ')[0] || 'Traveller';
+                        }
+                        if (modalFormView) modalFormView.style.display = 'none';
+                        if (modalSuccessView) modalSuccessView.style.display = 'block';
+                        tourPriceForm.reset();
+                    }, 800);
+                });
+            }
         });
     </script>
     <script defer src="templatemo-prism-scripts.js"></script>

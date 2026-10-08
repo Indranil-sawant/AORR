@@ -8874,7 +8874,7 @@ img, picture, svg, video, iframe {
 
     /* Card Padding Optimization */
     .card2, .pillar-card, .corridor-card, .med-service-card,
-    .expert-card, .tour-detail-card, .tour-detail-body, .rail-feat-card {
+    .expert-card, .tour-detail-body, .rail-feat-card {
         padding: clamp(18px, 4.5vw, 28px) !important;
     }
 

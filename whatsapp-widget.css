@@ -1,6 +1,6 @@
 /* ==========================================================================
    AORR GLOBAL ENTERPRISE — SIDE-DOCKED QUICK-CONNECT SOCIAL RAIL
-   Flush Right-Edge Fixed Tab with Vibrant Hover Highlight Auras
+   Flush Right-Edge Fixed Tab with Mobile-Collapsible Architecture
    ========================================================================== */
 
 /* 1. Side-Docked Rail Container */
@@ -23,14 +23,36 @@
     box-shadow: -4px 6px 24px rgba(0, 0, 0, 0.35);
     z-index: 99999;
     pointer-events: auto;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                box-shadow 0.3s ease, 
+                background 0.3s ease, 
+                padding 0.3s ease,
+                border-radius 0.3s ease;
 }
 
 .floating-social-dock:hover {
     box-shadow: -6px 8px 30px rgba(0, 0, 0, 0.45);
 }
 
-/* 2. Base Social Button */
+/* 2. Toggle Trigger Button (Hidden on Desktop, Active on Mobile) */
+.social-dock-toggle {
+    display: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+/* 3. Links Wrapper */
+.social-dock-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 4. Base Social Button */
 .social-dock-btn {
     position: relative;
     width: 44px;
@@ -44,6 +66,7 @@
     transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
     border: 1.5px solid rgba(255, 255, 255, 0.25);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .social-dock-btn svg {
@@ -57,7 +80,7 @@
     transform: scale(1.08);
 }
 
-/* 3. Facebook Button — Royal Blue & Glowing Highlight */
+/* 5. Facebook Button — Royal Blue & Glowing Highlight */
 .social-dock-btn.facebook-btn {
     background: linear-gradient(135deg, #1877F2 0%, #0c63d4 100%);
     box-shadow: 0 4px 12px rgba(24, 119, 242, 0.35);
@@ -69,7 +92,7 @@
     box-shadow: 0 0 22px 5px rgba(24, 119, 242, 0.8), 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
-/* 4. Instagram Button — Sunset Gradient & Radiant Magenta Highlight */
+/* 6. Instagram Button — Sunset Gradient & Radiant Magenta Highlight */
 .social-dock-btn.instagram-btn {
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     box-shadow: 0 4px 12px rgba(220, 39, 67, 0.35);
@@ -81,7 +104,7 @@
     box-shadow: 0 0 22px 5px rgba(225, 48, 108, 0.85), 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
-/* 5. WhatsApp Button — Emerald Green & Radiant Mint Highlight */
+/* 7. WhatsApp Button — Emerald Green & Radiant Mint Highlight */
 .social-dock-btn.whatsapp-btn {
     background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
@@ -93,7 +116,7 @@
     box-shadow: 0 0 22px 5px rgba(37, 211, 102, 0.85), 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
-/* 6. Flyout Left-Side Tooltips */
+/* 8. Flyout Left-Side Tooltips (Desktop) */
 .social-dock-btn .dock-tooltip {
     position: absolute;
     right: 56px;
@@ -134,20 +157,134 @@
     transform: translateY(-50%) translateX(0);
 }
 
-/* 7. Backward Compatibility / Fallback Class */
+/* 9. Backward Compatibility / Fallback Class */
 .whatsapp-float {
     display: none !important;
 }
 
-/* 8. Mobile & Tablet Responsive Adjustments */
+/* 10. Mobile & Tablet Responsive Adjustments */
 @media screen and (max-width: 768px) {
     .floating-social-dock {
         top: auto;
-        bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+        bottom: calc(24px + env(safe-area-inset-bottom, 0px));
         transform: none;
-        padding: 8px 5px 8px 8px;
+        padding: 6px 5px 6px 7px;
         gap: 8px;
-        border-radius: 14px 0 0 14px;
+        border-radius: 20px 0 0 20px;
+        background: rgba(7, 30, 15, 0.94);
+        box-shadow: -3px 5px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Mobile Toggle Trigger Button */
+    .social-dock-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        border: 1.5px solid rgba(255, 255, 255, 0.4);
+        color: #FFFFFF;
+        cursor: pointer;
+        padding: 0;
+        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                    background 0.25s ease, 
+                    border-color 0.25s ease, 
+                    box-shadow 0.25s ease;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .social-dock-toggle:active {
+        transform: scale(0.92);
+    }
+
+    .social-dock-toggle svg {
+        transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    .social-dock-toggle .icon-toggle-close {
+        display: none;
+    }
+
+    .social-dock-toggle .icon-toggle-open {
+        display: block;
+    }
+
+    /* Social Links Container on Mobile */
+    .social-dock-links {
+        gap: 8px;
+        transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                    opacity 0.25s ease, 
+                    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        overflow: hidden;
+    }
+
+    /* Collapsed State on Mobile (Minimal Footprint, No Overlapping Content) */
+    .floating-social-dock.is-collapsed {
+        padding: 5px 4px 5px 6px;
+        border-radius: 26px 0 0 26px;
+        background: rgba(7, 30, 15, 0.92);
+        box-shadow: -2px 4px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-social-dock.is-collapsed .social-dock-links {
+        max-height: 0;
+        opacity: 0;
+        margin: 0;
+        gap: 0;
+        transform: scale(0.6) translateY(12px);
+        pointer-events: none;
+    }
+
+    .floating-social-dock.is-collapsed .social-dock-toggle {
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45);
+        animation: dockPulseSubtle 3.5s infinite ease-in-out;
+    }
+
+    @keyframes dockPulseSubtle {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5), 0 4px 14px rgba(37, 211, 102, 0.4);
+        }
+        50% {
+            box-shadow: 0 0 0 7px rgba(37, 211, 102, 0), 0 4px 16px rgba(37, 211, 102, 0.6);
+        }
+    }
+
+    /* Expanded State on Mobile */
+    .floating-social-dock:not(.is-collapsed) {
+        padding: 8px 5px 8px 7px;
+        background: rgba(7, 30, 15, 0.96);
+        box-shadow: -6px 8px 32px rgba(0, 0, 0, 0.55);
+    }
+
+    .floating-social-dock:not(.is-collapsed) .social-dock-toggle {
+        background: rgba(255, 255, 255, 0.16);
+        color: #A5D6A7;
+        border-color: rgba(165, 214, 167, 0.4);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        width: 36px;
+        height: 36px;
+        margin-bottom: 2px;
+        animation: none;
+    }
+
+    .floating-social-dock:not(.is-collapsed) .social-dock-toggle .icon-toggle-open {
+        display: none;
+    }
+
+    .floating-social-dock:not(.is-collapsed) .social-dock-toggle .icon-toggle-close {
+        display: block;
+    }
+
+    .floating-social-dock:not(.is-collapsed) .social-dock-links {
+        max-height: 220px;
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        pointer-events: auto;
     }
 
     .social-dock-btn {
