@@ -99,13 +99,7 @@ function initGlobalSearch() {
 
     if (!input || !dropdown) return;
 
-    // Pre-warm index during browser idle time or on first focus
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => { getSearchIndex(); }, { timeout: 4000 });
-    } else {
-        setTimeout(() => { getSearchIndex(); }, 2500);
-    }
-
+    // On-demand index loading on user interaction (focus or input)
     input.addEventListener('focus', () => {
         getSearchIndex();
     }, { once: true });
