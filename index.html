@@ -785,7 +785,7 @@
     </script>
 
     <!-- ========================================================================= -->
-    <!-- DATTA CHAYA TOURISM INTERACTIVE EXPERIENCE SYSTEM                         -->
+    <!-- DATTA CHHAYA TOURISM DIVISION GATEWAY SHOWCASE                            -->
     <!-- ========================================================================= -->
     <style>
         .tourism-system-wrapper {
@@ -794,57 +794,14 @@
             border: 1px solid rgba(5, 150, 105, 0.25);
             box-shadow: 0 15px 40px rgba(5, 150, 105, 0.08);
             overflow: hidden;
-            padding: 35px 40px;
+            padding: 40px;
             margin-top: 25px;
-        }
-
-        .tourism-nav-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 2px solid #E5E7EB;
-            padding-bottom: 0;
-            margin-bottom: 30px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .tourism-tab-btn {
-            background: transparent;
-            border: none;
-            padding: 14px 22px;
-            font-family: var(--font-body);
-            font-weight: 700;
-            font-size: 0.92rem;
-            color: #4B5563;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.25s ease;
-            border-bottom: 3px solid transparent;
-            margin-bottom: -2px;
-            white-space: nowrap;
-        }
-
-        .tourism-tab-btn:hover {
-            color: #059669;
-            background: #F0FDF4;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .tourism-tab-btn.active {
-            color: #059669;
-            border-bottom-color: #059669;
-            background: #F0FDF4;
-            border-radius: 8px 8px 0 0;
         }
 
         .tourism-stage-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 42px;
             align-items: center;
         }
 
@@ -854,17 +811,23 @@
             }
             .tourism-stage-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 26px;
             }
         }
 
         .tourism-visual-area {
             position: relative;
-            height: 340px;
+            height: 380px;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(5, 150, 105, 0.15);
             background: #072B18;
+        }
+
+        @media (max-width: 600px) {
+            .tourism-visual-area {
+                height: 260px;
+            }
         }
 
         .tourism-stage-img {
@@ -872,14 +835,11 @@
             height: 100%;
             object-fit: cover;
             object-position: center 25%;
-            transition: opacity 0.35s ease, transform 0.4s ease, object-position 0.3s ease;
-            opacity: 1;
-            transform: scale(1);
+            transition: transform 0.5s ease;
         }
 
-        .tourism-visual-area.transitioning .tourism-stage-img {
-            opacity: 0.3;
-            transform: scale(1.05);
+        .tourism-visual-area:hover .tourism-stage-img {
+            transform: scale(1.03);
         }
 
         .tourism-visual-overlay {
@@ -890,7 +850,7 @@
             flex-direction: column;
             justify-content: space-between;
             padding: 22px;
-            background: linear-gradient(to top, rgba(7, 43, 24, 0.9) 0%, rgba(7, 43, 24, 0.2) 60%, transparent 100%);
+            background: linear-gradient(to top, rgba(7, 43, 24, 0.92) 0%, rgba(7, 43, 24, 0.25) 55%, transparent 100%);
             pointer-events: none;
         }
 
@@ -898,7 +858,7 @@
             align-self: flex-start;
             background: rgba(255, 255, 255, 0.95);
             color: #072B18;
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             font-weight: 800;
             letter-spacing: 1px;
             padding: 6px 16px;
@@ -909,11 +869,10 @@
 
         .tourism-feeling-tag {
             color: #ffffff;
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             font-weight: 700;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            background: rgba(7, 43, 24, 0.75);
+            letter-spacing: 0.6px;
+            background: rgba(7, 43, 24, 0.8);
             backdrop-filter: blur(8px);
             padding: 8px 16px;
             border-radius: 10px;
@@ -923,11 +882,12 @@
 
         .tourism-mode-kicker {
             color: #059669;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
             margin-bottom: 8px;
+            display: inline-block;
         }
 
         .tourism-mode-headline {
@@ -936,20 +896,20 @@
             font-weight: 800;
             color: #0B3C23;
             margin-bottom: 12px;
-            line-height: 1.2;
+            line-height: 1.25;
         }
 
         .tourism-mode-statement {
             font-size: 0.98rem;
             color: #374151;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.65;
+            margin-bottom: 22px;
             font-weight: 500;
         }
 
         .tourism-capabilities-list {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 10px;
             margin-bottom: 26px;
             list-style: none;
@@ -959,18 +919,24 @@
         .tourism-cap-chip {
             background: #F0FDF4;
             color: #0B3C23;
-            border: 1px solid rgba(5, 150, 105, 0.3);
-            padding: 8px 14px;
+            border: 1px solid rgba(5, 150, 105, 0.25);
+            padding: 9px 14px;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+        }
+
+        .tourism-actions-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
         }
 
         .tourism-cta-btn {
-            align-self: flex-start;
             background: #059669;
             color: #ffffff;
             padding: 13px 26px;
@@ -980,7 +946,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             transition: all 0.25s ease;
             box-shadow: 0 4px 15px rgba(5, 150, 105, 0.25);
         }
@@ -989,6 +955,29 @@
             background: #047857;
             box-shadow: 0 6px 20px rgba(4, 120, 87, 0.35);
             transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        .tourism-cta-secondary-btn {
+            background: #F0FDF4;
+            color: #065F46;
+            border: 1.5px solid rgba(5, 150, 105, 0.35);
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .tourism-cta-secondary-btn:hover {
+            background: #E8F5E9;
+            border-color: #059669;
+            color: #047857;
+            transform: translateY(-2px);
         }
     </style>
 
@@ -996,65 +985,52 @@
         <div style="max-width: 1350px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 25px;">
                 <span class="editorial-kicker" style="background: #E8F5E9; color: #0B3B17; font-weight: 800; border: 1.5px solid #059669; padding: 4px 16px; border-radius: 20px; display: inline-block;">
-                    ✨ 02 DATTA CHAYA TOURISM &amp; IRCTC RAIL DESK ✨
+                    ✨ 02 DATTA CHHAYA TOURISM &amp; IRCTC RAIL DESK ✨
                 </span>
                 <h2 class="editorial-title" style="margin-top: 8px;">
-                    Tour Yatras &amp; Railway Booking Desk
+                    Spiritual Pilgrimages &amp; Railway Booking Desk
                 </h2>
                 <p class="editorial-subtitle">
-                    Explore handcrafted pilgrimage tour packages by Datta Chaya Tourism or book train tickets with our separate IRCTC Railway Desk.
+                    Explore sacred temple yatras curated under Datta Chhaya Tourism, or reserve train tickets through our Authorised IRCTC Railway Desk.
                 </p>
             </div>
 
             <div class="tourism-system-wrapper">
-                <!-- Mode Navigation Control Tabs Bar -->
-                <div class="tourism-nav-bar" role="tablist" aria-label="Datta Chaya Tourism and IRCTC Railway Desk">
-                    <button class="tourism-tab-btn active" data-tour="guru" role="tab" aria-selected="true">
-                        🪔 DIVINE DATTATREYA &amp; GURU
-                    </button>
-                    <button class="tourism-tab-btn" data-tour="andhra" role="tab" aria-selected="false">
-                        🌊 DIVINE ANDHRA
-                    </button>
-                    <button class="tourism-tab-btn" data-tour="vitthal" role="tab" aria-selected="false">
-                        🚩 DIVINE DATTA &amp; VITTHAL
-                    </button>
-                    <button class="tourism-tab-btn" data-tour="karnataka" role="tab" aria-selected="false">
-                        🏛️ KARNATAKA HERITAGE
-                    </button>
-                    <button class="tourism-tab-btn" data-tour="irctc" role="tab" aria-selected="false">
-                        🚆 IRCTC RAILWAY DESK
-                    </button>
-                </div>
-
                 <!-- Active Stage Experience Grid -->
                 <div class="tourism-stage-grid">
                     
-                    <!-- Left Column: Real HD Photography Visual Card -->
-                    <div class="tourism-visual-area" id="tourismVisualArea">
-                        <img decoding="async" src="images/dattatreya-guru-kshetra.webp" alt="Divine Dattatreya & Guru Pilgrimage Shrine" id="tourismImg" class="tourism-stage-img" loading="lazy" width="600" height="340">
+                    <!-- Left Column: HD Photography Visual Card -->
+                    <div class="tourism-visual-area">
+                        <picture>
+                            <img decoding="async" src="images/datta-chhaya-yatra-highway.jpg" alt="Datta Chhaya Tourism Sacred Pilgrimages &amp; Road Expeditions" class="tourism-stage-img" loading="lazy" width="600" height="380">
+                        </picture>
                         <div class="tourism-visual-overlay">
-                            <span class="tourism-badge-tag" id="tourismBadge">🪔 5D/4N • DATTA CHHAYA TOURISM</span>
-                            <span class="tourism-feeling-tag" id="tourismFeeling">Kuravpur • Mantralaya • Gangapur • Akkalkot • Solapur</span>
+                            <span class="tourism-badge-tag">🪔 DATTA CHHAYA TOURISM</span>
+                            <span class="tourism-feeling-tag">Maharashtra • Karnataka • Andhra Pradesh • All-India Yatras</span>
                         </div>
                     </div>
 
-                    <!-- Right Column: Details Box -->
+                    <!-- Right Column: Division Details & Gateway Action -->
                     <div class="movement-details-box">
-                        <span class="tourism-mode-kicker" id="tourismKicker">DATTA CHHAYA TOURISM • 5 SACRED DESTINATIONS</span>
-                        <h3 class="tourism-mode-headline" id="tourismHeadline">Divine Dattatreya &amp; Guru Pilgrimage (5D / 4N)</h3>
-                        <p class="tourism-mode-statement" id="tourismStatement">
-                            A Journey of Devotion &amp; Discovery across 5 sacred destinations: Kuravpur (Sri Pada Shri Vallabha), Mantralaya (Shri Raghavendra Swamy), Gangapur (Shri Dattatreya Nirgun Paduka), Akkalkot (Shri Swami Samarth), and Solapur (Siddheshwar Temple).
+                        <span class="tourism-mode-kicker">AORR TOURS &amp; TRAVEL DIVISION</span>
+                        <h3 class="tourism-mode-headline">Sacred Spiritual Journeys Planned With Utmost Care &amp; Devotion</h3>
+                        <p class="tourism-mode-statement">
+                            Datta Chhaya Tourism curates peaceful, spiritually enriching pilgrimage circuits across India's most revered shrines. Every yatra is organized with sanitised private AC vehicles, verified comfortable hotel stays, personalized temple darshan coordination, and special care tailored for families and senior citizens.
                         </p>
                         
-                        <ul class="tourism-capabilities-list" id="tourismCaps">
-                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Economy &amp; Business Packages Available</li>
-                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Private Sedan / SUV for 5 Days</li>
-                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> 4 Nights Accommodation &amp; Sightseeing</li>
+                        <ul class="tourism-capabilities-list">
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Handcrafted Pilgrimage Circuits across Maharashtra, Karnataka &amp; Andhra Pradesh</li>
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Private AC Vehicles (Sedan / SUV) with Courteous, Experienced Drivers</li>
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Verified Comfortable Hotel Stays &amp; Guided Temple Darshan Coordination</li>
+                            <li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> Authorised IRCTC Railway Desk for Instant Ticketing &amp; Tatkal Assistance</li>
                         </ul>
 
-                        <div>
-                            <a href="tours-travel.html#dattatreya-guru" class="tourism-cta-btn" id="tourismCta">
-                                View Guru Pilgrimage Package →
+                        <div class="tourism-actions-group">
+                            <a href="tours-travel.html" class="tourism-cta-btn">
+                                Explore Datta Chhaya Tourism &amp; All Yatras →
+                            </a>
+                            <a href="tours-travel.html#irctc-railway" class="tourism-cta-secondary-btn">
+                                🚆 IRCTC Railway Desk →
                             </a>
                         </div>
                     </div>
@@ -1063,129 +1039,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Embedded Vanilla Script for Datta Chaya Tourism Stage -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const tourismData = {
-            guru: {
-                kicker: 'DATTA CHHAYA TOURISM • 5 SACRED DESTINATIONS',
-                headline: 'Divine Dattatreya & Guru Pilgrimage (5D / 4N)',
-                statement: 'A Journey of Devotion & Discovery across 5 sacred destinations: Kuravpur (Sri Pada Shri Vallabha), Mantralaya (Shri Raghavendra Swamy), Gangapur (Shri Dattatreya Nirgun Paduka), Akkalkot (Shri Swami Samarth), and Solapur (Siddheshwar Temple).',
-                img: 'images/dattatreya-guru-kshetra.webp',
-                objPos: 'center 25%',
-                badge: '🪔 5D/4N • DATTA CHHAYA TOURISM',
-                feeling: 'Kuravpur • Mantralaya • Gangapur • Akkalkot • Solapur',
-                caps: ['Economy & Business Packages Available', 'Private Sedan / SUV for 5 Days', '4 Nights Accommodation & Sightseeing'],
-                ctaText: 'View Guru Pilgrimage Package →',
-                ctaUrl: 'tours-travel.html#dattatreya-guru'
-            },
-            andhra: {
-                kicker: 'DATTA CHHAYA TOURISM • SPIRITUAL & COASTAL ANDHRA',
-                headline: 'Divine Andhra (5D / 4N)',
-                statement: 'Spiritual & Coastal Andhra Journey covering Pithapuram (Sri Pada Sri Vallabha), Annavaram (Satyanarayana Swamy), Draksharamam, Kotipalli, Coringa Mangroves, Antarvedi Confluence, and Rajamahendravaram.',
-                img: 'images/divya-andhra-temple.webp',
-                objPos: 'center 25%',
-                badge: '🌊 5D/4N • DATTA CHHAYA TOURISM',
-                feeling: 'Pithapuram • Annavaram • Draksharamam • Antarvedi • Rajahmundry',
-                caps: ['Economy & Custom Group Packages', 'Private Sedan for 5 Days', 'Daily Breakfast & All Transfers Included'],
-                ctaText: 'View Divine Andhra Package →',
-                ctaUrl: 'tours-travel.html#divine-andhra'
-            },
-            vitthal: {
-                kicker: 'DATTA CHHAYA TOURISM • DEVOTIONAL PILGRIMAGE',
-                headline: 'Divine Datta & Vitthal Pilgrimage (2D / 3N)',
-                statement: 'A Spiritual Journey of Blessings (श्री दत्त कृपा व विठ्ठलाची भक्ती): Akkalkot (Swami Samarth), Gangapur (Dattatreya Nirgun Paduka), Pandharpur (Vitthal-Rukmini), Tuljapur (Tuljabhavani), and Solapur (Siddheshwar).',
-                img: 'images/datta-vitthal-pandharpur.webp',
-                objPos: 'center 30%',
-                badge: '🚩 2D/3N • DATTA CHHAYA TOURISM',
-                feeling: 'Akkalkot • Gangapur • Pandharpur • Tuljapur • Solapur',
-                caps: ['Economy & Business Packages Available', 'Private Sedan / SUV for 3 Days', '2 Nights Accommodation & Darshan'],
-                ctaText: 'View Datta & Vitthal Pilgrimage →',
-                ctaUrl: 'tours-travel.html#datta-vitthal'
-            },
-            karnataka: {
-                kicker: 'DATTA CHHAYA TOURISM • TIMELESS HERITAGE',
-                headline: 'Karnataka Heritage Tour (4N / 5D)',
-                statement: 'Explore the Timeless Beauty of Karnataka across 9 destinations: Bijapur (Gol Gumat), Shiv Giri, Almatti Dam, Kudalsangama, Hampi (UNESCO Heritage), Tungabhadra Dam, Aihole, Pattadakkal, and Badami.',
-                img: 'images/karnataka-heritage-murudeshwar.webp',
-                objPos: 'center 20%',
-                badge: '🏛️ 4N/5D • DATTA CHHAYA TOURISM',
-                feeling: 'Bijapur • Almatti • Kudalsangama • Hampi • Badami',
-                caps: ['Economy & Business Packages (Twin Sharing)', 'Luxurious / Premium Stays & Daily Breakfast', 'AC Transportation & Sightseeing across 9 Sites'],
-                ctaText: 'View Karnataka Heritage Tour →',
-                ctaUrl: 'tours-travel.html#karnataka-heritage'
-            },
-            irctc: {
-                kicker: 'SEPARATE SERVICE • IRCTC RAILWAY DESK',
-                headline: 'Railway Ticket Booking & Tatkal Assistance',
-                statement: 'Official IRCTC Railway Desk providing train ticket booking, Tatkal assistance, group travel planning, and fast WhatsApp e-ticket delivery across India.',
-                img: 'images/irctc-vande-bharat.webp',
-                objPos: 'center 35%',
-                badge: '🚆 IRCTC RAILWAY DESK',
-                feeling: 'Railway Ticket Booking & Tatkal Assistance',
-                caps: ['Authorised IRCTC Booking', 'Tatkal & Group Support', 'Fast WhatsApp E-Tickets'],
-                ctaText: 'Visit IRCTC Railway Desk →',
-                ctaUrl: 'tours-travel.html#irctc-railway'
-            }
-        };
-
-        const tTabs = document.querySelectorAll('.tourism-tab-btn');
-        const tVisualArea = document.getElementById('tourismVisualArea');
-        const tImgEl = document.getElementById('tourismImg');
-        const tBadgeEl = document.getElementById('tourismBadge');
-        const tFeelingEl = document.getElementById('tourismFeeling');
-        const tKickerEl = document.getElementById('tourismKicker');
-        const tHeadlineEl = document.getElementById('tourismHeadline');
-        const tStatementEl = document.getElementById('tourismStatement');
-        const tCapsEl = document.getElementById('tourismCaps');
-        const tCtaEl = document.getElementById('tourismCta');
-
-        function switchTourismMode(tourKey) {
-            const data = tourismData[tourKey];
-            if (!data) return;
-
-            tTabs.forEach(tab => {
-                if (tab.dataset.tour === tourKey) {
-                    tab.classList.add('active');
-                    tab.setAttribute('aria-selected', 'true');
-                } else {
-                    tab.classList.remove('active');
-                    tab.setAttribute('aria-selected', 'false');
-                }
-            });
-
-            tVisualArea.classList.add('transitioning');
-            setTimeout(() => {
-                tImgEl.src = data.img;
-                if (data.objPos) tImgEl.style.objectPosition = data.objPos;
-                tBadgeEl.textContent = data.badge;
-                tFeelingEl.textContent = data.feeling;
-                tKickerEl.textContent = data.kicker;
-                tHeadlineEl.textContent = data.headline;
-                tStatementEl.textContent = data.statement;
-
-                tCapsEl.innerHTML = data.caps.map(cap => 
-                    `<li class="tourism-cap-chip"><span class="movement-cap-check">✓</span> ${cap}</li>`
-                ).join('');
-
-                tCtaEl.textContent = data.ctaText;
-                tCtaEl.href = data.ctaUrl;
-
-                tVisualArea.classList.remove('transitioning');
-            }, 150);
-        }
-
-        tTabs.forEach(tab => {
-            tab.addEventListener('click', function () {
-                switchTourismMode(this.dataset.tour);
-            });
-            tab.addEventListener('mouseenter', function () {
-                switchTourismMode(this.dataset.tour);
-            });
-        });
-    });
-    </script>
 
     <!-- ========================================================================= -->
     <!-- ENTERPRISE EXPERTISE & AUTHORITY SHOWCASE                                 -->
