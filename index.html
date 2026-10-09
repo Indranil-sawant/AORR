@@ -60,8 +60,13 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.aorr.in/">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <!-- Favicon & Touch Icons (Google Search & Multi-device compliant) -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     
     <!-- Critical CSS - Inline for FCP (First Contentful Paint) - Light Luxury Theme -->
     <style>
@@ -125,14 +130,22 @@
         "addressRegion": "MH",
         "postalCode": "411038",
         "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-8975218910",
-        "contactType": "Customer Service",
-        "areaServed": "Worldwide",
-        "availableLanguage": ["English", "Hindi", "Marathi"]
-      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-8975218910",
+          "contactType": "Customer Service",
+          "areaServed": "Worldwide",
+          "availableLanguage": ["English", "Hindi", "Marathi"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-9552528784",
+          "contactType": "Travel & Healthcare Desk",
+          "areaServed": "Worldwide",
+          "availableLanguage": ["English", "Hindi", "Marathi"]
+        }
+      ],
       "sameAs": [
         "https://www.instagram.com/aorrservices",
         "https://www.facebook.com/share/1DsTNK6vMH/?mibextid=wwXIfr"

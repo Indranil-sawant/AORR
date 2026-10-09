@@ -3,6 +3,10 @@
 
 User-agent: *
 Allow: /
+Allow: /robots.txt
+Allow: /sitemap.xml
+Allow: /favicon.ico
+Allow: /site.webmanifest
 
 # Allow all rendering assets (CSS, JS, Fonts, Images)
 Allow: /*.css$
@@ -15,7 +19,9 @@ Disallow: /package.json
 Disallow: /package-lock.json
 Disallow: /*.py$
 Disallow: /*.sh$
-Disallow: /*.txt$
+Disallow: /data.txt
+Disallow: /data1.txt
+Disallow: /IMAGE_FILENAMES.txt
 Disallow: /.git/
 
 # XML Sitemap Pointer
