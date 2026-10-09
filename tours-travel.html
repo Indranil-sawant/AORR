@@ -113,10 +113,10 @@
             margin: 0 auto;
         }
 
-        .hero-datta-watermark {
+        .hero-datta-watermark,
+        .hero-right-watermark {
             position: absolute;
             top: clamp(95px, 12vh, 115px);
-            left: clamp(28px, 3.5vw, 48px);
             width: clamp(120px, 9.5vw, 145px);
             height: auto;
             object-fit: contain;
@@ -130,19 +130,39 @@
             filter: none;
         }
 
+        .hero-datta-watermark {
+            left: clamp(28px, 3.5vw, 48px);
+        }
+
+        .hero-right-watermark {
+            right: clamp(28px, 3.5vw, 48px);
+        }
+
         @media (max-width: 768px) {
-            .hero-datta-watermark {
+            .hero-datta-watermark,
+            .hero-right-watermark {
                 top: 86px;
-                left: 18px;
                 width: clamp(68px, 17vw, 85px);
+            }
+            .hero-datta-watermark {
+                left: 18px;
+            }
+            .hero-right-watermark {
+                right: 18px;
             }
         }
 
         @media (max-width: 480px) {
-            .hero-datta-watermark {
+            .hero-datta-watermark,
+            .hero-right-watermark {
                 top: 84px;
-                left: 14px;
                 width: clamp(60px, 16vw, 75px);
+            }
+            .hero-datta-watermark {
+                left: 14px;
+            }
+            .hero-right-watermark {
+                right: 14px;
             }
         }
 
@@ -2232,6 +2252,7 @@
     <!-- Travel Hero Section -->
     <section class="travel-hero">
         <img decoding="async" src="images/datta_maharaj.png" alt="Lord Dattatreya" class="hero-datta-watermark" loading="eager" width="140" height="172">
+        <img decoding="async" src="images/shripad_shrivallabh.png" alt="Shripad Shri Vallabha" class="hero-right-watermark" loading="eager" width="140" height="172">
         <div class="travel-hero-content">
             <div class="hero-badge-pill">
                 DATTA CHAYA TOURISM
