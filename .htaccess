@@ -14,6 +14,9 @@
     # Redirect non-www to www (ensures 100% consistency with canonical URLs & sitemap)
     RewriteCond %{HTTP_HOST} ^aorr\.in$ [NC]
     RewriteRule ^(.*)$ https://www.aorr.in/$1 [R=301,L]
+
+    # 301 Redirect legacy market-insights.html to irctc-bookings.html
+    RewriteRule ^market-insights\.html$ /irctc-bookings.html [R=301,L]
 </IfModule>
 
 # ============================================

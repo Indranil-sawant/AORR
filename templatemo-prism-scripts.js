@@ -308,11 +308,11 @@ function initFormsSystem() {
         const val = field.value ? field.value.trim() : '';
         let valid = true;
 
-        if (field.hasAttribute('required') && (!val || val === '')) {
-            valid = false;
-        } else if (field.type === 'email' && val) {
+        if (field.type === 'email') {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(val)) valid = false;
+            if (!val || !emailRegex.test(val)) valid = false;
+        } else if (field.hasAttribute('required') && (!val || val === '')) {
+            valid = false;
         } else if (field.type === 'tel' && val) {
             const digits = val.replace(/\D/g, '');
             if (digits.length < 7) valid = false;

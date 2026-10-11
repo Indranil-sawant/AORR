@@ -232,7 +232,8 @@ function buildSearchIndex(catalog = {}) {
         { title: 'Divine Andhra (5D/4N - Pithapuram, Annavaram, Draksharamam, Antarvedi, Rajahmundry)', category: 'Datta Chhaya Tourism', url: 'tours-travel.html#divine-andhra', icon: '🌊' },
         { title: 'Divine Datta & Vitthal Pilgrimage (2D/3N - Akkalkot, Gangapur, Pandharpur, Tuljapur, Solapur)', category: 'Datta Chhaya Tourism', url: 'tours-travel.html#datta-vitthal', icon: '🚩' },
         { title: 'Karnataka Heritage Tour (4N/5D - Hampi, Badami, Aihole, Pattadakal, Bijapur)', category: 'Datta Chhaya Tourism', url: 'tours-travel.html#karnataka-heritage', icon: '🏛️' },
-        { title: 'AORR Authorised IRCTC Railway Ticket Reservation Desk', category: 'Rail Services', url: 'tours-travel.html#irctc-railway', icon: '🚆' },
+        { title: 'AORR Official IRCTC Railway Ticket Reservation Desk', category: 'Rail Services', url: 'irctc-bookings.html', icon: '🚆' },
+        { title: 'IRCTC Tatkal & Emergency Train Ticket Bookings', category: 'Rail Services', url: 'irctc-bookings.html#book-ticket', icon: '⚡' },
         { title: 'Corporate & Business Travel Management', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '💼' },
         { title: 'Bespoke Leisure & Luxury Holiday Packages', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '🏖️' },
         { title: 'Global Flight & Luxury Hotel Bookings', category: 'Tours & Travel', url: 'tours-travel.html#travel-inquiry', icon: '🏨' },
@@ -251,16 +252,16 @@ function buildSearchIndex(catalog = {}) {
 
     // Add Medical Tourism Services to Search Index
     const medicalServices = [
-        { title: 'Medical Tourism & Healthcare Travel Coordination', category: 'Medical Tourism', url: 'medical-tourism.html', icon: '🩺' },
-        { title: 'Hospital & Specialist Discovery', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🏥' },
-        { title: 'Doctor & Specialist Coordination', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '👨‍⚕️' },
-        { title: 'Medical Treatment Itinerary Planning', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '📋' },
-        { title: 'Consultation & Appointment Scheduling', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🗓️' },
-        { title: 'Medical Visa & Travel Documentation', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🛂' },
-        { title: 'Patient Accommodation & Airport Transfers', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🏨' },
-        { title: 'Dedicated On-Ground Patient Concierge', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '🤝' },
-        { title: 'Post-Treatment Recovery & Follow-up Coordination', category: 'Medical Tourism', url: 'medical-tourism.html#medical-services', icon: '💚' },
-        { title: 'Confidential Medical Travel Inquiry', category: 'Medical Tourism', url: 'medical-tourism.html#medical-inquiry', icon: '🔒' }
+        { title: 'Medical Tourism & Healthcare Travel Coordination (Coming Soon)', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html', icon: '🩺' },
+        { title: 'Hospital & Specialist Discovery', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html#preview-pillars', icon: '🏥' },
+        { title: 'Doctor & Specialist Coordination', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html#preview-pillars', icon: '👨‍⚕️' },
+        { title: 'Medical Treatment Itinerary Planning', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html#preview-pillars', icon: '📋' },
+        { title: 'Consultation & Appointment Scheduling', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html#preview-pillars', icon: '🗓️' },
+        { title: 'Medical Visa & Travel Documentation', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html#preview-pillars', icon: '🛂' },
+        { title: 'Patient Accommodation & Airport Transfers', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html#preview-pillars', icon: '🏨' },
+        { title: 'Dedicated On-Ground Patient Concierge', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html#preview-pillars', icon: '🤝' },
+        { title: 'Post-Treatment Recovery & Follow-up Coordination', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html#preview-pillars', icon: '💚' },
+        { title: 'Confidential Medical Travel Inquiry', category: 'Medical Tourism (Coming Soon)', url: 'medical-tourism-coming-soon.html#notify-desk', icon: '🔒' }
     ];
 
     medicalServices.forEach(item => {

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) - High Performance Deferred Loading -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MF3X4BWLJ0');
+
+      (function() {
+        var gaLoaded = false;
+        var userEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'mousemove', 'wheel'];
+        function loadGA() {
+          if (gaLoaded) return;
+          gaLoaded = true;
+          var el = document.createElement('script');
+          el.async = true;
+          el.src = 'https://www.googletagmanager.com/gtag/js?id=G-MF3X4BWLJ0';
+          document.head.appendChild(el);
+          userEvents.forEach(function(evt) {
+            window.removeEventListener(evt, loadGA, { passive: true });
+          });
+        }
+        userEvents.forEach(function(evt) {
+          window.addEventListener(evt, loadGA, { once: true, passive: true });
+        });
+        setTimeout(loadGA, 7000);
+      })();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    
+    <title>Medical Tourism Concierge (Coming Soon) — AORR Global Enterprise</title>
+    <meta name="description" content="AORR Medical Tourism & Healthcare Concierge division is coming soon. Ethical international patient travel coordination connecting you with premier NABH/JCI accredited hospitals in India.">
+    <meta name="keywords" content="medical tourism India, healthcare travel coordination, coming soon, hospital discovery India, international patient concierge">
+    <meta name="author" content="AORR Global Enterprise">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aorr.in/medical-tourism-coming-soon.html">
+    <meta property="og:title" content="Medical Tourism Concierge (Coming Soon) | AORR">
+    <meta property="og:description" content="Ethical cross-border healthcare travel coordination connecting international patients with accredited Indian hospitals. Coming soon.">
+    <meta property="og:image" content="https://www.aorr.in/images/logo.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.aorr.in/medical-tourism-coming-soon.html">
+    <meta name="twitter:title" content="Medical Tourism Concierge (Coming Soon) | AORR">
+    <meta name="twitter:description" content="Ethical cross-border healthcare travel coordination connecting international patients with accredited Indian hospitals. Coming soon.">
+    <meta name="twitter:image" content="https://www.aorr.in/images/logo.png">
+    
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&family=Poppins:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="templatemo-prism-flux.css">
+    <link rel="stylesheet" href="global-search-style.css">
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="whatsapp-widget.css">
+
+    <style>
+        .coming-soon-hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            background: radial-gradient(circle at 50% 20%, rgba(209, 250, 229, 0.45) 0%, rgba(255, 255, 255, 0.98) 70%),
+                        linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 100%);
+            overflow: hidden;
+        }
+
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #D1FAE5;
+            color: #065F46;
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .coming-soon-badge .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #059669;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7);
+            animation: pulseGreen 1.8s infinite;
+        }
+
+        @keyframes pulseGreen {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(5, 150, 105, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+        }
+
+        .coming-soon-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 800;
+            color: #0B3C23;
+            line-height: 1.15;
+            margin: 0 auto 20px;
+            max-width: 900px;
+            letter-spacing: -0.5px;
+        }
+
+        .coming-soon-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #4B5563;
+            line-height: 1.7;
+            max-width: 780px;
+            margin: 0 auto 36px;
+        }
+
+        .coming-soon-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 1050px;
+            margin: 40px auto 50px;
+            text-align: left;
+        }
+
+        .preview-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(11, 60, 35, 0.1);
+            border-radius: 16px;
+            padding: 24px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .preview-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(11, 60, 35, 0.08);
+            border-color: rgba(5, 150, 105, 0.3);
+        }
+
+        .preview-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+            display: inline-block;
+        }
+
+        .preview-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0B3C23;
+            margin-bottom: 8px;
+        }
+
+        .preview-desc {
+            font-size: 0.88rem;
+            color: #6B7280;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .coming-soon-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .btn-cs-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #1B5E20 0%, #0F3814 100%);
+            color: #FFFFFF;
+            font-weight: 700;
+            padding: 14px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(27, 94, 32, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cs-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(27, 94, 32, 0.35);
+            color: #FFFFFF;
+        }
+
+        .btn-cs-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #FFFFFF;
+            color: #0B3C23;
+            border: 1.5px solid rgba(11, 60, 35, 0.2);
+            font-weight: 700;
+            padding: 14px 26px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cs-secondary:hover {
+            background: #F0FDF4;
+            border-color: #1B5E20;
+            color: #1B5E20;
+        }
+
+        .notification-strip {
+            background: #FEF3C7;
+            border: 1px solid #F59E0B;
+            border-radius: 12px;
+            padding: 14px 22px;
+            max-width: 780px;
+            margin: 30px auto 0;
+            font-size: 0.92rem;
+            color: #92400E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- AORR Custom Loader -->
+    <div id="aorr-loader">
+        <div class="loader-content">
+            <div class="loader-logo-wrapper">
+                <picture>
+                    <source srcset="images/logo.webp" type="image/webp">
+                    <img loading="eager" decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="loader-logo-img" width="105" height="105">
+                </picture>
+            </div>
+            <div class="loader-ring-1"></div>
+            <div class="loader-ring-2"></div>
+            <div class="loader-text-container">
+                <span class="loader-brand">AORR</span>
+                <span class="loader-tagline">Global Enterprise</span>
+                <div class="loader-progress-track">
+                    <div class="loader-progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <picture>
+                    <source srcset="images/logo.webp" type="image/webp">
+                    <img decoding="async" src="images/logo.png" alt="AORR Global Enterprise Logo" class="nav-logo-img" loading="eager" width="90" height="90">
+                </picture>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="tours-travel.html" class="nav-link">Datta Chaya Tourism</a></li>
+                <li><a href="products.html" class="nav-link">Global Trade</a></li>
+                <li><a href="medical-tourism-coming-soon.html" class="nav-link active">Medical Tourism</a></li>
+                <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="irctc-bookings.html" class="nav-link nav-highlight-irctc">IRCTC Bookings</a></li>
+            </ul>
+
+            <div class="nav-search-container">
+                <input type="text" placeholder="Search..." class="nav-search-input" aria-label="Search trade, travel, and medical services" role="combobox" aria-expanded="false" aria-autocomplete="list">
+                <span class="nav-search-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+                <div class="search-results-dropdown"></div>
+            </div>
+
+            <div class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu" role="button" tabindex="0" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Coming Soon Section -->
+    <main>
+        <section class="coming-soon-hero">
+            <div>
+                <div class="coming-soon-badge">
+                    <span class="pulse-dot"></span>
+                    <span>03 — HEALTHCARE TRAVEL COORDINATION • COMING SOON</span>
+                </div>
+
+                <h1 class="coming-soon-title">
+                    Healthcare Without Borders
+                </h1>
+
+                <p class="coming-soon-subtitle">
+                    Our dedicated <strong>Medical Tourism &amp; Global Healthcare Concierge</strong> division is currently being finalized. We are onboarding premier JCI/NABH-accredited hospital networks, super-specialists, and dedicated patient support infrastructure across Pune, Mumbai, and India.
+                </p>
+
+                <!-- 4 Preview Pillars -->
+                <div class="coming-soon-preview-grid">
+                    <div class="preview-card">
+                        <span class="preview-icon">🏥</span>
+                        <h2 class="preview-heading">Accredited Hospital Network</h2>
+                        <p class="preview-desc">Curating direct partnerships with India's top NABH &amp; JCI super-specialty hospitals for cardiology, oncology, and orthopedics.</p>
+                    </div>
+
+                    <div class="preview-card">
+                        <span class="preview-icon">🩺</span>
+                        <h2 class="preview-heading">Specialist Case Evaluations</h2>
+                        <p class="preview-desc">Facilitating pre-travel tele-consultations, cross-border second opinions, and customized clinical treatment estimates.</p>
+                    </div>
+
+                    <div class="preview-card">
+                        <span class="preview-icon">📄</span>
+                        <h2 class="preview-heading">Medical Visa Assistance</h2>
+                        <p class="preview-desc">End-to-end guidance for Visa Invitation Letters (VIL), FRRO patient registration, and streamlined documentation.</p>
+                    </div>
+
+                    <div class="preview-card">
+                        <span class="preview-icon">🤝</span>
+                        <h2 class="preview-heading">Dedicated Patient Concierge</h2>
+                        <p class="preview-desc">24/7 on-ground assistance, airport reception, hygienic family accommodations, and compassionate multilingual care managers.</p>
+                    </div>
+                </div>
+
+                <!-- Call to Action Buttons -->
+                <div class="coming-soon-actions">
+                    <a href="https://wa.me/919730004911?text=Hello%20AORR%2C%20I%20would%20like%20to%20inquire%20about%20upcoming%20Medical%20Tourism%20services." target="_blank" rel="noopener noreferrer" class="btn-cs-primary">
+                        <span>Contact Healthcare Desk on WhatsApp</span>
+                        <span>💬</span>
+                    </a>
+                    <a href="index.html" class="btn-cs-secondary">
+                        <span>← Return to Ecosystem Home</span>
+                    </a>
+                    <a href="tours-travel.html" class="btn-cs-secondary">
+                        <span>Explore Datta Chaya Tourism ✈️</span>
+                    </a>
+                </div>
+
+                <div class="notification-strip">
+                    <span>🔔</span>
+                    <span>For urgent medical travel inquiries or priority patient coordination, reach our corporate desk directly at <strong><a href="tel:+919730004911" style="color: #92400E; text-decoration: underline;">+91 97300 04911</a></strong> or email <strong><a href="mailto:aorr@aorr.in" style="color: #92400E; text-decoration: underline;">aorr@aorr.in</a></strong>.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Unified Enterprise Footer -->
+    <footer style="background: linear-gradient(180deg, #072B18 0%, #03140B 100%); color: #F3F4F6; padding: 60px 20px 30px; font-family: 'Inter', sans-serif;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            <div>
+                <p style="font-weight: 700; font-size: 1.2rem; color: #ffffff; margin-bottom: 10px;">AORR Global Enterprise</p>
+                <p style="color: #D1D5DB; font-size: 0.92rem; line-height: 1.65; margin-bottom: 15px;">
+                    Connecting people, businesses, and opportunities across borders through Global Trade, Tours &amp; Travels, and Medical Tourism Coordination.
+                </p>
+                <p style="color: #6EE7B7; font-size: 0.85rem; font-weight: 600;">One Global Partner. Multiple Possibilities.</p>
+            </div>
+
+            <!-- Division 1 -->
+            <div>
+                <div style="font-weight: 700; color: #A5D6A7; font-size: 0.95rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">01 Global Trade</div>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; padding: 0; margin: 0;">
+                    <li><a href="products.html" style="color: #E5E7EB; text-decoration: none;">Product Catalog</a></li>
+                    <li><a href="products.html?category=marine" style="color: #E5E7EB; text-decoration: none;">Marine Supplies</a></li>
+                    <li><a href="products.html?category=industrial" style="color: #E5E7EB; text-decoration: none;">Industrial Valves</a></li>
+                    <li><a href="services.html" style="color: #E5E7EB; text-decoration: none;">Export Operations</a></li>
+                </ul>
+            </div>
+
+            <!-- Division 2 & 3 -->
+            <div>
+                <div style="font-weight: 700; color: #A5D6A7; font-size: 0.95rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">02 &amp; 03 Services</div>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; padding: 0; margin: 0;">
+                    <li><a href="tours-travel.html" style="color: #E5E7EB; text-decoration: none;">Datta Chaya Tourism</a></li>
+                    <li><a href="irctc-bookings.html" style="color: #E5E7EB; text-decoration: none;">IRCTC Railway Desk</a></li>
+                    <li><a href="medical-tourism-coming-soon.html" style="color: #E5E7EB; text-decoration: none;">Medical Tourism</a></li>
+                    <li><a href="contact.html" style="color: #E5E7EB; text-decoration: none;">Enterprise Desk</a></li>
+                </ul>
+            </div>
+
+            <!-- Corporate Contact -->
+            <div class="footer-contact">
+                <div style="font-weight: 700; color: #A5D6A7; font-size: 0.95rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Corporate Office</div>
+                <p style="color: #E5E7EB; font-size: 0.88rem; line-height: 1.6; margin: 0 0 10px 0;">
+                    49/1/1, Shri Hari Krupa<br>Kothrud, Pune 411038, India
+                </p>
+                <p style="margin: 0 0 6px 0;"><a href="mailto:aorr@aorr.in" style="color: #6EE7B7; text-decoration: none; font-size: 0.88rem;">aorr@aorr.in</a></p>
+                <p style="color: #E5E7EB; font-size: 0.88rem; margin: 0;">+91 9730004911 / +91 8975218910</p>
+            </div>
+        </div>
+
+        <div style="max-width: 1200px; margin: 0 auto; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; color: #9CA3AF;">
+            <div>&copy; 2026 AORR Global Enterprise. All rights reserved.</div>
+            <div style="display: flex; gap: 20px;">
+                <a href="index.html" style="color: #9CA3AF; text-decoration: none;">Home</a>
+                <a href="about-us.html" style="color: #9CA3AF; text-decoration: none;">About</a>
+                <a href="contact.html" style="color: #9CA3AF; text-decoration: none;">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Side-Docked Quick-Connect Social Rail -->
+    <div class="floating-social-dock is-collapsed" role="region" aria-label="Official Social Channels">
+        <button type="button" class="social-dock-toggle" aria-label="Toggle social channels" aria-expanded="false" title="Connect with AORR">
+            <svg class="icon-toggle-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <svg class="icon-toggle-close" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="social-dock-links">
+            <a href="https://www.facebook.com/share/1DsTNK6vMH/?mibextid=wwXIfr" class="social-dock-btn facebook-btn" target="_blank" rel="noopener noreferrer" aria-label="Connect with AORR on Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span class="dock-tooltip">Facebook</span>
+            </a>
+            <a href="https://www.instagram.com/aorrservices?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" class="social-dock-btn instagram-btn" target="_blank" rel="noopener noreferrer" aria-label="Follow AORR on Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <span class="dock-tooltip">Instagram</span>
+            </a>
+            <a href="https://wa.me/919730004911?text=Hello%20AORR%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="social-dock-btn whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with AORR on WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                <span class="dock-tooltip">WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="templatemo-prism-scripts.js"></script>
+    <script type="module" src="global-search-logic.js"></script>
+    <script src="loader.js"></script>
+    <script src="accessibility-enhancements.js"></script>
+</body>
+
+</html>
