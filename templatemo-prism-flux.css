@@ -7700,11 +7700,15 @@ html {
 /* Enhanced Section Headings */
 .editorial-kicker {
     display: inline-block;
-    color: var(--accent-green);
+    background: #E8F5E9;
+    color: #0B3B17;
     font-size: 0.82rem;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
+    border: 1.5px solid #059669;
+    padding: 4px 16px;
+    border-radius: 20px;
     margin-bottom: 10px;
 }
 
@@ -8252,10 +8256,15 @@ html {
 .hero-cta-group {
     display: flex;
     gap: 12px;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
     flex-wrap: wrap;
     margin-top: 8px;
     width: 100%;
+}
+
+.travel-hero-content .hero-cta-group {
+    justify-content: center;
 }
 
 .hero-btn {
@@ -8272,6 +8281,15 @@ html {
     justify-content: center;
     gap: 8px;
     min-height: 48px;
+    line-height: 1.2;
+}
+
+.hero-btn .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    line-height: 1;
 }
 
 .hero-btn.primary {
@@ -8291,7 +8309,7 @@ html {
 .hero-btn.secondary {
     background: rgba(255, 255, 255, 0.9);
     color: #0B3C23;
-    border: 1.5px solid rgba(11, 60, 35, 0.2);
+    border: 2px solid rgba(11, 60, 35, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
 }
@@ -8306,7 +8324,7 @@ html {
 
 .hero-btn.irctc-btn {
     background: #F0FDF4;
-    border-color: #059669;
+    border: 2px solid #059669;
     color: #059669;
 }
 
@@ -8321,6 +8339,8 @@ html {
     gap: 12px;
     margin-top: 28px;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
     font-size: 0.82rem;
     font-weight: 700;
     color: #0B3C23;
@@ -8336,6 +8356,7 @@ html {
     border: 1px solid rgba(11, 60, 35, 0.1);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     backdrop-filter: blur(6px);
+    white-space: nowrap;
 }
 
 .trust-check {
