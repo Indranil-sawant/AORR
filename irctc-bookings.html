@@ -754,6 +754,8 @@
             font-size: 0.95rem;
         }
     </style>
+    <!-- Cloudflare Turnstile API -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -875,7 +877,7 @@
                             🎉 Your train booking inquiry has been submitted! Our official IRCTC desk agent will contact you shortly on WhatsApp/Phone.
                         </div>
 
-                        <form id="irctcBookingForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyCVzpROw93c6fOI9UfF4Hab11M6YkalT-xan8GTrDNtEYpI6W3bojXMXmx9q3a_7ZcIQ/exec">
+                        <form id="irctcBookingForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbwe1cfoXB63IyE657oxAbH_qpNLCbEUaxiryrbqL_W-ytXucTxYkk2lzoQVr8bFcwKPZw/exec">
                             
                             <!-- Origin & Destination -->
                             <div class="form-grid-2">
@@ -976,6 +978,9 @@
                             <input type="hidden" name="product" value="IRCTC Railway Ticket Booking Desk">
                             <input type="hidden" name="page" value="irctc-bookings.html">
                             <input type="text" name="company" style="display:none;" tabindex="-1" autocomplete="off">
+
+                            <!-- Cloudflare Turnstile Anti-Spam Widget -->
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAF2D-MshZkHG5Yc3" data-theme="light" style="margin: 14px 0;"></div>
 
                             <div>
                                 <button type="submit" id="railSubmitBtn" class="btn-rail-primary" style="width: 100%; justify-content: center; font-size: 1.05rem;">
@@ -1426,6 +1431,9 @@
                                 successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
                             }
                             form.reset();
+                            if (window.turnstile) {
+                                try { window.turnstile.reset(); } catch (tErr) {}
+                            }
                             if (submitBtn) {
                                 submitBtn.disabled = false;
                                 submitBtn.innerHTML = '<span>Submit Railway Ticket Request →</span>';

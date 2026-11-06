@@ -114,6 +114,8 @@
         }
     }
     </script>
+    <!-- Cloudflare Turnstile API -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -422,7 +424,7 @@
 
             <div class="card" style="margin: 0 auto; max-width: 800px; box-shadow: 0 15px 40px rgba(27, 94, 32, 0.1);">
                 <div class="card2" style="padding: 40px 35px;">
-                    <form class="form" id="medicalInquiryForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyCVzpROw93c6fOI9UfF4Hab11M6YkalT-xan8GTrDNtEYpI6W3bojXMXmx9q3a_7ZcIQ/exec" novalidate>
+                    <form class="form" id="medicalInquiryForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbwe1cfoXB63IyE657oxAbH_qpNLCbEUaxiryrbqL_W-ytXucTxYkk2lzoQVr8bFcwKPZw/exec" novalidate>
                         <p id="heading">Patient & Medical Travel Inquiry</p>
                         <p class="form-subtitle-text">Connect with our dedicated medical concierge for hospital discovery, specialist consultations, and visa assistance.</p>
 
@@ -497,6 +499,9 @@
 
                         <input type="hidden" name="page" value="medical-tourism.html">
                         <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off"> <!-- Honeypot -->
+
+                        <!-- Cloudflare Turnstile Anti-Spam Widget -->
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAF2D-MshZkHG5Yc3" data-theme="light" style="margin: 14px 0;"></div>
 
                         <!-- Submit Button -->
                         <div class="field" style="margin-top: 6px;">

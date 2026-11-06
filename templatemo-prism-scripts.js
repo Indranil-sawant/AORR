@@ -284,6 +284,9 @@ function initFormsSystem() {
                 }
 
                 form.reset();
+                if (window.turnstile) {
+                    try { window.turnstile.reset(); } catch (tErr) {}
+                }
                 selects.forEach(s => {
                     s.classList.remove('has-value');
                     s.style.color = '#6B7280';

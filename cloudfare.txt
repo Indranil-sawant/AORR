@@ -1,0 +1,46 @@
+================================================================================
+AORR GLOBAL ENTERPRISE — CLOUDFLARE TURNSTILE INTEGRATION CREDENTIALS
+================================================================================
+
+1. CREDENTIALS
+--------------------------------------------------------------------------------
+Site Key (Public - HTML Frontend):
+0x4AAAAAAF2D-MshZkHG5Yc3
+
+Secret Key (Private - Google Apps Script / code1.gs):
+0x4AAAAAAF2D-DlopCpokc_sapCUwlQBa1g
+
+
+2. CLOUDFLARE TURNSTILE ALLOWED HOSTNAMES (Copy-Paste into Cloudflare Dashboard):
+--------------------------------------------------------------------------------
+aorr.in
+www.aorr.in
+indranil-sawant.github.io
+localhost
+127.0.0.1
+
+
+3. FRONTEND INTEGRATION CODE (Add to Website HTML Forms)
+--------------------------------------------------------------------------------
+A. Turnstile API Script (Include inside <head> or before </body>):
+   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+B. Turnstile Widget Container (Place inside each <form> right before the submit button):
+   <div class="cf-turnstile" data-sitekey="0x4AAAAAAF2D-MshZkHG5Yc3" data-theme="light" style="margin: 14px 0;"></div>
+
+
+4. BACKEND INTEGRATION (Google Apps Script - code1.gs)
+--------------------------------------------------------------------------------
+Active Deployed Web App URL:
+https://script.google.com/macros/s/AKfycbwe1cfoXB63IyE657oxAbH_qpNLCbEUaxiryrbqL_W-ytXucTxYkk2lzoQVr8bFcwKPZw/exec
+
+Connected Google Sheet:
+https://docs.google.com/spreadsheets/d/1HSctMITmp17ckoRJf6FZPuP-5_aP9SPzCi6dNLmaPRg/edit
+
+The Secret Key has been configured in code1.gs:
+var TURNSTILE_SECRET_KEY = PropertiesService.getScriptProperties().getProperty("TURNSTILE_SECRET_KEY") || "0x4AAAAAAF2D-DlopCpokc_sapCUwlQBa1g";
+
+Turnstile Mode:
+- "AUTO"   : Verifies token when present; falls back to honeypot if omitted on frontend.
+- "STRICT" : Requires 100% verified Turnstile token on every form submission.
+================================================================================

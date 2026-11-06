@@ -653,6 +653,9 @@ function setupEnquiryModal() {
             }
 
             form.reset();
+            if (window.turnstile) {
+                try { window.turnstile.reset(); } catch (tErr) {}
+            }
             
             // Close after brief success feedback
             setTimeout(closeModal, 2500);
