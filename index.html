@@ -239,7 +239,8 @@
                 <div class="hero-badge-wrapper">
                     <span class="hero-subtitle">
                         <span class="live-pulse"></span>
-                        <span>EST. 2026 • PUNE, MAHARASHTRA | TOURS &amp; TRAVEL • RAIL DESK • SOURCING</span>
+                        <span class="desktop-badge-text">EST. 2026 • PUNE, MAHARASHTRA | TOURS &amp; TRAVEL • RAIL DESK • SOURCING</span>
+                        <span class="mobile-badge-text">EST. 2026 • PUNE | TOURS · RAIL · SOURCING</span>
                     </span>
                 </div>
 
@@ -414,6 +415,23 @@
             margin-bottom: 30px;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 768px) {
+            .movement-nav-bar {
+                justify-content: flex-start;
+                padding: 0 10px 4px;
+                scrollbar-width: none;
+            }
+            .movement-nav-bar::-webkit-scrollbar {
+                display: none;
+            }
+            .movement-tab-btn {
+                padding: 10px 16px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
         }
 
         .movement-tab-btn {
@@ -1694,33 +1712,62 @@
     </section>
 
     <!-- Enterprise Metrics & Trust -->
-    <section style="padding: 80px 20px; background: #FFFFFF; border-bottom: 1px solid #F3F4F6;">
+    <style>
+        .enterprise-metrics-section {
+            padding: 80px 20px;
+            background: #FFFFFF;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        .enterprise-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 992px) {
+            .enterprise-metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+        @media (max-width: 768px) {
+            .enterprise-metrics-section {
+                padding: 48px 14px;
+            }
+        }
+        @media (max-width: 480px) {
+            .enterprise-metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+    </style>
+    <section class="enterprise-metrics-section">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
             <span class="editorial-kicker">AUTHENTIC SCALE &amp; RELIABILITY</span>
             <h2 class="editorial-title" style="margin-top: 8px; margin-bottom: 40px;">
                 Dedicated Travel &amp; Service Standards
             </h2>
 
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
-                <div style="background: #F8FAF9; border: 1px solid rgba(0,0,0,0.07); border-radius: 16px; padding: 30px 20px;">
+            <div class="enterprise-metrics-grid">
+                <div style="background: #F8FAF9; border: 1px solid rgba(0,0,0,0.07); border-radius: 16px; padding: 24px 18px;">
                     <div style="font-family: 'Rajdhani', sans-serif; font-size: 2.8rem; font-weight: 800; color: #059669; line-height: 1;">15+</div>
                     <div style="font-size: 0.95rem; font-weight: 700; color: #0B3B17; margin-top: 10px;">Sacred Circuits</div>
                     <p style="font-size: 0.85rem; color: #4B5563; font-weight: 500; margin-top: 5px;">Maharashtra, Karnataka &amp; Andhra</p>
                 </div>
 
-                <div style="background: #F8FAF9; border: 1px solid rgba(0,0,0,0.07); border-radius: 16px; padding: 30px 20px;">
+                <div style="background: #F8FAF9; border: 1px solid rgba(0,0,0,0.07); border-radius: 16px; padding: 24px 18px;">
                     <div style="font-family: 'Rajdhani', sans-serif; font-size: 2.8rem; font-weight: 800; color: #059669; line-height: 1;">IRCTC</div>
                     <div style="font-size: 0.95rem; font-weight: 700; color: #0B3B17; margin-top: 10px;">Authorised Rail Desk</div>
                     <p style="font-size: 0.85rem; color: #4B5563; font-weight: 500; margin-top: 5px;">Tatkal &amp; nationwide train booking</p>
                 </div>
 
-                <div style="background: #F8FAF9; border: 1px solid rgba(0,0,0,0.07); border-radius: 16px; padding: 30px 20px;">
+                <div style="background: #F8FAF9; border: 1px solid rgba(0,0,0,0.07); border-radius: 16px; padding: 24px 18px;">
                     <div style="font-family: 'Rajdhani', sans-serif; font-size: 2.8rem; font-weight: 800; color: #059669; line-height: 1;">100%</div>
                     <div style="font-size: 0.95rem; font-weight: 700; color: #0B3B17; margin-top: 10px;">Verified Fleet &amp; Stays</div>
                     <p style="font-size: 0.85rem; color: #4B5563; font-weight: 500; margin-top: 5px;">Clean AC pushback fleet &amp; comfortable hotels</p>
                 </div>
 
-                <div style="background: #F8FAF9; border: 1px solid rgba(0,0,0,0.07); border-radius: 16px; padding: 30px 20px;">
+                <div style="background: #F8FAF9; border: 1px solid rgba(0,0,0,0.07); border-radius: 16px; padding: 24px 18px;">
                     <div style="font-family: 'Rajdhani', sans-serif; font-size: 2.8rem; font-weight: 800; color: #059669; line-height: 1;">PUNE HQ</div>
                     <div style="font-size: 0.95rem; font-weight: 700; color: #0B3B17; margin-top: 10px;">Direct On-Ground Desk</div>
                     <p style="font-size: 0.85rem; color: #4B5563; font-weight: 500; margin-top: 5px;">Personalized devotee &amp; family care</p>
