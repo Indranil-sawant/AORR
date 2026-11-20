@@ -1,4 +1,4 @@
-# COMPONENTS.md — Reusable UI Component Catalog
+﻿# COMPONENTS.md — Reusable UI Component Catalog
 
 This document catalogues all reusable user interface components, patterns, layout sections, and interactive widgets implemented across the **AORR Global Trading & Distribution** codebase.
 
@@ -361,7 +361,7 @@ This document catalogues all reusable user interface components, patterns, layou
   <div class="contact-split-layout">
       <div class="card">
           <div class="card2">
-              <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbwe1cfoXB63IyE657oxAbH_qpNLCbEUaxiryrbqL_W-ytXucTxYkk2lzoQVr8bFcwKPZw/exec">
+              <form class="form" id="contactForm" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbypZn3pJZvXZ01jXJQYD4rxsZzaTscsbqMxJXZYg_xp3LlV_dTclsEPsmONl5j_TVfD/exec">
                   <input type="text" name="name" placeholder="Full Name" required class="input-field">
                   <input type="email" name="email" placeholder="Email Address" required class="input-field">
                   <input type="tel" name="phone" placeholder="Phone Number" required class="input-field">
@@ -473,7 +473,7 @@ This document catalogues all reusable user interface components, patterns, layou
           <div class="modal-header">
               <h3>Enquire About <span id="modal-product-name">Product</span></h3>
           </div>
-          <form id="product-enquiry-form" method="POST" target="hidden_iframe_product" action="https://script.google.com/macros/s/AKfycbwe1cfoXB63IyE657oxAbH_qpNLCbEUaxiryrbqL_W-ytXucTxYkk2lzoQVr8bFcwKPZw/exec">
+          <form id="product-enquiry-form" method="POST" target="hidden_iframe_product" action="https://script.google.com/macros/s/AKfycbypZn3pJZvXZ01jXJQYD4rxsZzaTscsbqMxJXZYg_xp3LlV_dTclsEPsmONl5j_TVfD/exec">
               <input type="hidden" name="product" id="form-product-name">
               <input type="hidden" name="page" id="form-page-url">
               <input type="text" name="company" style="display:none">
