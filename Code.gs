@@ -14,7 +14,7 @@
  *   5. GENERAL ENTERPRISE — Strategic partnerships & multi-vertical inquiries
  * 
  * Web App URL:
- * https://script.google.com/macros/s/AKfycbyCVzpROw93c6fOI9UfF4Hab11M6YkalT-xan8GTrDNtEYpI6W3bojXMXmx9q3a_7ZcIQ/exec
+ * https://script.google.com/macros/s/AKfycbwe1cfoXB63IyE657oxAbH_qpNLCbEUaxiryrbqL_W-ytXucTxYkk2lzoQVr8bFcwKPZw/exec
  * ============================================================================
  */
 
